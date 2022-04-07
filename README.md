@@ -1,2 +1,2 @@
-# Pica_Menja
+# Projecte Pica & Menja
 # Projecte final d'aplicacions web
