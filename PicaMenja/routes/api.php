@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 // RUTES DE LA API
 
+// RUTES DE LA TAULA RESTAURANTS_SERVEIS
+Route::group(['prefix' => 'restaurants_serveis'], function () {
+    Route::post('', 'App\Http\Controllers\Restaurant_ServeiController@store');
+});
+
+Route::group(['prefix' => 'restaurants_serveis'], function () {
+    Route::delete('/{id_restaurant}/{id_servei}', 'App\Http\Controllers\Restaurant_ServeiController@delete');
+});
+
 // RUTES DE LA TAULA TIPUS
 Route::group(['prefix' => 'tipus'], function () {
     Route::get('', 'App\Http\Controllers\TipusController@index');
