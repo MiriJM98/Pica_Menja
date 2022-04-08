@@ -2,25 +2,36 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\RouteCompiler;
 
-/*
+/* 
 |--------------------------------------------------------------------------
-| API Routes
+|                           RUTES DE LA API 
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
 */
 
-// RUTES DE LA API
-
 // RUTES DE LA TAULA COMENTARIS
+Route::group(
+    ["prefix" => "comentaris"],
+    function () {
+        Route::get('', 'App\Http\Controllers\ComentariController@index');
+        Route::get('{id}', 'App\Http\Controllers\ComentariController@show');
+        Route::delete('{id}', 'App\Http\Controllers\ComentariController@delete');
+        Route::post('', 'App\Http\Controllers\ComentariController@store');
+        Route::put('{id}', 'App\Http\Controllers\ComentariController@update');
+    }
+);
 
 // RUTES DE LA TAULA FOTOS
 
 // RUTES DE LA TAULA IDIOMES
+Route::group(
+    ["prefix" => "idiomes"],
+    function () {
+        Route::get('', 'App\Http\Controllers\IdiomaController@index');
+        Route::get('{id}', 'App\Http\Controllers\IdiomaController@show');
+    }
+);
 
 // RUTES DE LA TAULA RESTAURANTS
 Route::group(
@@ -53,9 +64,13 @@ Route::group(['prefix' => 'tipus'], function () {
     Route::get('', 'App\Http\Controllers\TipusController@index');
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 
 // RUTES DE LA TAULA USUARIS
+Route::group(['prefix' => 'usuaris'], function () {
+    Route::get('', 'App\Http\Controllers\UsuariController@index');
+    Route::get('{id}', 'App\Http\Controllers\UsuariController@show');
+    Route::delete('{id}', 'App\Http\Controllers\UsuariController@delete');
+    Route::post('', 'App\Http\Controllers\UsuariController@store');
+    Route::put('{id}', 'App\Http\Controllers\UsuariController@update');
+});

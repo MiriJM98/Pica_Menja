@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class RestaurantController extends Controller
 {
     // MOSTRAR TOTS ELS RESTAURANTS
+    // MÈTODE GET
     public function index()
     {
         $restaurants = Restaurant::all();
@@ -16,6 +17,7 @@ class RestaurantController extends Controller
     }
 
     // MOSTRAR UN RESTAURANT PER EL SEU ID
+    // MÈTODE GET
     public function show($id)
     {
         $restaurant = Restaurant::findOrFail($id);
@@ -23,6 +25,7 @@ class RestaurantController extends Controller
     }
 
     // BORRAR UN RESTAURANT PER EL SEU ID
+    // MÈTODE DELETE
     public function delete($id)
     {
         $restaurant = Restaurant::findOrFail($id);
@@ -31,6 +34,7 @@ class RestaurantController extends Controller
     }
 
     // INSERTAR UN NOU RESTAURANT
+    // MÈTODE POST
     public function store(Request $request)
     {
         $restaurant = new Restaurant();
@@ -56,11 +60,13 @@ class RestaurantController extends Controller
         }
     }
 
+    // MODIFICAR UN RESTAURANT PER EL SEU ID
+    // MÈTODE PUT
     public function update(Request $request, $id)
     {
         $restaurant = Restaurant::findOrFail($id);
         if ($restaurant->update($request->all())) {
-            return response()->json(["Status" => "Restautant modificat amb èxit!", "Result" => $restaurant], 200);
+            return response()->json(["Status" => "Restaurant modificat amb èxit!", "Result" => $restaurant], 200);
         } else {
             return response()->json(["Status" => "Error modificant el restaurant."], 400);
         }
