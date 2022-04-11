@@ -71,5 +71,61 @@ class UsuariController extends Controller
         }
     }
 
-    // TO DO: MODIFICAR USUARI
+    // MODIFICAR UN USUARI
+    // MÈTODE PUT
+    public function update(Request $request, $id)
+    {
+        $usuari = Usuari::findOrFail($id);
+        if ($usuari->update($request->all())) {
+            return response()->json(["Status" => "Usuari modificat amb èxit!", "Result" => $usuari], 200);
+        } else {
+            return response()->json(["Status" => "Error modificant l'usuari."], 400);
+        }
+    }
+
+    // INSERTAR UNA IMATGE AL PERFIL DE L'USUARI
+    // MÈTODE POST
+    public function fotoPerfil(Request $request, $id)
+    {
+        $validacio = Validator::make($request->all(), [
+            'foto_perfil' => 'required|mimes:jpeg,jpg,bmp,png|max:10240',
+        ]);
+        $tupla = Usuari::findOrFail($id);
+        if (!$validacio->fails()) {
+            $filename = "usuari$id" . "_" . time() . "." . $request->foto_perfil->extension();
+            $request->foto_perfil->move(public_path('usuaris'), $filename);
+            $urifoto = url('usuaris') . "/" . $filename;
+            $tupla->foto_perfil = $urifoto;
+            $tupla->save();
+            return response()->json(["Status" => "Imatge del perfil pujada correctament!", "URI" => $urifoto], 200);
+        } else {
+            return response()->json(["Status" => "Error: tipus o tamany de la imatge malament.", 404]);
+        }
+    }
+
+    // CANVIAR LA CONTRASENYA DE L'USUARI
+    // MÈTODE PUT
+    public function canviPassword(Request $request)
+    {
+        $validacio = Validator::make(
+            $request->all(),
+            [
+                'password' => 'required',
+                'email' => 'required'
+            ]
+        );
+
+        if (!$validacio->fails()) {
+            $password = Hash::make($request->password);
+            $usuari = Usuari::where("email", $request->email)->first();
+            $usuari->password = $password;
+            if ($usuari->save($request->all())) {
+                return response()->json(["Status" => "Contrasenya modificada correctament!", "Result" => $usuari], 200);
+            } else {
+                return response()->json(["Status" => "Error canviant la contrasenya."], 400);
+            }
+        } else {
+            return response()->json($validacio->getMessageBag());
+        }
+    }
 }

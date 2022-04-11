@@ -82,8 +82,8 @@ class RestaurantController extends Controller
         $tupla = Restaurant::findOrFail($id);
         if (!$validacio->fails()) {
             $filename = "restaurant$id" . "_" . time() . "." . $request->imatge->extension();
-            $request->imatge->move(public_path('imatges'), $filename);
-            $urifoto = url('imatges') . "/" . $filename;
+            $request->imatge->move(public_path('restaurants'), $filename);
+            $urifoto = url('restaurants') . "/" . $filename;
             $tupla->imatge = $urifoto;
             $tupla->save();
             return response()->json(["Status" => "Imatge del restaurant pujada correctament!", "URI" => $urifoto], 200);

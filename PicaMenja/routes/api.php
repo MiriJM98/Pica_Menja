@@ -42,7 +42,7 @@ Route::group(
         Route::delete('{id}', 'App\Http\Controllers\RestaurantController@delete');
         Route::post('', 'App\Http\Controllers\RestaurantController@store');
         Route::put('{id}', 'App\Http\Controllers\RestaurantController@update');
-        Route::post('{id}/imatge', 'App\Http\Controllers\RestaurantController@imatge');
+        Route::post('imatge/{id}', 'App\Http\Controllers\RestaurantController@imatge');
     }
 );
 
@@ -73,4 +73,6 @@ Route::group(['prefix' => 'usuaris'], function () {
     Route::delete('{id}', 'App\Http\Controllers\UsuariController@delete');
     Route::post('', 'App\Http\Controllers\UsuariController@store');
     Route::put('{id}', 'App\Http\Controllers\UsuariController@update');
+    Route::post('foto/{id}', 'App\Http\Controllers\UsuariController@fotoPerfil');
+    Route::put('', 'App\Http\Controllers\UsuariController@canviPassword');
 });
