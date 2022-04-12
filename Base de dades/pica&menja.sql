@@ -39,7 +39,7 @@ ALTER TABLE fotos
 ADD PRIMARY KEY (id_restaurant, id_foto);
 
 -- FOREIGN KEYS --
-ALTER TABLE fotos ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant);
+ALTER TABLE fotos ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant) ON DELETE CASCADE;
 
 ALTER TABLE restaurants ADD FOREIGN KEY (id_tipus) REFERENCES tipus (id_tipus);
 
@@ -124,8 +124,8 @@ INSERT INTO serveis (id_servei, servei_ca, servei_es, servei_en, servei_de) VALU
 
 -- INSERTS PER A LA TAULA USUARIS --
 
-INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token) VALUES (1, "Míriam", "Jiménez Molina", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriamjimenez@paucasesnovescifp.cat", null, 1, null, null);
-INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token) VALUES (2, "Miri", "No admin", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriuchijm98@gmail.com", null, null, null, null);
+INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token, token_valid_fins) VALUES (1, "Míriam", "Jiménez Molina", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriamjimenez@paucasesnovescifp.cat", null, 1, null, null, null);
+INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token, token_valid_fins) VALUES (2, "Miri", "No admin", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriuchijm98@gmail.com", null, null, null, null, null);
 
 -- INSERTS PER A LA TAULA RESTAURANTS --
 

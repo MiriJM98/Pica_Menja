@@ -92,4 +92,40 @@ class RestaurantController extends Controller
             return response()->json(["Status" => "Error: tipus o tamany de la imatge malament.", 404]);
         }
     }
+
+    public function tipusCa($id)
+    {
+        $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
+            ->select("tipus.tipus_ca", "restaurants.nom", "restaurants.telefon", "restaurants.pagina_web", "restaurants.ubicacio", "restaurants.horari_ca", "restaurants.rang_preus", "restaurants.descripcio_ca")
+            ->where("tipus.id_tipus", "=", $id)
+            ->get();
+        return response()->json($resultat);
+    }
+
+    public function tipusEs($id)
+    {
+        $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
+            ->select("tipus.tipus_es", "restaurants.nom", "restaurants.telefon", "restaurants.pagina_web", "restaurants.ubicacio", "restaurants.horari_es", "restaurants.rang_preus", "restaurants.descripcio_es")
+            ->where("tipus.id_tipus", "=", $id)
+            ->get();
+        return response()->json($resultat);
+    }
+
+    public function tipusEn($id)
+    {
+        $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
+            ->select("tipus.tipus_en", "restaurants.nom", "restaurants.telefon", "restaurants.pagina_web", "restaurants.ubicacio", "restaurants.horari_en", "restaurants.rang_preus", "restaurants.descripcio_en")
+            ->where("tipus.id_tipus", "=", $id)
+            ->get();
+        return response()->json($resultat);
+    }
+
+    public function tipusDe($id)
+    {
+        $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
+            ->select("tipus.tipus_de", "restaurants.nom", "restaurants.telefon", "restaurants.pagina_web", "restaurants.ubicacio", "restaurants.horari_de", "restaurants.rang_preus", "restaurants.descripcio_de")
+            ->where("tipus.id_tipus", "=", $id)
+            ->get();
+        return response()->json($resultat);
+    }
 }

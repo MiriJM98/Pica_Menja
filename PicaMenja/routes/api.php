@@ -10,6 +10,10 @@ use Symfony\Component\Routing\RouteCompiler;
 |--------------------------------------------------------------------------
 */
 
+// SENSE AUTENTIFICACIÓ
+Route::post('login', 'App\Http\Controllers\LoginController@login');
+Route::post('logout', 'App\Http\Controllers\LoginController@logout');
+
 // RUTES DE LA TAULA COMENTARIS
 Route::group(
     ["prefix" => "comentaris"],
@@ -43,6 +47,12 @@ Route::group(
         Route::post('', 'App\Http\Controllers\RestaurantController@store');
         Route::put('{id}', 'App\Http\Controllers\RestaurantController@update');
         Route::post('imatge/{id}', 'App\Http\Controllers\RestaurantController@imatge');
+        Route::get('tipusCa/{id}', 'App\Http\Controllers\RestaurantController@tipusCa');
+        Route::get('tipusEs/{id}', 'App\Http\Controllers\RestaurantController@tipusEs');
+        Route::get('tipusEn/{id}', 'App\Http\Controllers\RestaurantController@tipusEn');
+        Route::get('tipusDe/{id}', 'App\Http\Controllers\RestaurantController@tipusDe');
+
+
     }
 );
 
