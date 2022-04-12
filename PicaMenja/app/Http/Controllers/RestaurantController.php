@@ -93,6 +93,10 @@ class RestaurantController extends Controller
         }
     }
 
+    // FUNCIONS PER FILTRAR PER TIPUS DE RESTAURANT EN CADA IDIOMA
+
+    // FUNCIÓ PER FILTRAR EN CATALÀ
+    // MÈTODE GET
     public function tipusCa($id)
     {
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
@@ -102,6 +106,8 @@ class RestaurantController extends Controller
         return response()->json($resultat);
     }
 
+    // FUNCIÓ PER FILTRAR EN ESPANYOL
+    // MÈTODE GET
     public function tipusEs($id)
     {
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
@@ -111,6 +117,8 @@ class RestaurantController extends Controller
         return response()->json($resultat);
     }
 
+    // FUNCIÓ PER FILTRAR EN ANGLÈS
+    // MÈTODE GET
     public function tipusEn($id)
     {
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
@@ -120,6 +128,8 @@ class RestaurantController extends Controller
         return response()->json($resultat);
     }
 
+    // FUNCIÓ PER FILTRAR EN ALEMANY
+    // MÈTODE GET
     public function tipusDe($id)
     {
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")

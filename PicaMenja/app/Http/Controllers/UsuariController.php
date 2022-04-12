@@ -120,7 +120,7 @@ class UsuariController extends Controller
             $usuari = Usuari::where("email", $request->email)->first();
             $usuari->password = $password;
             if ($usuari->save($request->all())) {
-                return response()->json(["Status" => "Contrasenya modificada correctament!", "Result" => $usuari], 200);
+                return response()->json(["Status" => "Contrasenya modificada correctament!", "Usuari" => $usuari["email"], "Contrasenya" => $usuari["password"]], 200);
             } else {
                 return response()->json(["Status" => "Error canviant la contrasenya."], 400);
             }

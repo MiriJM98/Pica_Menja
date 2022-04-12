@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comentari;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ComentariController extends Controller
 {
@@ -58,5 +59,17 @@ class ComentariController extends Controller
         } else {
             return response()->json(["Status" => "Error modificant el comentari."], 400);
         }
+    }
+
+    // FUNCIÓ PER MOSTRAR TOTS ELS COMENTARIS D'UN RESTAURANT
+    // MÈTODE GET
+    public function comentaris($id)
+    {
+        $resultat = Comentari::join("restaurants", "restaurants.id_restaurant", "=", "comentaris.id_restaurant")
+        ->join("usuaris", "usuaris.id_usuari", "=", "comentaris.id_usuari")
+            ->select("restaurants.nom as restaurant", "comentaris.comentari", "comentaris.data", DB::raw("CONCAT(usuaris.nom_usuari,' ', usuaris.llinatges) AS usuari"), "usuaris.email")
+            ->where("restaurants.id_restaurant", "=", $id)
+            ->get();
+        return response()->json($resultat);
     }
 }

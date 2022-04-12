@@ -23,6 +23,7 @@ Route::group(
         Route::delete('{id}', 'App\Http\Controllers\ComentariController@delete');
         Route::post('', 'App\Http\Controllers\ComentariController@store');
         Route::put('{id}', 'App\Http\Controllers\ComentariController@update');
+        Route::get('restaurant/{id}', 'App\Http\Controllers\ComentariController@comentaris');
     }
 );
 
@@ -51,8 +52,6 @@ Route::group(
         Route::get('tipusEs/{id}', 'App\Http\Controllers\RestaurantController@tipusEs');
         Route::get('tipusEn/{id}', 'App\Http\Controllers\RestaurantController@tipusEn');
         Route::get('tipusDe/{id}', 'App\Http\Controllers\RestaurantController@tipusDe');
-
-
     }
 );
 
@@ -99,4 +98,9 @@ Route::group(['prefix' => 'usuaris'], function () {
     Route::put('{id}', 'App\Http\Controllers\UsuariController@update');
     Route::post('foto/{id}', 'App\Http\Controllers\UsuariController@fotoPerfil');
     Route::put('', 'App\Http\Controllers\UsuariController@canviPassword');
+});
+
+// RUTES DE LA TAULA VALORACIONS
+Route::group(['prefix' => 'valoracions'], function () {
+    Route::get('restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracions');
 });
