@@ -12,7 +12,8 @@ CREATE TABLE traduccions (id_traduccio int AUTO_INCREMENT PRIMARY KEY, catala va
 CREATE TABLE serveis (id_servei int AUTO_INCREMENT PRIMARY KEY, servei_ca varchar(35) NOT NULL, servei_es varchar(35) NOT NULL, servei_en varchar(35) NOT NULL, servei_de varchar(35) NOT NULL);
 
 CREATE TABLE usuaris (id_usuari int AUTO_INCREMENT PRIMARY KEY, nom_usuari varchar(20) NOT NULL, llinatges varchar(30) NOT NULL, telefon varchar(20) NOT NULL, 
-direccio varchar(50) NOT NULL, data_naixement date NOT NULL, email varchar(40) NOT NULL, password varchar(64), administrador boolean default null, token varchar(60), foto_perfil text);
+direccio varchar(50) NOT NULL, data_naixement date NOT NULL, email varchar(40) NOT NULL, password varchar(64), administrador boolean default null, 
+token varchar(60), token_valid_fins datetime, foto_perfil text);
 
 CREATE TABLE restaurants (id_restaurant int AUTO_INCREMENT PRIMARY KEY, nom varchar(30) NOT NULL, telefon varchar(27) NOT NULL, 
 pagina_web varchar(100) NOT NULL,  ubicacio varchar(100) NOT NULL, horari_ca varchar(150) NOT NULL, horari_es varchar(150) NOT NULL, 
@@ -123,9 +124,9 @@ INSERT INTO serveis (id_servei, servei_ca, servei_es, servei_en, servei_de) VALU
 
 -- INSERTS PER A LA TAULA USUARIS --
 
-INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token) VALUES (1, "Míriam", "Jiménez Molina", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriamjimenez@paucasesnovescifp.cat", null, 1, null, null);
-INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token) VALUES (2, "Miri", "No admin", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriuchijm98@gmail.com", null, null, null, null);
-INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token) VALUES (3, "Darius", "No admin", "666555444", "Noxus, Runaterra", "1981-05-23", "darius@gmail.com", null, null, null, null);
+INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token, token_valid_fins) VALUES (1, "Míriam", "Jiménez Molina", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriamjimenez@paucasesnovescifp.cat", null, 1, null, null, null);
+INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token, token_valid_fins) VALUES (2, "Miri", "No admin", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriuchijm98@gmail.com", null, null, null, null, null);
+INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token, token_valid_fins) VALUES (3, "Darius", "No admin", "666555444", "Noxus, Runaterra", "1981-05-23", "darius@gmail.com", null, null, null, null, null);
 -- INSERTS PER A LA TAULA RESTAURANTS --
 
 -- INSERTS PER A LA TAULA RESTAURANTS --

@@ -46,7 +46,6 @@ Route::group(
     }
 );
 
-
 // RUTES DE LA TAULA RESTAURANTS_SERVEIS
 Route::group(
     ['prefix' => 'restaurants_serveis'],
@@ -58,13 +57,28 @@ Route::group(
 
 
 // RUTES DE LA TAULA SERVEIS
+Route::group(['prefix' => 'serveis'], function () {
+    Route::get('', 'App\Http\Controllers\ServeiController@index');
+    Route::get('{id}', 'App\Http\Controllers\ServeiController@show');
+    Route::delete('{id}', 'App\Http\Controllers\ServeiController@delete');
+    Route::post('', 'App\Http\Controllers\ServeiController@store');
+});
 
 // RUTES DE LA TAULA TIPUS
 Route::group(['prefix' => 'tipus'], function () {
     Route::get('', 'App\Http\Controllers\TipusController@index');
+    Route::get('{id}', 'App\Http\Controllers\TipusController@show');
+    Route::delete('{id}', 'App\Http\Controllers\TipusController@delete');
+    Route::post('', 'App\Http\Controllers\TipusController@store');
 });
 
-
+// RUTES DE LA TAULA TRADUCCIONS
+Route::group(['prefix' => 'traduccions'], function () {
+    Route::get('', 'App\Http\Controllers\TraduccioController@index');
+    Route::get('{id}', 'App\Http\Controllers\TraduccioController@show');
+    Route::delete('{id}', 'App\Http\Controllers\TraduccioController@delete');
+    Route::post('', 'App\Http\Controllers\TraduccioController@store');
+});
 
 // RUTES DE LA TAULA USUARIS
 Route::group(['prefix' => 'usuaris'], function () {
