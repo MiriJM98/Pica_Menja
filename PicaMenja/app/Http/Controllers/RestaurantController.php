@@ -52,6 +52,7 @@ class RestaurantController extends Controller
         $restaurant->descripcio_de = $request->descripcio_de;
         $restaurant->imatge = $request->imatge;
         $restaurant->carta = $request->carta;
+        $restaurant->rang_preus = $request->rang_preus;
         $restaurant->id_tipus = $request->id_tipus;
         if ($restaurant->save()) {
             return response()->json(["Status" => "Restaurant creat amb èxit!", "Result" => $restaurant], 201);

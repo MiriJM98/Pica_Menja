@@ -1,5 +1,5 @@
-CREATE DATABASE picamenja;
-USE picamenja;
+CREATE DATABASE picamenjaproves;
+USE picamenjaproves;
 
 -- CREACIÓ DE TAULES --
 
@@ -125,6 +125,8 @@ INSERT INTO serveis (id_servei, servei_ca, servei_es, servei_en, servei_de) VALU
 
 INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token) VALUES (1, "Míriam", "Jiménez Molina", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriamjimenez@paucasesnovescifp.cat", null, 1, null, null);
 INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token) VALUES (2, "Miri", "No admin", "622955522", "Calle El Cano, 9, Can Picafort, 07458", "1998-06-24", "miriuchijm98@gmail.com", null, null, null, null);
+INSERT INTO usuaris (id_usuari, nom_usuari, llinatges, telefon, direccio, data_naixement, email, password, administrador, foto_perfil, token) VALUES (3, "Darius", "No admin", "666555444", "Noxus, Runaterra", "1981-05-23", "darius@gmail.com", null, null, null, null);
+-- INSERTS PER A LA TAULA RESTAURANTS --
 
 -- INSERTS PER A LA TAULA RESTAURANTS --
 
@@ -1086,3 +1088,25 @@ INSERT INTO restaurants_serveis (id_restaurant, id_servei) VALUES (20, 2);
 INSERT INTO restaurants_serveis (id_restaurant, id_servei) VALUES (20, 7);
 INSERT INTO restaurants_serveis (id_restaurant, id_servei) VALUES (20, 10);
 INSERT INTO restaurants_serveis (id_restaurant, id_servei) VALUES (20, 12);
+
+-- INSERTS PER A LA TAULA VALORACIONS --
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (1, 5, 2, 1);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (2, 5, 3, 1);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (3, 5, 2, 2);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (4, 4, 3, 2);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (5, 4, 2, 3);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (6, 3, 3, 3);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (7, 4, 2, 4);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (8, 5, 3, 4);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (9, 5, 2, 5);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (10, 5, 3, 5);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (11, 4, 2, 6);
+INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (12, 2, 3, 6);
+
+-- INSERTS PER A LA TAULA COMENTARIS --
+INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (1, "Un restaurante maravilloso. Me encantó el arroz brut.", "2022-04-06", 2, 1);
+INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (2, "Un restaurante muy elegante y con productos de primera calidad. Pienso repetir.", "2022-04-07", 3, 1);
+INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (3, "Italiano exquisito. Merece la pena.", "2022-04-07", 2, 2);
+INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (4, "La pasta estaba deliciosa.", "2022-04-07", 3, 2);
+INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (5, "Me gustó mucho. El pollo agridulce estaba buenísimo y el personal fue muy atento.", "2022-04-07", 2, 3);
+INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (6, "No soy aficionado del chino pero he de admitir que estaba bueno. Recomendado.", "2022-04-02", 3, 3);
