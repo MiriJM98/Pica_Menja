@@ -48,7 +48,7 @@ class UsuariController extends Controller
         );
 
         // ENCRIPTACIÓ DE LA CONTRASENYA
-        if (!$validacio->failed()) {
+        if (!$validacio->fails()) {
             $password = Hash::make($request->password);
             $usuari = new Usuari();
             $usuari->nom_usuari = $request->nom_usuari;
@@ -59,8 +59,6 @@ class UsuariController extends Controller
             $usuari->email = $request->email;
             $usuari->password = $password;
             $usuari->administrador = $request->administrador;
-            $usuari->foto_perfil = $request->foto_perfil;
-            $usuari->token = $request->token;
             if ($usuari->save()) {
                 return response()->json(["Status" => "Usuari creat correctament!", "Result" => $usuari], 201);
             } else {

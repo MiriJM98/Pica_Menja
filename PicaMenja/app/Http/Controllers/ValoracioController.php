@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Valoracio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ValoracioController extends Controller
 {
@@ -37,14 +38,25 @@ class ValoracioController extends Controller
     // MÈTODE POST
     public function store(Request $request)
     {
-        $valoracio = new Valoracio();
-        $valoracio->valoracio = $request->valoracio;
-        $valoracio->id_usuari = $request->id_usuari;
-        $valoracio->id_restaurant = $request->id_restaurant;
-        if ($valoracio->save()) {
-            return response()->json(["Status" => "Valoració creada correctament!", "Result" => $valoracio], 201);
+
+        $validacio = Validator::make(
+            $request->all(),
+            [
+                "valoracio" => "required",
+            ]
+        );
+        if (!$validacio->fails()) {
+            $valoracio = new Valoracio();
+            $valoracio->valoracio = $request->valoracio;
+            $valoracio->id_usuari = $request->id_usuari;
+            $valoracio->id_restaurant = $request->id_restaurant;
+            if ($valoracio->save()) {
+                return response()->json(["Status" => "Valoració creada correctament!", "Result" => $valoracio], 201);
+            } else {
+                return response()->json(["Status" => "Error creant la valoració."], 400);
+            }
         } else {
-            return response()->json(["Status" => "Error creant la valoració."], 400);
+            return response()->json($validacio->getMessageBag());
         }
     }
 

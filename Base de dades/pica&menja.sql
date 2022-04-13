@@ -20,7 +20,7 @@ pagina_web varchar(100) NOT NULL,  ubicacio varchar(100) NOT NULL, horari_ca var
 horari_en varchar(150) NOT NULL, horari_de varchar(150) NOT NULL, descripcio_ca text NOT NULL, descripcio_es text NOT NULL, 
 descripcio_en text NOT NULL, descripcio_de text NOT NULL, imatge text, carta text, rang_preus varchar(10), id_tipus int NOT NULL);
 
-CREATE TABLE valoracions (id_valoracio int AUTO_INCREMENT PRIMARY KEY, valoracio int(4), id_usuari int NOT NULL, id_restaurant int NOT NULL);
+CREATE TABLE valoracions (id_valoracio int AUTO_INCREMENT PRIMARY KEY, valoracio int(4) NOT NULL, id_usuari int NOT NULL, id_restaurant int NOT NULL);
 
 CREATE TABLE comentaris (id_comentari int AUTO_INCREMENT PRIMARY KEY, comentari text, data date, id_usuari int NOT NULL, id_restaurant int NOT NULL);
 

@@ -61,6 +61,8 @@ Route::group(
     function () {
         Route::post('', 'App\Http\Controllers\Restaurant_ServeiController@store');
         Route::delete('/{id_restaurant}/{id_servei}', 'App\Http\Controllers\Restaurant_ServeiController@delete');
+        Route::get('serveisCa/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisCa');
+        Route::get('restaurants/{id}', 'App\Http\Controllers\Restaurant_ServeiController@restaurants');
     }
 );
 
@@ -102,5 +104,9 @@ Route::group(['prefix' => 'usuaris'], function () {
 
 // RUTES DE LA TAULA VALORACIONS
 Route::group(['prefix' => 'valoracions'], function () {
+    Route::get('', 'App\Http\Controllers\ValoracioController@index');
+    Route::get('{id}', 'App\Http\Controllers\ValoracioController@show');
+    Route::delete('{id}', 'App\Http\Controllers\ValoracioController@delete');
+    Route::post('', 'App\Http\Controllers\ValoracioController@store');
     Route::get('restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracions');
 });

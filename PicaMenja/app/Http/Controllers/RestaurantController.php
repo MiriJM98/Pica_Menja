@@ -93,14 +93,23 @@ class RestaurantController extends Controller
         }
     }
 
-    // FUNCIONS PER FILTRAR PER TIPUS DE RESTAURANT EN CADA IDIOMA
+    /* ---FUNCIONS PER FILTRAR PER TIPUS DE RESTAURANT EN CADA IDIOMA--- */
 
     // FUNCIÓ PER FILTRAR EN CATALÀ
     // MÈTODE GET
     public function tipusCa($id)
     {
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
-            ->select("tipus.tipus_ca", "restaurants.nom", "restaurants.telefon", "restaurants.pagina_web", "restaurants.ubicacio", "restaurants.horari_ca", "restaurants.rang_preus", "restaurants.descripcio_ca")
+            ->select(
+                "tipus.tipus_ca as tipus",
+                "restaurants.nom as restaurant",
+                "restaurants.telefon",
+                "restaurants.pagina_web as pàgina web",
+                "restaurants.ubicacio",
+                "restaurants.horari_ca as horari",
+                "restaurants.rang_preus as rang de preus",
+                "restaurants.descripcio_ca as descripció"
+            )
             ->where("tipus.id_tipus", "=", $id)
             ->get();
         return response()->json($resultat);
@@ -111,7 +120,16 @@ class RestaurantController extends Controller
     public function tipusEs($id)
     {
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
-            ->select("tipus.tipus_es", "restaurants.nom", "restaurants.telefon", "restaurants.pagina_web", "restaurants.ubicacio", "restaurants.horari_es", "restaurants.rang_preus", "restaurants.descripcio_es")
+            ->select(
+                "tipus.tipus_es as tipo",
+                "restaurants.nom as restaurante",
+                "restaurants.telefon as teléfono",
+                "restaurants.pagina_web as página web",
+                "restaurants.ubicacio as ubicación",
+                "restaurants.horari_es as horario",
+                "restaurants.rang_preus as rango de precios",
+                "restaurants.descripcio_es as descripción"
+            )
             ->where("tipus.id_tipus", "=", $id)
             ->get();
         return response()->json($resultat);
