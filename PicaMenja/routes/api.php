@@ -62,6 +62,9 @@ Route::group(
         Route::post('', 'App\Http\Controllers\Restaurant_ServeiController@store');
         Route::delete('/{id_restaurant}/{id_servei}', 'App\Http\Controllers\Restaurant_ServeiController@delete');
         Route::get('serveisCa/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisCa');
+        Route::get('serveisEs/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisEs');
+        Route::get('serveisEn/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisEn');
+        Route::get('serveisDe/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisDe');
         Route::get('restaurants/{id}', 'App\Http\Controllers\Restaurant_ServeiController@restaurants');
     }
 );

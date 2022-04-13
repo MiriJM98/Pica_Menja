@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Restaurant;
 use App\Models\Restaurant_Servei;
+use App\Models\Servei;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -48,24 +50,62 @@ class Restaurant_ServeiController extends Controller
     // FUNCIÓ PER FILTRAR EN CATALÀ
     public function serveisCa($id)
     {
+        $tupla = Restaurant::findOrFail($id);
         $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
             ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
             ->select("serveis.servei_ca as servei")
             ->where("restaurants_serveis.id_restaurant", "=", $id)
             ->get();
-        return response()->json($resultat);
+        return response()->json(["Restaurant" => $tupla["nom"], "Serveis" => $resultat]);
     }
 
     // TODO: DEMÁS IDIOMAS
+    public function serveisEs($id)
+    {
+        $tupla = Restaurant::findOrFail($id);
+        $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
+            ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
+            ->select("serveis.servei_es as servicio")
+            ->where("restaurants_serveis.id_restaurant", "=", $id)
+            ->get();
+        return response()->json(["Restaurante" => $tupla["nom"], "Servicios" => $resultat]);
+    }
+
+    public function serveisEn($id)
+    {
+        $tupla = Restaurant::findOrFail($id);
+        $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
+            ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
+            ->select("serveis.servei_en as service")
+            ->where("restaurants_serveis.id_restaurant", "=", $id)
+            ->get();
+        return response()->json(["Restaurant" => $tupla["nom"], "Services" => $resultat]);
+    }
+
+    public function serveisDe($id)
+    {
+        $tupla = Restaurant::findOrFail($id);
+        $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
+            ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
+            ->select("serveis.servei_de as service")
+            ->where("restaurants_serveis.id_restaurant", "=", $id)
+            ->get();
+        return response()->json(["Restaurant" => $tupla["nom"], "Dienstleistungen" => $resultat]);
+    }
 
     /*---FUNCIÓ PER FILTRAR RESTAURANTS DONAT UN SERVEI---*/
     public function restaurants($id)
     {
+        $tupla = Servei::findOrFail($id);
         $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
             ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
             ->select("restaurants.nom as restaurant")
             ->where("restaurants_serveis.id_servei", "=", $id)
             ->get();
-        return response()->json($resultat);
+        return response()->json([
+            "Servei" => $tupla['servei_ca'], "Servicio" => $tupla['servei_es'],
+            "Service" => $tupla['servei_en'], "Dienstleistung" => $tupla['servei_de'],
+            "Restaurants" =>  $resultat
+        ]);
     }
 }

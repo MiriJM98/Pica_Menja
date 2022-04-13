@@ -66,7 +66,7 @@ class ComentariController extends Controller
     public function comentaris($id)
     {
         $resultat = Comentari::join("restaurants", "restaurants.id_restaurant", "=", "comentaris.id_restaurant")
-        ->join("usuaris", "usuaris.id_usuari", "=", "comentaris.id_usuari")
+            ->join("usuaris", "usuaris.id_usuari", "=", "comentaris.id_usuari")
             ->select("restaurants.nom as restaurant", "comentaris.comentari", "comentaris.data", DB::raw("CONCAT(usuaris.nom_usuari,' ', usuaris.llinatges) AS usuari"), "usuaris.email")
             ->where("restaurants.id_restaurant", "=", $id)
             ->get();
