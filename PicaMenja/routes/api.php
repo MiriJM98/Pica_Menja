@@ -28,6 +28,13 @@ Route::group(
 );
 
 // RUTES DE LA TAULA FOTOS
+Route::group(
+    ["prefix" => "fotos"],
+    function () {
+        Route::post('', 'App\Http\Controllers\FotoController@fotos');
+    }
+);
+
 
 // RUTES DE LA TAULA IDIOMES
 Route::group(
