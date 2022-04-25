@@ -39,7 +39,6 @@ ALTER TABLE fotos
 ADD PRIMARY KEY (id_restaurant, id_foto);
 
 -- FOREIGN KEYS --
-ALTER TABLE fotos ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant) ON DELETE CASCADE;
 
 ALTER TABLE restaurants ADD FOREIGN KEY (id_tipus) REFERENCES tipus (id_tipus);
 
@@ -51,6 +50,8 @@ ALTER TABLE comentaris ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (i
 
 ALTER TABLE restaurants_serveis ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant);
 ALTER TABLE restaurants_serveis ADD FOREIGN KEY (id_servei) REFERENCES serveis (id_servei);
+
+ALTER TABLE fotos ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant) ON DELETE CASCADE;
 
 -- INSERTS DE LES TAULES --
 

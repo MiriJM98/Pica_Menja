@@ -31,7 +31,12 @@ Route::group(
 Route::group(
     ["prefix" => "fotos"],
     function () {
-        Route::post('', 'App\Http\Controllers\FotoController@fotos');
+        Route::get('', 'App\Http\Controllers\FotoController@index');
+        Route::get('{id}', 'App\Http\Controllers\FotoController@show');
+        Route::delete('{id}', 'App\Http\Controllers\FotoController@delete');
+        Route::post('', 'App\Http\Controllers\FotoController@store');
+        Route::post('imatge/{id}', 'App\Http\Controllers\FotoController@pujarFotos');
+        Route::get('restaurant/{id}', 'App\Http\Controllers\FotoController@fotosRestaurant');
     }
 );
 
