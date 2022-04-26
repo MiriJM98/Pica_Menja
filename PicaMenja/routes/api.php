@@ -65,6 +65,7 @@ Route::group(
         Route::get('tipusEn/{id}', 'App\Http\Controllers\RestaurantController@tipusEn');
         Route::get('tipusDe/{id}', 'App\Http\Controllers\RestaurantController@tipusDe');
         Route::get('rang/{rang}', 'App\Http\Controllers\RestaurantController@rangPreus');
+        Route::post('carta/{id}', 'App\Http\Controllers\RestaurantController@carta');
     }
 );
 

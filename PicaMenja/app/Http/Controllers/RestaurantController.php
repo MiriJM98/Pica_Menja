@@ -84,8 +84,8 @@ class RestaurantController extends Controller
         $tupla = Restaurant::findOrFail($id);
         if (!$validacio->fails()) {
             $filename = "restaurant$id" . "_" . time() . "." . $request->imatge->extension();
-            $request->imatge->move(public_path('restaurants'), $filename);
-            $urifoto = url('restaurants') . "/" . $filename;
+            $request->imatge->move(public_path('fotosportada'), $filename);
+            $urifoto = url('fotosportada') . "/" . $filename;
             $tupla->imatge = $urifoto;
             $tupla->save();
             return response()->json(["Status" => "Imatge del restaurant pujada correctament!", "URI" => $urifoto], 200);
@@ -173,5 +173,25 @@ class RestaurantController extends Controller
             ->where("rang_preus", "like", "$rang")
             ->get();
         return response()->json($resultat);
+    }
+
+    // FUNCIÓ PER PUJAR LA CARTA D'UN RESTAURANT
+    // MÈTODE POST
+    public function carta(Request $request, $id)
+    {
+        $validacio = Validator::make($request->all(), [
+            'carta' => 'required|mimes:pdf|max:10240',
+        ]);
+        $tupla = Restaurant::findOrFail($id);
+        if (!$validacio->fails()) {
+            $filename = "carta_restaurant$id" . "_" . time() . "." . $request->carta->extension();
+            $request->carta->move(public_path('cartes'), $filename);
+            $uricarta = url('cartes') . "/" . $filename;
+            $tupla->carta = $uricarta;
+            $tupla->save();
+            return response()->json(["Status" => "Carta del restaurant pujada correctament!", "URI" => $uricarta], 200);
+        } else {
+            return response()->json(["Status" => "Error: tipus o tamany de la carta malament.", 404]);
+        }
     }
 }
