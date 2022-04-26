@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class RestaurantController extends Controller
@@ -153,6 +154,23 @@ class RestaurantController extends Controller
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
             ->select("tipus.tipus_de", "restaurants.nom", "restaurants.telefon", "restaurants.pagina_web", "restaurants.ubicacio", "restaurants.horari_de", "restaurants.rang_preus", "restaurants.descripcio_de")
             ->where("tipus.id_tipus", "=", $id)
+            ->get();
+        return response()->json($resultat);
+    }
+
+    // FUNCIÓ PER FILTRAR PER RANG DE PREUS
+    // MÈTODE GET
+    public function rangPreus($rang)
+    {
+        $resultat = DB::table('restaurants')
+            ->select(
+                "nom",
+                "telefon",
+                "ubicacio",
+                "pagina_web",
+                "rang_preus"
+            )
+            ->where("rang_preus", "like", "$rang")
             ->get();
         return response()->json($resultat);
     }

@@ -14,8 +14,9 @@
         body {
 	        margin: 0;
 	        background: linear-gradient(45deg, #49a09d, #5f2c82);
-	        font-family: sans-serif;
+	        font-family: Arial, Helvetica, sans-serif;
 	        font-weight: 100;
+            font-size: 14pt;
         }
 
         .container {
@@ -87,14 +88,14 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Cell 1</td>
+                    <td></td>
                     <td>Cell 2</td>
                     <td>Cell 3</td>
                     <td>Cell 4</td>
                     <td>Cell 5</td>
                 </tr>
                 <tr>
-                    <td>Cell 1</td>
+                    <td></td>
                     <td>Cell 2</td>
                     <td>Cell 3</td>
                     <td>Cell 4</td>
