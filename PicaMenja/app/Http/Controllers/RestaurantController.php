@@ -141,7 +141,7 @@ class RestaurantController extends Controller
     public function tipusEn($id)
     {
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
-            ->select("tipus.tipus_en", "restaurants.nom", "restaurants.telefon", "restaurants.pagina_web", "restaurants.ubicacio", "restaurants.horari_en", "restaurants.rang_preus", "restaurants.descripcio_en")
+            ->select("tipus.tipus_en as type", "restaurants.nom as name", "restaurants.telefon as telephone", "restaurants.pagina_web as web page", "restaurants.ubicacio as location", "restaurants.horari_en as schedule", "restaurants.rang_preus as price range", "restaurants.descripcio_en as description")
             ->where("tipus.id_tipus", "=", $id)
             ->get();
         return response()->json($resultat);
@@ -152,7 +152,7 @@ class RestaurantController extends Controller
     public function tipusDe($id)
     {
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
-            ->select("tipus.tipus_de", "restaurants.nom", "restaurants.telefon", "restaurants.pagina_web", "restaurants.ubicacio", "restaurants.horari_de", "restaurants.rang_preus", "restaurants.descripcio_de")
+            ->select("tipus.tipus_de as typ", "restaurants.nom as name", "restaurants.telefon as telefon", "restaurants.pagina_web as website", "restaurants.ubicacio as standort", "restaurants.horari_de as plan", "restaurants.rang_preus as preisklasse", "restaurants.descripcio_de as bezeichnung")
             ->where("tipus.id_tipus", "=", $id)
             ->get();
         return response()->json($resultat);
