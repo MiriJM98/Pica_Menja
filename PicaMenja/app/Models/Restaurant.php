@@ -13,10 +13,10 @@ class Restaurant extends Model
     use HasFactory;
 
     // RELACIONS
-    /*protected $with = ["serveis"];
+    protected $with = ["tipus"];
 
-    public function serveis()
+    public function tipus()
     {
-        return $this->belongsToMany('App\Models\Servei', "restaurants_serveis", "id_restaurant", "id_servei");
-    }*/
+        return $this->belongsTo(Tipus::class, "id_tipus", "id_tipus");
+    }
 }
