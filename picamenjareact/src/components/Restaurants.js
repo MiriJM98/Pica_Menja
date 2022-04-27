@@ -35,8 +35,8 @@ export default class Espais extends Component {
             variant="danger"
             size="sm"
             onClick={() => {
-              if (window.confirm("Segur vols borrar l'espai?")) {
-                this.borrar(params.data.id_espai);
+              if (window.confirm("Segur vols borrar el restaurant?")) {
+                this.borrar(params.data.id_restaurant);
               }
             }}
           >
