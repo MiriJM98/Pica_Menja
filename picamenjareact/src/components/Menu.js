@@ -8,10 +8,13 @@ import {
   Routes,
   useParams,
 } from "react-router-dom";
+import Comentaris from "./Comentaris";
 import Idioma from "./Idioma";
 import Idiomes from "./Idiomes";
 import Restaurant from "./Restaurant";
 import Restaurants from "./Restaurants";
+import Servei from "./Servei";
+import Serveis from "./Serveis";
 
 export default class Menu extends Component {
   render() {
@@ -75,17 +78,17 @@ export default class Menu extends Component {
           </Container>
         </Navbar>
         <Routes>
-          {/* <Route path="/comentaris" element={<Comentaris />} />
-          <Route path="/comentari/:id_comentari" element={<CridaComentari />} /> */}
+          <Route path="/comentaris" element={<Comentaris />} />
           <Route path="/idiomes" element={<Idiomes />} />
           <Route path="/idioma/:id_idioma" element={<CridaIdioma />} />
           <Route path="/restaurants" element={<Restaurants />} />
           <Route path="/restaurant/:id_restaurant" element={<CridaRestaurant />} />
+          <Route path="/serveis" element={<Serveis />} />
+          <Route path="/servei/:id_servei" element={<CridaServei />} />
           {/* <Route path="/exposicio/:id_exposicio" element={<CridaExposicio />} />
           <Route path="/exposicions" element={<Exposicions />} />
           <Route path="/obres" element={<Obres />} />
           <Route path="/obra/:id_obra" element={<CridaObres />} />
-          <Route path="/serveis" element={<Serveis />} />
           <Route path="/tipus" element={<Tipus />} />
           <Route path="/usuaris" element={<Usuaris />} />
           <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
@@ -107,4 +110,9 @@ function CridaRestaurant() {
 function CridaIdioma() {
   let params = useParams();
   return <Idioma id_idioma={params.id_idioma} />
+}
+
+function CridaServei() {
+  let params = useParams();
+  return <Servei id_servei={params.id_servei} />
 }
