@@ -13,7 +13,7 @@ export default class Idiomes extends Component {
         this.state = {
             idiomes: [],
             columnes: [
-                { field: "id_idioma", headerName: "ID", sortable: true, filter: true },
+                { field: "id_idioma", headerName: "ID IDIOMA", sortable: true, filter: true },
                 { field: "idioma", headerName: "IDIOMA", sortable: true, filter: true, floatingFilter: true },
             ],
         }

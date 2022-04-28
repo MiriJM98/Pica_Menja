@@ -32,7 +32,7 @@ export default class Comentaris extends Component {
             columnes: [
                 {
                     field: "id_comentari",
-                    headerName: "ID",
+                    headerName: "ID COMENTARI",
                     sortable: true,
                     filter: true,
                 },

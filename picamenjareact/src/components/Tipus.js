@@ -6,7 +6,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
-export default class Serveis extends Component {
+export default class Espais extends Component {
     constructor(props) {
         super(props);
 
@@ -17,8 +17,8 @@ export default class Serveis extends Component {
                         variant="danger"
                         size="sm"
                         onClick={() => {
-                            if (window.confirm("Segur vols borrar el servei?")) {
-                                this.borrar(params.data.id_servei);
+                            if (window.confirm("Segur vols borrar el tipus?")) {
+                                this.borrar(params.data.id_tipus);
                             }
                         }}>
                         Borrar
@@ -28,50 +28,50 @@ export default class Serveis extends Component {
         };
 
         this.state = {
-            serveis: [],
+            tipus: [],
             columnes: [
                 {
-                    field: "id_servei",
-                    headerName: "ID SERVEI",
+                    field: "id_tipus",
+                    headerName: "ID TIPUS",
                     sortable: true,
                     filter: true,
                 },
                 {
-                    field: "servei_ca",
-                    headerName: "SERVEI CATALÀ",
+                    field: "tipus_ca",
+                    headerName: "DESCRIPCIÓ CATALÀ",
                     sortable: true,
                     filter: true,
-                    floatingFilter: true,
+                    resizable: true,
                 },
                 {
-                    field: "servei_es",
-                    headerName: "SERVEI CASTELLÀ",
+                    field: "tipus_es",
+                    headerName: "DESCRIPCIÓ CASTELLÀ",
                     sortable: true,
                     filter: true,
-                    floatingFilter: true,
+                    resizable: true,
                 },
                 {
-                    field: "servei_en",
-                    headerName: "SERVEI ANGLÈS",
+                    field: "tipus_en",
+                    headerName: "DESCRIPCIÓ ANGLÈS",
                     sortable: true,
                     filter: true,
-                    floatingFilter: true,
+                    resizable: true,
                 },
                 {
-                    field: "servei_de",
-                    headerName: "SERVEI ALEMANY",
+                    field: "tipus_de",
+                    headerName: "DESCRIPCIÓ ALEMANY",
                     sortable: true,
                     filter: true,
-                    floatingFilter: true,
+                    resizable: true,
                 },
                 {
-                    field: "id_restaurant",
+                    field: "id_tipus",
                     headerName: "",
                     cellRendererFramework: pintaBotoBorrar,
                     maxWidth: 100,
                 },
             ],
-            id_servei: -1,
+            id_tipus: -1,
         };
     }
 
@@ -81,7 +81,7 @@ export default class Serveis extends Component {
         // };
         axios
             .delete(
-                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis/" +
+                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus/" +
                 id
             )
             .then((response) => {
@@ -104,11 +104,11 @@ export default class Serveis extends Component {
         // };
         axios
             .get(
-                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis"
+                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus"
             )
             .then((response) => {
                 console.log(response);
-                this.setState({ serveis: response.data });
+                this.setState({ tipus: response.data });
             })
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
@@ -130,19 +130,19 @@ export default class Serveis extends Component {
                             variant="success"
                             onClick={() => {
                                 window.location.assign(
-                                    "/servei/" + this.state.id_servei
+                                    "/tipus/" + this.state.id_tipus
                                 );
                             }}
                         >
-                            Afegir nou servei
+                            Afegir nou tipus
                         </Button>
                     </div>
                     <div className="col-md-4">
-                        <h1>Llistat de serveis</h1>
+                        <h1>Llistat de tipus</h1>
                     </div>
                 </div>
                 <AgGridReact
-                    rowData={this.state.serveis}
+                    rowData={this.state.tipus}
                     columnDefs={this.state.columnes}
                     pagination={true}
                     paginationPageSize={10}

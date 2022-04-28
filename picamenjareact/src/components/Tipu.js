@@ -3,38 +3,38 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 
-export default class Servei extends Component {
+export default class Tipu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id_servei: "",
-            servei_ca: "",
-            servei_es: "",
-            servei_en: "",
-            servei_de: "",
+            id_tipus: "",
+            tipus_ca: "",
+            tipus_es: "",
+            tipus_en: "",
+            tipus_de: "",
         };
     }
 
     componentDidMount() {
-        if (this.props.id_servei !== -1) {
-            this.descarregaServei(this.props.id_servei);
+        if (this.props.id_tipus !== -1) {
+            this.descarregaTipus(this.props.id_tipus);
         }
     }
 
-    descarregaServei = (id_servei) => {
+    descarregaTipus = (id_tipus) => {
         // const config = {
         //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         // };
         axios
-            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis/" + id_servei)
+            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus/" + id_tipus)
             .then((response) => {
                 //console.log(response);
                 this.setState({
-                    id_servei: response.data.id_servei,
-                    servei_ca: response.data.servei_ca,
-                    servei_es: response.data.servei_es,
-                    servei_en: response.data.servei_en,
-                    servei_de: response.data.servei_de,
+                    id_tipus: response.data.id_tipus,
+                    tipus_ca: response.data.tipus_ca,
+                    tipus_es: response.data.tipus_es,
+                    tipus_en: response.data.tipus_en,
+                    tipus_de: response.data.tipus_de,
                 });
             })
             .catch(function (error) {
@@ -47,10 +47,10 @@ export default class Servei extends Component {
         // const config = {
         //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         // };
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis")
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus")
             .then((response) => {
                 console.log(response);
-                this.setState({ serveis: response.data });
+                this.setState({ tipus: response.data });
             })
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
@@ -62,15 +62,15 @@ export default class Servei extends Component {
 
     inserta = () => {
         let formData = new URLSearchParams();
-        formData.append("servei_ca", this.state.servei_ca);
-        formData.append("servei_es", this.state.servei_es);
-        formData.append("servei_en", this.state.servei_en);
-        formData.append("servei_de", this.state.servei_de);
+        formData.append("tipus_ca", this.state.tipus_ca);
+        formData.append("tipus_es", this.state.tipus_es);
+        formData.append("tipus_en", this.state.tipus_en);
+        formData.append("tipus_de", this.state.tipus_de);
         //Token
         // const config = {
         //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         // };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis", formData
+        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus", formData
         ).then((response) => {
             console.log(response);
             //alert("Insertat amb èxit!");
@@ -87,10 +87,14 @@ export default class Servei extends Component {
     };
 
     enviaFormulari = () => {
-        if (this.state.id_servei === "") {
+        if (this.state.tipus_ca === "" || this.state.tipus_es === "" || this.state.tipus_en === "" || this.state.tipus_de === "") {
+            return alert("Error. S'han d'omplir tots els camps.");
+        }
+
+        if (this.state.id_tipus === "") {
             this.inserta();
             alert("Insertat amb èxit!");
-            window.location.assign("/serveis");
+            window.location.assign("/tipus");
             this.descarrega();
         }
     };
@@ -100,8 +104,8 @@ export default class Servei extends Component {
             <Container>
                 <p></p>
                 <h1 className="row justify-content-center">
-                    {this.state.id_servei === "" ? "Insertar" : "Modificar"} un
-                    servei
+                    {this.state.id_tipus === "" ? "Insertar" : "Modificar"} un
+                    tipus
                 </h1>
                 <hr />
                 <br />
@@ -114,55 +118,55 @@ export default class Servei extends Component {
                             <input
                                 type="text"
                                 className="form-control"
-                                value={this.state.id_servei}
+                                value={this.state.id_tipus}
                                 readOnly
                             />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Servei català:</label>
+                            <label>Tipus català:</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                name="servei_ca"
-                                value={this.state.servei_ca}
+                                name="tipus_ca"
+                                value={this.state.tipus_ca}
                                 onChange={this.onChange}
                             />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Servei castellà:</label>
+                            <label>Tipus castellà:</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                name="servei_es"
-                                value={this.state.servei_es}
+                                name="tipus_es"
+                                value={this.state.tipus_es}
                                 onChange={this.onChange}
                             />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Servei anglès:</label>
+                            <label>Tipus anglès:</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                name="servei_en"
-                                value={this.state.servei_en}
+                                name="tipus_en"
+                                value={this.state.tipus_en}
                                 onChange={this.onChange}
                             />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Servei alemany:</label>
+                            <label>Tipus alemany:</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                name="servei_de"
-                                value={this.state.servei_de}
+                                name="tipus_de"
+                                value={this.state.tipus_de}
                                 onChange={this.onChange}
                             />
                         </div>
@@ -178,7 +182,7 @@ export default class Servei extends Component {
                                 type="submit"
                                 className="btn btn-primary btn-lg"
                                 value={
-                                    this.state.id_servei === "" ? "Insertar" : "Modificar"
+                                    this.state.id_tipus === "" ? "Insertar" : "Modificar"
                                 }
                                 onClick={this.enviaFormulari} />
                             <p></p>
