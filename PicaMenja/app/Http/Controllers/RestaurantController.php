@@ -90,7 +90,7 @@ class RestaurantController extends Controller
             $tupla->save();
             return response()->json(["Status" => "Imatge del restaurant pujada correctament!", "URI" => $urifoto], 200);
         } else {
-            return response()->json(["Status" => "Error: tipus o tamany de la imatge malament.", 404]);
+            return response()->json($validacio->getMessageBag());
         }
     }
 

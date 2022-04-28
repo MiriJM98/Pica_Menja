@@ -143,26 +143,26 @@ export default class Espais extends Component {
           headerName: "",
           cellRendererFramework: pintaBotoBorrar,
           maxWidth: 100,
-        }
+        },
       ],
       id_restaurant: -1,
-    }
+    };
   }
 
-  /*borrar = (id) => {
-        const config = {
-            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        };
-        axios.delete('http://baleart.projectebaleart.com/public/api/espais/' + id, config)
-            .then(response => {
-                console.log(response);
-                this.descarrega();
-            })
-            .catch(function (error) {
-                //Mostrar error
-                console.log(error);
-            })
-    }*/
+  borrar = (id) => {
+    // const config = {
+    //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+    // };
+    axios.delete("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + id)
+      .then((response) => {
+        console.log(response);
+        this.descarrega();
+      }
+      ).catch(function (error) {
+        //Mostrar error
+        console.log(error);
+      });
+  };
 
   componentDidMount() {
     this.descarrega();
@@ -172,10 +172,7 @@ export default class Espais extends Component {
     // const config = {
     //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
     // };
-    axios
-      .get(
-        "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants"
-      )
+    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants")
       .then((response) => {
         console.log(response);
         this.setState({ restaurants: response.data });

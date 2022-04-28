@@ -30,11 +30,11 @@ export default class Restaurant extends Component {
 
     componentDidMount() {
         if (this.props.id_restaurant !== -1) {
-            this.descarrega(this.props.id_restaurant);
+            this.descarregaRestaurant(this.props.id_restaurant);
         }
     }
 
-    descarrega = (id_restaurant) => {
+    descarregaRestaurant = (id_restaurant) => {
         // const config = {
         //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         // };
@@ -68,6 +68,23 @@ export default class Restaurant extends Component {
             })
     }
 
+    descarrega = () => {
+        // const config = {
+        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        // };
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants")
+            .then((response) => {
+                console.log(response);
+                this.setState({ restaurants: response.data });
+            })
+            .catch(function (error) {
+                console.log("ERROR -> " + error.response.data.error);
+                if (error.response.status === 401) {
+                    //window.location.assign("/login");
+                }
+            });
+    };
+
     update = () => {
         //Modificar les dades a la api
         let formData = new URLSearchParams();
@@ -93,7 +110,7 @@ export default class Restaurant extends Component {
         axios.put("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + this.state.id_restaurant, formData)
             .then((response) => {
                 console.log(response);
-                alert("Modificació feta amb èxit!");
+                //alert("Modificació feta amb èxit!");
             })
             .catch((error) => {
                 console.log(error);
@@ -125,7 +142,7 @@ export default class Restaurant extends Component {
         axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants", formData
         ).then((response) => {
             console.log(response);
-            alert("Insertat amb èxit!");
+            //alert("Insertat amb èxit!");
         }
         ).catch((error) => {
             console.log(error);
@@ -136,10 +153,12 @@ export default class Restaurant extends Component {
         let formData = new FormData();
         formData.append("imatge", this.state.imatge);
         //Token
-        // const config = {
-        //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-        // };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/imatge/" + this.state.id_restaurant, formData,
+        const config = {
+            headers: {
+                "Content-type": "multipart/form-data",
+            },
+        };
+        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/imatge/" + this.state.id_restaurant, formData, config,
         ).then((response) => {
             console.log(response);
             alert("Imatge pujada amb èxit!");
@@ -172,8 +191,14 @@ export default class Restaurant extends Component {
 
         if (this.state.id_restaurant === "") {
             this.inserta();
+            alert("Insertat amb èxit!");
+            window.location.assign("/restaurants");
+            this.descarrega();
         } else {
             this.update();
+            alert("Modificació feta amb èxit!");
+            window.location.assign("/restaurants");
+            this.descarrega();
         }
     };
 
