@@ -3,38 +3,38 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 
-export default class Tipu extends Component {
+export default class Traduccio extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id_tipus: "",
-            tipus_ca: "",
-            tipus_es: "",
-            tipus_en: "",
-            tipus_de: "",
+            id_traduccio: "",
+            catala: "",
+            espanyol: "",
+            english: "",
+            deutsch: "",
         };
     }
 
     componentDidMount() {
-        if (this.props.id_tipus !== -1) {
-            this.descarregaTipus(this.props.id_tipus);
+        if (this.props.id_traduccio !== -1) {
+            this.descarregatraduccions(this.props.id_traduccio);
         }
     }
 
-    descarregaTipus = (id_tipus) => {
+    descarregatraduccions = (id_traduccio) => {
         // const config = {
         //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         // };
         axios
-            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus/" + id_tipus)
+            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/traduccions/" + id_traduccio)
             .then((response) => {
                 //console.log(response);
                 this.setState({
-                    id_tipus: response.data.id_tipus,
-                    tipus_ca: response.data.tipus_ca,
-                    tipus_es: response.data.tipus_es,
-                    tipus_en: response.data.tipus_en,
-                    tipus_de: response.data.tipus_de,
+                    id_traduccio: response.data.id_traduccio,
+                    catala: response.data.catala,
+                    espanyol: response.data.espanyol,
+                    english: response.data.english,
+                    deutsch: response.data.deutsch,
                 });
             })
             .catch(function (error) {
@@ -47,10 +47,10 @@ export default class Tipu extends Component {
         // const config = {
         //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         // };
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus")
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/traduccions")
             .then((response) => {
                 console.log(response);
-                this.setState({ tipus: response.data });
+                this.setState({ traduccions: response.data });
             })
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
@@ -62,15 +62,15 @@ export default class Tipu extends Component {
 
     inserta = () => {
         let formData = new URLSearchParams();
-        formData.append("tipus_ca", this.state.tipus_ca);
-        formData.append("tipus_es", this.state.tipus_es);
-        formData.append("tipus_en", this.state.tipus_en);
-        formData.append("tipus_de", this.state.tipus_de);
+        formData.append("catala", this.state.catala);
+        formData.append("espanyol", this.state.espanyol);
+        formData.append("english", this.state.english);
+        formData.append("deutsch", this.state.deutsch);
         //Token
         // const config = {
         //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         // };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus", formData
+        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/traduccions", formData
         ).then((response) => {
             console.log(response);
             //alert("Insertat amb èxit!");
@@ -87,14 +87,14 @@ export default class Tipu extends Component {
     };
 
     enviaFormulari = () => {
-        if (this.state.tipus_ca === "" || this.state.tipus_es === "" || this.state.tipus_en === "" || this.state.tipus_de === "") {
+        if (this.state.catala === "" || this.state.espanyol === "" || this.state.english === "" || this.state.deutsch === "") {
             return alert("Error. S'han d'omplir tots els camps.");
         }
 
-        if (this.state.id_tipus === "") {
+        if (this.state.id_traduccio === "") {
             this.inserta();
             alert("Insertat amb èxit!");
-            window.location.assign("/tipus");
+            window.location.assign("/traduccions");
             this.descarrega();
         }
     };
@@ -104,8 +104,8 @@ export default class Tipu extends Component {
             <Container>
                 <p></p>
                 <h1 className="row justify-content-center">
-                    {this.state.id_tipus === "" ? "Insertar" : "Modificar"} un
-                    tipus
+                    {this.state.id_traduccio === "" ? "Insertar" : "Modificar"} una
+                    traducció
                 </h1>
                 <hr />
                 <br />
@@ -118,55 +118,55 @@ export default class Tipu extends Component {
                             <input
                                 type="text"
                                 className="form-control"
-                                value={this.state.id_tipus}
+                                value={this.state.id_traduccio}
                                 readOnly
                             />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Tipus català:</label>
+                            <label>Català:</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                name="tipus_ca"
-                                value={this.state.tipus_ca}
+                                name="catala"
+                                value={this.state.catala}
                                 onChange={this.onChange}
                             />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Tipus castellà:</label>
+                            <label>Castellà:</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                name="tipus_es"
-                                value={this.state.tipus_es}
+                                name="espanyol"
+                                value={this.state.espanyol}
                                 onChange={this.onChange}
                             />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Tipus anglès:</label>
+                            <label>Anglès:</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                name="tipus_en"
-                                value={this.state.tipus_en}
+                                name="english"
+                                value={this.state.english}
                                 onChange={this.onChange}
                             />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Tipus alemany:</label>
+                            <label>Alemany:</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                name="tipus_de"
-                                value={this.state.tipus_de}
+                                name="deutsch"
+                                value={this.state.deutsch}
                                 onChange={this.onChange}
                             />
                         </div>
@@ -182,7 +182,7 @@ export default class Tipu extends Component {
                                 type="submit"
                                 className="btn btn-primary btn-lg"
                                 value={
-                                    this.state.id_tipus === "" ? "Insertar" : "Modificar"
+                                    this.state.id_traduccio === "" ? "Insertar" : "Modificar"
                                 }
                                 onClick={this.enviaFormulari} />
                             <p></p>

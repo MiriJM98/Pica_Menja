@@ -17,6 +17,8 @@ import Servei from "./Servei";
 import Serveis from "./Serveis";
 import Tipu from "./Tipu";
 import Tipus from "./Tipus";
+import Traduccio from "./Traduccio";
+import Traduccions from "./Traduccions";
 
 export default class Menu extends Component {
   render() {
@@ -89,6 +91,8 @@ export default class Menu extends Component {
           <Route path="/servei/:id_servei" element={<CridaServei />} />
           <Route path="/tipus" element={<Tipus />} />
           <Route path="/tipus/:id_tipus" element={<CridaTipus />} />
+          <Route path="/traduccions" element={<Traduccions />} />
+          <Route path="/traduccions/:id_traduccio" element={<Traduccio />} />
           {/* <Route path="/exposicio/:id_exposicio" element={<CridaExposicio />} />
           <Route path="/exposicions" element={<Exposicions />} />
           <Route path="/obres" element={<Obres />} />

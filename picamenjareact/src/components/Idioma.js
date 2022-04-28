@@ -89,9 +89,13 @@ export default class Idioma extends Component {
         return (
             <Container>
                 <hr />
-                <h2>Insertar un idioma</h2>
+                <h2 className="row justify-content-center">Insertar un idioma</h2>
                 <br />
                 <div className='row'>
+                    <div className="col-md-4">
+                        <div className="form-group">
+                        </div>
+                    </div>
                     <div className="col-md-2">
                         <div className="form-group">
                             <label>ID:</label>
@@ -105,11 +109,17 @@ export default class Idioma extends Component {
                         </div>
                     </div>
                     <div className="row"><div className="col-md-4">&nbsp;</div></div>
-                    <div className="row">
+                    <div className="row justify-content-center">
                         <div className="col-md-1">
                             <div className="form-group">
-                                <input type="submit" className="btn btn-primary"
-                                    value="Insertar" onClick={this.inserta} />
+                                <input
+                                    type="submit"
+                                    className="btn btn-primary btn-lg"
+                                    value={
+                                        this.state.id_idioma === "" ? "Insertar" : "Modificar"
+                                    }
+                                    onClick={this.enviaFormulari} />
+                                <p></p>
                             </div>
                         </div>
                     </div>
