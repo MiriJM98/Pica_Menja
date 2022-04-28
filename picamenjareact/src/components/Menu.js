@@ -8,6 +8,8 @@ import {
   Routes,
   useParams,
 } from "react-router-dom";
+import Idioma from "./Idioma";
+import Idiomes from "./Idiomes";
 import Restaurant from "./Restaurant";
 import Restaurants from "./Restaurants";
 
@@ -38,7 +40,7 @@ export default class Menu extends Component {
                 <NavLink className="nav-link" to="/fotos">
                   Fotos
                 </NavLink>
-                <NavLink className="nav-link" to="/modalitats">
+                <NavLink className="nav-link" to="/idiomes">
                   Idiomes
                 </NavLink>
                 <NavLink className="nav-link" to="/restaurants_serveis">
@@ -75,14 +77,12 @@ export default class Menu extends Component {
         <Routes>
           {/* <Route path="/comentaris" element={<Comentaris />} />
           <Route path="/comentari/:id_comentari" element={<CridaComentari />} /> */}
+          <Route path="/idiomes" element={<Idiomes />} />
+          <Route path="/idioma/:id_idioma" element={<CridaIdioma />} />
           <Route path="/restaurants" element={<Restaurants />} />
-          <Route
-            path="/restaurant/:id_restaurant"
-            element={<CridaRestaurant />}
-          />
+          <Route path="/restaurant/:id_restaurant" element={<CridaRestaurant />} />
           {/* <Route path="/exposicio/:id_exposicio" element={<CridaExposicio />} />
           <Route path="/exposicions" element={<Exposicions />} />
-          <Route path="/modalitats" element={<Modalitats />} />
           <Route path="/obres" element={<Obres />} />
           <Route path="/obra/:id_obra" element={<CridaObres />} />
           <Route path="/serveis" element={<Serveis />} />
@@ -90,7 +90,6 @@ export default class Menu extends Component {
           <Route path="/usuaris" element={<Usuaris />} />
           <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
           <Route path="/" element={<CarouselFotos />} />
-          <Route path="/modalitat/:id_modalitat" element={<CridaModalitat />} />
           <Route path="/perfilUsuari" element={<PerfilUsuari />} />
           <Route path="/explora" element={<Explora />} />
           <Route path="/logout" element={<Logout />} /> */}
@@ -103,4 +102,9 @@ export default class Menu extends Component {
 function CridaRestaurant() {
   let params = useParams();
   return <Restaurant id_restaurant={params.id_restaurant} />
+}
+
+function CridaIdioma() {
+  let params = useParams();
+  return <Idioma id_idioma={params.id_idioma} />
 }

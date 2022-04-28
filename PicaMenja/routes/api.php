@@ -47,6 +47,7 @@ Route::group(
     function () {
         Route::get('', 'App\Http\Controllers\IdiomaController@index');
         Route::get('{id}', 'App\Http\Controllers\IdiomaController@show');
+        Route::post('', 'App\Http\Controllers\IdiomaController@store');
     }
 );
 

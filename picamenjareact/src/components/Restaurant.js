@@ -153,12 +153,10 @@ export default class Restaurant extends Component {
         let formData = new FormData();
         formData.append("imatge", this.state.imatge);
         //Token
-        const config = {
-            headers: {
-                "Content-type": "multipart/form-data",
-            },
-        };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/imatge/" + this.state.id_restaurant, formData, config,
+        // const config = {
+        //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+        // };
+        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/imatge/" + this.state.id_restaurant, formData,
         ).then((response) => {
             console.log(response);
             alert("Imatge pujada amb èxit!");
@@ -185,6 +183,7 @@ export default class Restaurant extends Component {
     };
 
     enviaFormulari = () => {
+
         if (this.state.id_tipus === "") {
             return alert("Tria un tipus!");
         }

@@ -113,17 +113,38 @@ export default class Espais extends Component {
           filter: true,
         },
         {
+          field: "imatge",
+          headerName: "IMATGE",
+          cellRendererFramework: pintaFoto,
+          maxWidth: 150,
+        },
+        {
           field: "descripcio_ca",
-          headerName: "DESCRIPCIÓ",
+          headerName: "DESCRIPCIÓ CATALÀ",
           sortable: true,
           filter: true,
           resizable: true,
         },
         {
-          field: "imatge",
-          headerName: "IMATGE",
-          cellRendererFramework: pintaFoto,
-          maxWidth: 150,
+          field: "descripcio_es",
+          headerName: "DESCRIPCIÓ CASTELLÀ",
+          sortable: true,
+          filter: true,
+          resizable: true,
+        },
+        {
+          field: "descripcio_en",
+          headerName: "DESCRIPCIÓ ANGLÈS",
+          sortable: true,
+          filter: true,
+          resizable: true,
+        },
+        {
+          field: "descripcio_de",
+          headerName: "DESCRIPCIÓ ALEMANY",
+          sortable: true,
+          filter: true,
+          resizable: true,
         },
         {
           field: "carta",
@@ -153,12 +174,16 @@ export default class Espais extends Component {
     // const config = {
     //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
     // };
-    axios.delete("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + id)
+    axios
+      .delete(
+        "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" +
+        id
+      )
       .then((response) => {
         console.log(response);
         this.descarrega();
-      }
-      ).catch(function (error) {
+      })
+      .catch(function (error) {
         //Mostrar error
         console.log(error);
       });
@@ -172,7 +197,10 @@ export default class Espais extends Component {
     // const config = {
     //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
     // };
-    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants")
+    axios
+      .get(
+        "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants"
+      )
       .then((response) => {
         console.log(response);
         this.setState({ restaurants: response.data });
