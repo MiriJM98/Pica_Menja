@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import { AgGridReact } from "ag-grid-react";
-
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+
 export default class Espais extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +56,6 @@ export default class Espais extends Component {
 
     this.state = {
       restaurants: [],
-      tipus: [],
       columnes: [
         {
           field: "id_restaurant",
@@ -144,10 +143,10 @@ export default class Espais extends Component {
           headerName: "",
           cellRendererFramework: pintaBotoBorrar,
           maxWidth: 100,
-        },
+        }
       ],
       id_restaurant: -1,
-    };
+    }
   }
 
   /*borrar = (id) => {

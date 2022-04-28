@@ -9,10 +9,10 @@ class Restaurant extends Model
 {
     protected $primaryKey = "id_restaurant";
     public $timestamps = false;
-    protected $fillable = ['nom', 'telefon', 'pagina_web', 'ubicacio', 'horari_ca', 'horari_es', 'horari_en', 'horari_de', 'descripcio_ca', 'descripcio_es', 'descripcio_en', 'descripcio_de', 'imatge', 'carta', 'id_tipus'];
+    protected $fillable = ['nom', 'telefon', 'pagina_web', 'ubicacio', 'horari_ca', 'horari_es', 'horari_en', 'horari_de', 'descripcio_ca', 'descripcio_es', 'descripcio_en', 'descripcio_de', 'rang_preus', 'imatge', 'carta', 'id_tipus'];
     use HasFactory;
 
-    // RELACIONS
+    // RELACIONS AMB ALTRES TAULES
     protected $with = ["tipus"];
 
     public function tipus()

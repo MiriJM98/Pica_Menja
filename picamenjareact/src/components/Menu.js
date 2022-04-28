@@ -6,8 +6,7 @@ import {
   NavLink,
   Route,
   Routes,
-  useSearchParams,
-  //useParams,
+  useParams,
 } from "react-router-dom";
 import Restaurant from "./Restaurant";
 import Restaurants from "./Restaurants";
@@ -102,6 +101,6 @@ export default class Menu extends Component {
 }
 
 function CridaRestaurant() {
-  let params = useSearchParams();
-  return <Restaurant id_restaurant={params.id_restaurant} />;
+  let params = useParams();
+  return <Restaurant id_restaurant={params.id_restaurant} />
 }
