@@ -120,24 +120,24 @@ export default class Traduccions extends Component {
     render() {
         return (
             <div className="ag-theme-alpine" style={{ height: 600, width: "100%" }}>
-                <p></p>
-                <div className="row justify-content-center">
-                    <div className="col-md-4">
-                        <h1>Llistat de traduccions</h1>
-                    </div>
-                </div>
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="row">
+                        <div className="col-md-4">&nbsp;</div>
+                    </div>
+                    <div className="col-md-4 mt-3 mb-3">
                         <Button
                             variant="success"
                             className="ms-3"
                             onClick={() => {
                                 window.location.assign(
-                                    "/traduccions/" + this.state.id_traduccio
+                                    "/traduccio/" + this.state.id_traduccio
                                 );
                             }}>
                             Afegir nova traducció
                         </Button>
+                    </div>
+                    <div className="col-md-4 mt-2 mb-3">
+                        <h1>Llistat de traduccions</h1>
                     </div>
                 </div>
                 <p></p>

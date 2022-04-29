@@ -43,20 +43,25 @@ export default class Idiomes extends Component {
     render() {
         return (
             <div className="ag-theme-alpine" style={{ height: 600, width: "100%" }}>
-                <div className="row justify-content-center">
-                    <div className="col-md-4 mt-3">
-                        <h1>Llistat d'idiomes</h1>
+                <div className="row">
+                    <div className="row">
+                        <div className="col-md-4">&nbsp;</div>
                     </div>
-                </div>
-                <div className='row'>
-                    <div className="col-md-4 mb-3">
-                        <Button variant='success'
+                    <div className="col-md-4 mt-3 mb-3">
+                        <Button
+                            variant="success"
                             className="ms-3"
-                            onClick={() => { window.location.assign("/idioma/-1"); }}>
+                            onClick={() => {
+                                window.location.assign(
+                                    "/idioma/" + this.state.id_idioma
+                                );
+                            }}>
                             Afegir nou idioma
                         </Button>
                     </div>
-
+                    <div className="col-md-4 mt-2 mb-3">
+                        <h1>Llistat d'idiomes</h1>
+                    </div>
                 </div>
                 <AgGridReact
                     rowData={this.state.idiomes}

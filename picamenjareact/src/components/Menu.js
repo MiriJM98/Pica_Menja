@@ -92,7 +92,7 @@ export default class Menu extends Component {
           <Route path="/tipus" element={<Tipus />} />
           <Route path="/tipus/:id_tipus" element={<CridaTipus />} />
           <Route path="/traduccions" element={<Traduccions />} />
-          <Route path="/traduccions/:id_traduccio" element={<Traduccio />} />
+          <Route path="/traduccio/:id_traduccio" element={<Traduccio />} />
           {/* <Route path="/exposicio/:id_exposicio" element={<CridaExposicio />} />
           <Route path="/exposicions" element={<Exposicions />} />
           <Route path="/obres" element={<Obres />} />

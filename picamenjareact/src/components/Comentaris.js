@@ -127,7 +127,7 @@ export default class Comentaris extends Component {
                     <div className="row">
                         <div className="col-md-4">&nbsp;</div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 mt-2 mb-3">
                         <h1>Llistat de comentaris</h1>
                     </div>
                 </div>

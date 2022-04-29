@@ -66,17 +66,16 @@ export default class Idioma extends Component {
         //         "Content-Type": "multipart/form-data"
         //     }
         // };
-        axios.post('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes', formData,
-
-        ).then(response => {
-            console.log(response);
-            alert("Insertat amb èxit!");
-            window.location.assign("/idiomes");
-            this.descarrega();
-        }
-        ).catch(error => {
-            console.log(error);
-        });
+        axios.post('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes', formData,)
+            .then(response => {
+                console.log(response);
+                alert("Insertat amb èxit!");
+                window.location.assign("/idiomes");
+                this.descarrega();
+            }
+            ).catch(error => {
+                console.log(error);
+            });
     }
 
     onChange = (e) => {
@@ -89,7 +88,15 @@ export default class Idioma extends Component {
         return (
             <Container>
                 <hr />
-                <h2 className="row justify-content-center">Insertar un idioma</h2>
+                <div className="row">
+                    <div className="col-md-4 mt-3">
+                        <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
+                            onClick={() => { window.location.assign("/idiomes"); }} />
+                    </div>
+                    <div className="col-md-4 mt-3">
+                        <h2 className="row justify-content-center">Insertar un idioma</h2>
+                    </div>
+                </div>
                 <br />
                 <div className='row'>
                     <div className="col-md-4">
@@ -115,10 +122,8 @@ export default class Idioma extends Component {
                                 <input
                                     type="submit"
                                     className="btn btn-primary btn-lg"
-                                    value={
-                                        this.state.id_idioma === "" ? "Insertar" : "Modificar"
-                                    }
-                                    onClick={this.enviaFormulari} />
+                                    value="Insertar"
+                                    onClick={this.inserta} />
                                 <p></p>
                             </div>
                         </div>

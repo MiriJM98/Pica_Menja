@@ -125,19 +125,19 @@ export default class Espais extends Component {
                     <div className="row">
                         <div className="col-md-4">&nbsp;</div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 mt-3 mb-3">
                         <Button
                             variant="success"
+                            className="ms-3"
                             onClick={() => {
                                 window.location.assign(
                                     "/tipus/" + this.state.id_tipus
                                 );
-                            }}
-                        >
+                            }}>
                             Afegir nou tipus
                         </Button>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 mt-2 mb-3">
                         <h1>Llistat de tipus</h1>
                     </div>
                 </div>
