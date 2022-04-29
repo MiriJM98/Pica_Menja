@@ -87,16 +87,17 @@ export default class Idioma extends Component {
     render() {
         return (
             <Container>
-                <hr />
                 <div className="row">
                     <div className="col-md-4 mt-3">
                         <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
                             onClick={() => { window.location.assign("/idiomes"); }} />
                     </div>
                     <div className="col-md-4 mt-3">
-                        <h2 className="row justify-content-center">Insertar un idioma</h2>
+                        <h1 className="row justify-content-center">Insertar un idioma</h1>
                     </div>
                 </div>
+                <hr />
+                <h2 className="row justify-content-center">Dades</h2>
                 <br />
                 <div className='row'>
                     <div className="col-md-4">

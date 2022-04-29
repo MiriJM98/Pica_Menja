@@ -102,12 +102,16 @@ export default class Traduccio extends Component {
     render() {
         return (
             <Container>
-                <p></p>
-                <h1 className="row justify-content-center">
-                    {this.state.id_traduccio === "" ? "Insertar" : "Modificar"} una
-                    traducció
-                </h1>
                 <hr />
+                <div className="row">
+                    <div className="col-md-4 mt-3">
+                        <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
+                            onClick={() => { window.location.assign("/traduccions"); }} />
+                    </div>
+                    <div className="col-md-4 mt-3">
+                        <h2 className="row justify-content-center">Insertar una traducció</h2>
+                    </div>
+                </div>
                 <br />
                 <h2 className="row justify-content-center">Dades</h2>
                 <br />

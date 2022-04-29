@@ -102,15 +102,16 @@ export default class Tipu extends Component {
     render() {
         return (
             <Container>
-                <p></p>
-                <h1 className="row justify-content-center">
-                    {this.state.id_tipus === "" ? "Insertar" : "Modificar"} un
-                    tipus
+                <h1 className="row">
+                    <div className="col-md-4 mt-3">
+                        <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
+                            onClick={() => { window.location.assign("/tipus"); }} />
+                    </div>
+                    <div className="col-md-4 mt-3">
+                        <h1 className="row justify-content-center">Insertar un tipus</h1>
+                    </div>
                 </h1>
                 <hr />
-                <br />
-                <h2 className="row justify-content-center">Dades</h2>
-                <br />
                 <div className="row">
                     <div className="col-md-1">
                         <div className="form-group">

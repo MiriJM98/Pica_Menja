@@ -20,8 +20,7 @@ export default class Espais extends Component {
               window.location.assign(
                 "/restaurant/" + params.data.id_restaurant
               );
-            }}
-          >
+            }}>
             Edita
           </Button>
         </div>
@@ -38,8 +37,7 @@ export default class Espais extends Component {
               if (window.confirm("Segur vols borrar el restaurant?")) {
                 this.borrar(params.data.id_restaurant);
               }
-            }}
-          >
+            }}>
             Borrar
           </Button>
         </div>
@@ -100,7 +98,31 @@ export default class Espais extends Component {
         },
         {
           field: "horari_ca",
-          headerName: "HORARI",
+          headerName: "HORARI CATALÀ",
+          sortable: true,
+          filter: true,
+          floatingFilter: true,
+          resizable: true,
+        },
+        {
+          field: "horari_es",
+          headerName: "HORARI CASTELLÀ",
+          sortable: true,
+          filter: true,
+          floatingFilter: true,
+          resizable: true,
+        },
+        {
+          field: "horari_en",
+          headerName: "HORARI ANGLÈS",
+          sortable: true,
+          filter: true,
+          floatingFilter: true,
+          resizable: true,
+        },
+        {
+          field: "horari_de",
+          headerName: "HORARI ALEMANY",
           sortable: true,
           filter: true,
           floatingFilter: true,
@@ -174,11 +196,7 @@ export default class Espais extends Component {
     // const config = {
     //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
     // };
-    axios
-      .delete(
-        "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" +
-        id
-      )
+    axios.delete("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + id)
       .then((response) => {
         console.log(response);
         this.descarrega();
@@ -197,10 +215,7 @@ export default class Espais extends Component {
     // const config = {
     //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
     // };
-    axios
-      .get(
-        "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants"
-      )
+    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants")
       .then((response) => {
         console.log(response);
         this.setState({ restaurants: response.data });

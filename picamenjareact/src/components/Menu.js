@@ -19,6 +19,9 @@ import Tipu from "./Tipu";
 import Tipus from "./Tipus";
 import Traduccio from "./Traduccio";
 import Traduccions from "./Traduccions";
+import Usuari from "./Usuari";
+import Usuaris from "./Usuaris";
+import Valoracions from "./Valoracions";
 
 export default class Menu extends Component {
   render() {
@@ -93,12 +96,13 @@ export default class Menu extends Component {
           <Route path="/tipus/:id_tipus" element={<CridaTipus />} />
           <Route path="/traduccions" element={<Traduccions />} />
           <Route path="/traduccio/:id_traduccio" element={<Traduccio />} />
+          <Route path="/valoracions" element={<Valoracions />} />
+          <Route path="/usuaris" element={<Usuaris />} />
+          <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
           {/* <Route path="/exposicio/:id_exposicio" element={<CridaExposicio />} />
           <Route path="/exposicions" element={<Exposicions />} />
           <Route path="/obres" element={<Obres />} />
           <Route path="/obra/:id_obra" element={<CridaObres />} />
-          <Route path="/usuaris" element={<Usuaris />} />
-          <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
           <Route path="/" element={<CarouselFotos />} />
           <Route path="/perfilUsuari" element={<PerfilUsuari />} />
           <Route path="/explora" element={<Explora />} />
@@ -127,4 +131,9 @@ function CridaServei() {
 function CridaTipus() {
   let params = useParams();
   return <Tipu id_tipus={params.id_tipus} />
+}
+
+function CridaUsuari() {
+  let params = useParams();
+  return <Usuari id_usuari={params.id_usuari} />
 }

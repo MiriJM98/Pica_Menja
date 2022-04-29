@@ -204,10 +204,15 @@ export default class Restaurant extends Component {
     render() {
         return (
             <Container>
-                <p></p>
-                <h1 className="row justify-content-center">
-                    {this.state.id_restaurant === "" ? "Insertar" : "Modificar"} un
-                    restaurant
+                <h1 className="row">
+                    <div className="col-md-4 mt-3">
+                        <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
+                            onClick={() => { window.location.assign("/restaurants"); }} />
+                    </div>
+                    <div className="col-md-6 mt-3">
+                        {this.state.id_restaurant === "" ? "Insertar" : "Modificar"} un
+                        restaurant
+                    </div>
                 </h1>
                 <hr />
                 <br />
