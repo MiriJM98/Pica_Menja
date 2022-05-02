@@ -130,7 +130,7 @@ export default class Traduccions extends Component {
                             className="ms-3"
                             onClick={() => {
                                 window.location.assign(
-                                    "/traduccio/" + this.state.id_traduccio
+                                    "/traduccions/" + this.state.id_traduccio
                                 );
                             }}>
                             Afegir nova traducció
@@ -140,7 +140,6 @@ export default class Traduccions extends Component {
                         <h1>Llistat de traduccions</h1>
                     </div>
                 </div>
-                <p></p>
                 <AgGridReact
                     rowData={this.state.traduccions}
                     columnDefs={this.state.columnes}

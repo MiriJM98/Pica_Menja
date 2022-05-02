@@ -46,14 +46,14 @@ export default class Usuaris extends Component {
                 { field: "id_usuari", headerName: "ID USUARI", sortable: true, filter: true },
                 { field: "nom_usuari", headerName: "NOM USUARI", sortable: true, filter: true, floatingFilter: true, resizable: true },
                 { field: "llinatges", headerName: "LLINATGES", sortable: true, filter: true, floatingFilter: true },
-                { field: "telefon_usuari", headerName: "TELÈFON", sortable: true, filter: true, floatingFilter: true },
+                { field: "telefon", headerName: "TELÈFON", sortable: true, filter: true, floatingFilter: true },
                 { field: "direccio", headerName: "DIRECCIÓ", sortable: true, filter: true, floatingFilter: true },
                 { field: "data_naixement", headerName: "DATA NAIXEMENT", sortable: true, filter: true, floatingFilter: true },
                 { field: "email", headerName: "EMAIL", sortable: true, filter: true, floatingFilter: true, minWidth: 300, resizable: true },
                 { field: "administrador", headerName: "ADMINISTRADOR", sortable: true, filter: true, floatingFilter: true },
                 { field: "foto_perfil", headerName: "FOTO PERFIL", cellRendererFramework: pintaFoto, maxWidth: 150, },
-                { headerName: "", cellRendererFramework: pintaBoto, maxWidth: 100 },
-                { headerName: "", cellRendererFramework: pintaBotoBorrar, maxWidth: 100 }
+                { field: "id_usuari", headerName: "", cellRendererFramework: pintaBoto, maxWidth: 100 },
+                { field: "id_usuari", headerName: "", cellRendererFramework: pintaBotoBorrar, maxWidth: 100 }
             ],
             id_usuari: -1
         }
@@ -63,7 +63,7 @@ export default class Usuaris extends Component {
         // const config = {
         //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         // };
-        axios.delete('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris' + id)
+        axios.delete('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + id)
             .then(response => {
                 console.log(response);
                 this.descarrega();
@@ -71,9 +71,9 @@ export default class Usuaris extends Component {
             .catch(function (error) {
                 //Mostrar error
                 console.log(error);
-                if (error.response.status === 401) {
+                /*if (error.response.status === 401) {
                     window.location.assign("/");
-                }
+                }*/
             })
     }
 

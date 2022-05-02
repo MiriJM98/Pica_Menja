@@ -57,6 +57,9 @@ export default class Idioma extends Component {
 
     inserta = () => {
         //Modificar les dades a la api
+        if (this.state.idioma === "") {
+            return alert("Error. S'han d'omplir tots els camps.");
+        }
         let formData = new URLSearchParams();
         formData.append("idioma", this.state.idioma);
         //Token
@@ -130,6 +133,7 @@ export default class Idioma extends Component {
                         </div>
                     </div>
                 </div>
+                <hr />
             </Container>
         )
     }

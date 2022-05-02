@@ -54,14 +54,6 @@ export default class Usuari extends Component {
             })
     }
 
-    enviaFormulari = () => {
-        if (this.state.id_usuari === '') {
-            this.inserta();
-        } else {
-            this.update();
-        }
-    }
-
     update = () => {
         //Modificar les dades a la api
         let formData = new URLSearchParams();
@@ -85,7 +77,9 @@ export default class Usuari extends Component {
         axios.put('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData,
         ).then(response => {
             console.log(response);
-            alert("Modificació feta amb èxit!");
+            alert("Modificat amb èxit!");
+            window.location.assign("/usuaris");
+            this.descarrega();
         }
         ).catch(error => {
             console.log(error);
@@ -94,11 +88,10 @@ export default class Usuari extends Component {
 
     inserta = () => {
         //Modificar les dades a la api
-        if (this.state.email === "" || this.state.nom_usuari === "") {
-            alert("Ni el nom, email i Contrassenya poden ser nulls");
-            return;
+        if (this.state.email === "" || this.state.nom_usuari === "" || this.state.llinatges === "" || this.state.telefon === "" || this.state.data_naixement === "" || this.state.direccio === "" || this.state.administrador === "" || this.state.password === "") {
+            return alert("Error. S'han d'omplir tots els camps.");
         }
-        let formData = new FormData();
+        let formData = new URLSearchParams();
         formData.append("nom_usuari", this.state.nom_usuari);
         formData.append("llinatges", this.state.llinatges);
         formData.append("telefon", this.state.telefon);
@@ -120,10 +113,21 @@ export default class Usuari extends Component {
             .then(response => {
                 console.log(response);
                 alert("Insertat amb èxit!");
+                window.location.assign("/usuaris");
+                this.descarrega();
             }
             ).catch(error => {
                 console.log(error);
             });
+    }
+
+    enviaFormulari = () => {
+        if (this.state.id_usuari === '') {
+            this.inserta();
+
+        } else {
+            this.update();
+        }
     }
 
     onChange = (e) => {
@@ -135,22 +139,23 @@ export default class Usuari extends Component {
     render() {
         return (
             <Container>
-                <h1 className="row">
+                <div className="row">
                     <div className="col-md-4 mt-3">
                         <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
                             onClick={() => { window.location.assign("/usuaris"); }} />
                     </div>
-                    <div className="col-md-6 mt-3">
-                        {this.state.id_usuari === "" ? "Insertar" : "Modificar"} un
-                        usuari
+                    <div className="col-md-4 mt-3">
+                        <h1 className="row justify-content-center">{this.state.id_usuari === "" ? "Insertar" : "Modificar"} un
+                            usuari</h1>
                     </div>
-                </h1>
+                </div>
                 <hr />
+                <h2 className="row justify-content-center">Dades</h2>
                 <br />
                 <div className='row'>
                     <div className="col-md-1">
                         <div className="form-group">
-                            <label>ID usuari:</label>
+                            <label>ID:</label>
                             <input type="text" className="form-control" value={this.state.id_usuari} readOnly />
                         </div>
                     </div>
@@ -160,10 +165,16 @@ export default class Usuari extends Component {
                             <input type="text" className='form-control' name='nom_usuari' value={this.state.nom_usuari} onChange={this.onChange} />
                         </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-2">
                         <div className="form-group">
                             <label>Llinatges:</label>
                             <input type="text" className='form-control' name='llinatges' value={this.state.llinatges} onChange={this.onChange} />
+                        </div>
+                    </div>
+                    <div className="col-md-2">
+                        <div className="form-group">
+                            <label>Data naixement:</label>
+                            <input value={this.state.data_naixement} type="date" name='data_naixement' onChange={this.onChange} className="form-control" />
                         </div>
                     </div>
                     <div className="col-md-2">
@@ -222,6 +233,7 @@ export default class Usuari extends Component {
                         </div>
                     </div>
                 </div>
+                <hr />
             </Container>
         )
     }

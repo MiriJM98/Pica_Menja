@@ -12,7 +12,7 @@ CREATE TABLE traduccions (id_traduccio int AUTO_INCREMENT PRIMARY KEY, catala va
 CREATE TABLE serveis (id_servei int AUTO_INCREMENT PRIMARY KEY, servei_ca varchar(35) NOT NULL, servei_es varchar(35) NOT NULL, servei_en varchar(35) NOT NULL, servei_de varchar(35) NOT NULL);
 
 CREATE TABLE usuaris (id_usuari int AUTO_INCREMENT PRIMARY KEY, nom_usuari varchar(20) NOT NULL, llinatges varchar(30) NOT NULL, telefon varchar(20) NOT NULL, 
-direccio varchar(50) NOT NULL, data_naixement date NOT NULL, email varchar(40) NOT NULL, password varchar(64), administrador boolean default null, 
+direccio varchar(50) NOT NULL, data_naixement date NOT NULL, email varchar(40) NOT NULL, password varchar(64), administrador boolean default 0, 
 token varchar(60), token_valid_fins datetime, foto_perfil text);
 
 CREATE TABLE restaurants (id_restaurant int AUTO_INCREMENT PRIMARY KEY, nom varchar(30) NOT NULL, telefon varchar(27) NOT NULL, 

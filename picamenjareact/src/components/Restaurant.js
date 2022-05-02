@@ -110,7 +110,9 @@ export default class Restaurant extends Component {
         axios.put("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + this.state.id_restaurant, formData)
             .then((response) => {
                 console.log(response);
-                //alert("Modificació feta amb èxit!");
+                alert("Modificació feta amb èxit!");
+                window.location.assign("/restaurants");
+                this.descarrega();
             })
             .catch((error) => {
                 console.log(error);
@@ -118,6 +120,13 @@ export default class Restaurant extends Component {
     };
 
     inserta = () => {
+        // Modificar dades a l'api
+        if (this.state.nom === "" || this.state.ubicacio === "" || this.state.pagina_web === "" || this.state.telefon === "" || this.state.descripcio_ca === ""
+            || this.state.descripcio_es === "" || this.state.descripcio_en === "" || this.state.descripcio_de === "" || this.state.horari_ca === ""
+            || this.state.horari_es === "" || this.state.horari_en === "" || this.state.horari_de === "" || this.state.id_tipus === ""
+            || this.state.rang_preus === "") {
+            return alert("Error. S'han d'omplir tots els camps.");
+        }
         let formData = new URLSearchParams();
         formData.append("nom", this.state.nom);
         formData.append("ubicacio", this.state.ubicacio);
@@ -142,7 +151,9 @@ export default class Restaurant extends Component {
         axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants", formData
         ).then((response) => {
             console.log(response);
-            //alert("Insertat amb èxit!");
+            alert("Insertat amb èxit!");
+            window.location.assign("/restaurants");
+            this.descarrega();
         }
         ).catch((error) => {
             console.log(error);
@@ -184,38 +195,27 @@ export default class Restaurant extends Component {
 
     enviaFormulari = () => {
 
-        if (this.state.id_tipus === "") {
-            return alert("Tria un tipus!");
-        }
-
         if (this.state.id_restaurant === "") {
             this.inserta();
-            alert("Insertat amb èxit!");
-            window.location.assign("/restaurants");
-            this.descarrega();
         } else {
             this.update();
-            alert("Modificació feta amb èxit!");
-            window.location.assign("/restaurants");
-            this.descarrega();
         }
     };
 
     render() {
         return (
             <Container>
-                <h1 className="row">
+                <div className="row">
                     <div className="col-md-4 mt-3">
                         <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
                             onClick={() => { window.location.assign("/restaurants"); }} />
                     </div>
-                    <div className="col-md-6 mt-3">
-                        {this.state.id_restaurant === "" ? "Insertar" : "Modificar"} un
-                        restaurant
+                    <div className="col-md-4 mt-3">
+                        <h1 className="row justify-content-center">{this.state.id_restaurant === "" ? "Insertar" : "Modificar"} un
+                            restaurant</h1>
                     </div>
-                </h1>
+                </div>
                 <hr />
-                <br />
                 <h2 className="row justify-content-center">Dades bàsiques</h2>
                 <br />
                 <div className="row">
@@ -267,7 +267,7 @@ export default class Restaurant extends Component {
                         </div>
                     </div>
                     <div className="col-md-2">
-                        <Image src={this.state.imatge} width="180" height="180" rounded />
+                        <Image src={this.state.imatge} width="240" height="170" rounded />
                     </div>
                 </div>
                 <div className="row">
@@ -464,6 +464,7 @@ export default class Restaurant extends Component {
                         </div>
                     </div>
                 </div>
+                <hr />
             </Container>
         );
     }

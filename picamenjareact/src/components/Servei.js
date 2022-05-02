@@ -61,6 +61,10 @@ export default class Servei extends Component {
     };
 
     inserta = () => {
+        //Modificar les dades a la api
+        if (this.state.servei_ca === "" || this.state.servei_es === "" || this.state.servei_en === "" || this.state.servei_de === "") {
+            return alert("Error. S'han d'omplir tots els camps.");
+        }
         let formData = new URLSearchParams();
         formData.append("servei_ca", this.state.servei_ca);
         formData.append("servei_es", this.state.servei_es);
@@ -73,7 +77,9 @@ export default class Servei extends Component {
         axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis", formData
         ).then((response) => {
             console.log(response);
-            //alert("Insertat amb èxit!");
+            alert("Insertat amb èxit!");
+            window.location.assign("/serveis");
+            this.descarrega();
         }
         ).catch((error) => {
             console.log(error);
@@ -89,23 +95,23 @@ export default class Servei extends Component {
     enviaFormulari = () => {
         if (this.state.id_servei === "") {
             this.inserta();
-            alert("Insertat amb èxit!");
-            window.location.assign("/serveis");
-            this.descarrega();
         }
     };
 
     render() {
         return (
             <Container>
-                <p></p>
-                <h1 className="row justify-content-center">
-                    {this.state.id_servei === "" ? "Insertar" : "Modificar"} un
-                    servei
-                </h1>
+                <div className="row">
+                    <div className="col-md-4 mt-3">
+                        <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
+                            onClick={() => { window.location.assign("/serveis"); }} />
+                    </div>
+                    <div className="col-md-4 mt-3">
+                        <h1 className="row justify-content-center">Insertar un servei</h1>
+                    </div>
+                </div>
                 <hr />
-                <br />
-                <h2 className="row justify-content-center">Dades bàsiques</h2>
+                <h2 className="row justify-content-center">Dades</h2>
                 <br />
                 <div className="row">
                     <div className="col-md-1">
@@ -185,6 +191,7 @@ export default class Servei extends Component {
                         </div>
                     </div>
                 </div>
+                <hr />
             </Container>
         );
     }

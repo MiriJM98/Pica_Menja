@@ -42,6 +42,7 @@ export default class Serveis extends Component {
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
+                    resizable: true,
                 },
                 {
                     field: "servei_es",
@@ -49,6 +50,7 @@ export default class Serveis extends Component {
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
+                    resizable: true,
                 },
                 {
                     field: "servei_en",
@@ -56,6 +58,7 @@ export default class Serveis extends Component {
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
+                    resizable: true,
                 },
                 {
                     field: "servei_de",
@@ -63,9 +66,10 @@ export default class Serveis extends Component {
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
+                    resizable: true,
                 },
                 {
-                    field: "id_restaurant",
+                    field: "id_servei",
                     headerName: "",
                     cellRendererFramework: pintaBotoBorrar,
                     maxWidth: 100,

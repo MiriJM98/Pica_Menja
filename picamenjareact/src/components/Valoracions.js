@@ -32,7 +32,7 @@ export default class Valoracions extends Component {
             columnes: [
                 {
                     field: "id_valoracio",
-                    headerName: "ID SERVEI",
+                    headerName: "ID VALORACIÓ",
                     sortable: true,
                     filter: true,
                 },
