@@ -13,6 +13,7 @@ import Idioma from "./Idioma";
 import Idiomes from "./Idiomes";
 import Restaurant from "./Restaurant";
 import Restaurants from "./Restaurants";
+import RestaurantServeis from "./RestaurantsServeis";
 import Servei from "./Servei";
 import Serveis from "./Serveis";
 import Tipu from "./Tipu";
@@ -88,6 +89,7 @@ export default class Menu extends Component {
           <Route path="/comentaris" element={<Comentaris />} />
           <Route path="/idiomes" element={<Idiomes />} />
           <Route path="/idioma/:id_idioma" element={<CridaIdioma />} />
+          <Route path="/restaurants_serveis" element={<RestaurantServeis />} />
           <Route path="/restaurants" element={<Restaurants />} />
           <Route path="/restaurant/:id_restaurant" element={<CridaRestaurant />} />
           <Route path="/serveis" element={<Serveis />} />

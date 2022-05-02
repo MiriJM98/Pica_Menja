@@ -74,6 +74,7 @@ Route::group(
 Route::group(
     ['prefix' => 'restaurants_serveis'],
     function () {
+        Route::get('', 'App\Http\Controllers\Restaurant_ServeiController@index');
         Route::post('', 'App\Http\Controllers\Restaurant_ServeiController@store');
         Route::delete('/{id_restaurant}/{id_servei}', 'App\Http\Controllers\Restaurant_ServeiController@delete');
         Route::get('serveisCa/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisCa');

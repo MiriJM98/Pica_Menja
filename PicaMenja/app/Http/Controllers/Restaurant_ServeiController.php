@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Validator;
 
 class Restaurant_ServeiController extends Controller
 {
+    // MOSTRAR TOTS ELS RESTAURANTS_SERVEIS
+    // MÈTODE GET
+    public function index()
+    {
+        $restaurants_serveis = Restaurant_Servei::all();
+        return response()->json($restaurants_serveis);
+    }
+
     // FUNCIÓ PER BORRAR UN RESTAURANT_SERVEI
     // MÈTODE DELETE
     public function delete($id_restaurant, $id_servei)
