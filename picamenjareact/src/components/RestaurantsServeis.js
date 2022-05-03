@@ -18,7 +18,7 @@ export default class RestaurantServeis extends Component {
                         size="sm"
                         onClick={() => {
                             if (window.confirm("Segur vols borrar el servei?")) {
-                                this.borrar(params.data.id_servei);
+                                this.borrar(params.data.id_restaurant, params.data.id_servei);
                             }
                         }}>
                         Borrar
@@ -29,6 +29,8 @@ export default class RestaurantServeis extends Component {
 
         this.state = {
             restaurants_serveis: [],
+            restaurants: [],
+            serveis: [],
             columnes: [
                 {
                     field: "id_servei",
@@ -45,40 +47,25 @@ export default class RestaurantServeis extends Component {
                     resizable: true,
                 },
                 {
-                    field: "nom",
-                    headerName: "RESTAURANT",
-                    sortable: true,
-                    filter: true,
-                    floatingFilter: true,
-                    resizable: true,
-                },
-                {
-                    field: "servei_ca",
-                    headerName: "SERVEI CATALÀ",
-                    sortable: true,
-                    filter: true,
-                    floatingFilter: true,
-                    resizable: true,
-                },
-                {
-                    field: "id_servei",
+                    field: "id_restaurant",
                     headerName: "",
                     cellRendererFramework: pintaBotoBorrar,
                     maxWidth: 100,
                 },
             ],
+            id_restaurant: -1,
             id_servei: -1,
         };
     }
 
-    borrar = (id) => {
+    borrar = (id_restaurant, id_servei) => {
         // const config = {
         //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         // };
         axios
             .delete(
                 "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis/" +
-                id
+                id_restaurant + "/" + id_servei
             )
             .then((response) => {
                 console.log(response);
@@ -127,7 +114,7 @@ export default class RestaurantServeis extends Component {
                             className="ms-3"
                             onClick={() => {
                                 window.location.assign(
-                                    "/servei/" + this.state.id_servei
+                                    "/restaurants_serveis/" + this.state.id_restaurant
                                 );
                             }}>
                             Afegir nou restaurant_servei

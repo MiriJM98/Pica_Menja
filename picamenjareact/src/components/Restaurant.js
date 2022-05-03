@@ -317,6 +317,7 @@ export default class Restaurant extends Component {
                             <label>Foto:</label>
                             <input
                                 type="file"
+                                accept="image/png, image/jpeg"
                                 name="imatge"
                                 onChange={this.onChangeFoto}
                                 className="form-control"

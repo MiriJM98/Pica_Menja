@@ -13,6 +13,7 @@ import Idioma from "./Idioma";
 import Idiomes from "./Idiomes";
 import Restaurant from "./Restaurant";
 import Restaurants from "./Restaurants";
+import RestaurantServei from "./RestaurantServei";
 import RestaurantServeis from "./RestaurantsServeis";
 import Servei from "./Servei";
 import Serveis from "./Serveis";
@@ -90,6 +91,7 @@ export default class Menu extends Component {
           <Route path="/idiomes" element={<Idiomes />} />
           <Route path="/idioma/:id_idioma" element={<CridaIdioma />} />
           <Route path="/restaurants_serveis" element={<RestaurantServeis />} />
+          <Route path="/restaurants_serveis/:id_obra" element={<CridaRestaurantServei />} />
           <Route path="/restaurants" element={<Restaurants />} />
           <Route path="/restaurant/:id_restaurant" element={<CridaRestaurant />} />
           <Route path="/serveis" element={<Serveis />} />
@@ -138,4 +140,9 @@ function CridaTipus() {
 function CridaUsuari() {
   let params = useParams();
   return <Usuari id_usuari={params.id_usuari} />
+}
+
+function CridaRestaurantServei() {
+  let params = useParams();
+  return <RestaurantServei id_usuari={params.id_usuari} />
 }
