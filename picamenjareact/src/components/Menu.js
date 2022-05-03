@@ -9,6 +9,8 @@ import {
   useParams,
 } from "react-router-dom";
 import Comentaris from "./Comentaris";
+import Foto from "./Foto";
+import Fotos from "./Fotos";
 import Idioma from "./Idioma";
 import Idiomes from "./Idiomes";
 import Restaurant from "./Restaurant";
@@ -88,6 +90,8 @@ export default class Menu extends Component {
         </Navbar>
         <Routes>
           <Route path="/comentaris" element={<Comentaris />} />
+          <Route path="/fotos" element={<Fotos />} />
+          <Route path="/foto/:id_foto" element={<CridaFotos />} />
           <Route path="/idiomes" element={<Idiomes />} />
           <Route path="/idioma/:id_idioma" element={<CridaIdioma />} />
           <Route path="/restaurants_serveis" element={<RestaurantServeis />} />
@@ -103,11 +107,7 @@ export default class Menu extends Component {
           <Route path="/valoracions" element={<Valoracions />} />
           <Route path="/usuaris" element={<Usuaris />} />
           <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
-          {/* <Route path="/exposicio/:id_exposicio" element={<CridaExposicio />} />
-          <Route path="/exposicions" element={<Exposicions />} />
-          <Route path="/obres" element={<Obres />} />
-          <Route path="/obra/:id_obra" element={<CridaObres />} />
-          <Route path="/" element={<CarouselFotos />} />
+          {/* <Route path="/" element={<CarouselFotos />} />
           <Route path="/perfilUsuari" element={<PerfilUsuari />} />
           <Route path="/explora" element={<Explora />} />
           <Route path="/logout" element={<Logout />} /> */}
@@ -144,5 +144,10 @@ function CridaUsuari() {
 
 function CridaRestaurantServei() {
   let params = useParams();
-  return <RestaurantServei id_usuari={params.id_usuari} />
+  return <RestaurantServei id_restaurant={params.id_restaurant} />
+}
+
+function CridaFotos() {
+  let params = useParams();
+  return <Foto id_foto={params.id_foto} />
 }

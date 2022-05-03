@@ -42,7 +42,7 @@ export default class Idiomes extends Component {
 
     render() {
         return (
-            <div className="ag-theme-alpine" style={{ height: 600, width: "100%" }}>
+            <div className="ag-theme-alpine" style={{ height: 550, width: "100%" }}>
                 <div className="row">
                     <div className="row">
                         <div className="col-md-4">&nbsp;</div>

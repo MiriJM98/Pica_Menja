@@ -74,7 +74,7 @@ class FotoController extends Controller
             $tupla->save();
             return response()->json(["Status" => "Foto del restaurant amb id_foto $id pujada correctament!", "URI" => $urifoto], 200);
         } else {
-            return response()->json(["Status" => "Error: tipus o tamany de la foto malament.", 404]);
+            return response()->json($validacio->getMessageBag());
         }
     }
 
