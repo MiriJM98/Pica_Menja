@@ -52,12 +52,12 @@ export default class Menu extends Component {
             />
             </button>
           </div>
-          {/* {sessionStorage.getItem("id_usuari") === "" ? */}
+          {sessionStorage.getItem("id_usuari") !== "" ?
           <div className="idiomes">
             <button className="btn btn-primary btn-lg mb-2">Inicia sessió</button>
             <button className="ms-3 btn btn-info btn-lg mb-2">Regístra't</button>
           </div>
-          {/* : console.log("AQUÍ --->" +sessionStorage.getItem("id_usuari"))} */}
+          : console.log("AQUÍ --->" +sessionStorage.getItem("id_usuari"))}
           <div className="idiomes">
             <button className="btn btn-primary btn-lg mb-2">Perfil</button>
           </div>
@@ -73,9 +73,14 @@ export default class Menu extends Component {
           >
             <Container>
               <Nav className="mr-auto">
-                {sessionStorage.getItem("admin") === 0 ?
-                  <>
-                    <NavLink className="nav-link" to="/comentaris">Comentaris</NavLink>
+                <NavLink className="nav-link" to="/">Inici</NavLink>
+                <NavLink className="nav-link" to="/quisom">Informació</NavLink>
+                <NavLink className="nav-link" to="/restaurants">Restaurants</NavLink>
+                <NavLink className="nav-link" to="/suggeriments">Suggeriments</NavLink>
+                <NavLink className="nav-link" to="/perfilUsuari">Perfil</NavLink>
+                {/* SI L'USUARI ÉS ADMNISTRADOR (admin === 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin === 0) NOMÉS MOSTRA EL FRONT */}
+                {sessionStorage.getItem("admin") !== 0 ?
+                  <><NavLink className="nav-link" to="/comentaris">Comentaris</NavLink>
                     <NavLink className="nav-link" to="/fotos">Fotos</NavLink>
                     <NavLink className="nav-link" to="/idiomes">Idiomes</NavLink>
                     <NavLink className="nav-link" to="/restaurants_serveis">Restaurants_Serveis</NavLink>
@@ -88,15 +93,6 @@ export default class Menu extends Component {
                   </>
                   : console.log(sessionStorage.getItem("admin"))}
               </Nav>
-
-              <Nav className="mr-auto">
-                <NavLink className="nav-link" to="/">Inici</NavLink>
-                <NavLink className="nav-link" to="/quisom">Informació</NavLink>
-                <NavLink className="nav-link" to="/restaurants">Restaurants</NavLink>
-                <NavLink className="nav-link" to="/suggeriments">Suggeriments</NavLink>
-                <NavLink className="nav-link" to="/perfilUsuari">Perfil</NavLink>
-              </Nav>
-
             </Container>
           </Navbar>
 
