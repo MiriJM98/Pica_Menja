@@ -13,6 +13,8 @@ import Foto from "./Foto";
 import Fotos from "./Fotos";
 import Idioma from "./Idioma";
 import Idiomes from "./Idiomes";
+import Inici from "./Inici";
+//import Inici from "./Inici";
 import Restaurant from "./Restaurant";
 import Restaurants from "./Restaurants";
 import RestaurantServei from "./RestaurantServei";
@@ -43,8 +45,8 @@ export default class Menu extends Component {
               <NavLink className="nav-link" to="/">
                 Inici
               </NavLink>
-              <NavLink className="nav-link" to="/explora">
-                Explora
+              <NavLink className="nav-link" to="/quisom">
+                Qui Som
               </NavLink>
 
               <Nav className="mr-auto">
@@ -60,8 +62,8 @@ export default class Menu extends Component {
                 <NavLink className="nav-link" to="/restaurants_serveis">
                   Restaurants_Serveis
                 </NavLink>
-                <NavLink className="nav-link" to="/restaurants">
-                  Restaurants
+                <NavLink className="nav-link" to="/restaurants_back">
+                  Restaurants Back
                 </NavLink>
                 <NavLink className="nav-link" to="/serveis">
                   Serveis
@@ -89,6 +91,7 @@ export default class Menu extends Component {
           </Container>
         </Navbar>
         <Routes>
+          <Route path="/" element={<Inici />} />
           <Route path="/comentaris" element={<Comentaris />} />
           <Route path="/fotos" element={<Fotos />} />
           <Route path="/foto/:id_foto" element={<CridaFotos />} />
@@ -96,7 +99,7 @@ export default class Menu extends Component {
           <Route path="/idioma/:id_idioma" element={<CridaIdioma />} />
           <Route path="/restaurants_serveis" element={<RestaurantServeis />} />
           <Route path="/restaurants_serveis/:id_obra" element={<CridaRestaurantServei />} />
-          <Route path="/restaurants" element={<Restaurants />} />
+          <Route path="/restaurants_back" element={<Restaurants />} />
           <Route path="/restaurant/:id_restaurant" element={<CridaRestaurant />} />
           <Route path="/serveis" element={<Serveis />} />
           <Route path="/servei/:id_servei" element={<CridaServei />} />
@@ -108,9 +111,9 @@ export default class Menu extends Component {
           <Route path="/usuaris" element={<Usuaris />} />
           <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
           {/* <Route path="/" element={<CarouselFotos />} />
-          <Route path="/perfilUsuari" element={<PerfilUsuari />} />
-          <Route path="/explora" element={<Explora />} />
-          <Route path="/logout" element={<Logout />} /> */}
+    <Route path="/perfilUsuari" element={<PerfilUsuari />} />
+    <Route path="/explora" element={<Explora />} />
+    <Route path="/logout" element={<Logout />} /> */}
         </Routes>
       </BrowserRouter>
     );

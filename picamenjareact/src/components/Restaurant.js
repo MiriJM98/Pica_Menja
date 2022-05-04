@@ -111,7 +111,7 @@ export default class Restaurant extends Component {
             .then((response) => {
                 console.log(response);
                 alert("Modificació feta amb èxit!");
-                window.location.assign("/restaurants");
+                window.location.assign("/restaurants_back");
                 this.descarrega();
             })
             .catch((error) => {
@@ -152,7 +152,7 @@ export default class Restaurant extends Component {
         ).then((response) => {
             console.log(response);
             alert("Insertat amb èxit!");
-            window.location.assign("/restaurants");
+            window.location.assign("/restaurants_back");
             this.descarrega();
         }
         ).catch((error) => {
@@ -208,7 +208,7 @@ export default class Restaurant extends Component {
                 <div className="row">
                     <div className="col-md-4 mt-3">
                         <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
-                            onClick={() => { window.location.assign("/restaurants"); }} />
+                            onClick={() => { window.location.assign("/restaurants_back"); }} />
                     </div>
                     <div className="col-md-4 mt-3">
                         <h1 className="row justify-content-center">{this.state.id_restaurant === "" ? "Insertar" : "Modificar"} un
