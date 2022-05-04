@@ -18,6 +18,7 @@ import Inici from "./Inici";
 import Restaurant from "./Restaurant";
 import Restaurants from "./Restaurants";
 import RestaurantServei from "./RestaurantServei";
+import RestaurantsFront from "./RestaurantsFront";
 import RestaurantServeis from "./RestaurantsServeis";
 import Servei from "./Servei";
 import Serveis from "./Serveis";
@@ -52,11 +53,11 @@ export default class Menu extends Component {
             </button>
           </div>
           {/* {sessionStorage.getItem("id_usuari") === "" ? */}
-            <div className="idiomes">
-              <button className="btn btn-primary btn-lg mb-2">Inicia sessió</button>
-              <button className="ms-3 btn btn-info btn-lg mb-2">Regístra't</button>
-            </div>
-            {/* : console.log("AQUÍ --->" +sessionStorage.getItem("id_usuari"))} */}
+          <div className="idiomes">
+            <button className="btn btn-primary btn-lg mb-2">Inicia sessió</button>
+            <button className="ms-3 btn btn-info btn-lg mb-2">Regístra't</button>
+          </div>
+          {/* : console.log("AQUÍ --->" +sessionStorage.getItem("id_usuari"))} */}
           <div className="idiomes">
             <button className="btn btn-primary btn-lg mb-2">Perfil</button>
           </div>
@@ -72,16 +73,8 @@ export default class Menu extends Component {
           >
             <Container>
               <Nav className="mr-auto">
-
-                <NavLink className="nav-link " to="/">Inici</NavLink>
-                <NavLink className="nav-link " to="/quisom">Informació</NavLink>
-                <NavLink className="nav-link " to="/restaurants">Restaurants</NavLink>
-                <NavLink className="nav-link " to="/suggeriments">Suggeriments</NavLink>
-                <NavLink className="nav-link " to="/perfilUsuari">Perfil</NavLink>
-                <NavLink className="nav-link " to="/logout">Logout</NavLink>
-
-                {/* {sessionStorage.getItem("admin") === 1 ? */}
-                  <Nav className="mr-auto">
+                {sessionStorage.getItem("admin") === 0 ?
+                  <>
                     <NavLink className="nav-link" to="/comentaris">Comentaris</NavLink>
                     <NavLink className="nav-link" to="/fotos">Fotos</NavLink>
                     <NavLink className="nav-link" to="/idiomes">Idiomes</NavLink>
@@ -92,15 +85,25 @@ export default class Menu extends Component {
                     <NavLink className="nav-link" to="/traduccions">Traduccions</NavLink>
                     <NavLink className="nav-link" to="/usuaris">Usuaris</NavLink>
                     <NavLink className="nav-link" to="/valoracions">Valoracions</NavLink>
-                  </Nav>
-                {/* : console.log(sessionStorage.getItem("admin"))} */}
+                  </>
+                  : console.log(sessionStorage.getItem("admin"))}
               </Nav>
+
+              <Nav className="mr-auto">
+                <NavLink className="nav-link" to="/">Inici</NavLink>
+                <NavLink className="nav-link" to="/quisom">Informació</NavLink>
+                <NavLink className="nav-link" to="/restaurants">Restaurants</NavLink>
+                <NavLink className="nav-link" to="/suggeriments">Suggeriments</NavLink>
+                <NavLink className="nav-link" to="/perfilUsuari">Perfil</NavLink>
+              </Nav>
+
             </Container>
           </Navbar>
 
           <Routes>
             <Route path="/" element={<Inici />} />
             <Route path="/comentaris" element={<Comentaris />} />
+            <Route path="/restaurants" element={<RestaurantsFront />} />
             <Route path="/fotos" element={<Fotos />} />
             <Route path="/foto/:id_foto" element={<CridaFotos />} />
             <Route path="/idiomes" element={<Idiomes />} />
