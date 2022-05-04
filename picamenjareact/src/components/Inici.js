@@ -1,18 +1,36 @@
 import React, { Component } from "react";
-import { Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 export default class Inici extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            imatges: [],
+        }
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants")
+            .then(response => {
+                console.log(response);
+                response.data.forEach(restaurant => {
+                    // let nom = restaurant.nom;
+                    // let imatge = restaurant.imatge;
+                });
+            })
+            .catch(function (error) {
+                console.log("ERROR --> " + error.response.data.error);
+                if (error.response.status === 401) {
+                    // window.location.assign("/login");
+                }
+            })
+    }
+
     render() {
         return (
-            <>
-                {/* <h1 className="row justify-content-center mt-3 mb-3">Pica & Menja</h1> */}
-                <div className="parent">
-                    <Image src={process.env.PUBLIC_URL + '/logoweb350.png'} 
-                    alt="PICA & MENJA" 
-                    title="PICA & MENJA"/>
-                </div>
-            </>
+            <div></div>
         )
     }
 }
