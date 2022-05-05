@@ -193,10 +193,10 @@ export default class Espais extends Component {
   }
 
   borrar = (id) => {
-    // const config = {
-    //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-    // };
-    axios.delete("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + id)
+    const config = {
+      headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+    };
+    axios.delete("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + id, config)
       .then((response) => {
         console.log(response);
         this.descarrega();
@@ -212,10 +212,10 @@ export default class Espais extends Component {
   }
 
   descarrega = () => {
-    // const config = {
-    //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-    // };
-    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants")
+    const config = {
+      headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+    };
+    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants", config)
       .then((response) => {
         console.log(response);
         this.setState({ restaurants: response.data });
@@ -223,7 +223,7 @@ export default class Espais extends Component {
       .catch(function (error) {
         console.log("ERROR -> " + error.response.data.error);
         if (error.response.status === 401) {
-          //window.location.assign("/login");
+          window.location.assign("/login");
         }
       });
   };

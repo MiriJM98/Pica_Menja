@@ -22,11 +22,11 @@ export default class Traduccio extends Component {
     }
 
     descarregatraduccions = (id_traduccio) => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        // };
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
         axios
-            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/traduccions/" + id_traduccio)
+            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/traduccions/" + id_traduccio, config)
             .then((response) => {
                 //console.log(response);
                 this.setState({
@@ -44,10 +44,10 @@ export default class Traduccio extends Component {
     }
 
     descarrega = () => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        // };
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/traduccions")
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/traduccions", config)
             .then((response) => {
                 console.log(response);
                 this.setState({ traduccions: response.data });
@@ -55,7 +55,7 @@ export default class Traduccio extends Component {
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
                 if (error.response.status === 401) {
-                    //window.location.assign("/login");
+                    window.location.assign("/login");
                 }
             });
     };
@@ -66,14 +66,16 @@ export default class Traduccio extends Component {
         formData.append("espanyol", this.state.espanyol);
         formData.append("english", this.state.english);
         formData.append("deutsch", this.state.deutsch);
-        //Token
-        // const config = {
-        //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-        // };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/traduccions", formData
+        // Token
+        const config = {
+            headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+        };
+        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/traduccions", formData, config
         ).then((response) => {
             console.log(response);
-            //alert("Insertat amb èxit!");
+            alert("Insertat amb èxit!");
+            window.location.assign("/traduccions");
+            this.descarrega();
         }
         ).catch((error) => {
             console.log(error);
@@ -93,9 +95,6 @@ export default class Traduccio extends Component {
 
         if (this.state.id_traduccio === "") {
             this.inserta();
-            alert("Insertat amb èxit!");
-            window.location.assign("/traduccions");
-            this.descarrega();
         }
     };
 

@@ -22,11 +22,11 @@ export default class Tipu extends Component {
     }
 
     descarregaTipus = (id_tipus) => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        // };
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
         axios
-            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus/" + id_tipus)
+            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus/" + id_tipus, config)
             .then((response) => {
                 //console.log(response);
                 this.setState({
@@ -44,10 +44,10 @@ export default class Tipu extends Component {
     }
 
     descarrega = () => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        // };
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus")
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus", config)
             .then((response) => {
                 console.log(response);
                 this.setState({ tipus: response.data });
@@ -55,7 +55,7 @@ export default class Tipu extends Component {
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
                 if (error.response.status === 401) {
-                    //window.location.assign("/login");
+                    window.location.assign("/login");
                 }
             });
     };
@@ -66,14 +66,16 @@ export default class Tipu extends Component {
         formData.append("tipus_es", this.state.tipus_es);
         formData.append("tipus_en", this.state.tipus_en);
         formData.append("tipus_de", this.state.tipus_de);
-        //Token
-        // const config = {
-        //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-        // };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus", formData
+        // Token
+        const config = {
+            headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+        };
+        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus", formData, config
         ).then((response) => {
             console.log(response);
-            //alert("Insertat amb èxit!");
+            alert("Insertat amb èxit!");
+            window.location.assign("/tipus");
+            this.descarrega();
         }
         ).catch((error) => {
             console.log(error);
@@ -93,9 +95,6 @@ export default class Tipu extends Component {
 
         if (this.state.id_tipus === "") {
             this.inserta();
-            alert("Insertat amb èxit!");
-            window.location.assign("/tipus");
-            this.descarrega();
         }
     };
 

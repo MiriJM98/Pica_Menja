@@ -23,12 +23,12 @@ export default class Login extends Component {
             console.log(sessionStorage.getItem("token"));
             console.log(sessionStorage.getItem("id_usuari"));
             this.descarrega();
-        }
-        ).catch(error => {
+        }).catch(error => {
             console.log(error);
             sessionStorage.setItem("token", "");
             sessionStorage.setItem("id_usuari", "");
             sessionStorage.setItem("admin", "");
+            document.getElementById("errorLogin").style.display = "block";
         })
     }
 
@@ -41,6 +41,8 @@ export default class Login extends Component {
             .then(response => {
                 sessionStorage.setItem("admin", response.data.administrador);
                 window.location.assign("/");
+                console.log("RESPUESTA " + response.data);
+                console.log(sessionStorage.getItem("admin"));
             })
             .catch(function (error) {
                 //Mostrar error
@@ -63,6 +65,7 @@ export default class Login extends Component {
                     <p><input type="password" id="passwordLogin" name="password" onChange={this.canviParam} /></p>
                     <p><button type="button" className="btn btn-primary" onClick={this.login}>Login</button></p>
                 </div>
+                <p id="errorLogin" style={{ display: "none" }}>Error. Email o password incorrectes.</p>
             </div>
         )
     }

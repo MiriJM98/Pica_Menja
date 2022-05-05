@@ -20,7 +20,7 @@ class LoginController extends Controller
             $token_valid_fins = date('Y-m-d H:i:s', strtotime('+30 minutes'));
             $usuari->token_valid_fins = $token_valid_fins;
             $usuari->save();
-            return response()->json(["Status" => "Èxit! Login correcte!", "Result" => $apikey, "id_usuari" => $usuari["id_usuari"]]);
+            return response()->json(["Status" => "Èxit! Login correcte!", "result" => $apikey, "id_usuari" => $usuari["id_usuari"]]);
         } else {
             return response()->json(["Status" => "Error. Login incorrecte."], 401);
         }

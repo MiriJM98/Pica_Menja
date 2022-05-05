@@ -22,11 +22,11 @@ export default class Servei extends Component {
     }
 
     descarregaServei = (id_servei) => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        // };
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
         axios
-            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis/" + id_servei)
+            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis/" + id_servei, config)
             .then((response) => {
                 //console.log(response);
                 this.setState({
@@ -44,10 +44,10 @@ export default class Servei extends Component {
     }
 
     descarrega = () => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        // };
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis")
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis", config)
             .then((response) => {
                 console.log(response);
                 this.setState({ serveis: response.data });
@@ -55,7 +55,7 @@ export default class Servei extends Component {
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
                 if (error.response.status === 401) {
-                    //window.location.assign("/login");
+                    window.location.assign("/login");
                 }
             });
     };
@@ -70,11 +70,11 @@ export default class Servei extends Component {
         formData.append("servei_es", this.state.servei_es);
         formData.append("servei_en", this.state.servei_en);
         formData.append("servei_de", this.state.servei_de);
-        //Token
-        // const config = {
-        //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-        // };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis", formData
+        // Token
+        const config = {
+          headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+        };
+        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis", formData, config
         ).then((response) => {
             console.log(response);
             alert("Insertat amb èxit!");

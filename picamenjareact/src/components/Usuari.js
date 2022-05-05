@@ -28,11 +28,11 @@ export default class Usuari extends Component {
     }
 
     descarrega = (id_usuari) => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        //     //headers: { Authorization: 'Bearer ' + "token"}
-        // };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + id_usuari)
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+            //headers: { Authorization: 'Bearer ' + "token"}
+        };
+        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + id_usuari, config)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -67,14 +67,14 @@ export default class Usuari extends Component {
         formData.append("foto_perfil", this.state.foto_perfil);
         //Token
         console.log(formData);
-        // const config = {
-        //     headers: {
-        //         Authorization: 'Bearer ' + sessionStorage.getItem("token"),
-        //         'content-type': 'application/x-www-form-urlencoded'
-        //     }
-        //     //headers: { Authorization: 'Bearer ' + "token"}
-        // };
-        axios.put('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData,
+        const config = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem("token"),
+                'content-type': 'application/x-www-form-urlencoded'
+            }
+            //headers: { Authorization: 'Bearer ' + "token"}
+        };
+        axios.put('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData, config
         ).then(response => {
             console.log(response);
             alert("Modificat amb èxit!");
@@ -101,15 +101,15 @@ export default class Usuari extends Component {
         formData.append("administrador", this.state.administrador);
         formData.append("foto_perfil", this.state.foto_perfil);
         formData.append("password", this.state.password);
-        //Token
+        // Token
         console.log(formData);
-        // const config = {
-        //     headers: {
-        //         Authorization: 'Bearer ' + sessionStorage.getItem("token"),
-        //         'content-type': 'application/x-www-form-urlencoded'
-        //     }
-        // };
-        axios.post('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris', formData)
+        const config = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem("token"),
+                'content-type': 'application/x-www-form-urlencoded'
+            }
+        };
+        axios.post('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris', formData, config)
             .then(response => {
                 console.log(response);
                 alert("Insertat amb èxit!");

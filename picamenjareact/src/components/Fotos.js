@@ -68,10 +68,10 @@ export default class Fotos extends Component {
     }
 
     borrar = (id) => {
-        // const config = {
-        //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-        // };
-        axios.delete("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos/" + id)
+        const config = {
+            headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+        };
+        axios.delete("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos/" + id, config)
             .then((response) => {
                 console.log(response);
                 this.descarrega();
@@ -83,11 +83,11 @@ export default class Fotos extends Component {
     };
 
     descarrega = () => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        //     //headers: { Authorization: 'Bearer ' + "token"}
-        // };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos',)
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+            //headers: { Authorization: 'Bearer ' + "token"}
+        };
+        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos', config)
             .then(response => {
                 console.log(response);
                 this.setState({ fotos: response.data });
@@ -95,7 +95,7 @@ export default class Fotos extends Component {
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
                 if (error.response.status === 401) {
-                    //window.location.assign("/login");
+                    window.location.assign("/login");
                 }
             })
     }

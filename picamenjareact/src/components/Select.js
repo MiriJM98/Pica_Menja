@@ -11,11 +11,11 @@ export default class Select extends Component {
   }
 
   descarregar = () => {
-    // const config = {
-    //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-    // };
+    const config = {
+      headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+    };
     axios
-      .get(this.props.url)
+      .get(this.props.url, config)
       .then((response) => {
         console.log(response);
         this.setState({

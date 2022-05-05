@@ -19,11 +19,11 @@ export default class Idioma extends Component {
     }
 
     descarregaIdioma = (id_idioma) => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        //     //headers: { Authorization: 'Bearer ' + "token"}
-        // };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes' + id_idioma,)
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+            //headers: { Authorization: 'Bearer ' + "token"}
+        };
+        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes' + id_idioma, config)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -38,11 +38,11 @@ export default class Idioma extends Component {
     }
 
     descarrega = () => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        //     //headers: { Authorization: 'Bearer ' + "token"}
-        // };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes',)
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+            //headers: { Authorization: 'Bearer ' + "token"}
+        };
+        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes', config)
             .then(response => {
                 console.log(response);
                 this.setState({ idiomes: response.data });
@@ -50,26 +50,25 @@ export default class Idioma extends Component {
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
                 if (error.response.status === 401) {
-                    //window.location.assign("/login");
+                    window.location.assign("/login");
                 }
             })
     }
 
     inserta = () => {
-        //Modificar les dades a la api
+        // Modificar les dades a la api
         if (this.state.idioma === "") {
             return alert("Error. S'han d'omplir tots els camps.");
         }
         let formData = new URLSearchParams();
         formData.append("idioma", this.state.idioma);
-        //Token
-        // const config = {
-        //     headers: {
-        //         Authorization: 'Bearer ' + sessionStorage.getItem("token"),
-        //         "Content-Type": "multipart/form-data"
-        //     }
-        // };
-        axios.post('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes', formData,)
+        // Token
+        const config = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem("token")
+            }
+        };
+        axios.post('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes', formData, config)
             .then(response => {
                 console.log(response);
                 alert("Insertat amb èxit!");

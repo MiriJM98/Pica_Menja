@@ -21,6 +21,7 @@ import RestaurantServei from "./RestaurantServei";
 import RestaurantsFront from "./RestaurantsFront";
 import RestaurantServeis from "./RestaurantsServeis";
 import Servei from "./Servei";
+import Login from "./Login";
 import Serveis from "./Serveis";
 import Tipu from "./Tipu";
 import Tipus from "./Tipus";
@@ -31,6 +32,10 @@ import Usuaris from "./Usuaris";
 import Valoracions from "./Valoracions";
 
 export default class Menu extends Component {
+
+  loginFunction() {
+    window.location.assign("/login");
+  }
   render() {
     return (
       <>
@@ -52,19 +57,24 @@ export default class Menu extends Component {
             />
             </button>
           </div>
-          <div className="idiomes" id="bPerfil" style={{ display: 'none' }}>
-            <button className="btn btn-primary btn-lg mb-2">Perfil</button>
+          <div className="idiomes">
+            {sessionStorage.getItem("id_usuari") !== "" ?
+              <button className="btn btn-primary btn-lg mb-2">Perfil</button>
+              : console.log(sessionStorage.getItem("id_usuari"))}
           </div>
-          <div className="idiomes" id="bLogin" style={{ display: 'none' }}>
-            <button className="btn btn-primary btn-lg mb-2">Inicia sessió</button>
-            <button className="ms-3 btn btn-info btn-lg mb-2">Regístra't</button>
+          <div className="idiomes">
+            {sessionStorage.getItem("id_usuari") === "" ?
+              <>
+                <button className="btn btn-primary btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
+                <button className="ms-3 btn btn-info btn-lg mb-2">Regístra't</button></>
+              : console.log(sessionStorage.getItem("id_usuari"))}
           </div>
 
         </Container>
         <BrowserRouter>
           <Navbar
             bg="dark"
-            className="color-nav"
+            className="color-nav mb-2"
             variant="dark"
             expand="lg"
             sticky="top"
@@ -76,9 +86,10 @@ export default class Menu extends Component {
                 <NavLink className="nav-link" to="/restaurants">Restaurants</NavLink>
                 <NavLink className="nav-link" to="/suggeriments">Suggeriments</NavLink>
                 <NavLink className="nav-link" to="/perfilUsuari">Perfil</NavLink>
-                
-                {/* SI L'USUARI ÉS ADMINISTRADOR (admin === 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin === 0) NOMÉS MOSTRA EL FRONT */}
-                {sessionStorage.getItem("admin") !== 0 ?
+                <NavLink className="nav-link" to="/logout" >Logout</NavLink>
+
+                {/* SI L'USUARI ÉS ADMINISTRADOR (admin == 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin === 0) NOMÉS MOSTRA EL FRONT */}
+                {sessionStorage.getItem("admin") === "1" ?
                   <><NavLink className="nav-link" to="/comentaris">Comentaris</NavLink>
                     <NavLink className="nav-link" to="/fotos">Fotos</NavLink>
                     <NavLink className="nav-link" to="/idiomes">Idiomes</NavLink>
@@ -116,6 +127,8 @@ export default class Menu extends Component {
             <Route path="/valoracions" element={<Valoracions />} />
             <Route path="/usuaris" element={<Usuaris />} />
             <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/login" element={<Login />} />
             {/* <Route path="/" element={<CarouselFotos />} />
             <Route path="/perfilUsuari" element={<PerfilUsuari />} />
             <Route path="/explora" element={<Explora />} />
@@ -165,10 +178,13 @@ function prova() {
   window.location.assign("/restaurants");
 }
 
-// if (sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null) {
-//   document.getElementById("bLogin").style.display = "block";
-// } else if (sessionStorage.getItem("token") !== "" || sessionStorage.getItem("token") !== null) {
-//   document.getElementById("bPerfil").style.display = "block";
-// }
+function Logout() {
+  sessionStorage.setItem("token", "");
+  sessionStorage.setItem("id_usuari", "");
+  sessionStorage.setItem("admin", "");
+  window.location.assign("/");
+}
 
 console.log("AQUÍ SALE EL TOKEN ---> " + sessionStorage.getItem("token"));
+console.log("AQUÍ SALE EL ADMIN ---> " + sessionStorage.getItem("admin"));
+console.log("AQUÍ SALE EL ID_USUARI --> " + sessionStorage.getItem("id_usuari"));

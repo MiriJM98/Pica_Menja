@@ -79,7 +79,7 @@ export default class Comentaris extends Component {
 
     borrar = (id) => {
         const config = {
-          headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+            headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         };
         axios
             .delete(
@@ -115,7 +115,7 @@ export default class Comentaris extends Component {
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
                 if (error.response.status === 401) {
-                    //window.location.assign("/login");
+                    window.location.assign("/login");
                 }
             });
     };

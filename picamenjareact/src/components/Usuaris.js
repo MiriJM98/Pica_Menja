@@ -60,10 +60,10 @@ export default class Usuaris extends Component {
     }
 
     borrar = (id) => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        // };
-        axios.delete('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + id)
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
+        axios.delete('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + id, config)
             .then(response => {
                 console.log(response);
                 this.descarrega();
@@ -71,9 +71,9 @@ export default class Usuaris extends Component {
             .catch(function (error) {
                 //Mostrar error
                 console.log(error);
-                /*if (error.response.status === 401) {
+                if (error.response.status === 401) {
                     window.location.assign("/");
-                }*/
+                }
             })
     }
 
@@ -82,12 +82,12 @@ export default class Usuaris extends Component {
     }
 
     descarrega() {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        //     //headers: { Authorization: 'Bearer ' + "token"}
-        // };
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+            //headers: { Authorization: 'Bearer ' + "token"}
+        };
 
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris')
+        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris', config)
             .then(response => {
                 console.log(response);
                 this.setState({ usuaris: response.data });
@@ -95,8 +95,8 @@ export default class Usuaris extends Component {
             .catch(function (error) {
                 console.log("ERROR -> " + error.response.data.error);
                 if (error.response.status === 401) {
-                    //sessionStorage.setItem("token", "");
-                    //window.location.assign("/");
+                    sessionStorage.setItem("token", "");
+                    window.location.assign("/");
                 }
             })
     }
