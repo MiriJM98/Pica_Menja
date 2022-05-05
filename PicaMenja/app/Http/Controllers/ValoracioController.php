@@ -83,4 +83,16 @@ class ValoracioController extends Controller
             ->get();
         return response()->json($resultat);
     }
+
+    // FUNCIÓ PER MOSTRAR LA VALORACIÓ MITJANA D'UN RESTAURANT
+    // MÈTODE GET
+    public function valoracioMitjana($id)
+    {
+        $resultat = Valoracio::join("restaurants", "restaurants.id_restaurant", "=", "valoracions.id_restaurant")
+            ->select("restaurants.nom as restaurant", DB::raw('AVG(valoracio) as valoracio')) 
+            ->groupBy('restaurants.id_restaurant')
+            ->where("restaurants.id_restaurant", "=", $id)
+            ->get();
+        return response()->json($resultat);
+    }
 }

@@ -22,7 +22,7 @@ export default class Login extends Component {
             sessionStorage.setItem("id_usuari", resposta.data.id_usuari);
             console.log(sessionStorage.getItem("token"));
             console.log(sessionStorage.getItem("id_usuari"));
-            //this.descarrega();
+            this.descarrega();
         }
         ).catch(error => {
             console.log(error);

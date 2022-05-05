@@ -52,14 +52,12 @@ export default class Menu extends Component {
             />
             </button>
           </div>
-          {sessionStorage.getItem("id_usuari") !== "" ?
-          <div className="idiomes">
+          <div className="idiomes" id="bPerfil" style={{ display: 'none' }}>
+            <button className="btn btn-primary btn-lg mb-2">Perfil</button>
+          </div>
+          <div className="idiomes" id="bLogin" style={{ display: 'none' }}>
             <button className="btn btn-primary btn-lg mb-2">Inicia sessió</button>
             <button className="ms-3 btn btn-info btn-lg mb-2">Regístra't</button>
-          </div>
-          : console.log("AQUÍ --->" +sessionStorage.getItem("id_usuari"))}
-          <div className="idiomes">
-            <button className="btn btn-primary btn-lg mb-2">Perfil</button>
           </div>
 
         </Container>
@@ -78,7 +76,8 @@ export default class Menu extends Component {
                 <NavLink className="nav-link" to="/restaurants">Restaurants</NavLink>
                 <NavLink className="nav-link" to="/suggeriments">Suggeriments</NavLink>
                 <NavLink className="nav-link" to="/perfilUsuari">Perfil</NavLink>
-                {/* SI L'USUARI ÉS ADMNISTRADOR (admin === 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin === 0) NOMÉS MOSTRA EL FRONT */}
+                
+                {/* SI L'USUARI ÉS ADMINISTRADOR (admin === 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin === 0) NOMÉS MOSTRA EL FRONT */}
                 {sessionStorage.getItem("admin") !== 0 ?
                   <><NavLink className="nav-link" to="/comentaris">Comentaris</NavLink>
                     <NavLink className="nav-link" to="/fotos">Fotos</NavLink>
@@ -165,3 +164,11 @@ function CridaFotos() {
 function prova() {
   window.location.assign("/restaurants");
 }
+
+// if (sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null) {
+//   document.getElementById("bLogin").style.display = "block";
+// } else if (sessionStorage.getItem("token") !== "" || sessionStorage.getItem("token") !== null) {
+//   document.getElementById("bPerfil").style.display = "block";
+// }
+
+console.log("AQUÍ SALE EL TOKEN ---> " + sessionStorage.getItem("token"));

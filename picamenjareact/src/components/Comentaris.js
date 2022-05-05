@@ -78,13 +78,13 @@ export default class Comentaris extends Component {
     }
 
     borrar = (id) => {
-        // const config = {
-        //   headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-        // };
+        const config = {
+          headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+        };
         axios
             .delete(
                 "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/comentaris/" +
-                id
+                id, config
             )
             .then((response) => {
                 console.log(response);
@@ -101,12 +101,12 @@ export default class Comentaris extends Component {
     }
 
     descarrega = () => {
-        // const config = {
-        //     headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        // };
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
         axios
             .get(
-                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/comentaris"
+                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/comentaris", config
             )
             .then((response) => {
                 console.log(response);

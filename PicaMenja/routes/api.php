@@ -11,7 +11,9 @@ use Symfony\Component\Routing\RouteCompiler;
 */
 
 // SENSE AUTENTIFICACIÓ
+// NOMÉS PODEM CREAR USUARIS I FER LOGIN
 Route::post('login', 'App\Http\Controllers\LoginController@login');
+Route::post('', 'App\Http\Controllers\UsuariController@store');
 Route::post('logout', 'App\Http\Controllers\LoginController@logout');
 
 // RUTES DE LA TAULA COMENTARIS
@@ -85,7 +87,6 @@ Route::group(
     }
 );
 
-
 // RUTES DE LA TAULA SERVEIS
 Route::group(['prefix' => 'serveis'], function () {
     Route::get('', 'App\Http\Controllers\ServeiController@index');
@@ -115,7 +116,6 @@ Route::group(['prefix' => 'usuaris'], function () {
     Route::get('', 'App\Http\Controllers\UsuariController@index');
     Route::get('{id}', 'App\Http\Controllers\UsuariController@show');
     Route::delete('{id}', 'App\Http\Controllers\UsuariController@delete');
-    Route::post('', 'App\Http\Controllers\UsuariController@store');
     Route::put('{id}', 'App\Http\Controllers\UsuariController@update');
     Route::post('foto/{id}', 'App\Http\Controllers\UsuariController@fotoPerfil');
     Route::put('', 'App\Http\Controllers\UsuariController@canviPassword');
@@ -128,4 +128,5 @@ Route::group(['prefix' => 'valoracions'], function () {
     Route::delete('{id}', 'App\Http\Controllers\ValoracioController@delete');
     Route::post('', 'App\Http\Controllers\ValoracioController@store');
     Route::get('restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracions');
+    Route::get('mitjana/restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracioMitjana');
 });
