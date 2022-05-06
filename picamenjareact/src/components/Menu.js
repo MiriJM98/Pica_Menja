@@ -40,8 +40,17 @@ export default class Menu extends Component {
     window.location.assign("/login");
   }
 
+  handleRefresh = () => {
+    // by calling this method react re-renders the component
+    this.setState({});
+  };
+
   perfilFunction() {
     window.location.assign("/perfilUsuari");
+  }
+
+  refreshPage() {
+    window.location.reload(false);
   }
 
   Logout() {
@@ -60,13 +69,13 @@ export default class Menu extends Component {
               width="40" height="40" title="IDIOMA" onClick={prova}
             />
             </button>
-            {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") == null || sessionStorage.getItem("token") === 'undefined' ?
+            {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
               <>
                 <button className="ms-2 btn btn-info btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
                 <button className="ms-3 btn btn-warning btn-lg mb-2">Regístra't</button>
               </>
               : console.log(sessionStorage.getItem("token"))}
-            {sessionStorage.getItem("token") !== "" ?
+            {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
               <>
                 <button className="ms-2 btn btn-outline-danger btn-lg mb-2" onClick={this.Logout}>Tanca sessió</button>
                 <button className="ms-3  btn btn-dark btn-lg mb-2" onClick={this.perfilFunction}>Perfil</button>
@@ -78,42 +87,55 @@ export default class Menu extends Component {
         <Container>
           <>
             <div className="parent">
-              
-              <Image src={process.env.PUBLIC_URL + '/picamenja.png'}
-                alt="PICA & MENJA"
-                title="PICA & MENJA"
-              />
+              {window.location.pathname !== "/" ?
+                <>
+                  <Image src={process.env.PUBLIC_URL + '/picamenja.png'}
+                    alt="PICA & MENJA"
+                    title="PICA & MENJA"
+                  />
+                </>
+                : console.log(window.location.pathname)}
+
+              {window.location.href === "http://localhost:3000/" ?
+                <>
+                  <Image src={process.env.PUBLIC_URL + '/logoweb.png'}
+                    alt="PICA & MENJA"
+                    title="PICA & MENJA"
+                  />
+                </>
+                : console.log(window.location.pathname)}
+
             </div>
           </>
         </Container>
 
-        <BrowserRouter>
+        <BrowserRouter forceRefresh={true}>
           <Navbar
             bg="dark"
             className="color-nav mb-2"
             variant="dark"
             expand="lg"
-            sticky="top"
+            // sticky="top"
           >
             <Container>
               <Nav className="mr-auto">
-                <NavLink className="nav-link" to="/">Inici</NavLink>
-                <NavLink className="nav-link" to="/quisom">Informació</NavLink>
-                <NavLink className="nav-link" to="/restaurants">Restaurants</NavLink>
-                <NavLink className="nav-link" to="/suggeriments">Suggeriments</NavLink>
+                <NavLink className="nav-link" to="/" onClick={this.handleRefresh}>Inici</NavLink>
+                <NavLink className="nav-link" to="/quisom" onClick={this.handleRefresh}>Informació</NavLink>
+                <NavLink className="nav-link" to="/restaurants" onClick={this.handleRefresh}>Restaurants</NavLink>
+                <NavLink className="nav-link" to="/suggeriments" onClick={this.handleRefresh}>Suggeriments</NavLink>
 
                 {/* SI L'USUARI ÉS ADMINISTRADOR (admin == 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin === 0) NOMÉS MOSTRA EL FRONT */}
                 {sessionStorage.getItem("admin") === "1" ?
-                  <><NavLink className="nav-link" to="/comentaris">Comentaris</NavLink>
-                    <NavLink className="nav-link" to="/fotos">Fotos</NavLink>
-                    <NavLink className="nav-link" to="/idiomes">Idiomes</NavLink>
-                    <NavLink className="nav-link" to="/restaurants_serveis">Restaurants_Serveis</NavLink>
-                    <NavLink className="nav-link" to="/restaurants_back">Restaurants_Back</NavLink>
-                    <NavLink className="nav-link" to="/serveis">Serveis</NavLink>
-                    <NavLink className="nav-link" to="/tipus">Tipus</NavLink>
-                    <NavLink className="nav-link" to="/traduccions">Traduccions</NavLink>
-                    <NavLink className="nav-link" to="/usuaris">Usuaris</NavLink>
-                    <NavLink className="nav-link" to="/valoracions">Valoracions</NavLink>
+                  <><NavLink className="nav-link" to="/comentaris" onClick={this.handleRefresh}>Comentaris</NavLink>
+                    <NavLink className="nav-link" to="/fotos" onClick={this.handleRefresh}>Fotos</NavLink>
+                    <NavLink className="nav-link" to="/idiomes" onClick={this.handleRefresh}>Idiomes</NavLink>
+                    <NavLink className="nav-link" to="/restaurants_serveis" onClick={this.handleRefresh}>Restaurants_Serveis</NavLink>
+                    <NavLink className="nav-link" to="/restaurants_back" onClick={this.handleRefresh}>Restaurants_Back</NavLink>
+                    <NavLink className="nav-link" to="/serveis" onClick={this.handleRefresh}>Serveis</NavLink>
+                    <NavLink className="nav-link" to="/tipus" onClick={this.handleRefresh}>Tipus</NavLink>
+                    <NavLink className="nav-link" to="/traduccions" onClick={this.handleRefresh}>Traduccions</NavLink>
+                    <NavLink className="nav-link" to="/usuaris" onClick={this.handleRefresh}>Usuaris</NavLink>
+                    <NavLink className="nav-link" to="/valoracions" onClick={this.handleRefresh}>Valoracions</NavLink>
                   </>
                   : console.log(sessionStorage.getItem("admin"))}
               </Nav>
@@ -154,6 +176,7 @@ export default class Menu extends Component {
     );
   }
 }
+
 
 function CridaRestaurant() {
   let params = useParams();

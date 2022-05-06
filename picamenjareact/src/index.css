@@ -24,3 +24,15 @@ code {
   margin-bottom: 10px;
   margin-top: 15px;
 }
+
+a {
+  text-decoration: none;
+}
+
+#menu {
+  background-color: rgb(46, 150, 60);
+  color: black;
+  font-weight: bold;
+  width: 100%;
+    white-space: nowrap;
+}
