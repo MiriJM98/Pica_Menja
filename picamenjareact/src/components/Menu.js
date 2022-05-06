@@ -30,6 +30,9 @@ import Traduccions from "./Traduccions";
 import Usuari from "./Usuari";
 import Usuaris from "./Usuaris";
 import Valoracions from "./Valoracions";
+import QuiSom from "./QuiSom";
+import Suggeriments from "./Suggeriments";
+import PerfilUsuari from "./PerfilUsuari";
 
 export default class Menu extends Component {
 
@@ -109,7 +112,10 @@ export default class Menu extends Component {
           <Routes>
             <Route path="/" element={<Inici />} />
             <Route path="/comentaris" element={<Comentaris />} />
+            <Route path="/quisom" element={<QuiSom />} />
+            <Route path="/suggeriments" element={<Suggeriments />} />
             <Route path="/restaurants" element={<RestaurantsFront />} />
+            <Route path="/perfilUsuari" element={<PerfilUsuari />} />
             <Route path="/fotos" element={<Fotos />} />
             <Route path="/foto/:id_foto" element={<CridaFotos />} />
             <Route path="/idiomes" element={<Idiomes />} />
@@ -130,7 +136,6 @@ export default class Menu extends Component {
             <Route path="/logout" element={<Logout />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/" element={<CarouselFotos />} />
-            <Route path="/perfilUsuari" element={<PerfilUsuari />} />
             <Route path="/explora" element={<Explora />} />
             <Route path="/logout" element={<Logout />} /> */}
           </Routes>
