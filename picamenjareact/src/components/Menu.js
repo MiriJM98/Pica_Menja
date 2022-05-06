@@ -39,41 +39,54 @@ export default class Menu extends Component {
   loginFunction() {
     window.location.assign("/login");
   }
+
+  perfilFunction() {
+    window.location.assign("/perfilUsuari");
+  }
+
+  Logout() {
+    sessionStorage.setItem("token", "");
+    sessionStorage.setItem("id_usuari", "");
+    sessionStorage.setItem("admin", "");
+    window.location.assign("/");
+  }
+
   render() {
     return (
       <>
         <Container>
-          {sessionStorage.getItem("admin") !== 1}
-          <>
-            {/* <h1 className="row justify-content-center mt-3 mb-3">Pica & Menja</h1> */}
-            <div className="parent">
-              <Image src={process.env.PUBLIC_URL + '/logoweb.png'}
-                alt="PICA & MENJA"
-                title="PICA & MENJA" />
-            </div>
-          </>
-        </Container>
-        <Container>
           <div className="idiomes">
             <button className="btn btn-link"><Image src={process.env.PUBLIC_URL + '/idiomas.png'}
-              width="40" onClick={prova}
+              width="40" height="40" title="IDIOMA" onClick={prova}
             />
             </button>
-          </div>
-          <div className="idiomes">
-            {sessionStorage.getItem("id_usuari") !== "" ?
-              <button className="btn btn-primary btn-lg mb-2">Perfil</button>
-              : console.log(sessionStorage.getItem("id_usuari"))}
-          </div>
-          <div className="idiomes">
-            {sessionStorage.getItem("id_usuari") === "" ?
+            {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") == null || sessionStorage.getItem("token") === 'undefined' ?
               <>
-                <button className="btn btn-primary btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
-                <button className="ms-3 btn btn-info btn-lg mb-2">Regístra't</button></>
+                <button className="ms-2 btn btn-info btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
+                <button className="ms-3 btn btn-warning btn-lg mb-2">Regístra't</button>
+              </>
+              : console.log(sessionStorage.getItem("token"))}
+            {sessionStorage.getItem("token") !== "" ?
+              <>
+                <button className="ms-2 btn btn-outline-danger btn-lg mb-2" onClick={this.Logout}>Tanca sessió</button>
+                <button className="ms-3  btn btn-dark btn-lg mb-2" onClick={this.perfilFunction}>Perfil</button>
+              </>
               : console.log(sessionStorage.getItem("id_usuari"))}
           </div>
 
         </Container>
+        <Container>
+          <>
+            <div className="parent">
+              
+              <Image src={process.env.PUBLIC_URL + '/picamenja.png'}
+                alt="PICA & MENJA"
+                title="PICA & MENJA"
+              />
+            </div>
+          </>
+        </Container>
+
         <BrowserRouter>
           <Navbar
             bg="dark"
@@ -88,8 +101,6 @@ export default class Menu extends Component {
                 <NavLink className="nav-link" to="/quisom">Informació</NavLink>
                 <NavLink className="nav-link" to="/restaurants">Restaurants</NavLink>
                 <NavLink className="nav-link" to="/suggeriments">Suggeriments</NavLink>
-                <NavLink className="nav-link" to="/perfilUsuari">Perfil</NavLink>
-                <NavLink className="nav-link" to="/logout" >Logout</NavLink>
 
                 {/* SI L'USUARI ÉS ADMINISTRADOR (admin == 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin === 0) NOMÉS MOSTRA EL FRONT */}
                 {sessionStorage.getItem("admin") === "1" ?
@@ -110,12 +121,14 @@ export default class Menu extends Component {
           </Navbar>
 
           <Routes>
+            {/* RUTES DE FRONTEND */}
             <Route path="/" element={<Inici />} />
-            <Route path="/comentaris" element={<Comentaris />} />
             <Route path="/quisom" element={<QuiSom />} />
-            <Route path="/suggeriments" element={<Suggeriments />} />
             <Route path="/restaurants" element={<RestaurantsFront />} />
+            <Route path="/suggeriments" element={<Suggeriments />} />
             <Route path="/perfilUsuari" element={<PerfilUsuari />} />
+            {/* RUTES DE BACKEND */}
+            <Route path="/comentaris" element={<Comentaris />} />
             <Route path="/fotos" element={<Fotos />} />
             <Route path="/foto/:id_foto" element={<CridaFotos />} />
             <Route path="/idiomes" element={<Idiomes />} />
@@ -133,11 +146,9 @@ export default class Menu extends Component {
             <Route path="/valoracions" element={<Valoracions />} />
             <Route path="/usuaris" element={<Usuaris />} />
             <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
-            <Route path="/logout" element={<Logout />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/" element={<CarouselFotos />} />
-            <Route path="/explora" element={<Explora />} />
-            <Route path="/logout" element={<Logout />} /> */}
+            <Route path="/explora" element={<Explora />} /> */}
           </Routes>
         </BrowserRouter></>
     );
@@ -181,13 +192,6 @@ function CridaFotos() {
 
 function prova() {
   window.location.assign("/restaurants");
-}
-
-function Logout() {
-  sessionStorage.setItem("token", "");
-  sessionStorage.setItem("id_usuari", "");
-  sessionStorage.setItem("admin", "");
-  window.location.assign("/");
 }
 
 console.log("AQUÍ SALE EL TOKEN ---> " + sessionStorage.getItem("token"));

@@ -182,7 +182,7 @@ export default class Tipu extends Component {
                         <div className="form-group">
                             <input
                                 type="submit"
-                                className="btn btn-primary btn-lg"
+                                className="btn btn-success btn-lg"
                                 value={
                                     this.state.id_tipus === "" ? "Insertar" : "Modificar"
                                 }

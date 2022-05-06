@@ -30,7 +30,7 @@ export default class Inici extends Component {
 
     render() {
         return (
-            <div></div>
+            <h1>Inici</h1>
         )
     }
 }

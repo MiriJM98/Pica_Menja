@@ -130,7 +130,7 @@ export default class Traduccions extends Component {
                             className="ms-3"
                             onClick={() => {
                                 window.location.assign(
-                                    "/traduccions/" + this.state.id_traduccio
+                                    "/traduccio/" + this.state.id_traduccio
                                 );
                             }}>
                             Afegir nova traducció
