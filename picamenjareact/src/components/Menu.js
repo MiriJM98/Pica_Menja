@@ -109,13 +109,13 @@ export default class Menu extends Component {
           </>
         </Container>
 
-        <BrowserRouter forceRefresh={true}>
+        <BrowserRouter>
           <Navbar
             bg="dark"
             className="color-nav mb-2"
             variant="dark"
             expand="lg"
-            // sticky="top"
+          // sticky="top"
           >
             <Container>
               <Nav className="mr-auto">

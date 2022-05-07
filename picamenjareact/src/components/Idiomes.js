@@ -49,7 +49,7 @@ export default class Idiomes extends Component {
                     </div>
                     <div className="col-md-4 mt-3 mb-3">
                         <Button
-                            variant="success"
+                            variant="primary"
                             className="ms-3"
                             onClick={() => {
                                 window.location.assign(

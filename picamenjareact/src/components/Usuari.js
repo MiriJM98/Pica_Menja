@@ -183,9 +183,6 @@ export default class Usuari extends Component {
                             <input value={this.state.administrador} type="email" name='administrador' onChange={this.onChange} className="form-control" />
                         </div>
                     </div>
-                    <div className="col-md-2">
-                        <Image src={this.state.foto_perfil} width="200" height="240" rounded />
-                    </div>
                 </div>
                 <div className="row"><div className="col-md-4">&nbsp;</div></div>
                 <div className='row'>
@@ -223,7 +220,7 @@ export default class Usuari extends Component {
                         <div className="form-group">
                             <input
                                 type="submit"
-                                className="btn btn-primary btn-lg"
+                                className="btn btn-success btn-lg"
                                 value={
                                     this.state.id_usuari === "" ? "Insertar" : "Modificar"
                                 }

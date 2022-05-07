@@ -131,7 +131,7 @@ export default class RestaurantServei extends Component {
                         <div className="form-group">
                             <input
                                 type="submit"
-                                className="btn btn-primary btn-lg"
+                                className="btn btn-success btn-lg"
                                 value="Insertar"
                                 onClick={this.inserta} />
                             <p></p>

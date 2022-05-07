@@ -201,20 +201,21 @@ export default class Foto extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row"><div className="col-md-4">&nbsp;</div></div>
-                    <div className="row justify-content-center">
-                        <div className="col-md-1">
-                            <div className="form-group">
-                                <input
-                                    type="submit"
-                                    className="btn btn-primary btn-lg"
-                                    value="Insertar"
-                                    onClick={this.inserta} />
-                                <p></p>
-                            </div>
+                </div>
+                <div className="row"><div className="col-md-4">&nbsp;</div></div>
+                <div className="row justify-content-center">
+                    <div className="col-md-1">
+                        <div className="form-group">
+                            <input
+                                type="submit"
+                                className="btn btn-success btn-lg"
+                                value="Insertar"
+                                onClick={this.inserta} />
+                            <p></p>
                         </div>
                     </div>
                 </div>
+
                 <hr />
             </Container>
         )
