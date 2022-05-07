@@ -105,9 +105,6 @@ export default class Usuaris extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 600, width: '100%' }}>
                 <div className="row">
-                    <div className="row">
-                        <div className="col-md-4">&nbsp;</div>
-                    </div>
                     <div className="col-md-4 mt-3 mb-3">
                         <Button
                             variant="primary"

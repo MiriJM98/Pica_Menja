@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Image, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import axios from 'axios';
 
 export default class Usuari extends Component {

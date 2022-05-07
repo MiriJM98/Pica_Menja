@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#header {
+  background-color: white;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -15,18 +19,14 @@ code {
 .parent {
   display: flex;
   justify-content: center;
-  margin-bottom: 42px;
+  padding-bottom: 42px;
 }
 
 .idiomes {
   display: flex;
   justify-content: right;
-  margin-bottom: 10px;
-  margin-top: 15px;
-}
-
-a {
-  text-decoration: none;
+  padding-bottom: 10px;
+  padding-top: 15px;
 }
 
 #menu {
@@ -34,5 +34,51 @@ a {
   color: black;
   font-weight: bold;
   width: 100%;
-    white-space: nowrap;
+  white-space: nowrap;
+}
+
+#dadesLogin {
+  border-radius: 10px;
+  padding: 30px;
+  width: max-content;
+  background-color: white;
+  margin: auto;
+}
+
+#emailLogin {
+  font-size: 14pt;
+  width: max-content;	
+}
+
+#divLogin {
+  padding-top: 20px;
+  padding-bottom: 18px;
+  background-image: url("../public/canpica1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+input[type="password"] {
+  font-size: 14pt;
+  width: max-content;
+}
+
+label {
+  font-size: 14pt;
+}
+
+#botoLogin {
+  display: flex;
+  background-color: #976E9D;
+  padding: 10px 45px 10px 45px;
+  border: 0;
+  font-size: 14pt;
+  color: white;
+  cursor: pointer;
+  margin: auto;
+  border-radius: 10px;
+}
+
+#botoLogin:hover {
+  background-color: #B283B9;
 }

@@ -63,56 +63,58 @@ export default class Menu extends Component {
   render() {
     return (
       <>
-        <Container>
-          <div className="idiomes">
-            <button className="btn btn-link"><Image src={process.env.PUBLIC_URL + '/idiomas.png'}
-              width="40" height="40" title="IDIOMA" onClick={prova}
-            />
-            </button>
-            {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
-              <>
-                <button className="ms-2 btn btn-info btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
-                <button className="ms-3 btn btn-warning btn-lg mb-2">Regístra't</button>
-              </>
-              : console.log(sessionStorage.getItem("token"))}
-            {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
-              <>
-                <button className="ms-2 btn btn-outline-danger btn-lg mb-2" onClick={this.Logout}>Tanca sessió</button>
-                <button className="ms-3  btn btn-dark btn-lg mb-2" onClick={this.perfilFunction}>Perfil</button>
-              </>
-              : console.log(sessionStorage.getItem("id_usuari"))}
-          </div>
-
-        </Container>
-        <Container>
-          <>
-            <div className="parent">
-              {window.location.pathname !== "/" ?
+        <div id="header">
+          <Container>
+            <div className="idiomes">
+              <button className="btn btn-link"><Image src={process.env.PUBLIC_URL + '/idiomas.png'}
+                width="40" height="40" title="IDIOMA" onClick={prova}
+              />
+              </button>
+              {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
                 <>
-                  <Image src={process.env.PUBLIC_URL + '/picamenja.png'}
-                    alt="PICA & MENJA"
-                    title="PICA & MENJA"
-                  />
+                  <button className="ms-2 btn btn-info btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
+                  <button className="ms-3 btn btn-warning btn-lg mb-2">Regístra't</button>
                 </>
-                : console.log(window.location.pathname)}
-
-              {window.location.href === "http://localhost:3000/" ?
+                : console.log(sessionStorage.getItem("token"))}
+              {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
                 <>
-                  <Image src={process.env.PUBLIC_URL + '/logoweb.png'}
-                    alt="PICA & MENJA"
-                    title="PICA & MENJA"
-                  />
+                  <button className="ms-2 btn btn-outline-danger btn-lg mb-2" onClick={this.Logout}>Tanca sessió</button>
+                  <button className="ms-3  btn btn-dark btn-lg mb-2" onClick={this.perfilFunction}>Perfil</button>
                 </>
-                : console.log(window.location.pathname)}
-
+                : console.log(sessionStorage.getItem("id_usuari"))}
             </div>
-          </>
-        </Container>
+
+          </Container>
+          <Container>
+            <>
+              <div className="parent">
+                {window.location.pathname !== "/" ?
+                  <>
+                    <Image src={process.env.PUBLIC_URL + '/picamenja.png'}
+                      alt="PICA & MENJA"
+                      title="PICA & MENJA"
+                    />
+                  </>
+                  : console.log(window.location.pathname)}
+
+                {window.location.href === "http://localhost:3000/" ?
+                  <>
+                    <Image src={process.env.PUBLIC_URL + '/logoweb.png'}
+                      alt="PICA & MENJA"
+                      title="PICA & MENJA"
+                    />
+                  </>
+                  : console.log(window.location.pathname)}
+
+              </div>
+            </>
+          </Container>
+        </div>
 
         <BrowserRouter>
           <Navbar
             bg="dark"
-            className="color-nav mb-2"
+            className="color-nav"
             variant="dark"
             expand="lg"
           // sticky="top"

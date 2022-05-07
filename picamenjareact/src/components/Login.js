@@ -28,7 +28,7 @@ export default class Login extends Component {
             sessionStorage.setItem("token", "");
             sessionStorage.setItem("id_usuari", "");
             sessionStorage.setItem("admin", "");
-            document.getElementById("errorLogin").style.display = "block";
+            alert("Email o password incorrectes!");
         })
     }
 
@@ -41,7 +41,6 @@ export default class Login extends Component {
             .then(response => {
                 sessionStorage.setItem("admin", response.data.administrador);
                 window.location.assign("/");
-                console.log("RESPUESTA " + response.data);
                 console.log(sessionStorage.getItem("admin"));
             })
             .catch(function (error) {
@@ -56,16 +55,15 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div id="divLogin">
+            <div id="divLogin" className="row justify-content-center">
                 <div id="dadesLogin">
-                    <h1>Pica & Menja</h1>
-                    <p><label>Email</label></p>
+                    <h1 className="row justify-content-center">Inicia sessió</h1>
+                    <p><label className="row justify-content-center">Email</label></p>
                     <p><input type="text" id="emailLogin" name="email" onChange={this.canviParam} /></p>
-                    <p><label>Password</label></p>
+                    <p><label className="row justify-content-center">Password</label></p>
                     <p><input type="password" id="passwordLogin" name="password" onChange={this.canviParam} /></p>
-                    <p><button type="button" className="btn btn-primary" onClick={this.login}>Login</button></p>
+                    <p><button type="button" id="botoLogin" onClick={this.login}>Login</button></p>
                 </div>
-                <p id="errorLogin" style={{ display: "none" }}>Error. Email o password incorrectes.</p>
             </div>
         )
     }
