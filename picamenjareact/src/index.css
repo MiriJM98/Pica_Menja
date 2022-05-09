@@ -7,6 +7,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+#imatges {
+  max-width: 100%;
+	height: auto;
+}
+
 #header {
   background-color: white;
 }
@@ -35,6 +47,7 @@ code {
   font-weight: bold;
   width: 100%;
   white-space: nowrap;
+	display: inline-block;
 }
 
 #dadesLogin {
@@ -56,6 +69,7 @@ code {
   background-image: url("../public/canpica1.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  width: auto;
 }
 
 input[type="password"] {
@@ -81,4 +95,25 @@ label {
 
 #botoLogin:hover {
   background-color: #B283B9;
+}
+
+#footer {
+	text-align: center; 
+	background-color: #024240; 
+	color: white;
+  /* margin-top: 15px; */
+  padding-top: 20px;
+}
+
+#footer ul li {
+	display: inline-block;
+	padding-right: 6px;
+  padding-left: 6px;
+  padding-top: 10px;
+  /* margin-bottom: 10px; */
+  padding-bottom: 20px;
+}
+
+.ag-theme-alpine {
+  margin-bottom: 130px;
 }

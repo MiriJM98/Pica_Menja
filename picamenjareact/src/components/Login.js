@@ -62,6 +62,7 @@ export default class Login extends Component {
                     <p><input type="text" id="emailLogin" name="email" onChange={this.canviParam} /></p>
                     <p><label className="row justify-content-center">Password</label></p>
                     <p><input type="password" id="passwordLogin" name="password" onChange={this.canviParam} /></p>
+                    <p><a href="/restaurants">No tens compte? Regístra't!</a></p>
                     <p><button type="button" id="botoLogin" onClick={this.login}>Login</button></p>
                 </div>
             </div>

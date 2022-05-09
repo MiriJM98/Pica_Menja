@@ -230,7 +230,6 @@ export default class Usuari extends Component {
                         </div>
                     </div>
                 </div>
-                <hr />
             </Container>
         )
     }

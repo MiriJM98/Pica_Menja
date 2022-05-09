@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Nav } from "react-bootstrap";
 import { Navbar, Container } from "react-bootstrap";
 import { Image } from "react-bootstrap";
+import Link from '@mui/material/Link';
 import {
   BrowserRouter,
   NavLink,
@@ -93,15 +94,17 @@ export default class Menu extends Component {
                     <Image src={process.env.PUBLIC_URL + '/picamenja.png'}
                       alt="PICA & MENJA"
                       title="PICA & MENJA"
+                      id="imatges"
                     />
                   </>
                   : console.log(window.location.pathname)}
 
-                {window.location.href === "http://localhost:3000/" ?
+                {window.location.pathname === "/" ?
                   <>
                     <Image src={process.env.PUBLIC_URL + '/logoweb.png'}
                       alt="PICA & MENJA"
                       title="PICA & MENJA"
+                      id="imatges"
                     />
                   </>
                   : console.log(window.location.pathname)}
@@ -174,7 +177,26 @@ export default class Menu extends Component {
             {/* <Route path="/" element={<CarouselFotos />} />
             <Route path="/explora" element={<Explora />} /> */}
           </Routes>
-        </BrowserRouter></>
+        </BrowserRouter>
+        <div id="footer">
+          {'Copyright © '}
+          <Link color="inherit" href="http://localhost:3000/">
+            Pica & Menja
+          </Link>{' '}
+          {new Date().getFullYear()}
+          {'.'}
+          <div>
+            <ul>
+              <li><a href="https://www.facebook.com/" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/logof.jpg'} alt="Logo de Facebook"
+                title="Facebook" width="30" height="30" /></a></li>
+              <li><a href="https://www.instagram.com/" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/logoi.jpg'}
+                alt="Logo d'Instagram" title="Instagram" width="30" height="30" /></a></li>
+              <li><a href="https://twitter.com/?lang=es" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/logot.jpg'}
+                alt="Logo de Twitter" title="Twitter" width="30" height="30" /></a></li>
+            </ul>
+          </div>
+        </div>
+      </>
     );
   }
 }
