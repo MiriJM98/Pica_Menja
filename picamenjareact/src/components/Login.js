@@ -28,7 +28,8 @@ export default class Login extends Component {
             sessionStorage.setItem("token", "");
             sessionStorage.setItem("id_usuari", "");
             sessionStorage.setItem("admin", "");
-            alert("Email o password incorrectes!");
+            // alert("Email o password incorrectes!");
+            document.getElementById("errors").style.display = "block";
         })
     }
 
@@ -59,11 +60,12 @@ export default class Login extends Component {
                 <div id="dadesLogin">
                     <h1 className="row justify-content-center">Inicia sessió</h1>
                     <p><label className="row justify-content-center">Email</label></p>
-                    <p><input type="text" id="emailLogin" name="email" onChange={this.canviParam} /></p>
+                    <p><input type="text" id="email" name="email" onChange={this.canviParam} /></p>
                     <p><label className="row justify-content-center">Password</label></p>
-                    <p><input type="password" id="passwordLogin" name="password" onChange={this.canviParam} /></p>
-                    <p><a href="/restaurants">No tens compte? Regístra't!</a></p>
+                    <p><input type="password" id="password" name="password" onChange={this.canviParam} /></p>
+                    <p><a href="/registre" id="linkFormulari" className="row justify-content-center">No tens compte? Regístra't!</a></p>
                     <p><button type="button" id="botoLogin" onClick={this.login}>Login</button></p>
+                    <p id="errors" style={{display: 'none' }}>Error. Email o password incorrectes.</p>
                 </div>
             </div>
         )

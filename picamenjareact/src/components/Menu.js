@@ -34,11 +34,16 @@ import Valoracions from "./Valoracions";
 import QuiSom from "./QuiSom";
 import Suggeriments from "./Suggeriments";
 import PerfilUsuari from "./PerfilUsuari";
+import Registre from "./Registre";
 
 export default class Menu extends Component {
 
   loginFunction() {
     window.location.assign("/login");
+  }
+
+  registreFunction() {
+    window.location.assign("/registre");
   }
 
   handleRefresh = () => {
@@ -74,7 +79,7 @@ export default class Menu extends Component {
               {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
                 <>
                   <button className="ms-2 btn btn-info btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
-                  <button className="ms-3 btn btn-warning btn-lg mb-2">Regístra't</button>
+                  <button className="ms-3 btn btn-warning btn-lg mb-2" onClick={this.registreFunction}>Regístra't</button>
                 </>
                 : console.log(sessionStorage.getItem("token"))}
               {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
@@ -174,6 +179,7 @@ export default class Menu extends Component {
             <Route path="/usuaris" element={<Usuaris />} />
             <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/registre" element={<Registre />} />
             {/* <Route path="/" element={<CarouselFotos />} />
             <Route path="/explora" element={<Explora />} /> */}
           </Routes>

@@ -50,7 +50,7 @@ code {
 	display: inline-block;
 }
 
-#dadesLogin {
+#dadesLogin, #dadesRegistre {
   border-radius: 10px;
   padding: 30px;
   width: max-content;
@@ -63,27 +63,29 @@ code {
   width: max-content;	
 }
 
-#divLogin {
+#divLogin, #divRegistre {
   padding-top: 20px;
   padding-bottom: 18px;
-  background-image: url("../public/canpica1.jpg");
+  background-image: url("../public/fons.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: auto;
 }
 
-input[type="password"] {
+
+#nom_usuari, #llinatges, #telefon, #direccio, #data_naixement, #email, #password {
   font-size: 14pt;
-  width: max-content;
+  width: 100%;
+  text-align: center;
 }
 
 label {
   font-size: 14pt;
 }
 
-#botoLogin {
+#botoLogin, #botoRegistre {
   display: flex;
-  background-color: #976E9D;
+  background-color: #36a450;
   padding: 10px 45px 10px 45px;
   border: 0;
   font-size: 14pt;
@@ -93,8 +95,8 @@ label {
   border-radius: 10px;
 }
 
-#botoLogin:hover {
-  background-color: #B283B9;
+#botoLogin:hover, #botoRegistre:hover {
+  background-color: green;
 }
 
 #footer {
@@ -107,13 +109,33 @@ label {
 
 #footer ul li {
 	display: inline-block;
-	padding-right: 6px;
-  padding-left: 6px;
+	margin-right: 28px;
+  /* padding-left: 10px; */
   padding-top: 10px;
-  /* margin-bottom: 10px; */
   padding-bottom: 20px;
 }
 
 .ag-theme-alpine {
-  margin-bottom: 130px;
+  margin-bottom: 140px;
+}
+
+#divregistre {
+  padding-top: 20px;
+  padding-bottom: 18px;
+  background-image: url("../public/canpica1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: auto;
+}
+
+#errors {
+  text-align: center;
+  font-size: 14pt;
+  color: #ce2323;
+  font-weight: bold;
+  margin: 0;
+}
+
+#linkFormulari {
+  font-size: 14pt;
 }

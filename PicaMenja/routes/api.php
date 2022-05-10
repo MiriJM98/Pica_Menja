@@ -13,7 +13,7 @@ use Symfony\Component\Routing\RouteCompiler;
 // SENSE AUTENTIFICACIÓ
 // NOMÉS PODEM CREAR USUARIS I FER LOGIN
 Route::post('login', 'App\Http\Controllers\LoginController@login');
-Route::post('', 'App\Http\Controllers\UsuariController@store');
+Route::post('usuaris', 'App\Http\Controllers\UsuariController@store');
 
 Route::group(['middleware' => 'token'], function () {
     Route::post('logout', 'App\Http\Controllers\LoginController@logout');
