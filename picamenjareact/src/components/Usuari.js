@@ -196,7 +196,7 @@ export default class Usuari extends Component {
                     <div className="col-md-3">
                         <div className="form-group">
                             <label>Direcció:</label>
-                            <input value={this.state.direccio} type="email" name='direccio' onChange={this.onChange} className="form-control" />
+                            <input value={this.state.direccio} type="text" name='direccio' onChange={this.onChange} className="form-control" />
                         </div>
                     </div>
                     <div className="col-md-3">

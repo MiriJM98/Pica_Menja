@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import axios from 'axios';
 
 export default class PerfilUsuari extends Component {
@@ -9,10 +9,14 @@ export default class PerfilUsuari extends Component {
         this.state = {
             id_usuari: "",
             nom_usuari: "",
-            cognoms: "",
-            email_usuari: "",
-            telefon_usuari: "",
-            password: ""
+            llinatges: "",
+            telefon: "",
+            direccio: "",
+            data_naixement: "",
+            email: "",
+            password: "",
+            administrador: "",
+            foto_perfil: "",
         }
     }
 
@@ -27,16 +31,20 @@ export default class PerfilUsuari extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
         const usuari = sessionStorage.getItem("id_usuari");
-        axios.get('http://baleart.projectebaleart.com/public/api/usuaris/' + usuari, config)
+        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + usuari, config)
             .then(response => {
                 //console.log(response);
                 this.setState({
                     id_usuari: response.data.id_usuari,
                     nom_usuari: response.data.nom_usuari,
-                    cognoms: response.data.cognoms,
-                    email_usuari: response.data.email_usuari,
-                    telefon_usuari: response.data.telefon_usuari,
-                    password: response.data.password
+                    llinatges: response.data.llinatges,
+                    telefon: response.data.telefon,
+                    direccio: response.data.direccio,
+                    data_naixement: response.data.data_naixement,
+                    email: response.data.email,
+                    password: response.data.password,
+                    administrador: response.data.administrador,
+                    foto_perfil: response.data.foto_perfil,
                 });
             })
             .catch(function (error) {
@@ -49,9 +57,9 @@ export default class PerfilUsuari extends Component {
         //Modificar les dades a la api
         let formData = new URLSearchParams();
         formData.append("nom_usuari", this.state.nom_usuari);
-        formData.append("cognoms", this.state.cognoms);
-        formData.append("email_usuari", this.state.email_usuari);
-        formData.append("telefon_usuari", this.state.telefon_usuari);
+        formData.append("llinatges", this.state.llinatges);
+        formData.append("email", this.state.email);
+        formData.append("telefon", this.state.telefon);
         //formData.append("password", this.state.password);
         //Token
         const config = {
@@ -98,36 +106,58 @@ export default class PerfilUsuari extends Component {
                     </div>
                     <div className="col-md-3">
                         <div className="form-group">
-                            <label>Cognoms:</label>
-                            <input type="text" className='form-control' name='cognoms' value={this.state.cognoms} onChange={this.onChange} />
-                        </div>
-                    </div>
-                    <div className="col-md-3">
-                        <div className="form-group">
-                            <label>Email:</label>
-                            <input type="text" className='form-control' name='email_usuari' value={this.state.email_usuari} onChange={this.onChange} />
+                            <label>Llinatges:</label>
+                            <input type="text" className='form-control' name='llinatges' value={this.state.llinatges} onChange={this.onChange} />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
                             <label>Telèfon:</label>
-                            <input type="text" className='form-control' name='telefon_usuari' value={this.state.telefon_usuari} onChange={this.onChange} />
+                            <input type="text" className='form-control' name='telefon' value={this.state.telefon} onChange={this.onChange} />
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                <div className="row"><div className="col-md-4">&nbsp;</div></div>
+                    <div className="col-md-3">
+                        <div className="form-group">
+                            <label>Direcció:</label>
+                            <input value={this.state.direccio} type="text" name='direccio' onChange={this.onChange} className="form-control" />
+                        </div>
+                    </div>
+                    <div className="col-md-2">
+                        <div className="form-group">
+                            <label>Data naixement:</label>
+                            <input value={this.state.data_naixement} type="date" name='data_naixement' onChange={this.onChange} className="form-control" />
+                        </div>
+                    </div>
+                    <div className="col-md-3">
+                        <div className="form-group">
+                            <label>Email:</label>
+                            <input value={this.state.email} type="email" name='email' onChange={this.onChange} className="form-control" />
                         </div>
                     </div>
                 </div>
                 <div className="row"><div className="col-md-4">&nbsp;</div></div>
-                {/* <div className='row'>
+                <div className="row"><div className="col-md-4">&nbsp;</div></div>
+                <div className='row'>
+                    <div className="col-md-3">
+                        <Image src={this.state.foto_perfil} width="220" height="280" rounded />
+                    </div>
+                </div>
+                <hr/>
+                <div className='row justify-content-center'>
                     <div className="col-md-5">
                         <div className="form-group">
-                            <h4>Restableix la teva contrasenya</h4>
+                            <h2>Restableix la teva contrasenya</h2>
                             <label>Password:</label>
                             <input type="password" className='form-control' name='password' value={this.state.password} onChange={this.onChange} />
                         </div>
                     </div>
                 </div>
-                <div className="row"><div className="col-md-4">&nbsp;</div></div> */}
+                <div className="row"><div className="col-md-4">&nbsp;</div></div>
                 <div className="row">
-                    <div className="col-md-1">
+                    <div className="col-md-1 mb-2">
                         <div className="form-group">
                             <input type="submit" value="Modifica" className="btn btn-primary" onClick={this.update} />
                         </div>
