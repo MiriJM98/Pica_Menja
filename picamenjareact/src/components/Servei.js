@@ -72,7 +72,7 @@ export default class Servei extends Component {
         formData.append("servei_de", this.state.servei_de);
         // Token
         const config = {
-          headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+            headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         };
         axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis", formData, config
         ).then((response) => {
@@ -101,13 +101,14 @@ export default class Servei extends Component {
     render() {
         return (
             <Container>
-                <div className="row">
-                    <div className="col-md-4 mt-3">
+                <div className="row mt-3">
+                    <h1 className="row justify-content-center">Insertar un servei</h1>
+                </div>
+                <div className="row mb-3">
+                    <div className="col-md-1">
+                        <div className="form-group"></div>
                         <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
                             onClick={() => { window.location.assign("/serveis"); }} />
-                    </div>
-                    <div className="col-md-4 mt-3">
-                        <h1 className="row justify-content-center">Insertar un servei</h1>
                     </div>
                 </div>
                 <hr />

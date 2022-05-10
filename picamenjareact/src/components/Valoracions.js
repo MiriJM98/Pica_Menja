@@ -114,13 +114,8 @@ export default class Valoracions extends Component {
     render() {
         return (
             <div className="ag-theme-alpine" style={{ height: 600, width: "100%" }}>
-                <div className="row justify-content-center">
-                    <div className="row">
-                        <div className="col-md-4">&nbsp;</div>
-                    </div>
-                    <div className="col-md-4 mt-2 mb-3">
-                        <h1>Llistat de valoracions</h1>
-                    </div>
+                <div className="row">
+                    <h1 className='row justify-content-center mt-3 mb-5'>Llistat de valoracions</h1>
                 </div>
                 <AgGridReact
                     rowData={this.state.valoracions}

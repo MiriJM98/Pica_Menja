@@ -105,20 +105,20 @@ export default class Usuaris extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 600, width: '100%' }}>
                 <div className="row">
-                    <div className="col-md-4 mt-3 mb-3">
-                        <Button
-                            variant="primary"
-                            className="ms-3"
+                    <h1 className='row justify-content-center mt-3'>Llistat d'usuaris</h1>
+                </div>
+                <div className="row mb-3 ms-1">
+                    <div className="col-md-1">
+                        <div className="form-group"></div>
+                        <input
+                            type="button"
+                            className="btn btn-primary btn-lg"
+                            value={"Afegir nou usuari"}
                             onClick={() => {
                                 window.location.assign(
                                     "/usuari/" + this.state.id_usuari
                                 );
-                            }}>
-                            Afegir nou usuari
-                        </Button>
-                    </div>
-                    <div className="col-md-4 mt-2 mb-3">
-                        <h1>Llistat d'usuaris</h1>
+                            }} />
                     </div>
                 </div>
                 <AgGridReact

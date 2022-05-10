@@ -119,15 +119,6 @@ label {
   margin-bottom: 140px;
 }
 
-#divregistre {
-  padding-top: 20px;
-  padding-bottom: 18px;
-  background-image: url("../public/canpica1.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  width: auto;
-}
-
 #errors {
   text-align: center;
   font-size: 14pt;

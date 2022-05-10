@@ -57,6 +57,9 @@ export default class RestaurantServei extends Component {
         }
         ).catch((error) => {
             console.log(error);
+            if (error.response.data.exception === "Illuminate\\Database\\QueryException") {
+                alert("Clau primària duplicada! Aquest restaurant ja té el servei seleccionat.");
+            }
         });
     };
 
@@ -77,13 +80,14 @@ export default class RestaurantServei extends Component {
     render() {
         return (
             <Container>
-                <div className="row">
-                    <div className="col-md-4 mt-3">
+                <div className="row mt-3">
+                    <h1 className="row justify-content-center">Inserta restaurant servei</h1>
+                </div>
+                <div className="row mb-3">
+                    <div className="col-md-1">
+                        <div className="form-group"></div>
                         <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
                             onClick={() => { window.location.assign("/restaurants_serveis"); }} />
-                    </div>
-                    <div className="col-md-4 mt-3">
-                        <h1 className="row justify-content-center">Inserta restaurant servei</h1>
                     </div>
                 </div>
                 <hr />

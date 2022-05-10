@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from "react-bootstrap";
 import axios from 'axios';
 import { AgGridReact } from 'ag-grid-react';
 
@@ -44,23 +43,20 @@ export default class Idiomes extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 400, width: "100%" }}>
                 <div className="row">
-                    <div className="row">
-                        <div className="col-md-4">&nbsp;</div>
-                    </div>
-                    <div className="col-md-4 mt-3 mb-3">
-                        <Button
-                            variant="primary"
-                            className="ms-3"
+                    <h1 className='row justify-content-center mt-3'>Llistat d'idiomes</h1>
+                </div>
+                <div className="row mb-3 ms-1">
+                    <div className="col-md-1">
+                        <div className="form-group"></div>
+                        <input
+                            type="button"
+                            className="btn btn-primary btn-lg"
+                            value={"Afegir nou idioma"}
                             onClick={() => {
                                 window.location.assign(
                                     "/idioma/" + this.state.id_idioma
                                 );
-                            }}>
-                            Afegir nou idioma
-                        </Button>
-                    </div>
-                    <div className="col-md-4 mt-2 mb-3">
-                        <h1>Llistat d'idiomes</h1>
+                            }} />
                     </div>
                 </div>
                 <AgGridReact
