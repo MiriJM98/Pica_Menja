@@ -130,3 +130,22 @@ label {
 #linkFormulari {
   font-size: 14pt;
 }
+
+#verticalLine {
+  border-left: 3px solid gray;
+  height: 500px;
+  left: 10%;
+  margin-left: 200px;
+}
+
+#fotoUsuari {
+  padding-left: 90px;
+}
+
+.card-header {
+  font-size: 15pt;
+}
+
+#botoA {
+  float: right;
+}
