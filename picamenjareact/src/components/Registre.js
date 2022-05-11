@@ -72,8 +72,8 @@ export default class Registre extends Component {
             // return alert("Error. S'han d'omplir tots els camps.");
             document.getElementById("errors").style.display = "block";
             return e.preventDefault();
-            
         }
+        
         let formData = new URLSearchParams();
         formData.append("nom_usuari", this.state.nom_usuari);
         formData.append("llinatges", this.state.llinatges);
@@ -118,7 +118,7 @@ export default class Registre extends Component {
                     <p><input type="password" id="password" name="password" onChange={this.canviParam} /></p>
                     <p><a href="/login" id="linkFormulari" className="row justify-content-center">Ja tens compte? Inicia sessió!</a></p>
                     <p><button type="button" id="botoRegistre" onClick={this.registre}>Inscriu-te</button></p>
-                    <p id="errors" style={{display: 'none' }}>Error. Tots els camps son obligatoris!</p>
+                    <p id="errors" style={{ display: 'none' }}>Error. Tots els camps son obligatoris!</p>
                 </div>
             </div>
         )

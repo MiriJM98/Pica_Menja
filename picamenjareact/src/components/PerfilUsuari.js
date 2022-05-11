@@ -15,6 +15,7 @@ export default class PerfilUsuari extends Component {
             data_naixement: "",
             email: "",
             password: "",
+            password_nova: "",
             administrador: "",
             foto_perfil: "",
         }
@@ -58,31 +59,91 @@ export default class PerfilUsuari extends Component {
         let formData = new URLSearchParams();
         formData.append("nom_usuari", this.state.nom_usuari);
         formData.append("llinatges", this.state.llinatges);
-        formData.append("email", this.state.email);
         formData.append("telefon", this.state.telefon);
-        //formData.append("password", this.state.password);
+        formData.append("direccio", this.state.direccio);
+        formData.append("data_naixement", this.state.data_naixement);
+        formData.append("email", this.state.email);
+        formData.append("administrador", this.state.administrador);
+        formData.append("foto_perfil", this.state.foto_perfil);
         //Token
+        console.log(formData);
         const config = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token"),
                 'content-type': 'application/x-www-form-urlencoded'
             }
+            //headers: { Authorization: 'Bearer ' + "token"}
         };
-        const usuari = sessionStorage.getItem("id_usuari");
-        axios.put('http://baleart.projectebaleart.com/public/api/usuaris/' + usuari, formData,
-            config,
+        axios.put('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData, config
         ).then(response => {
             console.log(response);
-            alert("Modificació feta amb èxit!");
+            alert("Modificat amb èxit!");
+            window.location.assign("/perfilUsuari");
+            this.descarrega();
         }
         ).catch(error => {
             console.log(error);
         });
     }
 
+    updatePassword = () => {
+        //Modificar les dades a la api
+        let passwordNova = document.getElementById("password_nova").value;
+        let passwordNovaRe = document.getElementById("password_nova_re").value;
+        if (passwordNova !== passwordNovaRe) {
+            console.log(passwordNova);
+            return alert("Error. Les contrasenyes no coincideixen!!");
+        }
+        let formData = new URLSearchParams();
+        formData.append("email", this.state.email);
+        formData.append("password", this.state.password_nova);
+        //Token
+        console.log(formData);
+        const config = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem("token"),
+                'content-type': 'application/x-www-form-urlencoded'
+            }
+        };
+        axios.put('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris', formData, config
+        ).then(response => {
+            console.log(response);
+            alert("Contrasenya modificada amb èxit!");
+            window.location.assign("/perfilUsuari");
+            this.descarrega();
+        }
+        ).catch(error => {
+            console.log(error);
+        });
+    }
+
+    updateFoto = () => {
+        let formData = new FormData();
+        formData.append("foto_perfil", this.state.foto_perfil);
+        // Token
+        const config = {
+            headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+        };
+        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, formData,
+            config
+        ).then((response) => {
+            console.log(response);
+            alert("Imatge pujada amb èxit!");
+        }
+        ).catch((error) => {
+            console.log(error);
+        });
+    };
+
     onChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
+        })
+    }
+
+    onChangeFoto = (e) => {
+        this.setState({
+            imatge: e.target.files[0]
         })
     }
 
@@ -123,7 +184,7 @@ export default class PerfilUsuari extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <button className="btn btn-primary mt-3" type="button">Actualitza foto</button>
+                                    <button className="btn btn-primary mt-3" type="button" onClick={this.updateFoto}>Actualitza foto</button>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +196,7 @@ export default class PerfilUsuari extends Component {
                                     {/* <!-- Form Row--> */}
                                     <div className="row gx-3 mb-3">
                                         {/* <!-- Form Group (first name)--> */}
-                                        <div className="col-md-6">
+                                        <div className="col-md-6 mb-2">
                                             <label>Nom usuari:</label>
                                             <input type="text" className='form-control' name='nom_usuari' value={this.state.nom_usuari} onChange={this.onChange} />
                                         </div>
@@ -148,7 +209,7 @@ export default class PerfilUsuari extends Component {
                                     {/* <!-- Form Row        --> */}
                                     <div className="row gx-3 mb-3">
                                         {/* <!-- Form Group (organization name)--> */}
-                                        <div className="col-md-6">
+                                        <div className="col-md-6 mb-2">
                                             <label>Data naixement:</label>
                                             <input value={this.state.data_naixement} type="date" name='data_naixement' onChange={this.onChange} className="form-control" />
                                         </div>
@@ -161,7 +222,7 @@ export default class PerfilUsuari extends Component {
                                     {/* <!-- Form Row--> */}
                                     <div className="row gx-3 mb-3">
                                         {/* <!-- Form Group (phone number)--> */}
-                                        <div className="col-md-6">
+                                        <div className="col-md-6 mb-2">
                                             <label>Direcció:</label>
                                             <input value={this.state.direccio} type="text" name='direccio' onChange={this.onChange} className="form-control" />
                                         </div>
@@ -172,7 +233,7 @@ export default class PerfilUsuari extends Component {
                                         </div>
                                     </div>
                                     {/* <!-- Save changes button--> */}
-                                    <div className='text-center'><button className="btn btn-primary" type="button">Desa els canvis</button></div>
+                                    <div className='text-center'><button className="btn btn-primary" type="button" onClick={this.update}>Desa els canvis</button></div>
                                 </div>
                             </div>
                         </div>
@@ -184,15 +245,21 @@ export default class PerfilUsuari extends Component {
                                 <div className="card-body">
                                     <div className="row gx-3">
                                         <div className="mb-3">
+                                            <label>Email:</label>
+                                            <input value={this.state.email} type="email" name='email' onChange={this.onChange} className="form-control" />
+                                        </div>
+                                    </div>
+                                    <div className="row gx-3">
+                                        <div className="mb-3">
                                             <label>Contrasenya antiga (encriptada):</label>
-                                            <input type="password" className='form-control' name='password' value={this.state.password} onChange={this.onChange} />
+                                            <input type="password" className='form-control' name='password_antiga' value={this.state.password} onChange={this.onChange} />
                                         </div>
                                     </div>
                                     <div className="row gx-3 mb-3">
                                         {/* <!-- Form Group (first name)--> */}
                                         <div className="col-md-6">
                                             <label>Contrasenya nova:</label>
-                                            <input type="password" className='form-control' name='password_nova' onChange={this.onChange} />
+                                            <input type="password" className='form-control' id='password_nova' name='password_nova' value={this.state.password_nova} onChange={this.onChange} />
                                         </div>
                                     </div>
                                     {/* <!-- Form Row        --> */}
@@ -200,12 +267,12 @@ export default class PerfilUsuari extends Component {
                                         {/* <!-- Form Group (location)--> */}
                                         <div className="col-md-6">
                                             <label>Repeteix contrasenya nova:</label>
-                                            <input type="password" className='form-control' name='password_novar' onChange={this.onChange} />
+                                            <input type="password" className='form-control' id='password_nova_re' name='password_nova_re' onChange={this.onChange} />
                                         </div>
                                     </div>
                                     {/* <!-- Form Row--> */}
                                     {/* <!-- Save changes button--> */}
-                                    <div id='botoA'><button className="btn btn-primary" type="button">Actualitza</button></div>
+                                    <div id='botoA'><button className="btn btn-primary" type="button" onClick={this.updatePassword}>Actualitza</button></div>
                                 </div>
                             </div>
                         </div>
