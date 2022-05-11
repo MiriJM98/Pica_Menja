@@ -182,9 +182,18 @@ export default class PerfilUsuari extends Component {
                                             <div className="form-group">
                                                 <input value={this.state.nom_usuari + " " + this.state.llinatges} readOnly className="form-control" style={{ border: 0, backgroundColor: 'white' }} />
                                             </div>
+                                            <div>
+                                                <input
+                                                    type="file"
+                                                    accept="image/png, image/jpeg"
+                                                    name="foto_perfil"
+                                                    onChange={this.onChangeFoto}
+                                                    className="form-control"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
-                                    <button className="btn btn-primary mt-3" type="button" onClick={this.updateFoto}>Actualitza foto</button>
+                                    <button className="btn btn-primary" type="button" onClick={this.updateFoto}>Actualitza foto</button>
                                 </div>
                             </div>
                         </div>
