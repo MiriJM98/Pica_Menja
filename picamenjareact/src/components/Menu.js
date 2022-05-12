@@ -35,8 +35,43 @@ import QuiSom from "./QuiSom";
 import Suggeriments from "./Suggeriments";
 import PerfilUsuari from "./PerfilUsuari";
 import Registre from "./Registre";
+import axios from "axios";
 
 export default class Menu extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id_usuari: "",
+      nom_usuari: "",
+      foto_perfil: "",
+    }
+  }
+
+  componentDidMount() {
+    if (sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null) {
+      this.descarrega();
+    }
+  }
+
+  descarrega = () => {
+    const config = {
+      headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+    };
+    const usuari = sessionStorage.getItem("id_usuari");
+    axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + usuari, config)
+      .then(response => {
+        //console.log(response);
+        this.setState({
+          id_usuari: response.data.id_usuari,
+          nom_usuari: response.data.nom_usuari,
+          foto_perfil: response.data.foto_perfil,
+        });
+      })
+      .catch(function (error) {
+        //Mostrar error
+        console.log(error);
+      })
+  }
 
   loginFunction() {
     window.location.assign("/login");
@@ -47,7 +82,7 @@ export default class Menu extends Component {
   }
 
   handleRefresh = () => {
-    // by calling this method react re-renders the component
+    // By calling this method react re-renders the component
     this.setState({});
   };
 
@@ -55,11 +90,15 @@ export default class Menu extends Component {
     window.location.assign("/perfilUsuari");
   }
 
-  refreshPage() {
-    window.location.reload(false);
+  desplegaMenu() {
+    if (document.getElementById("dropdown-content").style.display === "none") {
+      document.getElementById("dropdown-content").style.display = "block";
+    } else {
+      document.getElementById("dropdown-content").style.display = "none";
+    }
   }
 
-  Logout() {
+  logout() {
     sessionStorage.setItem("token", "");
     sessionStorage.setItem("id_usuari", "");
     sessionStorage.setItem("admin", "");
@@ -73,7 +112,7 @@ export default class Menu extends Component {
           <Container>
             <div className="idiomes">
               <button className="btn btn-link"><Image src={process.env.PUBLIC_URL + '/idiomas.png'}
-                width="40" height="40" title="IDIOMA" onClick={prova}
+                width="45" height="45" title="IDIOMA" onClick={prova}
               />
               </button>
               {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
@@ -81,16 +120,33 @@ export default class Menu extends Component {
                   <button className="ms-2 btn btn-info btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
                   <button className="ms-3 btn btn-warning btn-lg mb-2" onClick={this.registreFunction}>Regístra't</button>
                 </>
-                : console.log(sessionStorage.getItem("token"))}
+                : console.log()}
+
               {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
                 <>
-                  <button className="ms-2 btn btn-outline-danger btn-lg mb-2" onClick={this.Logout}>Tanca sessió</button>
-                  <button className="ms-3  btn btn-dark btn-lg mb-2" onClick={this.perfilFunction}>Perfil</button>
+                  <div className="dropdown">
+                    <button type="button" className="dropbtn" onClick={this.desplegaMenu}>
+                      {this.state.foto_perfil !== "" && this.state.foto_perfil !== "null" && this.state.foto_perfil !== null ?
+                        <>
+                          <Image src={this.state.foto_perfil} style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
+                        </>
+                        : console.log()}
+                      {this.state.foto_perfil === "null" || this.state.foto_perfil === null ?
+                        <>
+                          <Image src={process.env.PUBLIC_URL + "/user.png"} style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
+                        </>
+                        : console.log("AQUÍ " + this.state.foto_perfil)}
+                    </button>
+                    <div className="dropdown-content" id="dropdown-content" style={{ display: 'none' }}>
+                      <button className="ms-3  btn btn-dark btn-lg mb-2" tabIndex={"0"} onClick={this.perfilFunction}>Perfil</button>
+                      <button className="ms-2 btn btn-outline-danger btn-lg mb-2" onClick={this.logout}>Tanca sessió</button>
+                    </div>
+                  </div>
                 </>
-                : console.log(sessionStorage.getItem("id_usuari"))}
+                : console.log()}
             </div>
-
           </Container>
+
           <Container>
             <>
               <div className="parent">
@@ -102,7 +158,7 @@ export default class Menu extends Component {
                       id="imatges"
                     />
                   </>
-                  : console.log(window.location.pathname)}
+                  : console.log()}
 
                 {window.location.pathname === "/" ?
                   <>
@@ -112,8 +168,7 @@ export default class Menu extends Component {
                       id="imatges"
                     />
                   </>
-                  : console.log(window.location.pathname)}
-
+                  : console.log()}
               </div>
             </>
           </Container>
@@ -147,7 +202,7 @@ export default class Menu extends Component {
                     <NavLink className="nav-link" to="/usuaris" onClick={this.handleRefresh}>Usuaris</NavLink>
                     <NavLink className="nav-link" to="/valoracions" onClick={this.handleRefresh}>Valoracions</NavLink>
                   </>
-                  : console.log(sessionStorage.getItem("admin"))}
+                  : console.log()}
               </Nav>
             </Container>
           </Navbar>
@@ -186,18 +241,18 @@ export default class Menu extends Component {
         </BrowserRouter>
         <div id="footer">
           {'Copyright © '}
-          <Link color="inherit" href="http://localhost:3000/">
+          <Link color="inherit" href="/">
             Pica & Menja
           </Link>{' '}
           {new Date().getFullYear()}
           {'.'}
           <div>
             <ul>
-              <li><a href="https://www.facebook.com/" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/logof.jpg'} alt="Logo de Facebook"
+              <li><a href="https://www.facebook.com/" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/fotof.png'} alt="Logo de Facebook"
                 title="Facebook" width="30" height="30" /></a></li>
-              <li><a href="https://www.instagram.com/" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/logoi.jpg'}
+              <li><a href="https://www.instagram.com/" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/fotoi.png'}
                 alt="Logo d'Instagram" title="Instagram" width="30" height="30" /></a></li>
-              <li><a href="https://twitter.com/?lang=es" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/logot.jpg'}
+              <li><a href="https://twitter.com/?lang=es" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/fotot.png'}
                 alt="Logo de Twitter" title="Twitter" width="30" height="30" /></a></li>
             </ul>
           </div>
@@ -250,3 +305,4 @@ function prova() {
 console.log("AQUÍ SALE EL TOKEN ---> " + sessionStorage.getItem("token"));
 console.log("AQUÍ SALE EL ADMIN ---> " + sessionStorage.getItem("admin"));
 console.log("AQUÍ SALE EL ID_USUARI --> " + sessionStorage.getItem("id_usuari"));
+console.log("AQUÍ SALE TOKEN VÁLIDO --> " + sessionStorage.getItem("token_valid"));

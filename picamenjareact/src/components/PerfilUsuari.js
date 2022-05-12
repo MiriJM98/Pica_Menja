@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Image } from "react-bootstrap";
 import axios from 'axios';
+import FormData from 'form-data';
 
 export default class PerfilUsuari extends Component {
     constructor(props) {
@@ -118,21 +119,23 @@ export default class PerfilUsuari extends Component {
     }
 
     updateFoto = () => {
-        let formData = new FormData();
-        formData.append("foto_perfil", this.state.foto_perfil);
-        // Token
-        const config = {
-            headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-        };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, formData,
-            config
-        ).then((response) => {
-            console.log(response);
-            alert("Imatge pujada amb èxit!");
+        if (this.state.foto_perfil !== null || this.state.foto_perfil !== "") {
+            let formData = new FormData();
+            formData.append("foto_perfil", this.state.foto_perfil);
+            // Token
+            const config = {
+                headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+            };
+            axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, formData,
+                config
+            ).then((response) => {
+                console.log(response);
+                alert("Imatge pujada amb èxit!");
+            }
+            ).catch((error) => {
+                console.log(error);
+            });
         }
-        ).catch((error) => {
-            console.log(error);
-        });
     };
 
     onChange = (e) => {
@@ -143,7 +146,7 @@ export default class PerfilUsuari extends Component {
 
     onChangeFoto = (e) => {
         this.setState({
-            imatge: e.target.files[0]
+            foto_perfil: e.target.files[0]
         })
     }
 
@@ -175,7 +178,7 @@ export default class PerfilUsuari extends Component {
                                 <div className="card-header">Foto de perfil</div>
                                 <div className="card-body text-center">
                                     {/* <!-- Profile picture image--> */}
-                                    <Image src={this.state.foto_perfil} style={{ width: 163, height: 163, borderRadius: 400 / 2 }} />
+                                    <Image src={this.state.foto_perfil} style={{ width: 200, height: 200, borderRadius: 400 / 2 }} />
                                     {/* <!-- Profile picture help block--> */}
                                     <div className="row justify-content-center mt-3 mb-3 ms-4">
                                         <div className="col-md-8">
@@ -253,7 +256,7 @@ export default class PerfilUsuari extends Component {
                                 <div className="card-header">Restableix la teva contrasenya</div>
                                 <div className="card-body">
                                     <div className="row gx-3">
-                                        <div className="mb-3">
+                                        <div className="col-md-6 mb-3">
                                             <label>Email:</label>
                                             <input value={this.state.email} type="email" name='email' onChange={this.onChange} className="form-control" />
                                         </div>
@@ -270,14 +273,15 @@ export default class PerfilUsuari extends Component {
                                             <label>Contrasenya nova:</label>
                                             <input type="password" className='form-control' id='password_nova' name='password_nova' value={this.state.password_nova} onChange={this.onChange} />
                                         </div>
-                                    </div>
-                                    {/* <!-- Form Row        --> */}
-                                    <div className="row gx-3 mb-3">
-                                        {/* <!-- Form Group (location)--> */}
                                         <div className="col-md-6">
                                             <label>Repeteix contrasenya nova:</label>
                                             <input type="password" className='form-control' id='password_nova_re' name='password_nova_re' onChange={this.onChange} />
                                         </div>
+                                    </div>
+                                    {/* <!-- Form Row        --> */}
+                                    <div className="row gx-3 mb-3">
+                                        {/* <!-- Form Group (location)--> */}
+
                                     </div>
                                     {/* <!-- Form Row--> */}
                                     {/* <!-- Save changes button--> */}
@@ -287,89 +291,6 @@ export default class PerfilUsuari extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <div className='row justify-content-center'>
-                    <h1 className="row justify-content-center mt-3 mb-3">El teu perfil</h1>
-                    <br />
-                    <div className='row'>
-                        <div className="col-md-3">
-                            <Image src={this.state.foto_perfil} style={{ width: 160, height: 160, borderRadius: 400 / 2 }} />
-                        </div>
-                    </div>
-                    <div className='row'>
-                        <div className="col-md-2">
-                            <div className="form-group">
-                                <input value={this.state.nom_usuari + " " + this.state.llinatges} type="nom_complet" name='nom_complet' readOnly className="form-control" style={{ border: 0 }} />
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div className='row'>
-                        <div className="col-md-1">
-                            <div className="form-group">
-                                <label>ID:</label>
-                                <input type="text" className="form-control" value={this.state.id_usuari} readOnly />
-                            </div>
-                        </div>
-                        <div className="col-md-2">
-                            <div className="form-group">
-                                <label>Nom usuari:</label>
-                                <input type="text" className='form-control' name='nom_usuari' value={this.state.nom_usuari} onChange={this.onChange} />
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="form-group">
-                                <label>Llinatges:</label>
-                                <input type="text" className='form-control' name='llinatges' value={this.state.llinatges} onChange={this.onChange} />
-                            </div>
-                        </div>
-                        <div className="col-md-2">
-                            <div className="form-group">
-                                <label>Telèfon:</label>
-                                <input type="text" className='form-control' name='telefon' value={this.state.telefon} onChange={this.onChange} />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="row"><div className="col-md-4">&nbsp;</div></div>
-                        <div className="col-md-3">
-                            <div className="form-group">
-                                <label>Direcció:</label>
-                                <input value={this.state.direccio} type="text" name='direccio' onChange={this.onChange} className="form-control" />
-                            </div>
-                        </div>
-                        <div className="col-md-2">
-                            <div className="form-group">
-                                <label>Data naixement:</label>
-                                <input value={this.state.data_naixement} type="date" name='data_naixement' onChange={this.onChange} className="form-control" />
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="form-group">
-                                <label>Email:</label>
-                                <input value={this.state.email} type="email" name='email' onChange={this.onChange} className="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row"><div className="col-md-4">&nbsp;</div></div>
-                    <div className="row"><div className="col-md-4">&nbsp;</div></div>
-
-                    <div className='row justify-content-center' style={{ display: 'none' }}>
-                        <div className="col-md-5">
-                            <div className="form-group">
-                                <h2>Restableix la teva contrasenya</h2>
-                                <label>Password:</label>
-                                <input type="password" className='form-control' name='password' value={this.state.password} onChange={this.onChange} />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row"><div className="col-md-4">&nbsp;</div></div>
-                    <div className="row">
-                        <div className="col-md-1 mb-2">
-                            <div className="form-group">
-                                <input type="submit" value="Modifica" className="btn btn-primary" onClick={this.update} />
-                            </div>
-                        </div>
-                    </div> */}
             </Container>
         )
     }

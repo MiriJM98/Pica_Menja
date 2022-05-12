@@ -86,7 +86,7 @@ class UsuariController extends Controller
     public function fotoPerfil(Request $request, $id)
     {
         $validacio = Validator::make($request->all(), [
-            'foto_perfil' => 'required|mimes:jpeg,jpg,bmp,png|max:10240',
+            'foto_perfil' => 'required|mimes:jpeg,jpg,bmp,png|max:102400',
         ]);
         $tupla = Usuari::findOrFail($id);
         if (!$validacio->fails()) {

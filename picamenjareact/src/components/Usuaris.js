@@ -82,23 +82,27 @@ export default class Usuaris extends Component {
     }
 
     descarrega() {
-        const config = {
-            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-            //headers: { Authorization: 'Bearer ' + "token"}
-        };
+        if (sessionStorage.getItem("admin") === "1") {
+            const config = {
+                headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+            };
 
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris', config)
-            .then(response => {
-                console.log(response);
-                this.setState({ usuaris: response.data });
-            })
-            .catch(function (error) {
-                console.log("ERROR -> " + error.response.data.error);
-                if (error.response.status === 401) {
-                    sessionStorage.setItem("token", "");
-                    window.location.assign("/");
-                }
-            })
+            axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris', config)
+                .then(response => {
+                    console.log(response);
+                    this.setState({ usuaris: response.data });
+                })
+                .catch(function (error) {
+                    console.log("ERROR -> " + error.response.data.error);
+                    if (error.response.status === 401) {
+                        sessionStorage.setItem("token", "");
+                        window.location.assign("/");
+                    }
+                })
+        } else {
+            window.location.assign("/");
+            console.log("USUARI SENSE PERMÍS!");
+        }
     }
 
     render() {
