@@ -28,6 +28,7 @@ export default class PerfilUsuari extends Component {
         }
     }
 
+    // DESCARREGAM LES DADES DE L'USUARI QUE HA FET LOGIN
     descarrega = () => {
         const config = {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
@@ -50,13 +51,14 @@ export default class PerfilUsuari extends Component {
                 });
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             })
     }
 
+    // MODIFICAM LES DADES DE L'USUARI
     update = () => {
-        //Modificar les dades a la api
+        // Modificar les dades a la api
         let formData = new URLSearchParams();
         formData.append("nom_usuari", this.state.nom_usuari);
         formData.append("llinatges", this.state.llinatges);
@@ -66,14 +68,13 @@ export default class PerfilUsuari extends Component {
         formData.append("email", this.state.email);
         formData.append("administrador", this.state.administrador);
         formData.append("foto_perfil", this.state.foto_perfil);
-        //Token
+        // Token
         console.log(formData);
         const config = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token"),
                 'content-type': 'application/x-www-form-urlencoded'
             }
-            //headers: { Authorization: 'Bearer ' + "token"}
         };
         axios.put('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData, config
         ).then(response => {
@@ -87,8 +88,9 @@ export default class PerfilUsuari extends Component {
         });
     }
 
+    // MODIFICAM LA CONTRASENYA DE L'USUARI
     updatePassword = () => {
-        //Modificar les dades a la api
+        // Modificar les dades a la api
         let passwordNova = document.getElementById("password_nova").value;
         let passwordNovaRe = document.getElementById("password_nova_re").value;
         if (passwordNova !== passwordNovaRe) {
@@ -98,7 +100,7 @@ export default class PerfilUsuari extends Component {
         let formData = new URLSearchParams();
         formData.append("email", this.state.email);
         formData.append("password", this.state.password_nova);
-        //Token
+        // Token
         console.log(formData);
         const config = {
             headers: {
@@ -118,6 +120,7 @@ export default class PerfilUsuari extends Component {
         });
     }
 
+    // ACTUALITZAM LA FOTO DE PERFIL DE L'USUARI
     updateFoto = () => {
         if (this.state.foto_perfil !== null || this.state.foto_perfil !== "") {
             let formData = new FormData();
@@ -150,6 +153,7 @@ export default class PerfilUsuari extends Component {
         })
     }
 
+    // FUNCIONS PER A LA NAVEGACIÓ DE COMPTE I PASSWORD
     canviaPassword = () => {
         document.getElementById("divPassword").style.display = "block";
         document.getElementById("divDades").style.display = 'none';
@@ -165,7 +169,7 @@ export default class PerfilUsuari extends Component {
             <Container>
                 <div className="container-xl px-4 mt-4">
                     <h1 className='row justify-content-center'>El teu perfil</h1>
-                    {/* Account page navigation */}
+                    {/* NAVEGACIÓ */}
                     <nav className="nav nav-borders">
                         <Button variant="link" onClick={this.canviaCompte}>Compte</Button>
                         <Button variant="link" onClick={this.canviaPassword}>Contrasenya</Button>
@@ -173,17 +177,18 @@ export default class PerfilUsuari extends Component {
                     <hr className="mt-0 mb-4" />
                     <div className="row">
                         <div className="col-xl-4">
-                            {/* <!-- Profile picture card--> */}
+                            {/* SECCIÓ DEL PERFIL */}
                             <div className="card mb-4 mb-xl-0">
                                 <div className="card-header">Foto de perfil</div>
                                 <div className="card-body text-center">
-                                    {/* <!-- Profile picture image--> */}
+                                    {/* FOTO DE PERFIL */}
                                     <Image src={this.state.foto_perfil} style={{ width: 200, height: 200, borderRadius: 400 / 2 }} />
-                                    {/* <!-- Profile picture help block--> */}
+                                    {/* NOM D'USUARI COMPLET */}
                                     <div className="row justify-content-center mt-3 mb-3 ms-4">
                                         <div className="col-md-8">
                                             <div className="form-group">
-                                                <input value={this.state.nom_usuari + " " + this.state.llinatges} readOnly className="form-control" style={{ border: 0, backgroundColor: 'white' }} />
+                                                <input value={this.state.nom_usuari + " " + this.state.llinatges} readOnly
+                                                    className="form-control" style={{ border: 0, backgroundColor: 'white' }} />
                                             </div>
                                             <div>
                                                 <input
@@ -196,95 +201,92 @@ export default class PerfilUsuari extends Component {
                                             </div>
                                         </div>
                                     </div>
+                                    {/* BOTÓ PER ACTUALITZAR FOTO DEL PERFIL */}
                                     <button className="btn btn-primary" type="button" onClick={this.updateFoto}>Actualitza foto</button>
                                 </div>
                             </div>
                         </div>
                         <div className="col-xl-8" id='divDades'>
-                            {/* <!-- Account details card--> */}
+                            {/* DETALLS DEL TEU COMPTE */}
                             <div className="card mb-4">
                                 <div className="card-header">Detalls del teu perfil</div>
                                 <div className="card-body">
-                                    {/* <!-- Form Row--> */}
+                                    {/* PRIMERA FILA */}
                                     <div className="row gx-3 mb-3">
-                                        {/* <!-- Form Group (first name)--> */}
+                                        {/* NOM USUARI */}
                                         <div className="col-md-6 mb-2">
                                             <label>Nom usuari:</label>
                                             <input type="text" className='form-control' name='nom_usuari' value={this.state.nom_usuari} onChange={this.onChange} />
                                         </div>
-                                        {/* <!-- Form Group (last name)--> */}
+                                        {/* LLINATGES */}
                                         <div className="col-md-6">
                                             <label>Llinatges:</label>
                                             <input type="text" className='form-control' name='llinatges' value={this.state.llinatges} onChange={this.onChange} />
                                         </div>
                                     </div>
-                                    {/* <!-- Form Row        --> */}
+                                    {/* SEGONA FILA */}
                                     <div className="row gx-3 mb-3">
-                                        {/* <!-- Form Group (organization name)--> */}
+                                        {/* DATA DE NAIXEMENT */}
                                         <div className="col-md-6 mb-2">
-                                            <label>Data naixement:</label>
+                                            <label>Data de naixement:</label>
                                             <input value={this.state.data_naixement} type="date" name='data_naixement' onChange={this.onChange} className="form-control" />
                                         </div>
-                                        {/* <!-- Form Group (location)--> */}
+                                        {/* TELÈFON */}
                                         <div className="col-md-6">
                                             <label>Telèfon:</label>
                                             <input type="text" className='form-control' name='telefon' value={this.state.telefon} onChange={this.onChange} />
                                         </div>
                                     </div>
-                                    {/* <!-- Form Row--> */}
+                                    {/* TERCERA FILA */}
                                     <div className="row gx-3 mb-3">
-                                        {/* <!-- Form Group (phone number)--> */}
+                                        {/* DIRECCIÓ */}
                                         <div className="col-md-6 mb-2">
                                             <label>Direcció:</label>
                                             <input value={this.state.direccio} type="text" name='direccio' onChange={this.onChange} className="form-control" />
                                         </div>
-                                        {/* <!-- Form Group (birthday)--> */}
+                                        {/* EMAIL */}
                                         <div className="col-md-6">
                                             <label>Email:</label>
                                             <input value={this.state.email} type="email" name='email' onChange={this.onChange} className="form-control" />
                                         </div>
                                     </div>
-                                    {/* <!-- Save changes button--> */}
+                                    {/* BOTÓ PER GUARDAR ELS CANVIS */}
                                     <div className='text-center'><button className="btn btn-primary" type="button" onClick={this.update}>Desa els canvis</button></div>
                                 </div>
                             </div>
                         </div>
-                        {/*  */}
                         <div className="col-xl-8" id='divPassword' style={{ display: 'none' }}>
-                            {/* <!-- Account details card--> */}
+                            {/* SECCIÓ CONTRASENYA */}
                             <div className="card mb-4">
                                 <div className="card-header">Restableix la teva contrasenya</div>
                                 <div className="card-body">
                                     <div className="row gx-3">
+                                        {/* EMAIL */}
                                         <div className="col-md-6 mb-3">
                                             <label>Email:</label>
                                             <input value={this.state.email} type="email" name='email' onChange={this.onChange} className="form-control" />
                                         </div>
                                     </div>
                                     <div className="row gx-3">
+                                        {/* CONTRASENYA ANTIGA ENCRIPTADA */}
                                         <div className="mb-3">
                                             <label>Contrasenya antiga (encriptada):</label>
                                             <input type="password" className='form-control' name='password_antiga' value={this.state.password} onChange={this.onChange} />
                                         </div>
                                     </div>
                                     <div className="row gx-3 mb-3">
-                                        {/* <!-- Form Group (first name)--> */}
+                                        {/* CONTRASENYA NOVA */}
                                         <div className="col-md-6">
                                             <label>Contrasenya nova:</label>
                                             <input type="password" className='form-control' id='password_nova' name='password_nova' value={this.state.password_nova} onChange={this.onChange} />
                                         </div>
                                         <div className="col-md-6">
+                                        {/* REPETIR CONTRASENYA */}
                                             <label>Repeteix contrasenya nova:</label>
                                             <input type="password" className='form-control' id='password_nova_re' name='password_nova_re' onChange={this.onChange} />
                                         </div>
                                     </div>
-                                    {/* <!-- Form Row        --> */}
-                                    <div className="row gx-3 mb-3">
-                                        {/* <!-- Form Group (location)--> */}
-
-                                    </div>
-                                    {/* <!-- Form Row--> */}
-                                    {/* <!-- Save changes button--> */}
+                                    {/* BOTÓ PER CANVIAR LA CONTRASENYA */}
                                     <div id='botoA'><button className="btn btn-primary" type="button" onClick={this.updatePassword}>Actualitza</button></div>
                                 </div>
                             </div>

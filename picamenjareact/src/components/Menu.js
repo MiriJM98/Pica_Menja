@@ -47,6 +47,7 @@ export default class Menu extends Component {
     }
   }
 
+  // SI UN USUARI HA INICIAT SESSIÓ DESCARREGAM LES SEVES DADES PER MOSTRAR LA SEVA FOTO DE PERFIL
   componentDidMount() {
     if (sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null) {
       this.descarrega();
@@ -73,23 +74,27 @@ export default class Menu extends Component {
       })
   }
 
+  // FUNCIÓ PER ANAR A INICIAR SESSIÓ
   loginFunction() {
     window.location.assign("/login");
   }
 
+  // FUNCIÓ PER ANAR A CREAR UN NOU COMPTE D'USUARI
   registreFunction() {
     window.location.assign("/registre");
   }
 
+  // FUNCIÓ PER RECARREGAR EL COMPONENT
   handleRefresh = () => {
-    // By calling this method react re-renders the component
     this.setState({});
   };
 
+  // FUNCIÓ PER ANAR AL PERFIL DE L'USUARI
   perfilFunction() {
     window.location.assign("/perfilUsuari");
   }
 
+  // FUNCIÓ PER MOSTRAR I OCULTAR EL MENÚ D'USUARI
   desplegaMenu() {
     if (document.getElementById("dropdown-content").style.display === "none") {
       document.getElementById("dropdown-content").style.display = "block";
@@ -98,6 +103,7 @@ export default class Menu extends Component {
     }
   }
 
+  // FUNCIÓ PER FER LOGOUT DE L'APLICACIÓ
   logout() {
     sessionStorage.setItem("token", "");
     sessionStorage.setItem("id_usuari", "");
@@ -109,12 +115,16 @@ export default class Menu extends Component {
     return (
       <>
         <div id="header">
+          {/* DINS AQUEST CONTENEDOR TENIM EL HEADER DE L'APLICACIÓ, FORMAT PER DUES SECCIONS: 
+          UNA IMATGE PER SELECCIONAR L'IDIOMA I OPCIONS PER FER LOGIN O REGISTRAR-SE */}
           <Container>
             <div className="idiomes">
               <button className="btn btn-link"><Image src={process.env.PUBLIC_URL + '/idiomas.png'}
                 width="45" height="45" title="IDIOMA" onClick={prova}
               />
               </button>
+
+              {/* SI L'USUARI NO HA FET LOGIN A L'APLICACIÓ SURTEN LES OPCIONS PER FER LOGIN O REGISTRAR-SE */}
               {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
                 <>
                   <button className="ms-2 btn btn-info btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
@@ -122,21 +132,27 @@ export default class Menu extends Component {
                 </>
                 : console.log()}
 
+              {/* SI L'USUARI HA FET LOGIN A L'APLICACIÓ, SURT LA SEVA IMATGE DE PERFIL (SI EN TÉ) I OPCIONS PER VEURE I MODIFICAR EL SEU PERFIL O PER FER LOGOUT */}
               {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
                 <>
                   <div className="dropdown">
                     <button type="button" className="dropbtn" onClick={this.desplegaMenu}>
+
+                      {/* L'USUARI TÉ FOTO DE PERFIL */}
                       {this.state.foto_perfil !== "" && this.state.foto_perfil !== "null" && this.state.foto_perfil !== null ?
                         <>
                           <Image src={this.state.foto_perfil} style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
                         </>
                         : console.log()}
+
+                      {/* L'USUARI NO TÉ FOTO DE PERFIL */}
                       {this.state.foto_perfil === "null" || this.state.foto_perfil === null ?
                         <>
                           <Image src={process.env.PUBLIC_URL + "/user.png"} style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
                         </>
                         : console.log("AQUÍ " + this.state.foto_perfil)}
                     </button>
+                    {/* BOTONS PER VEURE EL PERFIL O PER FER LOGOUT */}
                     <div className="dropdown-content" id="dropdown-content" style={{ display: 'none' }}>
                       <button className="ms-3  btn btn-dark btn-lg mb-2" tabIndex={"0"} onClick={this.perfilFunction}>Perfil</button>
                       <button className="ms-2 btn btn-outline-danger btn-lg mb-2" onClick={this.logout}>Tanca sessió</button>
@@ -150,6 +166,8 @@ export default class Menu extends Component {
           <Container>
             <>
               <div className="parent">
+                {/* DINS AQUEST CONTENEDOR TROBAM UNA FOTO AMB EL NOM DE L'APLICACIÓ */}
+                {/* SI NO ENS TROBAM A LA PÀGINA D'INICI (/) LA FOTO NOMÉS MOSTRARÀ EL NOM DE L'APLICACIÓ */}
                 {window.location.pathname !== "/" ?
                   <>
                     <Image src={process.env.PUBLIC_URL + '/picamenja.png'}
@@ -160,6 +178,7 @@ export default class Menu extends Component {
                   </>
                   : console.log()}
 
+                {/* SI ENS TROBAM A LA PÀGINA D'INICI (/) LA FOTO, A MÉS DEL NOM DE L'APLICACIÓ, TAMBÉ MOSTRA EL LOGOTIP */}
                 {window.location.pathname === "/" ?
                   <>
                     <Image src={process.env.PUBLIC_URL + '/logoweb.png'}
@@ -175,12 +194,12 @@ export default class Menu extends Component {
         </div>
 
         <BrowserRouter>
+          {/* SECCIÓ COMPOSTA PER EL MENÚ I RUTES DE L'APLICACIÓ */}
           <Navbar
             bg="dark"
             className="color-nav"
             variant="dark"
             expand="lg"
-          // sticky="top"
           >
             <Container>
               <Nav className="mr-auto">
@@ -189,7 +208,7 @@ export default class Menu extends Component {
                 <NavLink className="nav-link" to="/restaurants" onClick={this.handleRefresh}>Restaurants</NavLink>
                 <NavLink className="nav-link" to="/suggeriments" onClick={this.handleRefresh}>Suggeriments</NavLink>
 
-                {/* SI L'USUARI ÉS ADMINISTRADOR (admin == 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin === 0) NOMÉS MOSTRA EL FRONT */}
+                {/* SI L'USUARI ÉS ADMINISTRADOR (admin == 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin !== 1) NOMÉS MOSTRA EL FRONT */}
                 {sessionStorage.getItem("admin") === "1" ?
                   <><NavLink className="nav-link" to="/comentaris" onClick={this.handleRefresh}>Comentaris</NavLink>
                     <NavLink className="nav-link" to="/fotos" onClick={this.handleRefresh}>Fotos</NavLink>
@@ -214,32 +233,39 @@ export default class Menu extends Component {
             <Route path="/restaurants" element={<RestaurantsFront />} />
             <Route path="/suggeriments" element={<Suggeriments />} />
             <Route path="/perfilUsuari" element={<PerfilUsuari />} />
-            {/* RUTES DE BACKEND */}
-            <Route path="/comentaris" element={<Comentaris />} />
-            <Route path="/fotos" element={<Fotos />} />
-            <Route path="/foto/:id_foto" element={<CridaFotos />} />
-            <Route path="/idiomes" element={<Idiomes />} />
-            <Route path="/idioma/:id_idioma" element={<CridaIdioma />} />
-            <Route path="/restaurants_serveis" element={<RestaurantServeis />} />
-            <Route path="/restaurants_serveis/:id_obra" element={<CridaRestaurantServei />} />
-            <Route path="/restaurants_back" element={<Restaurants />} />
-            <Route path="/restaurant/:id_restaurant" element={<CridaRestaurant />} />
-            <Route path="/serveis" element={<Serveis />} />
-            <Route path="/servei/:id_servei" element={<CridaServei />} />
-            <Route path="/tipus" element={<Tipus />} />
-            <Route path="/tipus/:id_tipus" element={<CridaTipus />} />
-            <Route path="/traduccions" element={<Traduccions />} />
-            <Route path="/traduccio/:id_traduccio" element={<Traduccio />} />
-            <Route path="/valoracions" element={<Valoracions />} />
-            <Route path="/usuaris" element={<Usuaris />} />
-            <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registre" element={<Registre />} />
+
+            {/* RUTES DE BACKEND */}
+            {sessionStorage.getItem("admin") === "1" ?
+              <>
+                <Route path="/comentaris" element={<Comentaris />} />
+                <Route path="/fotos" element={<Fotos />} />
+                <Route path="/foto/:id_foto" element={<CridaFotos />} />
+                <Route path="/idiomes" element={<Idiomes />} />
+                <Route path="/idioma/:id_idioma" element={<CridaIdioma />} />
+                <Route path="/restaurants_serveis" element={<RestaurantServeis />} />
+                <Route path="/restaurants_serveis/:id_obra" element={<CridaRestaurantServei />} />
+                <Route path="/restaurants_back" element={<Restaurants />} />
+                <Route path="/restaurant/:id_restaurant" element={<CridaRestaurant />} />
+                <Route path="/serveis" element={<Serveis />} />
+                <Route path="/servei/:id_servei" element={<CridaServei />} />
+                <Route path="/tipus" element={<Tipus />} />
+                <Route path="/tipus/:id_tipus" element={<CridaTipus />} />
+                <Route path="/traduccions" element={<Traduccions />} />
+                <Route path="/traduccio/:id_traduccio" element={<Traduccio />} />
+                <Route path="/valoracions" element={<Valoracions />} />
+                <Route path="/usuaris" element={<Usuaris />} />
+                <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />
+              </>
+              : console.log()}
+
             {/* <Route path="/" element={<CarouselFotos />} />
             <Route path="/explora" element={<Explora />} /> */}
           </Routes>
         </BrowserRouter>
         <div id="footer">
+          {/* FOOTER DE L'APLICACIÓ */}
           {'Copyright © '}
           <Link color="inherit" href="/">
             Pica & Menja
