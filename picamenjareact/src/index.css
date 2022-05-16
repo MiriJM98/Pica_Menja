@@ -172,3 +172,13 @@ label {
   text-align: center;
   align-items: center;
 }
+
+#quisom {
+  justify-content: center;
+  text-align: center;
+  margin: 10px;
+}
+
+#frase {
+  font-size: 14pt;
+}

@@ -71,6 +71,13 @@ export default class Menu extends Component {
       .catch(function (error) {
         //Mostrar error
         console.log(error);
+        if (error.response.status === 401) {
+          sessionStorage.setItem("token", "");
+          sessionStorage.setItem("admin", "");
+          sessionStorage.setItem("id_usuari", "");
+          window.location.assign("/");
+          alert("Ha expirat la sessió!");
+        }
       })
   }
 
@@ -120,7 +127,7 @@ export default class Menu extends Component {
           <Container>
             <div className="idiomes">
               <button className="btn btn-link"><Image src={process.env.PUBLIC_URL + '/idiomas.png'}
-                width="45" height="45" title="IDIOMA" onClick={prova}
+                width="45" height="45" title="Idiomes" onClick={prova}
               />
               </button>
 
@@ -148,9 +155,9 @@ export default class Menu extends Component {
                       {/* L'USUARI NO TÉ FOTO DE PERFIL */}
                       {this.state.foto_perfil === "null" || this.state.foto_perfil === null ?
                         <>
-                          <Image src={process.env.PUBLIC_URL + "/user.png"} style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
+                          <Image src={process.env.PUBLIC_URL + "/userpink.png"} style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
                         </>
-                        : console.log("AQUÍ " + this.state.foto_perfil)}
+                        : console.log()}
                     </button>
                     {/* BOTONS PER VEURE EL PERFIL O PER FER LOGOUT */}
                     <div className="dropdown-content" id="dropdown-content" style={{ display: 'none' }}>
@@ -206,8 +213,10 @@ export default class Menu extends Component {
                 <NavLink className="nav-link" to="/" onClick={this.handleRefresh}>Inici</NavLink>
                 <NavLink className="nav-link" to="/quisom" onClick={this.handleRefresh}>Informació</NavLink>
                 <NavLink className="nav-link" to="/restaurants" onClick={this.handleRefresh}>Restaurants</NavLink>
-                <NavLink className="nav-link" to="/suggeriments" onClick={this.handleRefresh}>Suggeriments</NavLink>
-
+                {/* NOMÉS ELS USUARIS QUE HAGIN FET LOGIN PODEN ENVIAR SUGGERÈNCIES */}
+                {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
+                  <NavLink className="nav-link" to="/suggeriments" onClick={this.handleRefresh}>Suggeriments</NavLink>
+                  : console.log()}
                 {/* SI L'USUARI ÉS ADMINISTRADOR (admin == 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin !== 1) NOMÉS MOSTRA EL FRONT */}
                 {sessionStorage.getItem("admin") === "1" ?
                   <><NavLink className="nav-link" to="/comentaris" onClick={this.handleRefresh}>Comentaris</NavLink>
@@ -231,11 +240,13 @@ export default class Menu extends Component {
             <Route path="/" element={<Inici />} />
             <Route path="/quisom" element={<QuiSom />} />
             <Route path="/restaurants" element={<RestaurantsFront />} />
-            <Route path="/suggeriments" element={<Suggeriments />} />
             <Route path="/perfilUsuari" element={<PerfilUsuari />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registre" element={<Registre />} />
-
+            {/* NOMÉS ELS USUARIS QUE HAGIN FET LOGIN PODEN ENVIAR SUGGERÈNCIES */}
+            {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
+              <Route path="/suggeriments" element={<Suggeriments />} />
+              : console.log()}
             {/* RUTES DE BACKEND */}
             {sessionStorage.getItem("admin") === "1" ?
               <>
@@ -274,12 +285,15 @@ export default class Menu extends Component {
           {'.'}
           <div>
             <ul>
-              <li><a href="https://www.facebook.com/" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/fotof.png'} alt="Logo de Facebook"
-                title="Facebook" width="30" height="30" /></a></li>
-              <li><a href="https://www.instagram.com/" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/fotoi.png'}
-                alt="Logo d'Instagram" title="Instagram" width="30" height="30" /></a></li>
-              <li><a href="https://twitter.com/?lang=es" tabIndex={"0"}><Image src={process.env.PUBLIC_URL + '/fotot.png'}
-                alt="Logo de Twitter" title="Twitter" width="30" height="30" /></a></li>
+              <li><a href="https://www.facebook.com/Pica-Menja-104063332311646" tabIndex={"0"}>
+                <Image src={process.env.PUBLIC_URL + '/fotof.png'} alt="Logo de Facebook"
+                  title="Facebook" width="30" height="30" /></a></li>
+              <li><a href="https://www.instagram.com/pica_menja/" tabIndex={"0"}>
+                <Image src={process.env.PUBLIC_URL + '/fotoi.png'}
+                  alt="Logo d'Instagram" title="Instagram" width="30" height="30" /></a></li>
+              <li><a href="https://twitter.com/MenjaPica" tabIndex={"0"}>
+                <Image src={process.env.PUBLIC_URL + '/fotot.png'}
+                  alt="Logo de Twitter" title="Twitter" width="30" height="30" /></a></li>
             </ul>
           </div>
         </div>
