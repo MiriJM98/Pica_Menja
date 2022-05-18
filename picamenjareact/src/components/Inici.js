@@ -44,7 +44,7 @@ export default class Inici extends Component {
         return (
             <div>
                 <h1 className="row justify-content-center mt-4">Inici</h1>
-                <h2 className="row justify-content-center">Restaurants</h2>
+                {/* <h2 className="row justify-content-center">Restaurants</h2> */}
                 {/* <Carousel
                     data={this.state.imatges}
                     autoPlay={true}

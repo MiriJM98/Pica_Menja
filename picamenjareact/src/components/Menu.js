@@ -36,6 +36,8 @@ import Suggeriments from "./Suggeriments";
 import PerfilUsuari from "./PerfilUsuari";
 import Registre from "./Registre";
 import axios from "axios";
+import RestaurantFront from "./RestaurantFront";
+import Filtre from "./Filtre";
 
 export default class Menu extends Component {
   constructor(props) {
@@ -121,7 +123,7 @@ export default class Menu extends Component {
   render() {
     return (
       <>
-        <div id="header">
+        <header id="header">
           {/* DINS AQUEST CONTENEDOR TENIM EL HEADER DE L'APLICACIÓ, FORMAT PER DUES SECCIONS: 
           UNA IMATGE PER SELECCIONAR L'IDIOMA I OPCIONS PER FER LOGIN O REGISTRAR-SE */}
           <Container>
@@ -198,7 +200,7 @@ export default class Menu extends Component {
               </div>
             </>
           </Container>
-        </div>
+        </header>
 
         <BrowserRouter>
           {/* SECCIÓ COMPOSTA PER EL MENÚ I RUTES DE L'APLICACIÓ */}
@@ -240,7 +242,9 @@ export default class Menu extends Component {
             <Route path="/" element={<Inici />} />
             <Route path="/quisom" element={<QuiSom />} />
             <Route path="/restaurants" element={<RestaurantsFront />} />
+            <Route path="/restaurantFront/:id_restaurant" element={<CridaRestaurantFront />} />
             <Route path="/perfilUsuari" element={<PerfilUsuari />} />
+            <Route path="/filtre/:id_tipus" element={<CridaTipusFiltre />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registre" element={<Registre />} />
             {/* NOMÉS ELS USUARIS QUE HAGIN FET LOGIN PODEN ENVIAR SUGGERÈNCIES */}
@@ -275,7 +279,7 @@ export default class Menu extends Component {
             <Route path="/explora" element={<Explora />} /> */}
           </Routes>
         </BrowserRouter>
-        <div id="footer">
+        <footer id="footer">
           {/* FOOTER DE L'APLICACIÓ */}
           {'Copyright © '}
           <Link color="inherit" href="/">
@@ -296,7 +300,7 @@ export default class Menu extends Component {
                   alt="Logo de Twitter" title="Twitter" width="30" height="30" /></a></li>
             </ul>
           </div>
-        </div>
+        </footer>
       </>
     );
   }
@@ -306,6 +310,11 @@ export default class Menu extends Component {
 function CridaRestaurant() {
   let params = useParams();
   return <Restaurant id_restaurant={params.id_restaurant} />
+}
+
+function CridaRestaurantFront() {
+  let params = useParams();
+  return <RestaurantFront id_restaurant={params.id_restaurant} />
 }
 
 function CridaIdioma() {
@@ -321,6 +330,11 @@ function CridaServei() {
 function CridaTipus() {
   let params = useParams();
   return <Tipu id_tipus={params.id_tipus} />
+}
+
+function CridaTipusFiltre() {
+  let params = useParams();
+  return <Filtre id_tipus={params.id_tipus} />
 }
 
 function CridaUsuari() {

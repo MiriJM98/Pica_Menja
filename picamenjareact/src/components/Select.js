@@ -28,7 +28,7 @@ export default class Select extends Component {
   };
 
   onChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.props.canviar(e.target.value);
   };
 

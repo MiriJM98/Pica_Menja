@@ -11,9 +11,16 @@ use Symfony\Component\Routing\RouteCompiler;
 */
 
 // SENSE AUTENTIFICACIÓ
-// NOMÉS PODEM CREAR USUARIS I FER LOGIN
+// CREAR USUARIS, FER LOGIN I MOSTRAR ELS RESTAURANTS (PART DE FRONT)
 Route::post('login', 'App\Http\Controllers\LoginController@login');
 Route::post('usuaris', 'App\Http\Controllers\UsuariController@store');
+Route::get('restaurants', 'App\Http\Controllers\RestaurantController@index');
+Route::get('restaurants/front', 'App\Http\Controllers\RestaurantController@indexFront');
+Route::get('restaurants/{id}', 'App\Http\Controllers\RestaurantController@show');
+Route::get('restaurants/tipusCa/{id}', 'App\Http\Controllers\RestaurantController@tipusCa');
+Route::get('tipus', 'App\Http\Controllers\TipusController@index');
+Route::get('fotos/restaurant/{id}', 'App\Http\Controllers\FotoController@fotosRestaurant');
+
 
 Route::group(['middleware' => 'token'], function () {
     Route::post('logout', 'App\Http\Controllers\LoginController@logout');
@@ -39,7 +46,6 @@ Route::group(['middleware' => 'token'], function () {
             Route::delete('{id}', 'App\Http\Controllers\FotoController@delete');
             Route::post('', 'App\Http\Controllers\FotoController@store');
             Route::post('imatge/{id}', 'App\Http\Controllers\FotoController@pujarFotos');
-            Route::get('restaurant/{id}', 'App\Http\Controllers\FotoController@fotosRestaurant');
         }
     );
 
@@ -58,13 +64,10 @@ Route::group(['middleware' => 'token'], function () {
     Route::group(
         ['prefix' => 'restaurants'],
         function () {
-            Route::get('', 'App\Http\Controllers\RestaurantController@index');
-            Route::get('{id}', 'App\Http\Controllers\RestaurantController@show');
             Route::delete('{id}', 'App\Http\Controllers\RestaurantController@delete');
             Route::post('', 'App\Http\Controllers\RestaurantController@store');
             Route::put('{id}', 'App\Http\Controllers\RestaurantController@update');
             Route::post('imatge/{id}', 'App\Http\Controllers\RestaurantController@imatge');
-            Route::get('tipusCa/{id}', 'App\Http\Controllers\RestaurantController@tipusCa');
             Route::get('tipusEs/{id}', 'App\Http\Controllers\RestaurantController@tipusEs');
             Route::get('tipusEn/{id}', 'App\Http\Controllers\RestaurantController@tipusEn');
             Route::get('tipusDe/{id}', 'App\Http\Controllers\RestaurantController@tipusDe');
@@ -98,7 +101,6 @@ Route::group(['middleware' => 'token'], function () {
 
     // RUTES DE LA TAULA TIPUS
     Route::group(['prefix' => 'tipus'], function () {
-        Route::get('', 'App\Http\Controllers\TipusController@index');
         Route::get('{id}', 'App\Http\Controllers\TipusController@show');
         Route::delete('{id}', 'App\Http\Controllers\TipusController@delete');
         Route::post('', 'App\Http\Controllers\TipusController@store');
