@@ -37,7 +37,6 @@ import PerfilUsuari from "./PerfilUsuari";
 import Registre from "./Registre";
 import axios from "axios";
 import RestaurantFront from "./RestaurantFront";
-import Filtre from "./Filtre";
 
 export default class Menu extends Component {
   constructor(props) {
@@ -244,7 +243,6 @@ export default class Menu extends Component {
             <Route path="/restaurants" element={<RestaurantsFront />} />
             <Route path="/restaurantFront/:id_restaurant" element={<CridaRestaurantFront />} />
             <Route path="/perfilUsuari" element={<PerfilUsuari />} />
-            <Route path="/filtre/:id_tipus" element={<CridaTipusFiltre />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registre" element={<Registre />} />
             {/* NOMÉS ELS USUARIS QUE HAGIN FET LOGIN PODEN ENVIAR SUGGERÈNCIES */}
@@ -330,11 +328,6 @@ function CridaServei() {
 function CridaTipus() {
   let params = useParams();
   return <Tipu id_tipus={params.id_tipus} />
-}
-
-function CridaTipusFiltre() {
-  let params = useParams();
-  return <Filtre id_tipus={params.id_tipus} />
 }
 
 function CridaUsuari() {

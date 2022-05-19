@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { Image } from "react-bootstrap";
 import Select from "./Select";
 
 
@@ -70,7 +71,6 @@ export default class RestaurantsFront extends Component {
     }
 
     filtrar = () => {
-        window.location.assign("/filtre/" + this.state.id_tipus);
         axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/tipusCa/" + this.state.id_tipus)
             .then((response) => {
                 console.log(response);
@@ -83,11 +83,13 @@ export default class RestaurantsFront extends Component {
                     // let text = document.createTextNode("HOLA");
                     // titol.appendChild(text);
                     // document.getElementById("contenedorTipus").appendChild(titol);
+                    const mostrador = document.getElementById("contenedorTaula");
+                    mostrador.innerHTML = "";
+                    const tipus = document.getElementById("contenedorTipus");
+                    tipus.innerHTML = "";
                     this.state.restaurants_tipus.forEach(restaurant => {
                         let carta = document.createElement("div");
-                        let h3 = document.createElement("h3");
-                        let texte = document.createTextNode("Filtre");
-                        // carta.setAttribute("id", "cartes");
+                        carta.setAttribute("id", "cartes");
                         let header = document.createElement("h4");
                         let imatge = document.createElement("img");
                         let buttonID = document.createElement("button");
@@ -96,17 +98,15 @@ export default class RestaurantsFront extends Component {
                                 "/restaurantFront/" + restaurant.id_restaurant
                             );
                         }
-                        // header.setAttribute("id", "cartaHeader");
-                        // imatge.setAttribute("id", "imatgeCarta");
-                        // buttonID.setAttribute("id", "buttonID");
+                        header.setAttribute("id", "cartaHeader");
+                        imatge.setAttribute("id", "imatgeCarta");
+                        buttonID.setAttribute("id", "buttonID");
                         imatge.setAttribute("src", restaurant.image);
                         imatge.setAttribute("width", 300);
                         let nom = document.createTextNode(restaurant.restaurant);
                         let id_rest = document.createTextNode("Click!");
                         header.appendChild(nom);
-                        h3.appendChild(texte);
                         buttonID.appendChild(id_rest);
-                        carta.appendChild(h3);
                         carta.appendChild(header);
                         carta.appendChild(imatge);
                         carta.appendChild(buttonID);
@@ -135,9 +135,11 @@ export default class RestaurantsFront extends Component {
                     display="tipus_ca"
                     url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus"
                 />
-                <button type="button" onClick={this.filtrar}>Cerca</button>
+                <button type="button" className="btn btn-link" onClick={this.filtrar}>
+                    <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px"></Image>
+                </button>
                 <div id="contenedorTaula"></div>
-                <p id="contenedorTipus"></p>
+                <div id="contenedorTipus"></div>
             </div>
         )
     }

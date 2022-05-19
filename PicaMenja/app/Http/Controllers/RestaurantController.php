@@ -20,8 +20,7 @@ class RestaurantController extends Controller
     public function indexFront()
     {
         $restaurants = Restaurant::all();
-        return response()->json($restaurants);
-        
+        return response()->json($restaurants); 
     }
 
     // MOSTRAR UN RESTAURANT PER EL SEU ID
@@ -109,6 +108,7 @@ class RestaurantController extends Controller
     {
         $resultat = Restaurant::join("tipus", "tipus.id_tipus", "=", "restaurants.id_tipus")
             ->select(
+                "restaurants.id_restaurant as id_restaurant",
                 "restaurants.nom as restaurant",
                 "restaurants.imatge as image",
                 "tipus.id_tipus as id_tipus",
