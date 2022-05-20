@@ -60,13 +60,13 @@ export default class Login extends Component {
             <div id="divLogin" className="row justify-content-center">
                 <div id="dadesLogin">
                     <h1 className="row justify-content-center">Inicia sessió</h1>
-                    <p><label className="row justify-content-center">Email</label></p>
+                    <p><label htmlFor="email" className="row justify-content-center">Email</label></p>
                     <p><input type="text" id="email" name="email" onChange={this.canviParam} /></p>
-                    <p><label className="row justify-content-center">Password</label></p>
+                    <p><label htmlFor="password" className="row justify-content-center">Password</label></p>
                     <p><input type="password" id="password" name="password" onChange={this.canviParam} /></p>
                     <p><a href="/registre" id="linkFormulari" className="row justify-content-center">No tens compte? Regístra't!</a></p>
                     <p><button type="button" id="botoLogin" onClick={this.login}>Login</button></p>
-                    <p id="errors" style={{display: 'none' }}>Error. Email o password incorrectes.</p>
+                    <p id="errors" style={{ display: 'none' }}>Error. Email o password incorrectes.</p>
                 </div>
             </div>
         )

@@ -182,6 +182,8 @@ export default class Menu extends Component {
                       alt="PICA & MENJA"
                       title="PICA & MENJA"
                       id="imatges"
+                      width="494px"
+                      height="112px"
                     />
                   </>
                   : console.log()}

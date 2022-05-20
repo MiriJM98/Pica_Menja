@@ -5,25 +5,44 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\RouteCompiler;
 
 /* 
-|--------------------------------------------------------------------------
-|                           RUTES DE LA API 
-|--------------------------------------------------------------------------
+|-------------------------------------------------------------------------|
+|                           RUTES DE LA API                               |
+|-------------------------------------------------------------------------|
 */
 
-// SENSE AUTENTIFICACIÓ
-// CREAR USUARIS, FER LOGIN I MOSTRAR ELS RESTAURANTS (PART DE FRONT)
+///////////////// SENSE AUTENTIFICACIÓ /////////////////
+
+// RUTES DE FRONTEND
+// LOGIN A L'API
 Route::post('login', 'App\Http\Controllers\LoginController@login');
+
+// REGISTRE D'USUARIS NOUS
 Route::post('usuaris', 'App\Http\Controllers\UsuariController@store');
+
+// CARREGAR INFORMACIÓ DELS RESTAURANTS
 Route::get('restaurants', 'App\Http\Controllers\RestaurantController@index');
 Route::get('restaurants/front', 'App\Http\Controllers\RestaurantController@indexFront');
 Route::get('restaurants/{id}', 'App\Http\Controllers\RestaurantController@show');
 Route::get('restaurants/tipusCa/{id}', 'App\Http\Controllers\RestaurantController@tipusCa');
+
+// CARREGAR ELS TIPUS DE RESTAURANTS
 Route::get('tipus', 'App\Http\Controllers\TipusController@index');
+
+// CARREGAR FOTOS DELS RESTAURANTS
 Route::get('fotos/restaurant/{id}', 'App\Http\Controllers\FotoController@fotosRestaurant');
 
+// VALORACIONS I COMENTARIS DELS RESTAURANTS
+Route::get('valoracions/restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracions');
+Route::get('valoracions/mitjana/restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracioMitjana');
+Route::get('comentaris/restaurant/{id}', 'App\Http\Controllers\ComentariController@comentaris');
 
+
+///////////////// AMB AUTENTIFICACIÓ /////////////////
+
+// RUTES DE BACKEND
 Route::group(['middleware' => 'token'], function () {
     Route::post('logout', 'App\Http\Controllers\LoginController@logout');
+
     // RUTES DE LA TAULA COMENTARIS
     Route::group(
         ["prefix" => "comentaris"],
@@ -33,7 +52,6 @@ Route::group(['middleware' => 'token'], function () {
             Route::delete('{id}', 'App\Http\Controllers\ComentariController@delete');
             Route::post('', 'App\Http\Controllers\ComentariController@store');
             Route::put('{id}', 'App\Http\Controllers\ComentariController@update');
-            Route::get('restaurant/{id}', 'App\Http\Controllers\ComentariController@comentaris');
         }
     );
 
@@ -48,7 +66,6 @@ Route::group(['middleware' => 'token'], function () {
             Route::post('imatge/{id}', 'App\Http\Controllers\FotoController@pujarFotos');
         }
     );
-
 
     // RUTES DE LA TAULA IDIOMES
     Route::group(
@@ -130,7 +147,5 @@ Route::group(['middleware' => 'token'], function () {
         Route::get('{id}', 'App\Http\Controllers\ValoracioController@show');
         Route::delete('{id}', 'App\Http\Controllers\ValoracioController@delete');
         Route::post('', 'App\Http\Controllers\ValoracioController@store');
-        Route::get('restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracions');
-        Route::get('mitjana/restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracioMitjana');
     });
 });

@@ -32,7 +32,7 @@ export default class QuiSom extends Component {
                 <h2>Sobre mí</h2>
                 <div id="contenedor">
                     <div className="sobreMi">
-                        <p><Image src={process.env.PUBLIC_URL + '/foto_admin.png'} style={{ width: 150, height: 150, borderRadius: 150 }} /></p>
+                        <p><Image src={process.env.PUBLIC_URL + '/foto_admin.webP'} alt="Foto cap de projecte" style={{ width: 150, height: 150, borderRadius: 150 }} /></p>
                     </div>
                     <div className="texte ms-4"><p className="mt-4">
                         Sóc na <strong>Míriam Jiménez Molina</strong>, creadora de la pàgina web.

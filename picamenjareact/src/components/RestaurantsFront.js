@@ -53,6 +53,7 @@ export default class RestaurantsFront extends Component {
                         buttonID.setAttribute("id", "buttonID");
                         imatge.setAttribute("src", restaurant.imatge);
                         imatge.setAttribute("width", 300);
+                        imatge.setAttribute("alt", "Foto restaurant");
                         let nom = document.createTextNode(restaurant.nom);
                         let id_rest = document.createTextNode("Click!");
                         header.appendChild(nom);
@@ -79,10 +80,6 @@ export default class RestaurantsFront extends Component {
                         restaurants_tipus: response.data,
                         id_tipus: response.data.id_tipus,
                     });
-                    // let titol = document.createElement("h1");
-                    // let text = document.createTextNode("HOLA");
-                    // titol.appendChild(text);
-                    // document.getElementById("contenedorTipus").appendChild(titol);
                     const mostrador = document.getElementById("contenedorTaula");
                     mostrador.innerHTML = "";
                     const tipus = document.getElementById("contenedorTipus");
@@ -90,7 +87,7 @@ export default class RestaurantsFront extends Component {
                     this.state.restaurants_tipus.forEach(restaurant => {
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
-                        let header = document.createElement("h4");
+                        let header = document.createElement("h2");
                         let imatge = document.createElement("img");
                         let buttonID = document.createElement("button");
                         buttonID.onclick = function () {
@@ -135,8 +132,8 @@ export default class RestaurantsFront extends Component {
                     display="tipus_ca"
                     url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus"
                 />
-                <button type="button" className="btn btn-link" onClick={this.filtrar}>
-                    <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px"></Image>
+                <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                    <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                 </button>
                 <div id="contenedorTaula"></div>
                 <div id="contenedorTipus"></div>
@@ -144,17 +141,3 @@ export default class RestaurantsFront extends Component {
         )
     }
 }
-
-
-/*
-<div id="mostrador" style={{ display: 'block' }}>
-    <table id="taula"></table>
-</div>
-<div id="mostrador2">
-<table id="taula2"></table>
-</div>
-<div id="mostrador3"></div>
-<div>
-<button id="previousPage" onClick={this.previousPage}>Previous</button>
-<button id="nextPage" className="ms-2 mt-5 mb-3" onClick={this.nextPage}>Next</button>
-</div> */
