@@ -31,6 +31,9 @@ Route::get('tipus', 'App\Http\Controllers\TipusController@index');
 // CARREGAR FOTOS DELS RESTAURANTS
 Route::get('fotos/restaurant/{id}', 'App\Http\Controllers\FotoController@fotosRestaurant');
 
+// FILTRAR PER RANG DE PREUS
+Route::get('restaurants/rang/{rang}', 'App\Http\Controllers\RestaurantController@rangPreus');
+
 // VALORACIONS I COMENTARIS DELS RESTAURANTS
 Route::get('valoracions/restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracions');
 Route::get('valoracions/mitjana/restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracioMitjana');
@@ -88,7 +91,6 @@ Route::group(['middleware' => 'token'], function () {
             Route::get('tipusEs/{id}', 'App\Http\Controllers\RestaurantController@tipusEs');
             Route::get('tipusEn/{id}', 'App\Http\Controllers\RestaurantController@tipusEn');
             Route::get('tipusDe/{id}', 'App\Http\Controllers\RestaurantController@tipusDe');
-            Route::get('rang/{rang}', 'App\Http\Controllers\RestaurantController@rangPreus');
             Route::post('carta/{id}', 'App\Http\Controllers\RestaurantController@carta');
         }
     );

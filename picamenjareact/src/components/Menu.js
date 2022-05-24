@@ -127,7 +127,7 @@ export default class Menu extends Component {
           UNA IMATGE PER SELECCIONAR L'IDIOMA I OPCIONS PER FER LOGIN O REGISTRAR-SE */}
           <Container>
             <div className="idiomes">
-              <button className="btn btn-link"><Image src={process.env.PUBLIC_URL + '/idiomas.png'}
+              <button className="btn btn-link" aria-label="Botó idiomes"><Image src={process.env.PUBLIC_URL + '/idiomas.png'}
                 width="45" height="45" title="Idiomes" onClick={prova}
               />
               </button>
@@ -135,8 +135,8 @@ export default class Menu extends Component {
               {/* SI L'USUARI NO HA FET LOGIN A L'APLICACIÓ SURTEN LES OPCIONS PER FER LOGIN O REGISTRAR-SE */}
               {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
                 <>
-                  <button className="ms-2 btn btn-info btn-lg mb-2" onClick={this.loginFunction}>Inicia sessió</button>
-                  <button className="ms-3 btn btn-warning btn-lg mb-2" onClick={this.registreFunction}>Regístra't</button>
+                  <button className="ms-2 btn btn-info btn-lg mb-2" aria-label="Botó Login" onClick={this.loginFunction}>Inicia sessió</button>
+                  <button className="ms-3 btn btn-warning btn-lg mb-2" aria-label="Botó Sing In" onClick={this.registreFunction}>Regístra't</button>
                 </>
                 : console.log()}
 
@@ -144,19 +144,19 @@ export default class Menu extends Component {
               {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
                 <>
                   <div className="dropdown">
-                    <button type="button" className="dropbtn" onClick={this.desplegaMenu}>
+                    <button type="button" className="dropbtn" aria-label="Botó Perfil" onClick={this.desplegaMenu}>
 
                       {/* L'USUARI TÉ FOTO DE PERFIL */}
                       {this.state.foto_perfil !== "" && this.state.foto_perfil !== "null" && this.state.foto_perfil !== null ?
                         <>
-                          <Image src={this.state.foto_perfil} style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
+                          <Image src={this.state.foto_perfil} style={{ width: 50, height: 50, borderRadius: 400 / 2 }} alt="Foto Perfil" />
                         </>
                         : console.log()}
 
                       {/* L'USUARI NO TÉ FOTO DE PERFIL */}
                       {this.state.foto_perfil === "null" || this.state.foto_perfil === null ?
                         <>
-                          <Image src={process.env.PUBLIC_URL + "/userpink.png"} style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
+                          <Image src={process.env.PUBLIC_URL + "/userpink.png"} alt="Foto Defecte" style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
                         </>
                         : console.log()}
                     </button>

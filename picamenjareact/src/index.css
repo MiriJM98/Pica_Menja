@@ -296,3 +296,12 @@ tr, td {
 #iframeDiv {
   margin-bottom: 30px;
 }
+
+#estrelles {
+  /* margin: auto; */
+  text-align: center;
+  /* display: flex;
+  justify-content: center; */
+  width: auto;
+  margin-bottom: 30px;
+}

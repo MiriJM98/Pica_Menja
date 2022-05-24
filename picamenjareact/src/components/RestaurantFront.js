@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { Rating } from "react-simple-star-rating";
 
 export default class RestaurantFront extends Component {
 
@@ -25,7 +26,9 @@ export default class RestaurantFront extends Component {
             rang_preus: "",
             iframe: "",
             fotos: [],
-            comentaris: []
+            comentaris: [],
+            valoracio: "",
+            puntuacio: -1
         };
     }
 
@@ -35,6 +38,9 @@ export default class RestaurantFront extends Component {
         }
         if (this.props.id_restaurant !== -1) {
             this.mostraComentaris(this.props.id_restaurant);
+        }
+        if (this.props.id_restaurant !== -1) {
+            this.mostraValoracio(this.props.id_restaurant);
         }
         // if (this.props.id_restaurant !== -1) {
         //     this.fotosRestaurant(this.props.id_restaurant);
@@ -227,6 +233,10 @@ export default class RestaurantFront extends Component {
                 }
                 );
             })
+            .catch(function (error) {
+                //Mostrar error
+                console.log(error);
+            })
     }
 
     mostraComentaris = (id_restaurant) => {
@@ -258,6 +268,40 @@ export default class RestaurantFront extends Component {
                     table.appendChild(tr);
                     document.getElementById("divComentaris").appendChild(table);
                 });
+            })
+            .catch(function (error) {
+                //Mostrar error
+                console.log(error);
+            });
+    }
+
+    mostraValoracio = (id_restaurant) => {
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/valoracions/mitjana/restaurant/" + id_restaurant)
+            .then((response) => {
+                console.log(response);
+                this.setState({
+                    valoracio: response.data
+                });
+                console.log(this.state.valoracio);
+                const div = document.getElementById("divValoracions");
+                div.innerHTML = "";
+                this.state.valoracio.forEach(nota => {
+                    let parseat = parseFloat(nota.valoracio);
+                    console.log("PARSEAT " + parseat);
+                    this.setState({
+                        puntuacio: parseat
+                    });
+                    let puntuacio = document.createElement("p");
+                    let valoracio = document.createTextNode(parseat);
+                    puntuacio.setAttribute("font-size", "20pt");
+                    puntuacio.appendChild(valoracio);
+                    document.getElementById("divValoracions").appendChild(puntuacio);
+                    console.log("TIPO " + typeof parseat);
+                });
+            })
+            .catch(function (error) {
+                //Mostrar error
+                console.log(error);
             });
     }
 
@@ -268,7 +312,29 @@ export default class RestaurantFront extends Component {
                 <div id="carouselRestaurant"></div>
                 <div id="contingut"></div>
                 <h2>Comentaris</h2>
-                <div id="divComentaris">
+                <div id="divComentaris"></div>
+                <h2>Valoració global</h2>
+                <div id="divValoracions"></div>
+                <div id="estrelles">
+                    {this.state.puntuacio !== -1 ?
+                        <Rating
+                            onClick={this.mostraValoracio}
+                            ratingValue={this.state.puntuacio * 20}
+                            size={40}
+                            label
+                            transition
+                            fillColor='orange'
+                            emptyColor='gray'
+                        />
+                        : console.log()}
+
+                    {this.state.puntuacio === -1 ?
+                        <><p>No valorat</p>
+                            <Rating
+                                onClick={this.mostraValoracio}
+                                ratingValue={0} /></>
+                        : console.log()}
+
                 </div>
                 <div id="iframeDiv"></div>
             </div>
