@@ -12,18 +12,25 @@ use Symfony\Component\Routing\RouteCompiler;
 
 ///////////////// SENSE AUTENTIFICACIÓ /////////////////
 
-// RUTES DE FRONTEND
+// --------- RUTES DE FRONTEND --------- //
 // LOGIN A L'API
 Route::post('login', 'App\Http\Controllers\LoginController@login');
 
 // REGISTRE D'USUARIS NOUS
 Route::post('usuaris', 'App\Http\Controllers\UsuariController@store');
 
+// IDIOMES
+Route::get('idiomes', 'App\Http\Controllers\IdiomaController@index');
+Route::get('idiomes/{id}', 'App\Http\Controllers\IdiomaController@show');
+
 // CARREGAR INFORMACIÓ DELS RESTAURANTS
 Route::get('restaurants', 'App\Http\Controllers\RestaurantController@index');
 Route::get('restaurants/front', 'App\Http\Controllers\RestaurantController@indexFront');
 Route::get('restaurants/{id}', 'App\Http\Controllers\RestaurantController@show');
 Route::get('restaurants/tipusCa/{id}', 'App\Http\Controllers\RestaurantController@tipusCa');
+Route::get('tipusEs/{id}', 'App\Http\Controllers\RestaurantController@tipusEs');
+Route::get('tipusEn/{id}', 'App\Http\Controllers\RestaurantController@tipusEn');
+Route::get('tipusDe/{id}', 'App\Http\Controllers\RestaurantController@tipusDe');
 
 // CARREGAR ELS TIPUS DE RESTAURANTS
 Route::get('tipus', 'App\Http\Controllers\TipusController@index');
@@ -34,15 +41,22 @@ Route::get('fotos/restaurant/{id}', 'App\Http\Controllers\FotoController@fotosRe
 // FILTRAR PER RANG DE PREUS
 Route::get('restaurants/rang/{rang}', 'App\Http\Controllers\RestaurantController@rangPreus');
 
-// VALORACIONS I COMENTARIS DELS RESTAURANTS
+// ELS USUARIS PODEN VALORAR ELS RESTAURANTS
 Route::get('valoracions/restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracions');
 Route::get('valoracions/mitjana/restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracioMitjana');
+Route::delete('valoracions/{id}', 'App\Http\Controllers\ValoracioController@delete');
+Route::post('valoracions', 'App\Http\Controllers\ValoracioController@store');
+
+// ELS USUARIS PODEN COMENTAR ELS RESTAURANTS
 Route::get('comentaris/restaurant/{id}', 'App\Http\Controllers\ComentariController@comentaris');
+Route::delete('comentaris/{id}', 'App\Http\Controllers\ComentariController@delete');
+Route::post('comentaris', 'App\Http\Controllers\ComentariController@store');
+
 
 
 ///////////////// AMB AUTENTIFICACIÓ /////////////////
 
-// RUTES DE BACKEND
+// --------- RUTES DE BACKEND --------- //
 Route::group(['middleware' => 'token'], function () {
     Route::post('logout', 'App\Http\Controllers\LoginController@logout');
 
@@ -52,8 +66,6 @@ Route::group(['middleware' => 'token'], function () {
         function () {
             Route::get('', 'App\Http\Controllers\ComentariController@index');
             Route::get('{id}', 'App\Http\Controllers\ComentariController@show');
-            Route::delete('{id}', 'App\Http\Controllers\ComentariController@delete');
-            Route::post('', 'App\Http\Controllers\ComentariController@store');
             Route::put('{id}', 'App\Http\Controllers\ComentariController@update');
         }
     );
@@ -74,8 +86,6 @@ Route::group(['middleware' => 'token'], function () {
     Route::group(
         ["prefix" => "idiomes"],
         function () {
-            Route::get('', 'App\Http\Controllers\IdiomaController@index');
-            Route::get('{id}', 'App\Http\Controllers\IdiomaController@show');
             Route::post('', 'App\Http\Controllers\IdiomaController@store');
         }
     );
@@ -88,9 +98,6 @@ Route::group(['middleware' => 'token'], function () {
             Route::post('', 'App\Http\Controllers\RestaurantController@store');
             Route::put('{id}', 'App\Http\Controllers\RestaurantController@update');
             Route::post('imatge/{id}', 'App\Http\Controllers\RestaurantController@imatge');
-            Route::get('tipusEs/{id}', 'App\Http\Controllers\RestaurantController@tipusEs');
-            Route::get('tipusEn/{id}', 'App\Http\Controllers\RestaurantController@tipusEn');
-            Route::get('tipusDe/{id}', 'App\Http\Controllers\RestaurantController@tipusDe');
             Route::post('carta/{id}', 'App\Http\Controllers\RestaurantController@carta');
         }
     );
@@ -147,7 +154,5 @@ Route::group(['middleware' => 'token'], function () {
     Route::group(['prefix' => 'valoracions'], function () {
         Route::get('', 'App\Http\Controllers\ValoracioController@index');
         Route::get('{id}', 'App\Http\Controllers\ValoracioController@show');
-        Route::delete('{id}', 'App\Http\Controllers\ValoracioController@delete');
-        Route::post('', 'App\Http\Controllers\ValoracioController@store');
     });
 });

@@ -101,7 +101,7 @@ export default class RestaurantsFront extends Component {
                         imatge.setAttribute("src", restaurant.image);
                         imatge.setAttribute("width", 300);
                         let nom = document.createTextNode(restaurant.restaurant);
-                        let id_rest = document.createTextNode("Click!");
+                        let id_rest = document.createTextNode("Informació!");
                         header.appendChild(nom);
                         buttonID.appendChild(id_rest);
                         carta.appendChild(header);

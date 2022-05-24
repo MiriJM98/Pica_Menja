@@ -37,6 +37,7 @@ import PerfilUsuari from "./PerfilUsuari";
 import Registre from "./Registre";
 import axios from "axios";
 import RestaurantFront from "./RestaurantFront";
+// import traduccions from './traduccions.json';
 
 export default class Menu extends Component {
   constructor(props) {
@@ -53,6 +54,7 @@ export default class Menu extends Component {
     if (sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null) {
       this.descarrega();
     }
+    this.carregaIdioma();
   }
 
   descarrega = () => {
@@ -79,6 +81,20 @@ export default class Menu extends Component {
           window.location.assign("/");
           alert("Ha expirat la sessió!");
         }
+      })
+  }
+
+  carregaIdioma = () => {
+    // Català idioma per defecte
+    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes/2")
+      .then(response => {
+        console.log(response);
+        sessionStorage.setItem("id_idioma", response.data.id_idioma);
+        console.log("id_idioma --> " + sessionStorage.getItem("id_idioma"));
+      })
+      .catch(function (error) {
+        // Mostrar error
+        console.log(error);
       })
   }
 
@@ -214,8 +230,9 @@ export default class Menu extends Component {
             <Container>
               <Nav className="mr-auto">
                 <NavLink className="nav-link" to="/" onClick={this.handleRefresh}>Inici</NavLink>
-                <NavLink className="nav-link" to="/quisom" onClick={this.handleRefresh}>Informació</NavLink>
+                {/* {console.log(traduccions[0])} */}
                 <NavLink className="nav-link" to="/restaurants" onClick={this.handleRefresh}>Restaurants</NavLink>
+                <NavLink className="nav-link" to="/quisom" onClick={this.handleRefresh}>Qui som?</NavLink>
                 {/* NOMÉS ELS USUARIS QUE HAGIN FET LOGIN PODEN ENVIAR SUGGERÈNCIES */}
                 {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
                   <NavLink className="nav-link" to="/suggeriments" onClick={this.handleRefresh}>Suggeriments</NavLink>
@@ -348,7 +365,12 @@ function CridaFotos() {
 }
 
 function prova() {
-  window.location.assign("/restaurants");
+  <select>
+    <option>Català</option>
+    <option>Español</option>
+    <option>English</option>
+  </select>
+  // window.location.assign("/restaurants");
 }
 
 console.log("AQUÍ SALE EL TOKEN ---> " + sessionStorage.getItem("token"));

@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import { Image } from "react-bootstrap";
+import traduccions from "./traduccions.json";
 
 export default class QuiSom extends Component {
 
     render() {
         return (
             <div id="quisom">
-                <h1 className="row justify-content-center mt-4">Qui som</h1>
+                <h1 className="row justify-content-center mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].quisom}</h1>
                 <hr />
                 <div id="frase">
-                    <h2 className="mt-3">Sobre Pica & Menja</h2>
-                    <p className="mt-3">Estàs a Ca'n Picafort o voltants?</p>
-                    <p className="mt-3">Et ve de gust anar a un restaurant però no saps a quin?</p>
-                    <p className="mt-3">Vols saber quin restaurant s'adapta més a tu i les teves necessitats a Ca'n Picafort?</p>
+                    <h2 className="mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].titolquisom}</h2>
+                    <p className="mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].frase1qs}</p>
+                    <p className="mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].frase2qs}</p>
+                    <p className="mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].frase3qs}</p>
                 </div>
                 <div>
                     <p className="mt-4" id="mesGran">No et preocupis, Pica & Menja té la solució per a tu.</p>
