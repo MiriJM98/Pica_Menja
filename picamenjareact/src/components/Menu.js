@@ -37,7 +37,7 @@ import PerfilUsuari from "./PerfilUsuari";
 import Registre from "./Registre";
 import axios from "axios";
 import RestaurantFront from "./RestaurantFront";
-// import traduccions from './traduccions.json';
+import traduccions from './traduccions.json';
 
 export default class Menu extends Component {
   constructor(props) {
@@ -86,11 +86,12 @@ export default class Menu extends Component {
 
   carregaIdioma = () => {
     // Català idioma per defecte
-    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes/2")
+    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes/1")
       .then(response => {
         console.log(response);
         sessionStorage.setItem("id_idioma", response.data.id_idioma);
         console.log("id_idioma --> " + sessionStorage.getItem("id_idioma"));
+        this.handleRefresh();
       })
       .catch(function (error) {
         // Mostrar error
@@ -229,10 +230,10 @@ export default class Menu extends Component {
           >
             <Container>
               <Nav className="mr-auto">
-                <NavLink className="nav-link" to="/" onClick={this.handleRefresh}>Inici</NavLink>
+                <NavLink className="nav-link" to="/" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].inici}</NavLink>
                 {/* {console.log(traduccions[0])} */}
-                <NavLink className="nav-link" to="/restaurants" onClick={this.handleRefresh}>Restaurants</NavLink>
-                <NavLink className="nav-link" to="/quisom" onClick={this.handleRefresh}>Qui som?</NavLink>
+                <NavLink className="nav-link" to="/restaurants" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].restaurants}</NavLink>
+                <NavLink className="nav-link" to="/quisom" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].quisom}</NavLink>
                 {/* NOMÉS ELS USUARIS QUE HAGIN FET LOGIN PODEN ENVIAR SUGGERÈNCIES */}
                 {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
                   <NavLink className="nav-link" to="/suggeriments" onClick={this.handleRefresh}>Suggeriments</NavLink>

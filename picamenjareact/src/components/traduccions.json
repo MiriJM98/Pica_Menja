@@ -66,7 +66,8 @@
             "cancela" : "Cancel·lar",
             "editar" : "Editar",
             "borrar" : "Borrar",
-            "guardar" : "Guardar"
+            "guardar" : "Guardar",
+            "info" : "Informació"
         }
     ],
 
@@ -74,7 +75,7 @@
         {
             "inici": "Inicio",
             "restaurants": "Restaurantes",
-            "quisom" : "¿Quién soy?",
+            "quisom" : "¿Quiénes somos?",
             "perfil" : "Perfil",
             "registre" : "Regístrate",
             "email" : "Email",
@@ -135,7 +136,8 @@
             "cancela" : "Cancelar",
             "editar" : "Editar",
             "borrar" : "Borrar",
-            "guardar" : "Guardar"
+            "guardar" : "Guardar",
+            "info" : "Información"
         }
     ]
 }

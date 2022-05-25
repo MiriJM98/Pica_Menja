@@ -16,32 +16,26 @@ export default class QuiSom extends Component {
                     <p className="mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].frase3qs}</p>
                 </div>
                 <div>
-                    <p className="mt-4" id="mesGran">No et preocupis, Pica & Menja té la solució per a tu.</p>
+                    <p className="mt-4" id="mesGran">{traduccions[sessionStorage.getItem("id_idioma")][0].frase4qs}</p>
                 </div>
                 <div id="frase" className="mt-4">
-                    <p>Explora i descobreix la varietat de restaurants que hi ha i escull entre ells el lloc on anar.</p>
-                    <p>Ja sigui menjar xinès, índia, mediterrània o més tipus que podràs valorar i donar la teva opinió si et registres a la web.</p>
-                    <p>Només registrant-te gaudeix dels teus privilegis per fer una selecció més exquisida veient les valoracions i comentaris de les persones que s'han delectat dels restaurants de Ca'n Picafort.</p>
+                    <p>{traduccions[sessionStorage.getItem("id_idioma")][0].frase5qs}</p>
+                    <p>{traduccions[sessionStorage.getItem("id_idioma")][0].frase6qs}</p>
+                    <p>{traduccions[sessionStorage.getItem("id_idioma")][0].frase7qs}</p>
                 </div>
-                <h3>Objectiu</h3>
+                <h3>{traduccions[sessionStorage.getItem("id_idioma")][0].objectiu}</h3>
                 <div id="frase">
-                    <p>El principal objectiu de Pica & Menja és donar facilitats als nostres usuaris a l'hora d'escollir un restaurant adaptat als seus gustos,
-                        que puguin compartir la seva experiència valorant i comentant a través del web. Una manera d'enriquir la nostra informació gràcies a la vostra col·laboració.
-                    </p>
+                    <p>{traduccions[sessionStorage.getItem("id_idioma")][0].textobjectiu}</p>
                 </div>
                 <hr />
-                <h2>Sobre mí</h2>
+                <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].sobremi}</h2>
                 <div id="contenedor">
                     <div className="sobreMi">
                         <p><Image src={process.env.PUBLIC_URL + '/foto_admin.webP'} alt="Foto cap de projecte" style={{ width: 150, height: 150, borderRadius: 150 }} /></p>
                     </div>
-                    <div className="texte ms-4"><p className="mt-4">
-                        Sóc na <strong>Míriam Jiménez Molina</strong>, creadora de la pàgina web.
-                        Vaix nèixer a Manacor (Mallorca, Illes Balears) al 1998 i visc a Ca'n Picafort.</p>
-                        <p className="mt-1 mb-4">
-                            Actualment estic estudiant el Grau Superior d'Aplicacions Web al CIFP Pau Casesnoves, trobat a Inca.
-                            Aquesta pàgina web és el meu projecte final de grau.
-                        </p>
+                    <div className="texte ms-4">
+                        <p className="mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].textsobremi}</p>
+                        <p className="mt-1 mb-4">{traduccions[sessionStorage.getItem("id_idioma")][0].textsobremi2}</p>
                     </div>
                 </div>
             </div>

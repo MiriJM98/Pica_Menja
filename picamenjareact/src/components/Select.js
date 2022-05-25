@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import traduccions from "./traduccions.json";
 
 export default class Select extends Component {
   state = {
@@ -36,7 +37,7 @@ export default class Select extends Component {
     return (
       <select onChange={this.onChange} value={this.props.valorInicial}>
         <option value="" key="-1">
-          Tria
+        {traduccions[sessionStorage.getItem("id_idioma")][0].select}
         </option>
         {this.state.items.map((item, key) => {
           return (
