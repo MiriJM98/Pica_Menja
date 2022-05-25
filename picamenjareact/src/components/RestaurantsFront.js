@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Image } from "react-bootstrap";
 import Select from "./Select";
-
+import traduccions from "./traduccions.json";
 
 export default class RestaurantsFront extends Component {
 
@@ -55,7 +55,8 @@ export default class RestaurantsFront extends Component {
                         imatge.setAttribute("width", 300);
                         imatge.setAttribute("alt", "Foto restaurant");
                         let nom = document.createTextNode(restaurant.nom);
-                        let id_rest = document.createTextNode("Click!");
+                        let info = traduccions[sessionStorage.getItem("id_idioma")][0].info;
+                        let id_rest = document.createTextNode(info);
                         header.appendChild(nom);
                         buttonID.appendChild(id_rest);
                         carta.appendChild(header);
@@ -101,7 +102,8 @@ export default class RestaurantsFront extends Component {
                         imatge.setAttribute("src", restaurant.image);
                         imatge.setAttribute("width", 300);
                         let nom = document.createTextNode(restaurant.restaurant);
-                        let id_rest = document.createTextNode("Informació!");
+                        let info = traduccions[sessionStorage.getItem("id_idioma")][0].info;
+                        let id_rest = document.createTextNode(info);
                         header.appendChild(nom);
                         buttonID.appendChild(id_rest);
                         carta.appendChild(header);
@@ -124,17 +126,55 @@ export default class RestaurantsFront extends Component {
     render() {
         return (
             <div>
-                <h1 className="row justify-content-center mt-4">Restaurants</h1>
-                <Select
-                    canviar={this.onChangeTipus}
-                    valorInicial={this.state.id_tipus}
-                    clau="id_tipus"
-                    display="tipus_ca"
-                    url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus"
-                />
-                <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
-                    <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
-                </button>
+                <h1 className="row justify-content-center mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].restaurants}</h1>
+                {sessionStorage.getItem("id_idioma") === "1" ?
+                    <>
+                        <Select
+                            canviar={this.onChangeTipus}
+                            valorInicial={this.state.id_tipus}
+                            clau="id_tipus"
+                            display="tipus_ca"
+                            url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                        <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                            <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                        </button></>
+                    : console.log()}
+                {sessionStorage.getItem("id_idioma") === "2" ?
+                    <>
+                        <Select
+                            canviar={this.onChangeTipus}
+                            valorInicial={this.state.id_tipus}
+                            clau="id_tipus"
+                            display="tipus_es"
+                            url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                        <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                            <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                        </button></>
+                    : console.log()}
+                {sessionStorage.getItem("id_idioma") === "3" ?
+                    <>
+                        <Select
+                            canviar={this.onChangeTipus}
+                            valorInicial={this.state.id_tipus}
+                            clau="id_tipus"
+                            display="tipus_en"
+                            url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                        <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                            <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                        </button></>
+                    : console.log()}
+                {sessionStorage.getItem("id_idioma") === "4" ?
+                    <>
+                        <Select
+                            canviar={this.onChangeTipus}
+                            valorInicial={this.state.id_tipus}
+                            clau="id_tipus"
+                            display="tipus_de"
+                            url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                        <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                            <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                        </button></>
+                    : console.log()}
                 <div id="contenedorTaula"></div>
                 <div id="contenedorTipus"></div>
             </div>

@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import axios from "axios";
 // import { Carousel } from '@sefailyasoz/react-carousel';
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import traduccions from "./traduccions.json";
+
 export default class Inici extends Component {
 
     constructor(props) {
@@ -43,7 +45,7 @@ export default class Inici extends Component {
     render() {
         return (
             <div>
-                <h1 className="row justify-content-center mt-4">Inici</h1>
+                <h1 className="row justify-content-center mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].inici}</h1>
                 {/* <h2 className="row justify-content-center">Restaurants</h2> */}
                 {/* <Carousel
                     data={this.state.imatges}

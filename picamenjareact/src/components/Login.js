@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+import traduccions from "./traduccions.json";
 
 export default class Login extends Component {
     constructor(props) {
@@ -59,14 +60,14 @@ export default class Login extends Component {
         return (
             <div id="divLogin" className="row justify-content-center">
                 <div id="dadesLogin">
-                    <h1 className="row justify-content-center">Inicia sessió</h1>
-                    <p><label htmlFor="email" className="row justify-content-center">Email</label></p>
+                    <h1 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].iniciasessio}</h1>
+                    <p><label htmlFor="email" className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].email}</label></p>
                     <p><input type="text" id="email" name="email" onChange={this.canviParam} /></p>
-                    <p><label htmlFor="password" className="row justify-content-center">Password</label></p>
+                    <p><label htmlFor="password" className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].password}</label></p>
                     <p><input type="password" id="password" name="password" onChange={this.canviParam} /></p>
-                    <p><a href="/registre" id="linkFormulari" className="row justify-content-center">No tens compte? Regístra't!</a></p>
-                    <p><button type="button" id="botoLogin" onClick={this.login}>Login</button></p>
-                    <p id="errors" style={{ display: 'none' }}>Error. Email o password incorrectes.</p>
+                    <p><a href="/registre" id="linkFormulari" className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].missatgelogin}</a></p>
+                    <p><button type="button" id="botoLogin" onClick={this.login}>{traduccions[sessionStorage.getItem("id_idioma")][0].botoLogin}</button></p>
+                    <p id="errors" style={{ display: 'none' }}>{traduccions[sessionStorage.getItem("id_idioma")][0].errorLogin}</p>
                 </div>
             </div>
         )

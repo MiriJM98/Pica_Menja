@@ -86,7 +86,7 @@ export default class Menu extends Component {
 
   carregaIdioma = () => {
     // Català idioma per defecte
-    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes/1")
+    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes/4")
       .then(response => {
         console.log(response);
         sessionStorage.setItem("id_idioma", response.data.id_idioma);
@@ -152,8 +152,8 @@ export default class Menu extends Component {
               {/* SI L'USUARI NO HA FET LOGIN A L'APLICACIÓ SURTEN LES OPCIONS PER FER LOGIN O REGISTRAR-SE */}
               {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
                 <>
-                  <button className="ms-2 btn btn-info btn-lg mb-2" aria-label="Botó Login" onClick={this.loginFunction}>Inicia sessió</button>
-                  <button className="ms-3 btn btn-warning btn-lg mb-2" aria-label="Botó Sing In" onClick={this.registreFunction}>Regístra't</button>
+                  <button className="ms-2 btn btn-info btn-lg mb-2" aria-label="Botó Login" onClick={this.loginFunction}>{traduccions[sessionStorage.getItem("id_idioma")][0].iniciasessio}</button>
+                  <button className="ms-3 btn btn-warning btn-lg mb-2" aria-label="Botó Sing In" onClick={this.registreFunction}>{traduccions[sessionStorage.getItem("id_idioma")][0].registre}</button>
                 </>
                 : console.log()}
 
