@@ -18,8 +18,6 @@ export default class RestaurantsFront extends Component {
         };
     }
 
-
-
     componentDidMount = () => {
         if (document.getElementById("contenedorTaula").style.display !== "none") {
             this.restaurants();
@@ -27,6 +25,7 @@ export default class RestaurantsFront extends Component {
     };
 
     restaurants = () => {
+        console.log("POR DIOS MIRA AQUÍ ---> " + sessionStorage.getItem("id_idioma"));
         axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/front")
             .then((response) => {
                 console.log(response);

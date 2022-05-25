@@ -39,7 +39,7 @@ class ComentariController extends Controller
     {
         $comentari = new Comentari();
         $comentari->comentari = $request->comentari;
-        $comentari->data = $request->data;
+        $comentari->data = date('Y-m-d');
         $comentari->id_usuari = $request->id_usuari;
         $comentari->id_restaurant = $request->id_restaurant;
         if ($comentari->save()) {
@@ -67,7 +67,7 @@ class ComentariController extends Controller
     {
         $resultat = Comentari::join("restaurants", "restaurants.id_restaurant", "=", "comentaris.id_restaurant")
             ->join("usuaris", "usuaris.id_usuari", "=", "comentaris.id_usuari")
-            ->select("restaurants.nom as restaurant", "comentaris.comentari", "comentaris.data", DB::raw("CONCAT(usuaris.nom_usuari,' ', usuaris.llinatges) AS usuari"), "usuaris.email")
+            ->select("restaurants.nom as restaurant", "comentaris.comentari", "comentaris.data", DB::raw("CONCAT(usuaris.nom_usuari,' ', usuaris.llinatges) AS usuari"), "usuaris.email", "usuaris.foto_perfil")
             ->where("restaurants.id_restaurant", "=", $id)
             ->get();
         return response()->json($resultat);

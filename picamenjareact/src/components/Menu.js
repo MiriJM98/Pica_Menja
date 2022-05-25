@@ -78,6 +78,7 @@ export default class Menu extends Component {
           sessionStorage.setItem("token", "");
           sessionStorage.setItem("admin", "");
           sessionStorage.setItem("id_usuari", "");
+          this.handleRefresh();
           window.location.assign("/");
           alert("Ha expirat la sessió!");
         }
@@ -85,18 +86,24 @@ export default class Menu extends Component {
   }
 
   carregaIdioma = () => {
+    this.handleRefresh();
     // Català idioma per defecte
-    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes/4")
+    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes/" + sessionStorage.getItem("id_idioma"))
       .then(response => {
         console.log(response);
         sessionStorage.setItem("id_idioma", response.data.id_idioma);
         console.log("id_idioma --> " + sessionStorage.getItem("id_idioma"));
-        this.handleRefresh();
       })
       .catch(function (error) {
         // Mostrar error
         console.log(error);
       })
+  }
+
+  onChangeIdioma = (e) => {
+    sessionStorage.setItem("id_idioma", e.target.value);
+    this.handleRefresh();
+    console.log(sessionStorage.getItem("id_idioma"));
   }
 
   // FUNCIÓ PER ANAR A INICIAR SESSIÓ
@@ -148,6 +155,12 @@ export default class Menu extends Component {
                 width="45" height="45" title="Idiomes" onClick={prova}
               />
               </button>
+              <select onChange={this.onChangeIdioma} value={sessionStorage.getItem("id_idioma")}>
+                <option value="1">Català</option>
+                <option value="2">Español</option>
+                <option value="3">English</option>
+                <option value="4">Deutsch</option>
+              </select>
 
               {/* SI L'USUARI NO HA FET LOGIN A L'APLICACIÓ SURTEN LES OPCIONS PER FER LOGIN O REGISTRAR-SE */}
               {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
@@ -179,8 +192,8 @@ export default class Menu extends Component {
                     </button>
                     {/* BOTONS PER VEURE EL PERFIL O PER FER LOGOUT */}
                     <div className="dropdown-content" id="dropdown-content" style={{ display: 'none' }}>
-                      <button className="ms-3  btn btn-dark btn-lg mb-2" tabIndex={"0"} onClick={this.perfilFunction}>Perfil</button>
-                      <button className="ms-2 btn btn-outline-danger btn-lg mb-2" onClick={this.logout}>Tanca sessió</button>
+                      <button className="ms-3  btn btn-dark btn-lg mb-2" tabIndex={"0"} onClick={this.perfilFunction}>{traduccions[sessionStorage.getItem("id_idioma")][0].perfil}</button>
+                      <button className="ms-2 btn btn-outline-danger btn-lg mb-2" onClick={this.logout}>{traduccions[sessionStorage.getItem("id_idioma")][0].tancasessio}</button>
                     </div>
                   </div>
                 </>
@@ -236,7 +249,7 @@ export default class Menu extends Component {
                 <NavLink className="nav-link" to="/quisom" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].quisom}</NavLink>
                 {/* NOMÉS ELS USUARIS QUE HAGIN FET LOGIN PODEN ENVIAR SUGGERÈNCIES */}
                 {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
-                  <NavLink className="nav-link" to="/suggeriments" onClick={this.handleRefresh}>Suggeriments</NavLink>
+                  <NavLink className="nav-link" to="/suggeriments" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].suggeriments}</NavLink>
                   : console.log()}
                 {/* SI L'USUARI ÉS ADMINISTRADOR (admin == 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin !== 1) NOMÉS MOSTRA EL FRONT */}
                 {sessionStorage.getItem("admin") === "1" ?
@@ -366,11 +379,13 @@ function CridaFotos() {
 }
 
 function prova() {
-  <select>
-    <option>Català</option>
-    <option>Español</option>
-    <option>English</option>
-  </select>
+  <div>
+    <select>
+      <option>Català</option>
+      <option>Español</option>
+      <option>English</option>
+    </select>
+  </div>
   // window.location.assign("/restaurants");
 }
 
@@ -378,3 +393,4 @@ console.log("AQUÍ SALE EL TOKEN ---> " + sessionStorage.getItem("token"));
 console.log("AQUÍ SALE EL ADMIN ---> " + sessionStorage.getItem("admin"));
 console.log("AQUÍ SALE EL ID_USUARI --> " + sessionStorage.getItem("id_usuari"));
 console.log("AQUÍ SALE TOKEN VÁLIDO --> " + sessionStorage.getItem("token_valid"));
+console.log("id_idioma --> " + sessionStorage.getItem("id_idioma"));

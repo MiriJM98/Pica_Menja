@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Image } from "react-bootstrap";
 import axios from 'axios';
 import FormData from 'form-data';
+import traduccions from "./traduccions.json";
 
 export default class PerfilUsuari extends Component {
     constructor(props) {
@@ -168,21 +169,21 @@ export default class PerfilUsuari extends Component {
         return (
             <Container>
                 <div className="container-xl px-4 mt-4">
-                    <h1 className='row justify-content-center'>El teu perfil</h1>
+                    <h1 className='row justify-content-center'>{traduccions[sessionStorage.getItem("id_idioma")][0].teuperfil}</h1>
                     {/* NAVEGACIÓ */}
                     <nav className="nav nav-borders">
-                        <Button variant="link" onClick={this.canviaCompte}>Compte</Button>
-                        <Button variant="link" onClick={this.canviaPassword}>Contrasenya</Button>
+                        <Button variant="link" onClick={this.canviaCompte}>{traduccions[sessionStorage.getItem("id_idioma")][0].compte}</Button>
+                        <Button variant="link" onClick={this.canviaPassword}>{traduccions[sessionStorage.getItem("id_idioma")][0].password}</Button>
                     </nav>
                     <hr className="mt-0 mb-4" />
                     <div className="row">
                         <div className="col-xl-4">
                             {/* SECCIÓ DEL PERFIL */}
                             <div className="card mb-4 mb-xl-0">
-                                <div className="card-header">Foto de perfil</div>
+                                <div className="card-header">{traduccions[sessionStorage.getItem("id_idioma")][0].fotoperfil}</div>
                                 <div className="card-body text-center">
                                     {/* FOTO DE PERFIL */}
-                                    <Image src={this.state.foto_perfil} style={{ width: 200, height: 200, borderRadius: 400 / 2 }} />
+                                    <Image src={this.state.foto_perfil} style={{ width: 240, height: 240, borderRadius: 400 / 2 }} />
                                     {/* NOM D'USUARI COMPLET */}
                                     <div className="row justify-content-center mt-3 mb-3 ms-4">
                                         <div className="col-md-8">
@@ -202,25 +203,25 @@ export default class PerfilUsuari extends Component {
                                         </div>
                                     </div>
                                     {/* BOTÓ PER ACTUALITZAR FOTO DEL PERFIL */}
-                                    <button className="btn btn-primary" type="button" onClick={this.updateFoto}>Actualitza foto</button>
+                                    <button className="btn btn-primary" type="button" onClick={this.updateFoto}>{traduccions[sessionStorage.getItem("id_idioma")][0].botofoto}</button>
                                 </div>
                             </div>
                         </div>
                         <div className="col-xl-8" id='divDades'>
                             {/* DETALLS DEL TEU COMPTE */}
                             <div className="card mb-4">
-                                <div className="card-header">Detalls del teu perfil</div>
+                                <div className="card-header">{traduccions[sessionStorage.getItem("id_idioma")][0].detallsperfil}</div>
                                 <div className="card-body">
                                     {/* PRIMERA FILA */}
                                     <div className="row gx-3 mb-3">
                                         {/* NOM USUARI */}
                                         <div className="col-md-6 mb-2">
-                                            <label>Nom usuari:</label>
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].nomusuari}:</label>
                                             <input type="text" className='form-control' name='nom_usuari' value={this.state.nom_usuari} onChange={this.onChange} />
                                         </div>
                                         {/* LLINATGES */}
                                         <div className="col-md-6">
-                                            <label>Llinatges:</label>
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].llinatges}:</label>
                                             <input type="text" className='form-control' name='llinatges' value={this.state.llinatges} onChange={this.onChange} />
                                         </div>
                                     </div>
@@ -228,12 +229,12 @@ export default class PerfilUsuari extends Component {
                                     <div className="row gx-3 mb-3">
                                         {/* DATA DE NAIXEMENT */}
                                         <div className="col-md-6 mb-2">
-                                            <label>Data de naixement:</label>
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].datanaix}:</label>
                                             <input value={this.state.data_naixement} type="date" name='data_naixement' onChange={this.onChange} className="form-control" />
                                         </div>
                                         {/* TELÈFON */}
                                         <div className="col-md-6">
-                                            <label>Telèfon:</label>
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].telefon}:</label>
                                             <input type="text" className='form-control' name='telefon' value={this.state.telefon} onChange={this.onChange} />
                                         </div>
                                     </div>
@@ -241,17 +242,17 @@ export default class PerfilUsuari extends Component {
                                     <div className="row gx-3 mb-3">
                                         {/* DIRECCIÓ */}
                                         <div className="col-md-6 mb-2">
-                                            <label>Direcció:</label>
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].direccio}:</label>
                                             <input value={this.state.direccio} type="text" name='direccio' onChange={this.onChange} className="form-control" />
                                         </div>
                                         {/* EMAIL */}
                                         <div className="col-md-6">
-                                            <label>Email:</label>
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].email}:</label>
                                             <input value={this.state.email} type="email" name='email' onChange={this.onChange} className="form-control" />
                                         </div>
                                     </div>
                                     {/* BOTÓ PER GUARDAR ELS CANVIS */}
-                                    <div className='text-center'><button className="btn btn-primary" type="button" onClick={this.update}>Desa els canvis</button></div>
+                                    <div className='text-center'><button className="btn btn-primary" type="button" onClick={this.update}>{traduccions[sessionStorage.getItem("id_idioma")][0].botocanvisusuari}</button></div>
                                 </div>
                             </div>
                         </div>

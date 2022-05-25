@@ -29,14 +29,17 @@ export default class RestaurantFront extends Component {
             fotos: [],
             comentaris: [],
             valoracio: "",
-            puntuacio: -1
+            puntuacio: -1,
+            id_usuari: -1,
+            foto_perfil: [],
+            nom_usuari: [],
         };
     }
 
     componentDidMount() {
         console.log("IDIOMA " + sessionStorage.getItem("id_idioma"));
         if (this.props.id_restaurant !== -1) {
-            this.descarregaRestaurantCa(this.props.id_restaurant);
+            this.descarregaRestaurant(this.props.id_restaurant);
         }
         if (this.props.id_restaurant !== -1) {
             this.mostraComentaris(this.props.id_restaurant);
@@ -49,7 +52,7 @@ export default class RestaurantFront extends Component {
         // }
     }
 
-    descarregaRestaurantCa = (id_restaurant) => {
+    descarregaRestaurant = (id_restaurant) => {
         const mostrador = document.getElementById("contingut");
         const divIframe = document.getElementById("iframeDiv");
         axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + id_restaurant)
@@ -75,7 +78,6 @@ export default class RestaurantFront extends Component {
                     rang_preus: response.data.rang_preus,
                     iframe: response.data.iframe,
                 });
-                console.log("AQUÍIIIII ---> " + sessionStorage.getItem("id_idioma"));
                 // BUIDAM EL CONTINGUT
                 mostrador.innerHTML = "";
                 divIframe.innerHTML = "";
@@ -266,7 +268,7 @@ export default class RestaurantFront extends Component {
             .then((response) => {
                 console.log(response);
                 this.setState({
-                    comentaris: response.data
+                    comentaris: response.data,
                 });
                 const a = document.getElementById("divComentaris");
                 a.innerHTML = "";
@@ -276,17 +278,24 @@ export default class RestaurantFront extends Component {
                     let tdComentari = document.createElement("td");
                     let tdData = document.createElement("td");
                     let tdUsuari = document.createElement("td");
+                    let tdImatge = document.createElement("td");
                     ////
                     let missatge = document.createTextNode(comentari.comentari);
                     let data = document.createTextNode(comentari.data);
                     let usuari = document.createTextNode(comentari.usuari);
+                    let imatge = document.createElement("img");
+                    imatge.setAttribute("src", comentari.foto_perfil);
+                    imatge.setAttribute("alt", "Foto Usuari");
+                    imatge.setAttribute("id", "fotoValoracions");
                     ////
                     tdComentari.appendChild(missatge);
                     tdData.appendChild(data);
                     tdUsuari.appendChild(usuari);
+                    tdImatge.appendChild(imatge);
                     tr.appendChild(tdComentari);
                     tr.appendChild(tdData);
                     tr.appendChild(tdUsuari);
+                    tr.appendChild(tdImatge);
                     table.appendChild(tr);
                     document.getElementById("divComentaris").appendChild(table);
                 });
@@ -333,10 +342,9 @@ export default class RestaurantFront extends Component {
                 <h1 className="row justify-content-center mt-4">{this.state.nom}</h1>
                 <div id="carouselRestaurant"></div>
                 <div id="contingut"></div>
-                <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].comentaris}</h2>
+                <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].valocomen}</h2>
                 <div id="divComentaris"></div>
                 <div id="usuariComentari"></div>
-                <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].valoracio}</h2>
                 <div id="divValoracions"></div>
                 <div id="estrelles">
                     {this.state.puntuacio !== -1 ?
