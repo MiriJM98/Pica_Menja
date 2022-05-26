@@ -44,8 +44,23 @@ export default class Valoracions extends Component {
                     floatingFilter: true,
                 },
                 {
+                    field: "comentari",
+                    headerName: "COMENTARI",
+                    sortable: true,
+                    filter: true,
+                    floatingFilter: true,
+                    resizable : true
+                },
+                {
                     field: "usuaris.email",
                     headerName: "USUARI",
+                    sortable: true,
+                    filter: true,
+                    floatingFilter: true,
+                },
+                {
+                    field: "data",
+                    headerName: "DATA",
                     sortable: true,
                     filter: true,
                     floatingFilter: true,

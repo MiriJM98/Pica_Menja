@@ -10,7 +10,6 @@ import {
   Routes,
   useParams,
 } from "react-router-dom";
-import Comentaris from "./Comentaris";
 import Foto from "./Foto";
 import Fotos from "./Fotos";
 import Idioma from "./Idioma";
@@ -26,8 +25,6 @@ import Login from "./Login";
 import Serveis from "./Serveis";
 import Tipu from "./Tipu";
 import Tipus from "./Tipus";
-import Traduccio from "./Traduccio";
-import Traduccions from "./Traduccions";
 import Usuari from "./Usuari";
 import Usuaris from "./Usuaris";
 import Valoracions from "./Valoracions";
@@ -78,7 +75,6 @@ export default class Menu extends Component {
           sessionStorage.setItem("token", "");
           sessionStorage.setItem("admin", "");
           sessionStorage.setItem("id_usuari", "");
-          this.handleRefresh();
           window.location.assign("/");
           alert("Ha expirat la sessió!");
         }
@@ -253,14 +249,13 @@ export default class Menu extends Component {
                   : console.log()}
                 {/* SI L'USUARI ÉS ADMINISTRADOR (admin == 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin !== 1) NOMÉS MOSTRA EL FRONT */}
                 {sessionStorage.getItem("admin") === "1" ?
-                  <><NavLink className="nav-link" to="/comentaris" onClick={this.handleRefresh}>Comentaris</NavLink>
+                  <>
                     <NavLink className="nav-link" to="/fotos" onClick={this.handleRefresh}>Fotos</NavLink>
                     <NavLink className="nav-link" to="/idiomes" onClick={this.handleRefresh}>Idiomes</NavLink>
                     <NavLink className="nav-link" to="/restaurants_serveis" onClick={this.handleRefresh}>Restaurants_Serveis</NavLink>
                     <NavLink className="nav-link" to="/restaurants_back" onClick={this.handleRefresh}>Restaurants_Back</NavLink>
                     <NavLink className="nav-link" to="/serveis" onClick={this.handleRefresh}>Serveis</NavLink>
                     <NavLink className="nav-link" to="/tipus" onClick={this.handleRefresh}>Tipus</NavLink>
-                    <NavLink className="nav-link" to="/traduccions" onClick={this.handleRefresh}>Traduccions</NavLink>
                     <NavLink className="nav-link" to="/usuaris" onClick={this.handleRefresh}>Usuaris</NavLink>
                     <NavLink className="nav-link" to="/valoracions" onClick={this.handleRefresh}>Valoracions</NavLink>
                   </>
@@ -285,7 +280,6 @@ export default class Menu extends Component {
             {/* RUTES DE BACKEND */}
             {sessionStorage.getItem("admin") === "1" ?
               <>
-                <Route path="/comentaris" element={<Comentaris />} />
                 <Route path="/fotos" element={<Fotos />} />
                 <Route path="/foto/:id_foto" element={<CridaFotos />} />
                 <Route path="/idiomes" element={<Idiomes />} />
@@ -298,8 +292,6 @@ export default class Menu extends Component {
                 <Route path="/servei/:id_servei" element={<CridaServei />} />
                 <Route path="/tipus" element={<Tipus />} />
                 <Route path="/tipus/:id_tipus" element={<CridaTipus />} />
-                <Route path="/traduccions" element={<Traduccions />} />
-                <Route path="/traduccio/:id_traduccio" element={<Traduccio />} />
                 <Route path="/valoracions" element={<Valoracions />} />
                 <Route path="/usuaris" element={<Usuaris />} />
                 <Route path="/usuari/:id_usuari" element={<CridaUsuari />} />

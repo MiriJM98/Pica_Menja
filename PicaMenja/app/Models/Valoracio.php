@@ -10,7 +10,7 @@ class Valoracio extends Model
     protected $table = 'valoracions';
     protected $primaryKey = 'id_valoracio';
     public $timestamps = false;
-    protected $fillable = ['valoracio', 'id_usuari', 'id_restaurant'];
+    protected $fillable = ['valoracio', 'id_usuari', 'id_restaurant', 'comentari', 'data'];
     use HasFactory;
 
     // RELACIONS AMB ALTRES TAULES

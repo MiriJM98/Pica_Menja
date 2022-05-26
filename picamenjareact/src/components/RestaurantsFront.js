@@ -128,6 +128,7 @@ export default class RestaurantsFront extends Component {
                 <h1 className="row justify-content-center mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].restaurants}</h1>
                 {sessionStorage.getItem("id_idioma") === "1" ?
                     <>
+                    <h3>Filtra per tipus</h3>
                         <Select
                             canviar={this.onChangeTipus}
                             valorInicial={this.state.id_tipus}

@@ -259,36 +259,38 @@ export default class PerfilUsuari extends Component {
                         <div className="col-xl-8" id='divPassword' style={{ display: 'none' }}>
                             {/* SECCIÓ CONTRASENYA */}
                             <div className="card mb-4">
-                                <div className="card-header">Restableix la teva contrasenya</div>
+                                <div className="card-header">{traduccions[sessionStorage.getItem("id_idioma")][0].canvipassword}</div>
                                 <div className="card-body">
                                     <div className="row gx-3">
                                         {/* EMAIL */}
                                         <div className="col-md-6 mb-3">
-                                            <label>Email:</label>
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].email}:</label>
                                             <input value={this.state.email} type="email" name='email' onChange={this.onChange} className="form-control" />
                                         </div>
                                     </div>
                                     <div className="row gx-3">
                                         {/* CONTRASENYA ANTIGA ENCRIPTADA */}
                                         <div className="mb-3">
-                                            <label>Contrasenya antiga (encriptada):</label>
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].oldpassword}:</label>
                                             <input type="password" className='form-control' name='password_antiga' value={this.state.password} onChange={this.onChange} />
                                         </div>
                                     </div>
                                     <div className="row gx-3 mb-3">
                                         {/* CONTRASENYA NOVA */}
                                         <div className="col-md-6">
-                                            <label>Contrasenya nova:</label>
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].newpassword}:</label>
                                             <input type="password" className='form-control' id='password_nova' name='password_nova' value={this.state.password_nova} onChange={this.onChange} />
                                         </div>
                                         <div className="col-md-6">
-                                        {/* REPETIR CONTRASENYA */}
-                                            <label>Repeteix contrasenya nova:</label>
+                                            {/* REPETIR CONTRASENYA */}
+                                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].repeatpassword}:</label>
                                             <input type="password" className='form-control' id='password_nova_re' name='password_nova_re' onChange={this.onChange} />
                                         </div>
                                     </div>
                                     {/* BOTÓ PER CANVIAR LA CONTRASENYA */}
-                                    <div id='botoA'><button className="btn btn-primary" type="button" onClick={this.updatePassword}>Actualitza</button></div>
+                                    <div id='botoA'>
+                                        <button className="btn btn-primary" type="button" onClick={this.updatePassword}>{traduccions[sessionStorage.getItem("id_idioma")][0].botopassword}</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

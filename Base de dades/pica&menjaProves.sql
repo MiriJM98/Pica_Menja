@@ -7,8 +7,6 @@ CREATE TABLE idiomes (id_idioma int AUTO_INCREMENT PRIMARY KEY, idioma varchar(1
 
 CREATE TABLE tipus (id_tipus int AUTO_INCREMENT PRIMARY KEY, tipus_ca varchar(20) NOT NULL, tipus_es varchar(20) NOT NULL, tipus_en varchar(20) NOT NULL, tipus_de varchar(20) NOT NULL);
 
-CREATE TABLE traduccions (id_traduccio int AUTO_INCREMENT PRIMARY KEY, catala varchar(40) NOT NULL, espanyol varchar(40) NOT NULL, english varchar(40) NOT NULL, deutsch varchar(40) NOT NULL);
-
 CREATE TABLE serveis (id_servei int AUTO_INCREMENT PRIMARY KEY, servei_ca varchar(35) NOT NULL, servei_es varchar(35) NOT NULL, servei_en varchar(35) NOT NULL, servei_de varchar(35) NOT NULL);
 
 CREATE TABLE usuaris (id_usuari int AUTO_INCREMENT PRIMARY KEY, nom_usuari varchar(20) NOT NULL, llinatges varchar(30) NOT NULL, telefon varchar(20) NOT NULL, 
@@ -18,11 +16,9 @@ token varchar(60), token_valid_fins datetime, foto_perfil text);
 CREATE TABLE restaurants (id_restaurant int AUTO_INCREMENT PRIMARY KEY, nom varchar(30) NOT NULL, telefon varchar(27) NOT NULL, 
 pagina_web varchar(100) NOT NULL,  ubicacio varchar(100) NOT NULL, horari_ca varchar(150) NOT NULL, horari_es varchar(150) NOT NULL, 
 horari_en varchar(150) NOT NULL, horari_de varchar(150) NOT NULL, descripcio_ca text NOT NULL, descripcio_es text NOT NULL, 
-descripcio_en text NOT NULL, descripcio_de text NOT NULL, imatge text, carta text, rang_preus varchar(10), id_tipus int NOT NULL);
+descripcio_en text NOT NULL, descripcio_de text NOT NULL, imatge text, carta text, rang_preus varchar(10), iframe text, id_tipus int NOT NULL);
 
-CREATE TABLE valoracions (id_valoracio int AUTO_INCREMENT PRIMARY KEY, valoracio int(4) NOT NULL, id_usuari int NOT NULL, id_restaurant int NOT NULL);
-
-CREATE TABLE comentaris (id_comentari int AUTO_INCREMENT PRIMARY KEY, comentari text, data date, id_usuari int NOT NULL, id_restaurant int NOT NULL);
+CREATE TABLE valoracions (id_valoracio int AUTO_INCREMENT PRIMARY KEY, valoracio int(4) NOT NULL, comentari text, data DATE, id_usuari int NOT NULL, id_restaurant int NOT NULL);
 
 CREATE TABLE fotos (id_restaurant int NOT NULL, id_foto int NOT NULL, foto text);
 
@@ -77,37 +73,6 @@ INSERT INTO tipus (id_tipus, tipus_ca, tipus_es, tipus_en, tipus_de) VALUES (10,
 INSERT INTO tipus (id_tipus, tipus_ca, tipus_es, tipus_en, tipus_de) VALUES (11, "Rostidor", "Asador", "Grill", "Rotisserie");
 INSERT INTO tipus (id_tipus, tipus_ca, tipus_es, tipus_en, tipus_de) VALUES (12, "Oriental", "Oriental", "Oriental", "Orientalisch");
 
--- INSERTS PER A LA TAULA TRADUCCIONS --
-
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (1, "Inici", "Inicio", "Home", "Startseite");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (2, "Qui som", "Quienes somos", "Who we are", "Wer wir sind");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (3, "Restaurants", "Restaurantes", "Restaurants", "Restaurants");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (4, "Suggeriments", "Sugerencias", "Suggestions", "Vorschläge");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (5, "Inicia sessió", "Inicia sesión", "Login", "Einloggen");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (6, "Registra't", "Regístrate", "Sign up", "Register");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (7, "Perfil", "Perfil", "Profile", "Profil");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (8, "Cancel·lar", "Cancelar", "Cancel", "Abbrechen");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (9, "Editar", "Editar", "Edit", "Editieren");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (10, "Objectiu", "Objetivo", "Objective", "Zielsetzung");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (11, "Pàgina", "Página", "Page", "Seite");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (12, "Registre", "Registro", "Register", "Register");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (13, "Formulari", "Formulario", "Form", "Bilden");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (14, "Tancar sessió", "Cerrar sesión", "Logout", "Ausloggen");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (15, "Cercar", "Buscar", "Search", "Suche");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (16, "Guardar", "Guardar", "Save", "Speichern Sie");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (17, "Esborrar", "Borrar", "Delete", "Löschen");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (18, "Nom", "Nombre", "Name", "Name");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (19, "Descripció", "Descripción", "Description", "Beschreibung");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (20, "Telèfon", "Teléfono", "Telephone", "Telefonnummer");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (21, "Correu", "Correo", "Email", "Email");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (22, "Tipus", "Tipo", "Type", "Typ");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (23, "Servei", "Servicio", "Service", "Service");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (24, "Usuari", "Usuario", "User", "Benutzer");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (25, "Català", "Catalán", "Catalan", "Katalanisch");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (26, "Espanyol", "Español", "Spanish", "Spanisch");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (27, "Anglès", "Inglés", "English", "Englisch");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (28, "Alemany", "Alemán", "German", "Deutsch");
-
 -- INSERTS PER A LA TAULA SERVEIS --
 
 INSERT INTO serveis (id_servei, servei_ca, servei_es, servei_en, servei_de) VALUES (1, "Banys", "Aseos", "Toilets", "Toiletten");
@@ -148,6 +113,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -167,6 +133,7 @@ VALUES(
     null,
     null,
     "€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.892525883192!2d3.157915615376204!3d39.76452137944622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1296320d929dd3eb%3A0x3aea4f83e7756d00!2sRestaurante%20Marisco!5e0!3m2!1ses!2ses!4v1652882388432!5m2!1ses!2ses",
     1
 );
 
@@ -187,6 +154,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -206,6 +174,7 @@ VALUES(
     null,
     null,
     "€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.7918548875346!2d3.1503497150424193!3d39.76678150283464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129632717c804caf%3A0x8ac6d9077dc39476!2sPizzeria%20Mamma%20Mia!5e0!3m2!1ses!2ses!4v1652884623129!5m2!1ses!2ses",
     2
 );
 
@@ -226,6 +195,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -245,6 +215,7 @@ VALUES(
     null,
     null,
     "€-€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.6662123125952!2d3.145867315042517!3d39.769602102665374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1296327751ba6a3f%3A0x5dd9f57e12a424e9!2sRestaurante%20Hong%20Kong!5e0!3m2!1ses!2ses!4v1652884676320!5m2!1ses!2ses",
     3
 );
 
@@ -265,6 +236,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -284,6 +256,7 @@ VALUES(
     null,
     null,
     "€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.6623991763313!2d3.147420615042519!3d39.76968770266013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129632713f62ba23%3A0xea5aa24b73f7600d!2sEl%20Gaucho%20Asador!5e0!3m2!1ses!2ses!4v1652884705513!5m2!1ses!2ses",
     7
 );
 
@@ -304,6 +277,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -323,6 +297,7 @@ VALUES(
     null,
     null,
     "€€-€€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.7930753738665!2d3.1453341150424494!3d39.766754102836245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1296327a7ae77faf%3A0xbd14f0352827bf46!2sRestaurante%20Vinicius!5e0!3m2!1ses!2ses!4v1652884728823!5m2!1ses!2ses",
     1
 );
 
@@ -343,6 +318,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -362,6 +338,7 @@ VALUES(
     null,
     null,
     "€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.7297828786836!2d3.147191515042455!3d39.76817500275101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12962c9e90ad3a0d%3A0xfe3396df8146341c!2sBurger%20King!5e0!3m2!1ses!2ses!4v1652884768143!5m2!1ses!2ses",
     4
 );
 
@@ -382,6 +359,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -401,6 +379,7 @@ VALUES(
     null,
     null,
     "€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.1235474619857!2d3.1638991150422178!3d39.75933440328162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129633968256427b%3A0x62ebea11427473!2sSa%20mexicana%20(Son%20Baulo)!5e0!3m2!1ses!2ses!4v1652884794544!5m2!1ses!2ses",
     9
 );
 
@@ -421,6 +400,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -439,7 +419,8 @@ VALUES(
     "Gemütliches und informelles Restaurant mit uruguayischer und gesunder Küche.",
     null,
     null,
-    "€",
+    "€-€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.7955341617076!2d3.147445015042453!3d39.76669890283975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12963270f7443815%3A0x8cfc1ae5a11c20c4!2sCan%20Montevideo!5e0!3m2!1ses!2ses!4v1652884825143!5m2!1ses!2ses",
     10
 );
 
@@ -460,6 +441,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -479,6 +461,7 @@ VALUES(
     null,
     null,
     "€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.6881956224365!2d3.1464342150424964!3d39.76910860269504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129632774cdb54ff%3A0xa5878fd9b9b4636c!2sL&#39;Incanto!5e0!3m2!1ses!2ses!4v1652884895801!5m2!1ses!2ses",
     2
 );
 
@@ -499,6 +482,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -518,6 +502,7 @@ VALUES(
     null,
     null,
     "€€-€€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.8053692846493!2d3.1531853150424456!3d39.766478102852815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129633e6af0f8f55%3A0xb4df9f440d9de899!2sSapori!5e0!3m2!1ses!2ses!4v1652884910248!5m2!1ses!2ses",
     1
 );
 
@@ -538,6 +523,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -557,6 +543,7 @@ VALUES(
     null,
     null,
     "€€-€€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.732924309767!2d3.146791615376296!3d39.76810447944582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1296339542e7c769%3A0xb62ca6aa03a14935!2sRestaurante%20El%20patron!5e0!3m2!1ses!2ses!4v1652946488011!5m2!1ses!2ses",
     1
 );
 
@@ -577,6 +564,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -596,6 +584,7 @@ VALUES(
     null,
     null,
     "€€-€€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.7500995787386!2d3.1462794150424647!3d39.76771890277836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1296327098032907%3A0x755dd72279b39c41!2sRESTAURANTE%20M%C3%93NACO!5e0!3m2!1ses!2ses!4v1652946527546!5m2!1ses!2ses",
     1
 );
 
@@ -616,6 +605,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -635,6 +625,7 @@ VALUES(
     null,
     null,
     "€€-€€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.844811767992!2d3.154825315042391!3d39.76559260290594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12963272dda64327%3A0x30a4bd0e01414cb4!2sEl%20Puerto!5e0!3m2!1ses!2ses!4v1652946556071!5m2!1ses!2ses",
     1
 );
 
@@ -655,6 +646,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -674,6 +666,7 @@ VALUES(
     null,
     null,
     "€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.7077777267123!2d3.1475372150425067!3d39.768669002721204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129633a3885e5c6f%3A0xffb7bc1d6fdb34a4!2sAlibaba%20kebab%20%26%20doner!5e0!3m2!1ses!2ses!4v1652946574594!5m2!1ses!2ses",
     12
 );
 
@@ -694,6 +687,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -713,6 +707,7 @@ VALUES(
     null,
     null,
     "€€-€€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.6605549701217!2d3.1456993150425396!3d39.769729102657585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12963279e30eaaab%3A0x1d9c3e17c0ff362b!2sLa%20Pinta%20Bar-Restaurant!5e0!3m2!1ses!2ses!4v1652946609335!5m2!1ses!2ses",
     1
 );
 
@@ -733,6 +728,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -752,6 +748,7 @@ VALUES(
     null,
     null,
     "€€-€€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.764683294919!2d3.144759215042464!3d39.76739150279797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1296327a68c84d3d%3A0x99224a6132f2b93e!2sSabores%20De%20India!5e0!3m2!1ses!2ses!4v1652946630843!5m2!1ses!2ses",
     8
 );
 
@@ -772,6 +769,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -791,6 +789,7 @@ VALUES(
     null,
     null,
     "€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.70018277822!2d3.1467110150424764!3d39.768839502711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1296338e22d6ca9d%3A0xab8f18bb6a56824!2sSUSHIYOKO%20ll!5e0!3m2!1ses!2ses!4v1652946664057!5m2!1ses!2ses",
     5
 );
 
@@ -811,6 +810,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -830,6 +830,7 @@ VALUES(
     null,
     null,
     "€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.8676974264417!2d3.1543724150423533!3d39.76507880293693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12963272ea006193%3A0x661243a2a53b17dd!2sRestaurante%20Chino%20LUZ%20DE%20LUNA!5e0!3m2!1ses!2ses!4v1652946684621!5m2!1ses!2ses",
     3
 );
 
@@ -850,6 +851,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -869,6 +871,7 @@ VALUES(
     null,
     null,
     "€€-€€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.098388727622!2d3.164142115042213!3d39.7598993032477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12963210ed1208cd%3A0x12f5701f23ff2bc8!2sEl%20Molino!5e0!3m2!1ses!2ses!4v1652946703880!5m2!1ses!2ses",
     11
 );
 
@@ -889,6 +892,7 @@ INSERT INTO restaurants(
     imatge,
     carta,
     rang_preus,
+    iframe,
     id_tipus
 )
 VALUES(
@@ -908,6 +912,7 @@ VALUES(
     null,
     null,
     "€€-€€€",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.7425003271414!2d3.146185115042481!3d39.767889502768156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1296335b248b7577%3A0xf3e68eb1aab9d5d5!2sDakota%20Tex%20Mex%20-%20Can%20Picafort!5e0!3m2!1ses!2ses!4v1652946724724!5m2!1ses!2ses",
     6
 );
 -- INSERTS PER A LA TAULA RESTAURANTS_SERVEIS --
@@ -1103,14 +1108,6 @@ INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALU
 INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (10, 5, 3, 5);
 INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (11, 4, 2, 6);
 INSERT INTO valoracions (id_valoracio, valoracio, id_usuari, id_restaurant) VALUES (12, 2, 3, 6);
-
--- INSERTS PER A LA TAULA COMENTARIS --
-INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (1, "Un restaurante maravilloso. Me encantó el arroz brut.", "2022-04-06", 2, 1);
-INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (2, "Un restaurante muy elegante y con productos de primera calidad. Pienso repetir.", "2022-04-07", 3, 1);
-INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (3, "Italiano exquisito. Merece la pena.", "2022-04-07", 2, 2);
-INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (4, "La pasta estaba deliciosa.", "2022-04-07", 3, 2);
-INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (5, "Me gustó mucho. El pollo agridulce estaba buenísimo y el personal fue muy atento.", "2022-04-07", 2, 3);
-INSERT INTO comentaris (id_comentari, comentari, data, id_usuari, id_restaurant) VALUES (6, "No soy aficionado del chino pero he de admitir que estaba bueno. Recomendado.", "2022-04-02", 3, 3);
 
 -- INSERTS PER A LA TAULA FOTOS --
 

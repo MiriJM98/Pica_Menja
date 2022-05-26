@@ -7,8 +7,6 @@ CREATE TABLE idiomes (id_idioma int AUTO_INCREMENT PRIMARY KEY, idioma varchar(1
 
 CREATE TABLE tipus (id_tipus int AUTO_INCREMENT PRIMARY KEY, tipus_ca varchar(20) NOT NULL, tipus_es varchar(20) NOT NULL, tipus_en varchar(20) NOT NULL, tipus_de varchar(20) NOT NULL);
 
-CREATE TABLE traduccions (id_traduccio int AUTO_INCREMENT PRIMARY KEY, catala varchar(40) NOT NULL, espanyol varchar(40) NOT NULL, english varchar(40) NOT NULL, deutsch varchar(40) NOT NULL);
-
 CREATE TABLE serveis (id_servei int AUTO_INCREMENT PRIMARY KEY, servei_ca varchar(35) NOT NULL, servei_es varchar(35) NOT NULL, servei_en varchar(35) NOT NULL, servei_de varchar(35) NOT NULL);
 
 CREATE TABLE usuaris (id_usuari int AUTO_INCREMENT PRIMARY KEY, nom_usuari varchar(20) NOT NULL, llinatges varchar(30) NOT NULL, telefon varchar(20) NOT NULL, 
@@ -18,11 +16,9 @@ token varchar(60), token_valid_fins datetime, foto_perfil text);
 CREATE TABLE restaurants (id_restaurant int AUTO_INCREMENT PRIMARY KEY, nom varchar(30) NOT NULL, telefon varchar(27) NOT NULL, 
 pagina_web varchar(100) NOT NULL,  ubicacio varchar(100) NOT NULL, horari_ca varchar(150) NOT NULL, horari_es varchar(150) NOT NULL, 
 horari_en varchar(150) NOT NULL, horari_de varchar(150) NOT NULL, descripcio_ca text NOT NULL, descripcio_es text NOT NULL, 
-descripcio_en text NOT NULL, descripcio_de text NOT NULL, imatge text, carta text, rang_preus varchar(10), id_tipus int NOT NULL);
+descripcio_en text NOT NULL, descripcio_de text NOT NULL, imatge text, carta text, rang_preus varchar(10), iframe text, id_tipus int NOT NULL);
 
-CREATE TABLE valoracions (id_valoracio int AUTO_INCREMENT PRIMARY KEY, valoracio int(4) NOT NULL, id_usuari int NOT NULL, id_restaurant int NOT NULL);
-
-CREATE TABLE comentaris (id_comentari int AUTO_INCREMENT PRIMARY KEY, comentari text, data date, id_usuari int NOT NULL, id_restaurant int NOT NULL);
+CREATE TABLE valoracions (id_valoracio int AUTO_INCREMENT PRIMARY KEY, valoracio int(4) NOT NULL, comentari text, data DATE, id_usuari int NOT NULL, id_restaurant int NOT NULL);
 
 CREATE TABLE fotos (id_restaurant int NOT NULL, id_foto int NOT NULL, foto text);
 
@@ -44,9 +40,6 @@ ALTER TABLE restaurants ADD FOREIGN KEY (id_tipus) REFERENCES tipus (id_tipus);
 
 ALTER TABLE valoracions ADD FOREIGN KEY (id_usuari) REFERENCES usuaris (id_usuari);
 ALTER TABLE valoracions ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant);
-
-ALTER TABLE comentaris ADD FOREIGN KEY (id_usuari) REFERENCES usuaris (id_usuari);
-ALTER TABLE comentaris ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant);
 
 ALTER TABLE restaurants_serveis ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant);
 ALTER TABLE restaurants_serveis ADD FOREIGN KEY (id_servei) REFERENCES serveis (id_servei);
@@ -76,37 +69,6 @@ INSERT INTO tipus (id_tipus, tipus_ca, tipus_es, tipus_en, tipus_de) VALUES (9, 
 INSERT INTO tipus (id_tipus, tipus_ca, tipus_es, tipus_en, tipus_de) VALUES (10, "Uruguaià", "Uruguayo", "Uruguayan", "Uruguayisch");
 INSERT INTO tipus (id_tipus, tipus_ca, tipus_es, tipus_en, tipus_de) VALUES (11, "Rostidor", "Asador", "Grill", "Rotisserie");
 INSERT INTO tipus (id_tipus, tipus_ca, tipus_es, tipus_en, tipus_de) VALUES (12, "Oriental", "Oriental", "Oriental", "Orientalisch");
-
--- INSERTS PER A LA TAULA TRADUCCIONS --
-
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (1, "Inici", "Inicio", "Home", "Startseite");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (2, "Qui som", "Quienes somos", "Who we are", "Wer wir sind");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (3, "Restaurants", "Restaurantes", "Restaurants", "Restaurants");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (4, "Suggeriments", "Sugerencias", "Suggestions", "Vorschläge");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (5, "Inicia sessió", "Inicia sesión", "Login", "Einloggen");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (6, "Registra't", "Regístrate", "Sign up", "Register");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (7, "Perfil", "Perfil", "Profile", "Profil");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (8, "Cancel·lar", "Cancelar", "Cancel", "Abbrechen");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (9, "Editar", "Editar", "Edit", "Editieren");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (10, "Objectiu", "Objetivo", "Objective", "Zielsetzung");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (11, "Pàgina", "Página", "Page", "Seite");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (12, "Registre", "Registro", "Register", "Register");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (13, "Formulari", "Formulario", "Form", "Bilden");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (14, "Tancar sessió", "Cerrar sesión", "Logout", "Ausloggen");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (15, "Cercar", "Buscar", "Search", "Suche");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (16, "Guardar", "Guardar", "Save", "Speichern Sie");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (17, "Esborrar", "Borrar", "Delete", "Löschen");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (18, "Nom", "Nombre", "Name", "Name");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (19, "Descripció", "Descripción", "Description", "Beschreibung");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (20, "Telèfon", "Teléfono", "Telephone", "Telefonnummer");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (21, "Correu", "Correo", "Email", "Email");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (22, "Tipus", "Tipo", "Type", "Typ");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (23, "Servei", "Servicio", "Service", "Service");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (24, "Usuari", "Usuario", "User", "Benutzer");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (25, "Català", "Catalán", "Catalan", "Katalanisch");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (26, "Espanyol", "Español", "Spanish", "Spanisch");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (27, "Anglès", "Inglés", "English", "Englisch");
-INSERT INTO traduccions (id_traduccio, catala, espanyol, english, deutsch) VALUES (28, "Alemany", "Alemán", "German", "Deutsch");
 
 -- INSERTS PER A LA TAULA SERVEIS --
 

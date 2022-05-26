@@ -48,8 +48,10 @@ class ValoracioController extends Controller
         if (!$validacio->fails()) {
             $valoracio = new Valoracio();
             $valoracio->valoracio = $request->valoracio;
+            $valoracio->comentari = $request->comentari;
             $valoracio->id_usuari = $request->id_usuari;
             $valoracio->id_restaurant = $request->id_restaurant;
+            $valoracio->data = date('Y-m-d');
             if ($valoracio->save()) {
                 return response()->json(["Status" => "Valoració creada correctament!", "Result" => $valoracio], 201);
             } else {
@@ -78,7 +80,7 @@ class ValoracioController extends Controller
     {
         $resultat = Valoracio::join("restaurants", "restaurants.id_restaurant", "=", "valoracions.id_restaurant")
             ->join("usuaris", "usuaris.id_usuari", "=", "valoracions.id_usuari")
-            ->select("restaurants.nom as restaurant", "valoracions.valoracio", DB::raw("CONCAT(usuaris.nom_usuari,' ', usuaris.llinatges) AS usuari"), "usuaris.email")
+            ->select("restaurants.nom as restaurant", "valoracions.valoracio", "valoracions.comentari", "valoracions.data", DB::raw("CONCAT(usuaris.nom_usuari,' ', usuaris.llinatges) AS usuari"), "usuaris.email", "usuaris.foto_perfil")
             ->where("restaurants.id_restaurant", "=", $id)
             ->get();
         return response()->json($resultat);
@@ -89,7 +91,7 @@ class ValoracioController extends Controller
     public function valoracioMitjana($id)
     {
         $resultat = Valoracio::join("restaurants", "restaurants.id_restaurant", "=", "valoracions.id_restaurant")
-            ->select("restaurants.nom as restaurant", DB::raw('AVG(valoracio) as valoracio')) 
+            ->select("restaurants.nom as restaurant", DB::raw('AVG(valoracio) as valoracio'))
             ->groupBy('restaurants.id_restaurant')
             ->where("restaurants.id_restaurant", "=", $id)
             ->get();

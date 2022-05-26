@@ -274,7 +274,7 @@ label {
   width: auto;
 }
 
-#contingut, #divComentaris {
+#contingut, #valoracionsUsuaris {
   margin: 10px;
   text-align: left;
   /* display: flex;
@@ -306,8 +306,12 @@ tr, td {
   margin-bottom: 30px;
 }
 
-#fotoValoracions {
+#fotoValUsuaris {
   width: 50px;
   height: 50px;
   border-radius: 50px;
+}
+
+#noValorat {
+  font-size: 14pt;
 }

@@ -77,7 +77,8 @@
             "errorRegisEmail" : "L'email ha de tenir com a mínim 6 caràcters!",
             "errorRegisPass" : "La contrasenya ha de tenir com a mínim 8 caràcters!",
             "expirat" : "Ha expirat la sessió!",
-            "valocomen" : "Valoracions i comentaris"
+            "valocomen" : "Valoracions i comentaris",
+            "novalorat" : "No valorat"
         }
     ],
 
@@ -159,7 +160,8 @@
             "errorRegisEmail" : "El email debe tener mínimo 6 caracteres.",
             "errorRegisPass" : "La contraseña debe tener como mínimo 8 caracteres.",
             "expirat" : "¡Ha expirado la sessión!",
-            "valocomen" : "Valoraciones y comentarios"
+            "valocomen" : "Valoraciones y comentarios",
+            "novalorat" : "No valorado"
         }
     ], 
 
@@ -241,7 +243,8 @@
             "errorRegisEmail" : "The email must be at least 6 characters long.",
             "errorRegisPass" : "The password must be at least 8 characters long.",
             "expirat" : "The session has expired",
-            "valocomen" : "Ratings and comments"
+            "valocomen" : "Ratings and comments",
+            "novalorat" : "Not rated"
         } 
     ],
 
@@ -323,7 +326,8 @@
             "errorRegisEmail" : "Die E-Mail muss mindestens 6 Zeichen lang sein.",
             "errorRegisPass" : "Das Passwort muss mindestens 8 Zeichen lang sein.",
             "expirat" : "Die Sitzung ist abgelaufen",
-            "valocomen" : "Bewertungen und Kommentare"
+            "valocomen" : "Bewertungen und Kommentare",
+            "novalorat" : "Nicht bewertet"
         }
     ]
 }

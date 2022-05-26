@@ -28,24 +28,25 @@ export default class RestaurantFront extends Component {
             iframe: "",
             fotos: [],
             comentaris: [],
-            valoracio: "",
+            valoracio_global: "",
             puntuacio: -1,
             id_usuari: -1,
             foto_perfil: [],
             nom_usuari: [],
+            valoracions: [],
+            valoracio_usuari: []
         };
     }
 
     componentDidMount() {
-        console.log("IDIOMA " + sessionStorage.getItem("id_idioma"));
         if (this.props.id_restaurant !== -1) {
             this.descarregaRestaurant(this.props.id_restaurant);
         }
         if (this.props.id_restaurant !== -1) {
-            this.mostraComentaris(this.props.id_restaurant);
+            this.mostraValoracioGlobal(this.props.id_restaurant);
         }
         if (this.props.id_restaurant !== -1) {
-            this.mostraValoracio(this.props.id_restaurant);
+            this.mostraValoracions(this.props.id_restaurant);
         }
         // if (this.props.id_restaurant !== -1) {
         //     this.fotosRestaurant(this.props.id_restaurant);
@@ -57,7 +58,6 @@ export default class RestaurantFront extends Component {
         const divIframe = document.getElementById("iframeDiv");
         axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + id_restaurant)
             .then((response) => {
-                console.log(response);
                 this.setState({
                     id_restaurant: response.data.id_restaurant,
                     nom: response.data.nom,
@@ -115,6 +115,7 @@ export default class RestaurantFront extends Component {
                 let descripcio = "";
                 let horari = "";
                 let tipus = "";
+                // MIRAM QUIN ÉS L'IDIOMA DE LA PÀGINA I MOSTRAM LA INFORMACIÓ EN AQUEST IDIOMA
                 if (sessionStorage.getItem("id_idioma") === "1") {
                     descripcio = document.createTextNode(response.data.descripcio_ca);
                     horari = document.createTextNode(response.data.horari_ca);
@@ -152,8 +153,7 @@ export default class RestaurantFront extends Component {
                 let carta = document.createElement("img");
                 let link = document.createElement("a");
                 link.href = response.data.carta;
-                // carta.appendChild(link);
-                //
+                // PROPIETATS DE LES IMATGES
                 imatgeDesc.src = "/desc.png";
                 imatgeDesc.setAttribute("width", "35px");
                 imatgeDesc.setAttribute("alt", "Descripció");
@@ -178,7 +178,6 @@ export default class RestaurantFront extends Component {
                 carta.src = '/menu.png';
                 carta.setAttribute("alt", "Rang");
                 link.appendChild(carta);
-                // carta.href = response.data.carta;
                 iframe.setAttribute("src", this.state.iframe);
                 iframe.setAttribute("width", "50%");
                 iframe.setAttribute("title", "Map");
@@ -200,7 +199,7 @@ export default class RestaurantFront extends Component {
                 td_rang.appendChild(rang);
                 td_carta.appendChild(link);
                 pIframe.appendChild(iframe);
-                //
+                // FICAM LES TD'S DINS LES TR'S
                 trDescripcio.appendChild(td_imatge_desc);
                 trDescripcio.appendChild(td_descripcio);
                 trTelefon.appendChild(td_imatge_tel);
@@ -216,6 +215,7 @@ export default class RestaurantFront extends Component {
                 trRang.appendChild(td_imatge_rang);
                 trRang.appendChild(td_rang);
                 trCarta.appendChild(td_carta);
+                // FICAM LES TR'S DINS LA TAULA
                 taula.appendChild(trDescripcio);
                 taula.appendChild(trTelefon);
                 taula.appendChild(trHorari);
@@ -228,7 +228,7 @@ export default class RestaurantFront extends Component {
                 document.getElementById("iframeDiv").appendChild(pIframe);
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             })
     }
@@ -244,11 +244,7 @@ export default class RestaurantFront extends Component {
                 this.state.fotos.forEach(foto => {
                     let carta = document.createElement("div");
                     let h3 = document.createElement("h3");
-                    // carta.setAttribute("id", "cartes");
                     let imatge = document.createElement("img");
-                    // header.setAttribute("id", "cartaHeader");
-                    // imatge.setAttribute("id", "imatgeCarta");
-                    // buttonID.setAttribute("id", "buttonID");
                     imatge.setAttribute("src", foto.foto);
                     imatge.setAttribute("width", 300);
                     carta.appendChild(h3);
@@ -258,46 +254,31 @@ export default class RestaurantFront extends Component {
                 );
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             })
     }
 
-    mostraComentaris = (id_restaurant) => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/comentaris/restaurant/" + id_restaurant)
+    mostraValoracioGlobal = (id_restaurant) => {
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/valoracions/mitjana/restaurant/" + id_restaurant)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({
-                    comentaris: response.data,
+                    valoracio_global: response.data
                 });
-                const a = document.getElementById("divComentaris");
-                a.innerHTML = "";
-                let table = document.createElement("table");
-                this.state.comentaris.forEach(comentari => {
-                    let tr = document.createElement("tr");
-                    let tdComentari = document.createElement("td");
-                    let tdData = document.createElement("td");
-                    let tdUsuari = document.createElement("td");
-                    let tdImatge = document.createElement("td");
-                    ////
-                    let missatge = document.createTextNode(comentari.comentari);
-                    let data = document.createTextNode(comentari.data);
-                    let usuari = document.createTextNode(comentari.usuari);
-                    let imatge = document.createElement("img");
-                    imatge.setAttribute("src", comentari.foto_perfil);
-                    imatge.setAttribute("alt", "Foto Usuari");
-                    imatge.setAttribute("id", "fotoValoracions");
-                    ////
-                    tdComentari.appendChild(missatge);
-                    tdData.appendChild(data);
-                    tdUsuari.appendChild(usuari);
-                    tdImatge.appendChild(imatge);
-                    tr.appendChild(tdComentari);
-                    tr.appendChild(tdData);
-                    tr.appendChild(tdUsuari);
-                    tr.appendChild(tdImatge);
-                    table.appendChild(tr);
-                    document.getElementById("divComentaris").appendChild(table);
+                // const div = document.getElementById("divValoracions");
+                // div.innerHTML = "";
+                this.state.valoracio_global.forEach(nota => {
+                    // Fem parseFloat de la valoració
+                    let parseat = parseFloat(nota.valoracio);
+                    this.setState({
+                        puntuacio: parseat
+                    });
+                    let puntuacio = document.createElement("p");
+                    let valoracio = document.createTextNode(parseat);
+                    puntuacio.setAttribute("font-size", "20pt");
+                    puntuacio.appendChild(valoracio);
+                    // console.log("TIPO " + typeof parseat);
                 });
             })
             .catch(function (error) {
@@ -306,28 +287,54 @@ export default class RestaurantFront extends Component {
             });
     }
 
-    mostraValoracio = (id_restaurant) => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/valoracions/mitjana/restaurant/" + id_restaurant)
+    mostraValoracions = (id_restaurant) => {
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/valoracions/restaurant/" + id_restaurant)
             .then((response) => {
                 console.log(response);
                 this.setState({
-                    valoracio: response.data
+                    valoracions: response.data
                 });
-                console.log(this.state.valoracio);
-                const div = document.getElementById("divValoracions");
+                console.log(this.state.valoracions);
+                const div = document.getElementById("valoracionsUsuaris");
                 div.innerHTML = "";
-                this.state.valoracio.forEach(nota => {
-                    let parseat = parseFloat(nota.valoracio);
-                    console.log("PARSEAT " + parseat);
+                let taula = document.createElement("table");
+                this.state.valoracions.forEach(valoracio => {
+                    // TR'S I TD'S
+                    let trValoracions = document.createElement("tr");
+                    let trComentaris = document.createElement("tr");
+                    let tdFotoPerfil = document.createElement("td");
+                    let tdUsuari = document.createElement("td");
+                    let tdEstrella = document.createElement("td");
+                    let tdData = document.createElement("td");
+                    let tdComentari = document.createElement("td");
+                    // CONTINGUT
+                    let fotoPerfil = document.createElement("img");
+                    let usuari = document.createTextNode(valoracio.usuari);
+                    let data = document.createTextNode(valoracio.data);
+                    let parseat = parseFloat(valoracio.valoracio);
                     this.setState({
-                        puntuacio: parseat
+                        valoracio_usuari: parseat
                     });
-                    let puntuacio = document.createElement("p");
-                    let valoracio = document.createTextNode(parseat);
-                    puntuacio.setAttribute("font-size", "20pt");
-                    puntuacio.appendChild(valoracio);
-                    document.getElementById("divValoracions").appendChild(puntuacio);
-                    console.log("TIPO " + typeof parseat);
+                    let estrelles = document.createTextNode(parseat + "/5");
+                    // PROPIETATS DE LA IMATGE
+                    fotoPerfil.setAttribute("src", valoracio.foto_perfil);
+                    fotoPerfil.setAttribute("id", "fotoValUsuaris");
+                    tdComentari.setAttribute("colspan", "10");
+                    // FICAM ON TOCA
+                    tdFotoPerfil.appendChild(fotoPerfil);
+                    tdUsuari.appendChild(usuari);
+                    tdEstrella.appendChild(estrelles);
+                    tdData.appendChild(data);
+                    let comentari = document.createTextNode(valoracio.comentari);
+                    tdComentari.appendChild(comentari);
+                    trValoracions.appendChild(tdFotoPerfil);
+                    trValoracions.appendChild(tdUsuari);
+                    trValoracions.appendChild(tdEstrella);
+                    trValoracions.appendChild(tdData);
+                    trComentaris.appendChild(tdComentari);
+                    taula.appendChild(trValoracions);
+                    taula.appendChild(trComentaris);
+                    div.appendChild(taula);
                 });
             })
             .catch(function (error) {
@@ -343,8 +350,8 @@ export default class RestaurantFront extends Component {
                 <div id="carouselRestaurant"></div>
                 <div id="contingut"></div>
                 <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].valocomen}</h2>
-                <div id="divComentaris"></div>
-                <div id="usuariComentari"></div>
+                <div id="valoracionsUsuaris"></div>
+                <h3 className="row justify-content-center mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].valoracio}</h3>
                 <div id="divValoracions"></div>
                 <div id="estrelles">
                     {this.state.puntuacio !== -1 ?
@@ -356,14 +363,19 @@ export default class RestaurantFront extends Component {
                             transition
                             fillColor='orange'
                             emptyColor='gray'
+                            readonly="true"
                         />
                         : console.log()}
 
                     {this.state.puntuacio === -1 ?
-                        <><p>No valorat</p>
+                        <>
+                            <p id="noValorat">{traduccions[sessionStorage.getItem("id_idioma")][0].novalorat}</p>
                             <Rating
                                 onClick={this.mostraValoracio}
-                                ratingValue={0} /></>
+                                ratingValue={0}
+                                readonly="true"
+                            />
+                        </>
                         : console.log()}
 
                 </div>
