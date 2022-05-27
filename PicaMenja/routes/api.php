@@ -31,6 +31,7 @@ Route::get('restaurants/tipusCa/{id}', 'App\Http\Controllers\RestaurantControlle
 Route::get('tipusEs/{id}', 'App\Http\Controllers\RestaurantController@tipusEs');
 Route::get('tipusEn/{id}', 'App\Http\Controllers\RestaurantController@tipusEn');
 Route::get('tipusDe/{id}', 'App\Http\Controllers\RestaurantController@tipusDe');
+Route::get('restaurantsPreus', 'App\Http\Controllers\RestaurantController@preus');
 
 // CARREGAR ELS TIPUS DE RESTAURANTS
 Route::get('tipus', 'App\Http\Controllers\TipusController@index');
@@ -40,6 +41,13 @@ Route::get('fotos/restaurant/{id}', 'App\Http\Controllers\FotoController@fotosRe
 
 // FILTRAR PER RANG DE PREUS
 Route::get('restaurants/rang/{rang}', 'App\Http\Controllers\RestaurantController@rangPreus');
+
+// FILTRAR PER SERVEI
+Route::get('restaurants_serveis/restaurants/{id}', 'App\Http\Controllers\Restaurant_ServeiController@restaurants');
+Route::get('restaurants_serveis/serveisCa/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisCa');
+Route::get('restaurants_serveis/serveisEs/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisEs');
+Route::get('restaurants_serveis/serveisEn/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisEn');
+Route::get('restaurants_serveis/serveisDe/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisDe');
 
 // ELS USUARIS PODEN VALORAR ELS RESTAURANTS
 Route::get('valoracions/restaurant/{id}', 'App\Http\Controllers\ValoracioController@valoracions');
@@ -109,11 +117,6 @@ Route::group(['middleware' => 'token'], function () {
             Route::get('', 'App\Http\Controllers\Restaurant_ServeiController@index');
             Route::post('', 'App\Http\Controllers\Restaurant_ServeiController@store');
             Route::delete('/{id_restaurant}/{id_servei}', 'App\Http\Controllers\Restaurant_ServeiController@delete');
-            Route::get('serveisCa/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisCa');
-            Route::get('serveisEs/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisEs');
-            Route::get('serveisEn/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisEn');
-            Route::get('serveisDe/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisDe');
-            Route::get('restaurants/{id}', 'App\Http\Controllers\Restaurant_ServeiController@restaurants');
         }
     );
 

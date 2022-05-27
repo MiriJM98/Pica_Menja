@@ -63,6 +63,17 @@ code {
   margin: auto;
 }
 
+#divSuggeriments {
+  border-radius: 10px;
+  width: max-content;
+  background-color: white;
+  margin: auto;
+  background-color: rgb(193, 232, 247);
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+
 #emailLogin {
   font-size: 14pt;
   width: max-content;	
@@ -77,10 +88,16 @@ code {
   width: auto;
 }
 
-#nom_usuari, #llinatges, #telefon, #direccio, #data_naixement, #email, #password {
+#nom_usuari, #llinatges, #telefon, #direccio, #data_naixement, #email, #password, #nomS, #llinatgesS, #emailS {
   font-size: 14pt;
   width: 100%;
   text-align: center;
+}
+
+#radioS, #radioN {
+  font-size: 14pt;
+  text-align: center;
+  margin-left: 50px;
 }
 
 label {

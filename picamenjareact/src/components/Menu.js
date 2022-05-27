@@ -76,7 +76,7 @@ export default class Menu extends Component {
           sessionStorage.setItem("admin", "");
           sessionStorage.setItem("id_usuari", "");
           window.location.assign("/");
-          alert("Ha expirat la sessió!");
+          alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
         }
       })
   }
@@ -250,14 +250,14 @@ export default class Menu extends Component {
                 {/* SI L'USUARI ÉS ADMINISTRADOR (admin == 1) MOSTRA EL FRONT I EL BACK, SI NO HO ÉS (admin !== 1) NOMÉS MOSTRA EL FRONT */}
                 {sessionStorage.getItem("admin") === "1" ?
                   <>
-                    <NavLink className="nav-link" to="/fotos" onClick={this.handleRefresh}>Fotos</NavLink>
-                    <NavLink className="nav-link" to="/idiomes" onClick={this.handleRefresh}>Idiomes</NavLink>
-                    <NavLink className="nav-link" to="/restaurants_serveis" onClick={this.handleRefresh}>Restaurants_Serveis</NavLink>
-                    <NavLink className="nav-link" to="/restaurants_back" onClick={this.handleRefresh}>Restaurants_Back</NavLink>
-                    <NavLink className="nav-link" to="/serveis" onClick={this.handleRefresh}>Serveis</NavLink>
-                    <NavLink className="nav-link" to="/tipus" onClick={this.handleRefresh}>Tipus</NavLink>
-                    <NavLink className="nav-link" to="/usuaris" onClick={this.handleRefresh}>Usuaris</NavLink>
-                    <NavLink className="nav-link" to="/valoracions" onClick={this.handleRefresh}>Valoracions</NavLink>
+                    <NavLink className="nav-link" to="/fotos" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].fotos}</NavLink>
+                    <NavLink className="nav-link" to="/idiomes" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}</NavLink>
+                    <NavLink className="nav-link" to="/restaurants_serveis" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].restServeis}</NavLink>
+                    <NavLink className="nav-link" to="/restaurants_back" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].restBack}</NavLink>
+                    <NavLink className="nav-link" to="/serveis" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].serveis}</NavLink>
+                    <NavLink className="nav-link" to="/tipus" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].tipus}</NavLink>
+                    <NavLink className="nav-link" to="/usuaris" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].usuaris}</NavLink>
+                    <NavLink className="nav-link" to="/valoracions" onClick={this.handleRefresh}>{traduccions[sessionStorage.getItem("id_idioma")][0].valoracionsMenu}</NavLink>
                   </>
                   : console.log()}
               </Nav>

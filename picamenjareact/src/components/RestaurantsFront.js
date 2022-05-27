@@ -12,9 +12,11 @@ export default class RestaurantsFront extends Component {
         this.state = {
             restaurants: [],
             restaurants_tipus: [],
+            restaurants_preus: [],
             current_page: "",
             id_restaurant: -1,
             id_tipus: "",
+            rang_preus: ""
         };
     }
 
@@ -118,63 +120,132 @@ export default class RestaurantsFront extends Component {
             });
     }
 
+    filtrarPreu = () => {
+        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/rang/" + this.state.rang_preus)
+            .then((response) => {
+                console.log(response);
+                if (response.status === 200) {
+                    this.setState({
+                        restaurants_preus: response.data,
+                        rang_preus: response.data.rang_preus,
+                    });
+                    const mostrador = document.getElementById("contenedorTaula");
+                    mostrador.innerHTML = "";
+                    const tipus = document.getElementById("contenedorTipus");
+                    tipus.innerHTML = "";
+                    this.state.restaurants_preus.forEach(restaurant => {
+                        let carta = document.createElement("div");
+                        carta.setAttribute("id", "cartes");
+                        let header = document.createElement("h2");
+                        let imatge = document.createElement("img");
+                        let buttonID = document.createElement("button");
+                        buttonID.onclick = function () {
+                            window.location.assign(
+                                "/restaurantFront/" + restaurant.id_restaurant
+                            );
+                        }
+                        header.setAttribute("id", "cartaHeader");
+                        imatge.setAttribute("id", "imatgeCarta");
+                        buttonID.setAttribute("id", "buttonID");
+                        imatge.setAttribute("src", restaurant.image);
+                        imatge.setAttribute("width", 300);
+                        let nom = document.createTextNode(restaurant.nom);
+                        let info = traduccions[sessionStorage.getItem("id_idioma")][0].info;
+                        let id_rest = document.createTextNode(info);
+                        header.appendChild(nom);
+                        buttonID.appendChild(id_rest);
+                        carta.appendChild(header);
+                        carta.appendChild(imatge);
+                        carta.appendChild(buttonID);
+                        document.getElementById("contenedorTipus").appendChild(carta);
+                    }
+                    );
+                }
+            })
+            .catch(function (error) {
+                console.log("ERROR -> " + error.response.data);
+            });
+    }    
+
     onChangeTipus = (v) => {
         this.setState({ id_tipus: v });
+    };
+
+    onChangeRang = (v) => {
+        this.setState({ rang_preus: v });
     };
 
     render() {
         return (
             <div>
                 <h1 className="row justify-content-center mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].restaurants}</h1>
-                {sessionStorage.getItem("id_idioma") === "1" ?
-                    <>
-                    <h3>Filtra per tipus</h3>
-                        <Select
-                            canviar={this.onChangeTipus}
-                            valorInicial={this.state.id_tipus}
-                            clau="id_tipus"
-                            display="tipus_ca"
-                            url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
-                        <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
-                            <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
-                        </button></>
-                    : console.log()}
-                {sessionStorage.getItem("id_idioma") === "2" ?
-                    <>
-                        <Select
-                            canviar={this.onChangeTipus}
-                            valorInicial={this.state.id_tipus}
-                            clau="id_tipus"
-                            display="tipus_es"
-                            url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
-                        <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
-                            <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
-                        </button></>
-                    : console.log()}
-                {sessionStorage.getItem("id_idioma") === "3" ?
-                    <>
-                        <Select
-                            canviar={this.onChangeTipus}
-                            valorInicial={this.state.id_tipus}
-                            clau="id_tipus"
-                            display="tipus_en"
-                            url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
-                        <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
-                            <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
-                        </button></>
-                    : console.log()}
-                {sessionStorage.getItem("id_idioma") === "4" ?
-                    <>
-                        <Select
-                            canviar={this.onChangeTipus}
-                            valorInicial={this.state.id_tipus}
-                            clau="id_tipus"
-                            display="tipus_de"
-                            url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
-                        <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
-                            <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
-                        </button></>
-                    : console.log()}
+                {/* FILTRAR PER TIPUS DE RESTAURANT */}
+                <div className="ms-5">
+                    <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraTipus}</h2>
+                    {sessionStorage.getItem("id_idioma") === "1" ?
+                        <>
+                            <Select
+                                canviar={this.onChangeTipus}
+                                valorInicial={this.state.id_tipus}
+                                clau="id_tipus"
+                                display="tipus_ca"
+                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                            <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                            </button></>
+                        : console.log()}
+                    {sessionStorage.getItem("id_idioma") === "2" ?
+                        <>
+                            <Select
+                                canviar={this.onChangeTipus}
+                                valorInicial={this.state.id_tipus}
+                                clau="id_tipus"
+                                display="tipus_es"
+                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                            <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                            </button></>
+                        : console.log()}
+                    {sessionStorage.getItem("id_idioma") === "3" ?
+                        <>
+                            <Select
+                                canviar={this.onChangeTipus}
+                                valorInicial={this.state.id_tipus}
+                                clau="id_tipus"
+                                display="tipus_en"
+                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                            <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                            </button></>
+                        : console.log()}
+                    {sessionStorage.getItem("id_idioma") === "4" ?
+                        <>
+                            <Select
+                                canviar={this.onChangeTipus}
+                                valorInicial={this.state.id_tipus}
+                                clau="id_tipus"
+                                display="tipus_de"
+                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                            <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                            </button></>
+                        : console.log()}
+                </div>
+                {/* FILTRAR PER RANG DE PREUS */}
+                <div className="ms-5">
+                    <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraPreu}</h2>
+
+                    <Select
+                        canviar={this.onChangeRang}
+                        valorInicial={this.state.rang_preus}
+                        clau="rang_preus"
+                        display="rang_preus"
+                        url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurantsPreus" />
+                    <button type="button" className="btn btn-link" onClick={this.filtrarPreu} aria-label="Botó filtrar">
+                        <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                    </button>
+                </div>
+
                 <div id="contenedorTaula"></div>
                 <div id="contenedorTipus"></div>
             </div>

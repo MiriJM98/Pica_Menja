@@ -20,7 +20,7 @@ class RestaurantController extends Controller
     public function indexFront()
     {
         $restaurants = Restaurant::all();
-        return response()->json($restaurants); 
+        return response()->json($restaurants);
     }
 
     // MOSTRAR UN RESTAURANT PER EL SEU ID
@@ -166,10 +166,9 @@ class RestaurantController extends Controller
     {
         $resultat = DB::table('restaurants')
             ->select(
+                "id_restaurant",
                 "nom",
-                "telefon",
-                "ubicacio",
-                "pagina_web",
+                "restaurants.imatge as image",
                 "rang_preus"
             )
             ->where("rang_preus", "like", "$rang")
@@ -195,5 +194,18 @@ class RestaurantController extends Controller
         } else {
             return response()->json(["Status" => "Error: tipus o tamany de la carta malament.", 404]);
         }
+    }
+
+    // FUNCIÓ PER TREURE ELS RANGS DE PREUS DISPONIBLES
+    // MÈTODE GET
+    public function preus()
+    {
+        $resultat = DB::table('restaurants')->distinct()
+            ->select(
+                "rang_preus"
+            )
+            ->orderBy("rang_preus")
+            ->get();
+        return response()->json($resultat);
     }
 }

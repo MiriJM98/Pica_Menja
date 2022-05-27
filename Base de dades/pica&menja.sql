@@ -1054,195 +1054,196 @@ INSERT INTO restaurants_serveis (id_restaurant, id_servei) VALUES (20, 12);
 
 -- INSERTS PER A LA TAULA FOTOS --
 
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 1, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 2, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 3, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 4, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 5, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 6, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 7, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 8, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 9, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 10, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 11, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 12, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 13, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (1, 14, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 15, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 16, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 17, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 18, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 19, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 20, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 21, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 22, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 23, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (2, 24, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 25, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 26, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 27, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 28, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 29, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 30, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 31, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 32, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 33, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 34, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 35, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (3, 36, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 37, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 38, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 39, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 40, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 41, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 42, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 43, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 44, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 45, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 46, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (4, 47, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 48, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 49, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 50, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 51, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 52, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 53, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 54, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 55, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 56, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 57, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 58, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 59, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (5, 60, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (6, 61, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (6, 62, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (6, 63, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (6, 64, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (6, 65, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (6, 66, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (6, 67, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (6, 68, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (7, 69, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (7, 70, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (7, 71, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (7, 72, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (7, 73, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (7, 74, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (7, 75, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (7, 76, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (7, 77, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (8, 78, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (8, 79, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (8, 80, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (8, 81, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (8, 82, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (8, 83, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (8, 84, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (8, 85, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 86, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 87, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 88, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 89, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 90, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 91, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 92, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 93, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 94, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (9, 95, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 96, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 97, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 98, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 99, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 100, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 101, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 102, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 103, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 104, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (10, 105, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (11, 106, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (11, 107, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (11, 108, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (11, 109, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (11, 110, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (11, 111, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (11, 112, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 113, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 114, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 115, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 116, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 117, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 118, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 119, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 120, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 121, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 122, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 123,null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 124, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (12, 125, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (13, 126, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (13, 127, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (13, 128, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (13, 129, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (13, 130, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (13, 131, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (14, 132, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (14, 133, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (14, 134, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (14, 135, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (14, 136, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (14, 137, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 138, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 139, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 140, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 141, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 142, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 143, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 144, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 145, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 146, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (15, 147, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 148, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 149, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 150, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 151, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 152, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 153, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 154, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 155, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 156, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 157, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (16, 158, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 159, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 160, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 161, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 162, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 163, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 164, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 165, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 166, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 167, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (17, 168, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (18, 169, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (18, 170, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (18, 171, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (18, 172, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (18, 173, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (18, 174, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (19, 175, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (19, 176, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (19, 177, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (19, 178, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (19, 179, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (19, 180, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (19, 181, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (19, 182, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (19, 183, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (20, 184, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (20, 185, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (20, 186, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (20, 187, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (20, 188, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (20, 189, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (20, 190, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (20, 191, null);
-INSERT INTO fotos (id_restaurant, id_foto, foto) VALUES (20, 192, null);
+INSERT INTO `fotos` (`id_restaurant`, `id_foto`, `foto`) VALUES
+(1, 1, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant1_1650976310.jpg'),
+(1, 2, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant2_1650976340.png'),
+(1, 3, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant3_1650976602.jpg'),
+(1, 4, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant4_1650976608.jpg'),
+(1, 5, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant5_1650976613.jpg'),
+(1, 6, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant6_1650976619.jpg'),
+(1, 7, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant7_1650976641.jpg'),
+(1, 8, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant8_1650976648.jpg'),
+(1, 9, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant9_1650976662.jpg'),
+(1, 10, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant10_1650976689.jpg'),
+(1, 11, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant11_1650976698.jpg'),
+(1, 12, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant12_1650976704.jpg'),
+(1, 13, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant13_1650976711.jpg'),
+(1, 14, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant14_1650976716.jpg'),
+(2, 15, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant15_1650976878.jpg'),
+(2, 16, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant16_1650976920.jpg'),
+(2, 17, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant17_1650976930.jpg'),
+(2, 18, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant18_1650976938.jpg'),
+(2, 19, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant19_1650976945.jpg'),
+(2, 20, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant20_1650976952.jpg'),
+(2, 22, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant22_1650976975.jpg'),
+(2, 23, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant23_1650976982.jpg'),
+(2, 24, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant24_1650976988.jpg'),
+(3, 25, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant25_1650977130.jpg'),
+(3, 26, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant26_1650977144.jpg'),
+(3, 27, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant27_1650977149.jpg'),
+(3, 28, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant28_1650977154.jpg'),
+(3, 29, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant29_1650977160.jpg'),
+(3, 30, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant30_1650977166.jpg'),
+(3, 31, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant31_1650977171.jpg'),
+(3, 32, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant32_1650977178.jpg'),
+(3, 33, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant33_1650977186.jpg'),
+(3, 34, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant34_1650977192.jpg'),
+(3, 35, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant35_1650977198.jpg'),
+(3, 36, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant36_1650977205.jpg'),
+(4, 37, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant37_1650977647.png'),
+(4, 38, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant38_1650977653.jpg'),
+(4, 39, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant39_1650977658.jpg'),
+(4, 40, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant40_1650977664.png'),
+(4, 41, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant41_1650977671.png'),
+(4, 42, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant42_1650977678.png'),
+(4, 43, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant43_1650977685.png'),
+(4, 44, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant44_1650977690.png'),
+(4, 45, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant45_1650977696.png'),
+(4, 46, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant46_1650977702.png'),
+(4, 47, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant47_1650977707.jpg'),
+(5, 48, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant48_1650978649.png'),
+(5, 49, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant49_1650978655.jpg'),
+(5, 50, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant50_1650978661.png'),
+(5, 51, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant51_1650978666.png'),
+(5, 52, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant52_1650978674.png'),
+(5, 53, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant53_1650978679.png'),
+(5, 54, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant54_1650978685.png'),
+(5, 55, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant55_1650978692.png'),
+(5, 56, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant56_1650978697.png'),
+(5, 57, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant57_1650978703.png'),
+(5, 58, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant58_1650978709.png'),
+(5, 59, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant59_1650978715.png'),
+(5, 60, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant60_1650978721.png'),
+(6, 61, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant61_1650978768.png'),
+(6, 62, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant62_1650978785.jpg'),
+(6, 63, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant63_1650978791.jpg'),
+(6, 64, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant64_1650978796.jpg'),
+(6, 65, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant65_1650978802.jpg'),
+(6, 66, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant66_1650978807.jpg'),
+(6, 67, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant67_1650978812.jpg'),
+(6, 68, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant68_1650978816.jpg'),
+(7, 69, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant69_1650978889.jpg'),
+(7, 70, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant70_1650978894.jpg'),
+(7, 71, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant71_1650978898.png'),
+(7, 72, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant72_1650978903.png'),
+(7, 73, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant73_1650978908.png'),
+(7, 74, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant74_1650978916.png'),
+(7, 75, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant75_1650978922.png'),
+(7, 76, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant76_1650978927.png'),
+(7, 77, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant77_1650978932.jpg'),
+(8, 78, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant78_1650981776.png'),
+(8, 79, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant79_1650981782.png'),
+(8, 80, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant80_1650981787.jpg'),
+(8, 81, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant81_1650981792.jpg'),
+(8, 82, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant82_1650981796.jpg'),
+(8, 83, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant83_1650981801.png'),
+(8, 84, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant84_1650981807.png'),
+(8, 85, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant85_1650981811.png'),
+(9, 86, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant86_1650981842.jpg'),
+(9, 87, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant87_1650981847.jpg'),
+(9, 88, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant88_1650981852.jpg'),
+(9, 89, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant89_1650981857.jpg'),
+(9, 90, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant90_1650981862.jpg'),
+(9, 91, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant91_1650981867.jpg'),
+(9, 92, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant92_1650981873.jpg'),
+(9, 93, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant93_1650981878.jpg'),
+(9, 94, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant94_1650981887.jpg'),
+(9, 95, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant95_1650981891.png'),
+(10, 96, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant96_1650981973.jpg'),
+(10, 97, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant97_1650981979.jpg'),
+(10, 98, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant98_1650981984.jpg'),
+(10, 99, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant99_1650981989.jpg'),
+(10, 100, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant100_1650981994.jpg'),
+(10, 101, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant101_1650981999.jpg'),
+(10, 102, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant102_1650982004.jpg'),
+(10, 103, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant103_1650982009.jpg'),
+(10, 104, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant104_1650982014.jpg'),
+(10, 105, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant105_1650982019.jpg'),
+(11, 106, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant106_1650982052.jpg'),
+(11, 107, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant107_1650982057.jpg'),
+(11, 108, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant108_1650982062.jpg'),
+(11, 109, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant109_1650982067.jpg'),
+(11, 110, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant110_1650982073.jpg'),
+(11, 111, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant111_1650982077.jpg'),
+(11, 112, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant112_1650982082.jpg'),
+(12, 113, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant113_1650982108.jpg'),
+(12, 114, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant114_1650982113.jpg'),
+(12, 115, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant115_1650982118.jpg'),
+(12, 116, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant116_1650982125.jpg'),
+(12, 117, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant117_1650982130.jpg'),
+(12, 118, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant118_1650982135.jpg'),
+(12, 119, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant119_1650982140.jpg'),
+(12, 120, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant120_1650982145.jpg'),
+(12, 121, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant121_1650982151.jpg'),
+(12, 122, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant122_1650982156.jpg'),
+(12, 123, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant123_1650982162.jpg'),
+(12, 124, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant124_1650982167.jpg'),
+(12, 125, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant125_1650982173.jpg'),
+(13, 126, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant126_1650982232.jpg'),
+(13, 127, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant127_1650982237.jpg'),
+(13, 128, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant128_1650982241.jpg'),
+(13, 129, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant129_1650982247.jpg'),
+(13, 130, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant130_1650982252.jpg'),
+(13, 131, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant131_1650982256.jpg'),
+(14, 132, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant132_1650982288.jpg'),
+(14, 133, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant133_1650982293.jpg'),
+(14, 134, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant134_1650982297.jpg'),
+(14, 135, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant135_1650982302.jpg'),
+(14, 136, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant136_1650982306.png'),
+(14, 137, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant137_1650982311.png'),
+(15, 138, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant138_1650982387.jpg'),
+(15, 139, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant139_1650982392.jpg'),
+(15, 140, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant140_1650982396.jpg'),
+(15, 141, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant141_1650982402.jpg'),
+(15, 142, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant142_1650982406.jpg'),
+(15, 143, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant143_1650982412.jpg'),
+(15, 144, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant144_1650982417.jpg'),
+(15, 145, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant145_1650982421.jpg'),
+(15, 146, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant146_1650982426.jpg'),
+(15, 147, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant147_1650982431.jpg'),
+(16, 148, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant148_1650982579.jpg'),
+(16, 149, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant149_1650982584.jpg'),
+(16, 150, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant150_1650982589.jpg'),
+(16, 151, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant151_1650982627.png'),
+(16, 152, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant152_1650982634.png'),
+(16, 153, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant153_1650982641.png'),
+(16, 154, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant154_1650982646.png'),
+(16, 155, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant155_1650982651.png'),
+(16, 156, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant156_1650982656.png'),
+(16, 157, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant157_1650982661.png'),
+(16, 158, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant158_1650982796.png'),
+(17, 159, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant159_1650982871.jpg'),
+(17, 160, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant160_1650982881.jpg'),
+(17, 161, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant161_1650982885.jpg'),
+(17, 162, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant162_1650982890.jpg'),
+(17, 163, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant163_1650982895.jpg'),
+(17, 164, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant164_1650982900.jpg'),
+(17, 165, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant165_1650982905.png'),
+(17, 166, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant166_1650982948.png'),
+(17, 167, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant167_1650982952.png'),
+(17, 168, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant168_1650983210.png'),
+(18, 169, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant169_1650983248.jpg'),
+(18, 170, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant170_1650983256.jpg'),
+(18, 171, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant171_1650983261.jpg'),
+(18, 172, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant172_1650983266.jpg'),
+(18, 173, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant173_1650983270.jpg'),
+(18, 174, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant174_1650983274.jpg'),
+(19, 175, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant175_1650983301.png'),
+(19, 176, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant176_1650983307.png'),
+(19, 177, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant177_1650983311.png'),
+(19, 178, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant178_1650983315.png'),
+(19, 179, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant179_1650983320.png'),
+(19, 180, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant180_1650983328.png'),
+(19, 181, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant181_1650983332.jpg'),
+(19, 182, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant182_1650983337.jpg'),
+(19, 183, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant183_1650983342.png'),
+(20, 7, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant7_1650976641.jpg'),
+(20, 184, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant184_1650983362.png'),
+(20, 185, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant185_1650983366.png'),
+(20, 186, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant186_1650983370.png'),
+(20, 187, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant187_1650983374.png'),
+(20, 188, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant188_1650983378.png'),
+(20, 189, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant189_1650983383.png'),
+(20, 190, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant190_1650983388.png'),
+(20, 191, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant191_1650983392.png'),
+(20, 192, 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/restaurants/foto_restaurant192_1650983396.png');

@@ -62,9 +62,9 @@ class Restaurant_ServeiController extends Controller
         $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
             ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
             ->select("serveis.servei_ca as servei")
-            ->where("restaurants_serveis.id_restaurant", "=", $id)
+            ->where("restaurants.id_restaurant", "=", $id)
             ->get();
-        return response()->json(["Restaurant" => $tupla["nom"], "Serveis" => $resultat]);
+        return response()->json($resultat);
     }
 
     // TODO: DEMÁS IDIOMAS
@@ -73,10 +73,10 @@ class Restaurant_ServeiController extends Controller
         $tupla = Restaurant::findOrFail($id);
         $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
             ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
-            ->select("serveis.servei_es as servicio")
-            ->where("restaurants_serveis.id_restaurant", "=", $id)
+            ->select("serveis.servei_es as servei")
+            ->where("restaurants.id_restaurant", "=", $id)
             ->get();
-        return response()->json(["Restaurante" => $tupla["nom"], "Servicios" => $resultat]);
+        return response()->json($resultat);
     }
 
     public function serveisEn($id)
@@ -84,10 +84,10 @@ class Restaurant_ServeiController extends Controller
         $tupla = Restaurant::findOrFail($id);
         $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
             ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
-            ->select("serveis.servei_en as service")
-            ->where("restaurants_serveis.id_restaurant", "=", $id)
+            ->select("serveis.servei_en as servei")
+            ->where("restaurants.id_restaurant", "=", $id)
             ->get();
-        return response()->json(["Restaurant" => $tupla["nom"], "Services" => $resultat]);
+        return response()->json($resultat);
     }
 
     public function serveisDe($id)
@@ -95,10 +95,10 @@ class Restaurant_ServeiController extends Controller
         $tupla = Restaurant::findOrFail($id);
         $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
             ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
-            ->select("serveis.servei_de as service")
-            ->where("restaurants_serveis.id_restaurant", "=", $id)
+            ->select("serveis.servei_de as servei")
+            ->where("restaurants.id_restaurant", "=", $id)
             ->get();
-        return response()->json(["Restaurant" => $tupla["nom"], "Dienstleistungen" => $resultat]);
+        return response()->json($resultat);
     }
 
     /*---FUNCIÓ PER FILTRAR RESTAURANTS DONAT UN SERVEI---*/
@@ -107,7 +107,7 @@ class Restaurant_ServeiController extends Controller
         $tupla = Servei::findOrFail($id);
         $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
             ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
-            ->select("restaurants.nom as restaurant")
+            ->select("restaurants.id_restaurant", "restaurants.nom as restaurant", "restaurants.imatge")
             ->where("restaurants_serveis.id_servei", "=", $id)
             ->get();
         return response()->json([
