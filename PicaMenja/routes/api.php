@@ -43,6 +43,7 @@ Route::get('fotos/restaurant/{id}', 'App\Http\Controllers\FotoController@fotosRe
 Route::get('restaurants/rang/{rang}', 'App\Http\Controllers\RestaurantController@rangPreus');
 
 // FILTRAR PER SERVEI
+Route::get('serveis', 'App\Http\Controllers\ServeiController@index');
 Route::get('restaurants_serveis/restaurants/{id}', 'App\Http\Controllers\Restaurant_ServeiController@restaurants');
 Route::get('restaurants_serveis/serveisCa/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisCa');
 Route::get('restaurants_serveis/serveisEs/{id}', 'App\Http\Controllers\Restaurant_ServeiController@serveisEs');
@@ -122,7 +123,6 @@ Route::group(['middleware' => 'token'], function () {
 
     // RUTES DE LA TAULA SERVEIS
     Route::group(['prefix' => 'serveis'], function () {
-        Route::get('', 'App\Http\Controllers\ServeiController@index');
         Route::get('{id}', 'App\Http\Controllers\ServeiController@show');
         Route::delete('{id}', 'App\Http\Controllers\ServeiController@delete');
         Route::post('', 'App\Http\Controllers\ServeiController@store');

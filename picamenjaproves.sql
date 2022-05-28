@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2022 a las 09:25:14
+-- Tiempo de generación: 28-05-2022 a las 16:16:45
 -- Versión del servidor: 8.0.27
 -- Versión de PHP: 8.0.12
 
@@ -20,32 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `picamenjaproves`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `comentaris`
---
-
-CREATE TABLE `comentaris` (
-  `id_comentari` int NOT NULL,
-  `comentari` text,
-  `data` date DEFAULT NULL,
-  `id_usuari` int NOT NULL,
-  `id_restaurant` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Volcado de datos para la tabla `comentaris`
---
-
-INSERT INTO `comentaris` (`id_comentari`, `comentari`, `data`, `id_usuari`, `id_restaurant`) VALUES
-(1, 'Un restaurante maravilloso. Me encantó el arroz brut.', '2022-04-06', 2, 1),
-(2, 'Un restaurante muy elegante y con productos de primera calidad. Pienso repetir.', '2022-04-07', 3, 1),
-(3, 'Italiano exquisito. Merece la pena.', '2022-04-07', 2, 2),
-(4, 'La pasta estaba deliciosa.', '2022-04-07', 3, 2),
-(5, 'Me gustó mucho. El pollo agridulce estaba buenísimo y el personal fue muy atento.', '2022-04-07', 2, 3),
-(6, 'No soy aficionado del chino pero he de admitir que estaba bueno. Recomendado.', '2022-04-02', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -625,8 +599,8 @@ CREATE TABLE `usuaris` (
 --
 
 INSERT INTO `usuaris` (`id_usuari`, `nom_usuari`, `llinatges`, `telefon`, `direccio`, `data_naixement`, `email`, `password`, `administrador`, `token`, `token_valid_fins`, `foto_perfil`) VALUES
-(1, 'Míriam', 'Jiménez Molina', '622955522', 'Calle El Cano, 9, Can Picafort, 07458', '1998-06-24', 'miriamjimenez@paucasesnovescifp.cat', '$2y$10$3dmIx.dksiGWS7BAsg4.h.HzzmKuXdT0rzmoIDYVqdHnyvpo89KjS', 1, 'UTRqVm5oTHdxQ3JKNFFkUzduZGpPTXoxZVZlZEpBZ0NNejNRV0QxSQ==', '2022-05-23 13:18:29', 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/usuaris/usuari1_1652254502.png'),
-(2, 'Miri', 'Jiménez No Admin', '622955522', 'Calle El Cano, 9, Can Picafort, 07458', '1998-06-24', 'miriuchijm98@gmail.com', '$2y$10$I4l5l7qu8.ft96WHnN7lIuwMdY40uFWX.TzVdRVqKt0uwhRMzhQQi', 0, 'YldsdWY2bDhRZ3YxMnhmdTJMajdya0J2c0ExMXN0dVdvWjBGOHN3Tw==', '2022-05-22 18:53:02', 'null'),
+(1, 'Míriam', 'Jiménez Molina', '622955522', 'Calle El Cano, 9, Can Picafort, 07458', '1998-06-24', 'miriamjimenez@paucasesnovescifp.cat', '$2y$10$3dmIx.dksiGWS7BAsg4.h.HzzmKuXdT0rzmoIDYVqdHnyvpo89KjS', 1, 'Mmp5YnBLbW9jS2FiazlFbWg2N294RU1qaGFOSUZ0V1Vzdkx2SkJKNQ==', '2022-05-28 14:45:59', 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/usuaris/usuari1_1652254502.png'),
+(2, 'Miri', 'Jiménez No Admin', '622955522', 'Calle El Cano, 9, Can Picafort, 07458', '1998-06-24', 'miriuchijm98@gmail.com', '$2y$10$I4l5l7qu8.ft96WHnN7lIuwMdY40uFWX.TzVdRVqKt0uwhRMzhQQi', 0, 'bWNEOXU2bUhQOGJwbWhqN2tBVGZ6UTlNM3V2bU1qdWRlNG96U1prNw==', '2022-05-27 12:29:18', 'http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/usuaris/usuari2_1653486765.png'),
 (3, 'Nerea', 'Estacio Marmolejo', '660098275', 'Paseo de Vigo 10, 25489 Fuenlabrada', '1997-10-14', 'nereaesm@gmail.com', '$2y$10$GnNNjJ3bWIi0Vr09qyo7E.GY78JJPp8s3XFPPGc6B03qIWJp7DPX2', 0, 'MzA1TUNsT3BRQnB4WnFSakxNN2dZWHYweW1XVXkzWm1uZFRtaDRvZw==', '2022-05-13 11:39:20', 'null'),
 (4, 'María', 'Hernández Molina', '666666666', 'Calle Magallanes, 07458 Ca\'n Picafort', '1994-04-22', 'mariahm@gmail.com', '$2y$10$MiH5ZP16WJT5Wx9JF9k20eGWG7uckny7BkGcaetB/utulJ/RFOq.e', 0, 'NTJMVjNXblJvdDk2SzVPamhjaVVHTHlIemhQek9XSUkyYUNRNVl4MQ==', '2022-05-13 11:36:09', 'null');
 
@@ -640,38 +614,27 @@ CREATE TABLE `valoracions` (
   `id_valoracio` int NOT NULL,
   `valoracio` int NOT NULL,
   `id_usuari` int NOT NULL,
-  `id_restaurant` int NOT NULL
+  `id_restaurant` int NOT NULL,
+  `comentari` text,
+  `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `valoracions`
 --
 
-INSERT INTO `valoracions` (`id_valoracio`, `valoracio`, `id_usuari`, `id_restaurant`) VALUES
-(1, 5, 2, 1),
-(2, 5, 3, 1),
-(3, 5, 2, 2),
-(4, 4, 3, 2),
-(5, 4, 2, 3),
-(6, 3, 3, 3),
-(7, 4, 2, 4),
-(8, 5, 3, 4),
-(9, 5, 2, 5),
-(10, 5, 3, 5),
-(11, 4, 2, 6),
-(12, 2, 3, 6);
+INSERT INTO `valoracions` (`id_valoracio`, `valoracio`, `id_usuari`, `id_restaurant`, `comentari`, `data`) VALUES
+(16, 5, 2, 1, 'Un restaurante maravilloso. Me encantó el arroz brut.', '2022-05-26'),
+(18, 5, 3, 1, 'Un restaurante muy elegante y con productos de primera calidad. Pienso repetir.', '2022-05-26'),
+(19, 5, 2, 2, 'Italiano exquisito. Merece la pena.', '2022-05-26'),
+(20, 4, 3, 2, 'La pasta estaba deliciosa.', '2022-05-26'),
+(21, 5, 2, 3, 'Me gustó mucho. El pollo agridulce estaba buenísimo y el personal fue muy atento.', '2022-05-26'),
+(22, 4, 3, 3, 'No soy aficionada del chino pero he de admitir que estaba bueno. Recomendado.', '2022-05-26'),
+(23, 4, 2, 4, 'Este es un ejemplo con mucho texto para comprobar que sea vea bien. Este es un ejemplo con mucho texto para comprobar que sea vea bien. Este es un ejemplo con mucho texto para comprobar que sea vea bien. Este es un ejemplo con mucho texto para comprobar que sea vea bien. Este es un ejemplo con mucho texto para comprobar que sea vea bien.', '2022-05-26');
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `comentaris`
---
-ALTER TABLE `comentaris`
-  ADD PRIMARY KEY (`id_comentari`),
-  ADD KEY `id_usuari` (`id_usuari`),
-  ADD KEY `id_restaurant` (`id_restaurant`);
 
 --
 -- Indices de la tabla `fotos`
@@ -736,12 +699,6 @@ ALTER TABLE `valoracions`
 --
 
 --
--- AUTO_INCREMENT de la tabla `comentaris`
---
-ALTER TABLE `comentaris`
-  MODIFY `id_comentari` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT de la tabla `idiomes`
 --
 ALTER TABLE `idiomes`
@@ -781,20 +738,11 @@ ALTER TABLE `usuaris`
 -- AUTO_INCREMENT de la tabla `valoracions`
 --
 ALTER TABLE `valoracions`
-  MODIFY `id_valoracio` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_valoracio` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `comentaris`
---
-ALTER TABLE `comentaris`
-  ADD CONSTRAINT `comentaris_ibfk_1` FOREIGN KEY (`id_usuari`) REFERENCES `usuaris` (`id_usuari`),
-  ADD CONSTRAINT `comentaris_ibfk_2` FOREIGN KEY (`id_restaurant`) REFERENCES `restaurants` (`id_restaurant`),
-  ADD CONSTRAINT `comentaris_ibfk_3` FOREIGN KEY (`id_usuari`) REFERENCES `usuaris` (`id_usuari`),
-  ADD CONSTRAINT `comentaris_ibfk_4` FOREIGN KEY (`id_restaurant`) REFERENCES `restaurants` (`id_restaurant`);
 
 --
 -- Filtros para la tabla `fotos`

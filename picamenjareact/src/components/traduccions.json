@@ -88,8 +88,64 @@
             "usuaris" : "Usuaris",
             "valoracionsMenu" : "Valoracions",
             "filtraTipus" : "Filtra per tipus",
-            "filtraPreu" : "Filtra per preu"
-        }
+            "filtraPreu" : "Filtra per preu",
+            "filtraServei" : "Filtra per servei",
+            "llistaFotos" : "Llistat de fotos",
+            "insertidFoto" : "Afegir nou id_foto",
+            "insertFoto" : "Puja foto",
+            "missatgeFoto" : "Insertar una foto",
+            "id_foto" : "ID foto",
+            "id_restaurant" : "ID restaurant",
+            "ID_FOTO" : "ID FOTO",
+            "ID_RESTAURANT" : "ID RESTAURANT",
+            "botoTornar" : "Tornar",
+            "botoInsert" : "Insertar",
+            "foto" : "Foto",
+            "FOTO" : "FOTO",
+            "dades" : "Dades",
+            "llistaIdiomes" : "Llistat d'idiomes",
+            "insertIdioma" : "Afegir nou idioma",
+            "id_idioma" : "ID idioma",
+            "ID_IDIOMA" : "ID IDIOMA",
+            "idioma" : "Idioma",
+            "IDIOMA" : "IDIOMA",
+            "llistaResSer" : "Llistat de restaurants_serveis",
+            "id_servei" : "ID servei",
+            "ID_SERVEI" : "ID SERVEI",
+            "restaurant" : "Restaurant",
+            "servei" : "Servei",
+            "llistaRestaurants" : "Llistat de restaurants",
+            "insertRestaurant" : "Afegir nou restaurant",
+            "NOM" : "NOM",
+            "TIPUS" : "TIPUS",
+            "TELEFON" : "TELÈFON",
+            "WEB" : "WEB",
+            "DIRECCIO" : "DIRECCIÓ",
+            "HORARI_CA" : "HORARI CATALÀ",
+            "HORARI_ES" : "HORARI CASTELLÀ",
+            "HORARI_EN" : "HORARI ANGLÈS",
+            "HORARI_DE" : "HORARI ALEMANY",
+            "RANG_PREUS" : "RANG PREUS",
+            "IMATGE" : "IMATGE",
+            "DESC_CA" : "DESCRIPCIÓ CATALÀ",
+            "DESC_ES" : "DESCRIPCIÓ CASTELLÀ",
+            "DESC_EN" : "DESCRIPCIÓ ANGLÈS",
+            "DESC_DE" : "DESCRIPCIÓ ALEMANY",
+            "CARTA" : "CARTA",
+            "dadesbasiques" : "Dades bàsiques",
+            "ID" : "ID",
+            "nom_res" : "Nom restaurant",
+            "web" : "Pàgina web",
+            "rang_preus" : "Rang preus",
+            "horari_ca" : "Horari català",
+            "horari_es" : "Horari castellà",
+            "horari_en" : "Horari anglès",
+            "horari_de" : "Horari alemany",
+            "desc_ca" : "Descripció català",
+            "desc_es" : "Descripció castellà",
+            "desc_en" : "Descripció anglès",
+            "desc_de" : "Descripció alemany"
+        } 
     ],
 
     "2" : [
@@ -181,7 +237,8 @@
             "usuaris" : "Usuarios",
             "valoracionsMenu" : "Valoraciones",
             "filtraTipus" : "Filtra por tipo",
-            "filtraPreu" : "Filtra por precio"
+            "filtraPreu" : "Filtra por precio",
+            "filtraServei" : "Filtra por servicio"
         }
     ], 
 
@@ -274,7 +331,8 @@
             "usuaris" : "Users",
             "valoracionsMenu" : "Ratings",
             "filtraTipus" : "Filter by type",
-            "filtraPreu" : "Filter by price"
+            "filtraPreu" : "Filter by price",
+            "filtraServei" : "Filter by service"
         } 
     ],
 
@@ -367,7 +425,8 @@
             "usuaris" : "Benutzer",
             "valoracionsMenu" : "Bewertungen",
             "filtraTipus" : "Nach Typ filtern",
-            "filtraPreu" : "Nach Preis filtern"
+            "filtraPreu" : "Nach Preis filtern",
+            "filtraServei" : "Nach Dienstleistung filtern"
         }
     ]
 }

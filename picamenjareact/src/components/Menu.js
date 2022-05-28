@@ -147,22 +147,38 @@ export default class Menu extends Component {
           UNA IMATGE PER SELECCIONAR L'IDIOMA I OPCIONS PER FER LOGIN O REGISTRAR-SE */}
           <Container>
             <div className="idiomes">
-              <button className="btn btn-link" aria-label="Botó idiomes"><Image src={process.env.PUBLIC_URL + '/idiomas.png'}
-                width="45" height="45" title="Idiomes" onClick={prova}
-              />
-              </button>
               <select onChange={this.onChangeIdioma} value={sessionStorage.getItem("id_idioma")}>
                 <option value="1">Català</option>
                 <option value="2">Español</option>
                 <option value="3">English</option>
                 <option value="4">Deutsch</option>
               </select>
+              {sessionStorage.getItem("id_idioma") === "1" ?
+                <Image src={process.env.PUBLIC_URL + '/catalana.jpg'}
+                  width="60" height="47" title="Idiomes" className="ms-2 mt-3"
+                />
+                : console.log()}
+              {sessionStorage.getItem("id_idioma") === "2" ?
+                <Image src={process.env.PUBLIC_URL + '/spain.png'}
+                  width="60" height="47" title="Idiomes" className="ms-2 mt-3"
+                />
+                : console.log()}
+              {sessionStorage.getItem("id_idioma") === "3" ?
+                <Image src={process.env.PUBLIC_URL + '/inglesa.jpg'}
+                  width="60" height="47" title="Idiomes" className="ms-2 mt-3"
+                />
+                : console.log()}
+              {sessionStorage.getItem("id_idioma") === "4" ?
+                <Image src={process.env.PUBLIC_URL + '/alemana.jpg'}
+                  width="60" height="47" title="Idiomes" className="ms-2 mt-3"
+                />
+                : console.log()}
 
               {/* SI L'USUARI NO HA FET LOGIN A L'APLICACIÓ SURTEN LES OPCIONS PER FER LOGIN O REGISTRAR-SE */}
               {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
                 <>
-                  <button className="ms-2 btn btn-info btn-lg mb-2" aria-label="Botó Login" onClick={this.loginFunction}>{traduccions[sessionStorage.getItem("id_idioma")][0].iniciasessio}</button>
-                  <button className="ms-3 btn btn-warning btn-lg mb-2" aria-label="Botó Sing In" onClick={this.registreFunction}>{traduccions[sessionStorage.getItem("id_idioma")][0].registre}</button>
+                  <button className="ms-3 mt-3 btn btn-info btn-lg mb-2" aria-label="Botó Login" onClick={this.loginFunction}>{traduccions[sessionStorage.getItem("id_idioma")][0].iniciasessio}</button>
+                  <button className="ms-3 mt-3 btn btn-warning btn-lg mb-2" aria-label="Botó Sing In" onClick={this.registreFunction}>{traduccions[sessionStorage.getItem("id_idioma")][0].registre}</button>
                 </>
                 : console.log()}
 
@@ -368,17 +384,6 @@ function CridaRestaurantServei() {
 function CridaFotos() {
   let params = useParams();
   return <Foto id_foto={params.id_foto} />
-}
-
-function prova() {
-  <div>
-    <select>
-      <option>Català</option>
-      <option>Español</option>
-      <option>English</option>
-    </select>
-  </div>
-  // window.location.assign("/restaurants");
 }
 
 console.log("AQUÍ SALE EL TOKEN ---> " + sessionStorage.getItem("token"));

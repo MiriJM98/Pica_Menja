@@ -18,7 +18,7 @@ export default class Select extends Component {
     axios
       .get(this.props.url, config)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           items: response.data,
         });
