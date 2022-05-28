@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/heading-has-content */
 import axios from "axios";
 import React, { Component } from "react";
 import { Image } from "react-bootstrap";
@@ -19,7 +20,7 @@ export default class RestaurantsFront extends Component {
             rang_preus: "",
             restaurants_serveis: [],
             serveis: [],
-            id_servei: ""
+            id_servei: -1,
         };
     }
 
@@ -27,6 +28,8 @@ export default class RestaurantsFront extends Component {
         if (document.getElementById("contenedorTaula").style.display !== "none") {
             this.restaurants();
         }
+        console.log("ID_SERVEI --> " + this.state.id_servei);
+
     };
 
     restaurants = () => {
@@ -76,7 +79,7 @@ export default class RestaurantsFront extends Component {
             });
     }
 
-    filtrar = () => {
+    filtrarTipus = () => {
         axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/tipusCa/" + this.state.id_tipus)
             .then((response) => {
                 // console.log(response);
@@ -89,7 +92,24 @@ export default class RestaurantsFront extends Component {
                     mostrador.innerHTML = "";
                     const tipus = document.getElementById("contenedorTipus");
                     tipus.innerHTML = "";
+                    let tipusFiltre = "";
+                    const divTipus = document.getElementById("titolTipus");
+                    divTipus.innerHTML = "";
                     this.state.restaurants_tipus.forEach(restaurant => {
+                        if (sessionStorage.getItem("id_idioma") === "1") {
+                            tipusFiltre = restaurant.tipus_ca;
+                        }
+                        if (sessionStorage.getItem("id_idioma") === "2") {
+                            tipusFiltre = restaurant.tipus_es;
+                        }
+                        if (sessionStorage.getItem("id_idioma") === "3") {
+                            tipusFiltre = restaurant.tipus_en;
+                        }
+                        if (sessionStorage.getItem("id_idioma") === "4") {
+                            tipusFiltre = restaurant.tipus_de;
+                        }
+                        let texte = traduccions[sessionStorage.getItem("id_idioma")][0].titolFiltreTipus + tipusFiltre;
+                        divTipus.innerHTML = texte;
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
                         let header = document.createElement("h2");
@@ -160,7 +180,7 @@ export default class RestaurantsFront extends Component {
                         carta.appendChild(header);
                         carta.appendChild(imatge);
                         carta.appendChild(buttonID);
-                        document.getElementById("contenedorTipus").appendChild(carta);
+                        document.getElementById("contenedorPreus").appendChild(carta);
                     }
                     );
                 }
@@ -177,7 +197,6 @@ export default class RestaurantsFront extends Component {
                 console.log(response);
                 this.setState({
                     restaurants_serveis: response.data,
-                    id_servei: response.data.id_servei
                 });
                 const mostrador = document.getElementById("contenedorTaula");
                 mostrador.innerHTML = "";
@@ -199,7 +218,7 @@ export default class RestaurantsFront extends Component {
                     buttonID.setAttribute("id", "buttonID");
                     imatge.setAttribute("src", restaurant.imatge);
                     imatge.setAttribute("width", 300);
-                    let nom = document.createTextNode(restaurant.nom);
+                    let nom = document.createTextNode(restaurant.restaurant);
                     let info = traduccions[sessionStorage.getItem("id_idioma")][0].info;
                     let id_rest = document.createTextNode(info);
                     header.appendChild(nom);
@@ -207,7 +226,7 @@ export default class RestaurantsFront extends Component {
                     carta.appendChild(header);
                     carta.appendChild(imatge);
                     carta.appendChild(buttonID);
-                    document.getElementById("contenedorTipus").appendChild(carta);
+                    document.getElementById("contenedorServei").appendChild(carta);
                 }
                 );
             })
@@ -243,7 +262,7 @@ export default class RestaurantsFront extends Component {
                                 clau="id_tipus"
                                 display="tipus_ca"
                                 url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
-                            <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                            <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
                                 <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
@@ -255,7 +274,7 @@ export default class RestaurantsFront extends Component {
                                 clau="id_tipus"
                                 display="tipus_es"
                                 url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
-                            <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                            <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
                                 <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
@@ -267,7 +286,7 @@ export default class RestaurantsFront extends Component {
                                 clau="id_tipus"
                                 display="tipus_en"
                                 url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
-                            <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                            <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
                                 <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
@@ -279,7 +298,7 @@ export default class RestaurantsFront extends Component {
                                 clau="id_tipus"
                                 display="tipus_de"
                                 url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
-                            <button type="button" className="btn btn-link" onClick={this.filtrar} aria-label="Botó filtrar">
+                            <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
                                 <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
@@ -312,9 +331,13 @@ export default class RestaurantsFront extends Component {
                         <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                     </button>
                 </div>
-
                 <div id="contenedorTaula"></div>
+                <div id="divTitolTipus">
+                    <h3 id="titolTipus"></h3>
+                </div>
                 <div id="contenedorTipus"></div>
+                <div id="contenedorPreus"></div>
+                <div id="contenedorServei"></div>
             </div>
         )
     }

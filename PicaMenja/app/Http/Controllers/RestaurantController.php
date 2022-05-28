@@ -112,6 +112,10 @@ class RestaurantController extends Controller
                 "restaurants.nom as restaurant",
                 "restaurants.imatge as image",
                 "tipus.id_tipus as id_tipus",
+                "tipus.tipus_ca",
+                "tipus.tipus_es",
+                "tipus.tipus_en",
+                "tipus.tipus_de",
             )
             ->where("tipus.id_tipus", "=", $id)
             ->get();
