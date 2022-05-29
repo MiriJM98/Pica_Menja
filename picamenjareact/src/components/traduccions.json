@@ -91,6 +91,7 @@
             "filtraPreu" : "Filtra per preu",
             "filtraServei" : "Filtra per servei",
             "titolFiltreTipus" : "Has filtrat per tipus: ",
+            "titolFiltrePreus" : "Has filtrat per rang de preus: ",
             "llistaFotos" : "Llistat de fotos",
             "insertidFoto" : "Afegir nou id_foto",
             "insertFoto" : "Puja foto",
@@ -240,7 +241,8 @@
             "filtraTipus" : "Filtra por tipo",
             "filtraPreu" : "Filtra por precio",
             "filtraServei" : "Filtra por servicio",
-            "titolFiltreTipus" : "Has filtrado por el tipo: "
+            "titolFiltreTipus" : "Has filtrado por el tipo: ",
+            "titolFiltrePreus" : "Has filtrado por rango de precios: "
         }
     ], 
 
@@ -335,7 +337,8 @@
             "filtraTipus" : "Filter by type",
             "filtraPreu" : "Filter by price",
             "filtraServei" : "Filter by service",
-            "titolFiltreTipus" : "You have filtered by type: "
+            "titolFiltreTipus" : "You have filtered by type: ",
+            "titolFiltrePreus" : "You have filtered by price range: "
         } 
     ],
 
@@ -430,7 +433,8 @@
             "filtraTipus" : "Nach Typ filtern",
             "filtraPreu" : "Nach Preis filtern",
             "filtraServei" : "Nach Dienstleistung filtern",
-            "titolFiltreTipus" : "Sie haben nach Typ gefiltert: "
+            "titolFiltreTipus" : "Sie haben nach Typ gefiltert: ",
+            "titolFiltrePreus" : "Sie haben nach Preisspanne gefiltert: "
         }
     ]
 }

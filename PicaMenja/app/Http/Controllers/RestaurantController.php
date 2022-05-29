@@ -85,7 +85,7 @@ class RestaurantController extends Controller
     public function imatge(Request $request, $id)
     {
         $validacio = Validator::make($request->all(), [
-            'imatge' => 'required|mimes:jpeg,jpg,bmp,png|max:10240',
+            'imatge' => 'required|mimes:jpeg,jpg,bmp,png,webp|max:10240',
         ]);
         $tupla = Restaurant::findOrFail($id);
         if (!$validacio->fails()) {

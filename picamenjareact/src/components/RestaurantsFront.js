@@ -28,8 +28,6 @@ export default class RestaurantsFront extends Component {
         if (document.getElementById("contenedorTaula").style.display !== "none") {
             this.restaurants();
         }
-        console.log("ID_SERVEI --> " + this.state.id_servei);
-
     };
 
     restaurants = () => {
@@ -156,7 +154,24 @@ export default class RestaurantsFront extends Component {
                     mostrador.innerHTML = "";
                     const tipus = document.getElementById("contenedorTipus");
                     tipus.innerHTML = "";
+                    let preusFiltre= "";
+                    const divPreus = document.getElementById("titolPreus");
+                    divPreus.innerHTML = "";
                     this.state.restaurants_preus.forEach(restaurant => {
+                        if (sessionStorage.getItem("id_idioma") === "1") {
+                            preusFiltre = restaurant.rang_preus;
+                        }
+                        if (sessionStorage.getItem("id_idioma") === "2") {
+                            preusFiltre = restaurant.rang_preus;
+                        }
+                        if (sessionStorage.getItem("id_idioma") === "3") {
+                            preusFiltre = restaurant.rang_preus;
+                        }
+                        if (sessionStorage.getItem("id_idioma") === "4") {
+                            preusFiltre = restaurant.rang_preus;
+                        }
+                        let texte = traduccions[sessionStorage.getItem("id_idioma")][0].titolFiltrePreus + preusFiltre;
+                        divPreus.innerHTML = texte;
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
                         let header = document.createElement("h2");
@@ -336,6 +351,9 @@ export default class RestaurantsFront extends Component {
                     <h3 id="titolTipus"></h3>
                 </div>
                 <div id="contenedorTipus"></div>
+                <div id="divTitolPreus">
+                    <h3 id="titolPreus"></h3>
+                </div>
                 <div id="contenedorPreus"></div>
                 <div id="contenedorServei"></div>
             </div>

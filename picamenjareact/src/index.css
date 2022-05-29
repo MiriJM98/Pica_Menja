@@ -236,7 +236,7 @@ label {
   font-weight: bold;
 }
 
-#contenedorTaula, #contenedorTipus, #contenedorPreus, #contenedorServei, #divTitolTipus {
+#contenedorTaula, #contenedorTipus, #contenedorPreus, #contenedorServei, #divTitolTipus, #divTitolPreus {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
