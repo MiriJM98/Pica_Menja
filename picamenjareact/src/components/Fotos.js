@@ -3,9 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from "react-bootstrap";
 import axios from 'axios';
 import { AgGridReact } from 'ag-grid-react';
-
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import traduccions from "./traduccions.json";
+
 export default class Fotos extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,7 @@ export default class Fotos extends Component {
                                 "/foto/" + params.data.id_foto
                             );
                         }}>
-                        Puja foto
+                        {traduccions[sessionStorage.getItem("id_idioma")][0].insertFoto}
                     </Button>
                 </div>
             );
@@ -46,7 +47,7 @@ export default class Fotos extends Component {
                                 this.borrar(params.data.id_foto);
                             }
                         }}>
-                        Borrar
+                        {traduccions[sessionStorage.getItem("id_idioma")][0].borrar}
                     </Button>
                 </div>
             );
@@ -55,9 +56,9 @@ export default class Fotos extends Component {
         this.state = {
             fotos: [],
             columnes: [
-                { field: "id_foto", headerName: "ID FOTO", sortable: true, filter: true },
-                { field: "id_restaurant", headerName: "ID RESTAURANT", sortable: true, filter: true },
-                { field: "foto", headerName: "FOTO", cellRendererFramework: pintaFoto, maxWidth: 150, },
+                { field: "id_foto", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_FOTO, sortable: true, filter: true },
+                { field: "id_restaurant", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_RESTAURANT, sortable: true, filter: true },
+                { field: "foto", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].FOTO, cellRendererFramework: pintaFoto, maxWidth: 150, },
                 { field: "id_foto", headerName: "", cellRendererFramework: pintaBoto, maxWidth: 150, },
                 { field: "id_restaurant", headerName: "", cellRendererFramework: pintaBotoBorrar, maxWidth: 100, },
             ],
@@ -73,11 +74,11 @@ export default class Fotos extends Component {
         };
         axios.delete("https://picamenja.com/PicaMenja/public/api/fotos/" + id, config)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.descarrega();
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             });
     };
@@ -85,11 +86,10 @@ export default class Fotos extends Component {
     descarrega = () => {
         const config = {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-            //headers: { Authorization: 'Bearer ' + "token"}
         };
         axios.get('https://picamenja.com/PicaMenja/public/api/fotos', config)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ fotos: response.data });
             })
             .catch(function (error) {
@@ -104,7 +104,7 @@ export default class Fotos extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 560, width: "100%" }}>
                 <div className="row">
-                    <h1 className='row justify-content-center mt-3'>Llistat de fotos</h1>
+                    <h1 className='row justify-content-center mt-3'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaFotos}</h1>
                 </div>
                 <div className="row mb-3 ms-1">
                     <div className="col-md-1">
@@ -112,7 +112,7 @@ export default class Fotos extends Component {
                         <input
                             type="button"
                             className="btn btn-primary btn-lg"
-                            value={"Afegir nou id_foto"}
+                            value={traduccions[sessionStorage.getItem("id_idioma")][0].insertidFoto}
                             onClick={() => {
                                 window.location.assign(
                                     "/foto/" + this.state.id_foto

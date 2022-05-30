@@ -30,7 +30,6 @@ export default class Login extends Component {
             sessionStorage.setItem("token", "");
             sessionStorage.setItem("id_usuari", "");
             sessionStorage.setItem("admin", "");
-            // alert("Email o password incorrectes!");
             document.getElementById("errors").style.display = "block";
         })
     }
@@ -47,7 +46,7 @@ export default class Login extends Component {
                 console.log(sessionStorage.getItem("admin"));
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             })
     }

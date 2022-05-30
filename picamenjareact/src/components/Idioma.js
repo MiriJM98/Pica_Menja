@@ -21,7 +21,6 @@ export default class Idioma extends Component {
     descarregaIdioma = (id_idioma) => {
         const config = {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-            //headers: { Authorization: 'Bearer ' + "token"}
         };
         axios.get('https://picamenja.com/PicaMenja/public/api/idiomes' + id_idioma, config)
             .then(response => {
@@ -32,7 +31,7 @@ export default class Idioma extends Component {
                 });
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             })
     }
@@ -40,7 +39,6 @@ export default class Idioma extends Component {
     descarrega = () => {
         const config = {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-            //headers: { Authorization: 'Bearer ' + "token"}
         };
         axios.get('https://picamenja.com/PicaMenja/public/api/idiomes', config)
             .then(response => {

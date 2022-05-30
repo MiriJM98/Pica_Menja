@@ -48,7 +48,7 @@ export default class RestaurantServei extends Component {
         const config = {
             headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis", formData, config
+        axios.post("https://picamenja.com/PicaMenja/public/api/restaurants_serveis", formData, config
         ).then((response) => {
             console.log(response);
             alert("Insertat amb èxit!");
@@ -108,7 +108,7 @@ export default class RestaurantServei extends Component {
                                 valorInicial={this.state.id_restaurant}
                                 clau="id_restaurant"
                                 display="nom"
-                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants"
+                                url="https://picamenja.com/PicaMenja/public/api/restaurants"
                             />
                         </div>
                     </div>
@@ -122,7 +122,7 @@ export default class RestaurantServei extends Component {
                                 valorInicial={this.state.id_servei}
                                 clau="id_servei"
                                 display="servei_ca"
-                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis"
+                                url="https://picamenja.com/PicaMenja/public/api/serveis"
                             />
                         </div>
                     </div>

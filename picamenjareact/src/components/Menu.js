@@ -69,7 +69,7 @@ export default class Menu extends Component {
         });
       })
       .catch(function (error) {
-        //Mostrar error
+        // Mostrar error
         console.log(error);
         if (error.response.status === 401) {
           sessionStorage.setItem("token", "");
@@ -144,7 +144,7 @@ export default class Menu extends Component {
       <>
         <header id="header">
           {/* DINS AQUEST CONTENEDOR TENIM EL HEADER DE L'APLICACIÓ, FORMAT PER DUES SECCIONS: 
-          UNA IMATGE PER SELECCIONAR L'IDIOMA I OPCIONS PER FER LOGIN O REGISTRAR-SE */}
+          UN SELECT PER SELECCIONAR L'IDIOMA I OPCIONS PER FER LOGIN O REGISTRAR-SE */}
           <Container>
             <div className="idiomes">
               <select onChange={this.onChangeIdioma} value={sessionStorage.getItem("id_idioma")}>
@@ -155,22 +155,26 @@ export default class Menu extends Component {
               </select>
               {sessionStorage.getItem("id_idioma") === "1" ?
                 <Image src={process.env.PUBLIC_URL + '/catalana.jpg'}
-                  width="60" height="47" title="Idiomes" className="ms-2 mt-3"
+                  width="60" height="47" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
+                  alt={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes} className="ms-2 mt-3"
                 />
                 : console.log()}
               {sessionStorage.getItem("id_idioma") === "2" ?
                 <Image src={process.env.PUBLIC_URL + '/spain.png'}
-                  width="60" height="47" title="Idiomes" className="ms-2 mt-3"
+                  width="60" height="47" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
+                  alt={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes} className="ms-2 mt-3"
                 />
                 : console.log()}
               {sessionStorage.getItem("id_idioma") === "3" ?
                 <Image src={process.env.PUBLIC_URL + '/inglesa.jpg'}
-                  width="60" height="47" title="Idiomes" className="ms-2 mt-3"
+                  width="60" height="47" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
+                  alt={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes} className="ms-2 mt-3"
                 />
                 : console.log()}
               {sessionStorage.getItem("id_idioma") === "4" ?
                 <Image src={process.env.PUBLIC_URL + '/alemana.jpg'}
-                  width="60" height="47" title="Idiomes" className="ms-2 mt-3"
+                  width="60" height="47" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
+                  alt={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes} className="ms-2 mt-3"
                 />
                 : console.log()}
 

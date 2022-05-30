@@ -254,7 +254,8 @@ export default class Espais extends Component {
           columnDefs={this.state.columnes}
           pagination={true}
           paginationPageSize={10}
-        ></AgGridReact>
+        >
+        </AgGridReact>
       </div>
     );
   }
