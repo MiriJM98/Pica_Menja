@@ -5,6 +5,7 @@ import axios from "axios";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import traduccions from "./traduccions.json";
 
 export default class RestaurantServeis extends Component {
     constructor(props) {
@@ -17,11 +18,11 @@ export default class RestaurantServeis extends Component {
                         variant="danger"
                         size="sm"
                         onClick={() => {
-                            if (window.confirm("Segur vols borrar el servei?")) {
+                            if (window.confirm(traduccions[sessionStorage.getItem("id_idioma")][0].borraServei)) {
                                 this.borrar(params.data.id_restaurant, params.data.id_servei);
                             }
                         }}>
-                        Borrar
+                        {traduccions[sessionStorage.getItem("id_idioma")][0].borrar}
                     </Button>
                 </div>
             );
@@ -34,13 +35,13 @@ export default class RestaurantServeis extends Component {
             columnes: [
                 {
                     field: "id_servei",
-                    headerName: "ID SERVEI",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_SERVEI,
                     sortable: true,
                     filter: true,
                 },
                 {
                     field: "id_restaurant",
-                    headerName: "ID RESTAURANT",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_RESTAURANT,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
@@ -103,7 +104,7 @@ export default class RestaurantServeis extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 600, width: "100%" }}>
                 <div className="row">
-                    <h1 className='row justify-content-center mt-3'>Llistat de restaurants serveis</h1>
+                    <h1 className='row justify-content-center mt-3'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaResSer}</h1>
                 </div>
                 <div className="row mb-3 ms-1">
                     <div className="col-md-1">
@@ -111,7 +112,7 @@ export default class RestaurantServeis extends Component {
                         <input
                             type="button"
                             className="btn btn-primary btn-lg"
-                            value={"Afegir nou restaurant_servei"}
+                            value={traduccions[sessionStorage.getItem("id_idioma")][0].newResSer}
                             onClick={() => {
                                 window.location.assign(
                                     "/restaurants_serveis/" + this.state.id_restaurant

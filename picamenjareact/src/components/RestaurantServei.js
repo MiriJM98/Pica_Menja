@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 import Select from "./Select";
+import traduccions from "./traduccions.json";
 
 export default class RestaurantServei extends Component {
     constructor(props) {
@@ -39,7 +40,7 @@ export default class RestaurantServei extends Component {
     inserta = () => {
         //Modificar les dades a la api
         if (this.state.id_restaurant === "" || this.state.id_servei === "") {
-            return alert("Error. S'han d'omplir tots els camps.");
+            return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorCamps);
         }
         let formData = new URLSearchParams();
         formData.append("id_restaurant", this.state.id_restaurant);
@@ -51,14 +52,14 @@ export default class RestaurantServei extends Component {
         axios.post("https://picamenja.com/PicaMenja/public/api/restaurants_serveis", formData, config
         ).then((response) => {
             console.log(response);
-            alert("Insertat amb èxit!");
+            alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
             window.location.assign("/restaurants_serveis");
             this.descarrega();
         }
         ).catch((error) => {
             console.log(error);
             if (error.response.data.exception === "Illuminate\\Database\\QueryException") {
-                alert("Clau primària duplicada! Aquest restaurant ja té el servei seleccionat.");
+                alert(traduccions[sessionStorage.getItem("id_idioma")][0].clauDuplicada);
             }
         });
     };
@@ -81,7 +82,7 @@ export default class RestaurantServei extends Component {
         return (
             <Container>
                 <div className="row mt-3">
-                    <h1 className="row justify-content-center">Inserta restaurant servei</h1>
+                    <h1 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].insertRestServei}</h1>
                 </div>
                 <div className="row mb-3">
                     <div className="col-md-1">
@@ -91,7 +92,7 @@ export default class RestaurantServei extends Component {
                     </div>
                 </div>
                 <hr />
-                <h2 className="row justify-content-center">Dades</h2>
+                <h2 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].dades}</h2>
                 <br />
                 <div className="row">
                     <div className="col-md-4">
@@ -101,7 +102,7 @@ export default class RestaurantServei extends Component {
                     <div className="col-md-2">
                         <div className="form-group">
                             <div>
-                                <label>Restaurant: </label>
+                                <label>{traduccions[sessionStorage.getItem("id_idioma")][0].restaurant}: </label>
                             </div>
                             <Select
                                 canviar={this.onChangeRestaurant}
@@ -115,15 +116,44 @@ export default class RestaurantServei extends Component {
                     <div className="col-md-3">
                         <div className="form-group">
                             <div>
-                                <label>Servei: </label>
+                                <label>{traduccions[sessionStorage.getItem("id_idioma")][0].servei}: </label>
                             </div>
-                            <Select
-                                canviar={this.onChangeServei}
-                                valorInicial={this.state.id_servei}
-                                clau="id_servei"
-                                display="servei_ca"
-                                url="https://picamenja.com/PicaMenja/public/api/serveis"
-                            />
+                            {sessionStorage.getItem("id_idioma") === "1" ?
+                                <Select
+                                    canviar={this.onChangeServei}
+                                    valorInicial={this.state.id_servei}
+                                    clau="id_servei"
+                                    display="servei_ca"
+                                    url="https://picamenja.com/PicaMenja/public/api/serveis"
+                                />
+                                : console.log()}
+                            {sessionStorage.getItem("id_idioma") === "2" ?
+                                <Select
+                                    canviar={this.onChangeServei}
+                                    valorInicial={this.state.id_servei}
+                                    clau="id_servei"
+                                    display="servei_es"
+                                    url="https://picamenja.com/PicaMenja/public/api/serveis"
+                                />
+                                : console.log()}
+                            {sessionStorage.getItem("id_idioma") === "3" ?
+                                <Select
+                                    canviar={this.onChangeServei}
+                                    valorInicial={this.state.id_servei}
+                                    clau="id_servei"
+                                    display="servei_en"
+                                    url="https://picamenja.com/PicaMenja/public/api/serveis"
+                                />
+                                : console.log()}
+                            {sessionStorage.getItem("id_idioma") === "4" ?
+                                <Select
+                                    canviar={this.onChangeServei}
+                                    valorInicial={this.state.id_servei}
+                                    clau="id_servei"
+                                    display="servei_de"
+                                    url="https://picamenja.com/PicaMenja/public/api/serveis"
+                                />
+                                : console.log()}
                         </div>
                     </div>
                 </div>
@@ -136,7 +166,7 @@ export default class RestaurantServei extends Component {
                             <input
                                 type="submit"
                                 className="btn btn-success btn-lg"
-                                value="Insertar"
+                                value={traduccions[sessionStorage.getItem("id_idioma")][0].botoInsert}
                                 onClick={this.inserta} />
                             <p></p>
                         </div>

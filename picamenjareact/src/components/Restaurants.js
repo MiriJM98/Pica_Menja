@@ -5,6 +5,7 @@ import axios from "axios";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import traduccions from "./traduccions.json";
 
 export default class Espais extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class Espais extends Component {
                 "/restaurant/" + params.data.id_restaurant
               );
             }}>
-            Edita
+            {traduccions[sessionStorage.getItem("id_idioma")][0].editar}
           </Button>
         </div>
       );
@@ -34,11 +35,11 @@ export default class Espais extends Component {
             variant="danger"
             size="sm"
             onClick={() => {
-              if (window.confirm("Segur vols borrar el restaurant?")) {
+              if (window.confirm(traduccions[sessionStorage.getItem("id_idioma")][0].borraRest)) {
                 this.borrar(params.data.id_restaurant);
               }
             }}>
-            Borrar
+            {traduccions[sessionStorage.getItem("id_idioma")][0].borrar}
           </Button>
         </div>
       );
@@ -57,40 +58,40 @@ export default class Espais extends Component {
       columnes: [
         {
           field: "id_restaurant",
-          headerName: "ID RESTAURANT",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_RESTAURANT,
           sortable: true,
           filter: true,
         },
         {
           field: "nom",
-          headerName: "NOM",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].NOM,
           sortable: true,
           filter: true,
           floatingFilter: true,
         },
         {
           field: "tipus.tipus_ca",
-          headerName: "TIPUS",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].TIPUS,
           sortable: true,
           filter: true,
           floatingFilter: true,
         },
         {
           field: "telefon",
-          headerName: "TELÈFON",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].TELEFON,
           sortable: true,
           filter: true,
         },
         {
           field: "pagina_web",
-          headerName: "WEB",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].WEB,
           sortable: true,
           filter: true,
           resizable: true,
         },
         {
           field: "ubicacio",
-          headerName: "DIRECCIÓ",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].DIRECCIO,
           sortable: true,
           filter: true,
           floatingFilter: true,
@@ -98,7 +99,7 @@ export default class Espais extends Component {
         },
         {
           field: "horari_ca",
-          headerName: "HORARI CATALÀ",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].HORARI_CA,
           sortable: true,
           filter: true,
           floatingFilter: true,
@@ -106,7 +107,7 @@ export default class Espais extends Component {
         },
         {
           field: "horari_es",
-          headerName: "HORARI CASTELLÀ",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].HORARI_ES,
           sortable: true,
           filter: true,
           floatingFilter: true,
@@ -114,7 +115,7 @@ export default class Espais extends Component {
         },
         {
           field: "horari_en",
-          headerName: "HORARI ANGLÈS",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].HORARI_EN,
           sortable: true,
           filter: true,
           floatingFilter: true,
@@ -122,7 +123,7 @@ export default class Espais extends Component {
         },
         {
           field: "horari_de",
-          headerName: "HORARI ALEMANY",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].HORARI_DE,
           sortable: true,
           filter: true,
           floatingFilter: true,
@@ -130,47 +131,47 @@ export default class Espais extends Component {
         },
         {
           field: "rang_preus",
-          headerName: "RANG PREUS",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].RANG_PREUS,
           sortable: true,
           filter: true,
         },
         {
           field: "imatge",
-          headerName: "IMATGE",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].IMATGE,
           cellRendererFramework: pintaFoto,
           maxWidth: 150,
         },
         {
           field: "descripcio_ca",
-          headerName: "DESCRIPCIÓ CATALÀ",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].DESC_CA,
           sortable: true,
           filter: true,
           resizable: true,
         },
         {
           field: "descripcio_es",
-          headerName: "DESCRIPCIÓ CASTELLÀ",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].DESC_ES,
           sortable: true,
           filter: true,
           resizable: true,
         },
         {
           field: "descripcio_en",
-          headerName: "DESCRIPCIÓ ANGLÈS",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].DESC_EN,
           sortable: true,
           filter: true,
           resizable: true,
         },
         {
           field: "descripcio_de",
-          headerName: "DESCRIPCIÓ ALEMANY",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].DESC_DE,
           sortable: true,
           filter: true,
           resizable: true,
         },
         {
           field: "carta",
-          headerName: "CARTA",
+          headerName: traduccions[sessionStorage.getItem("id_idioma")][0].CARTA,
           sortable: true,
           filter: true,
           resizable: true,
@@ -202,7 +203,7 @@ export default class Espais extends Component {
         this.descarrega();
       })
       .catch(function (error) {
-        //Mostrar error
+        // Mostrar error
         console.log(error);
       });
   };
@@ -232,7 +233,7 @@ export default class Espais extends Component {
     return (
       <div className="ag-theme-alpine" style={{ height: 600, width: "100%" }}>
         <div className="row">
-          <h1 className='row justify-content-center mt-3'>Llistat de restaurants</h1>
+          <h1 className='row justify-content-center mt-3'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaRestaurants}</h1>
         </div>
         <div className="row mb-3 ms-1">
           <div className="col-md-1">
@@ -240,7 +241,7 @@ export default class Espais extends Component {
             <input
               type="button"
               className="btn btn-primary btn-lg"
-              value={"Afegir nou restaurant"}
+              value={traduccions[sessionStorage.getItem("id_idioma")][0].insertRestaurant}
               onClick={() => {
                 window.location.assign(
                   "/restaurant/" + this.state.id_restaurant

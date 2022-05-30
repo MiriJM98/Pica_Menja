@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from "react-bootstrap";
 import axios from 'axios';
+import traduccions from "./traduccions.json";
 
 export default class Idioma extends Component {
     constructor(props) {
@@ -88,17 +89,17 @@ export default class Idioma extends Component {
         return (
             <Container>
                 <div className="row mt-3">
-                    <h1 className="row justify-content-center">Insertar un idioma</h1>
+                    <h1 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].insertIdioma}</h1>
                 </div>
                 <div className="row mb-3">
                     <div className="col-md-1">
                         <div className="form-group"></div>
-                        <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
+                        <input type="button" className="btn btn-secondary btn-lg" value={traduccions[sessionStorage.getItem("id_idioma")][0].botoTornar}
                             onClick={() => { window.location.assign("/idiomes"); }} />
                     </div>
                 </div>
                 <hr />
-                <h2 className="row justify-content-center">Dades</h2>
+                <h2 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].dades}</h2>
                 <br />
                 <div className='row'>
                     <div className="col-md-4">
@@ -107,13 +108,13 @@ export default class Idioma extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>ID:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].ID}:</label>
                             <input type="text" className="form-control" value={this.state.id_idioma} readOnly />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Idioma:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].idioma}:</label>
                             <input type="text" className='form-control' name='idioma' value={this.state.idioma} onChange={this.onChange} />
                         </div>
                     </div>
@@ -124,7 +125,7 @@ export default class Idioma extends Component {
                                 <input
                                     type="submit"
                                     className="btn btn-success btn-lg"
-                                    value="Insertar"
+                                    value={traduccions[sessionStorage.getItem("id_idioma")][0].botoInsert}
                                     onClick={this.inserta} />
                                 <p></p>
                             </div>

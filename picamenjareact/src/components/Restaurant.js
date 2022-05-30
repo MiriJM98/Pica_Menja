@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Image, Container } from "react-bootstrap";
 import axios from "axios";
 import Select from "./Select";
+import traduccions from "./traduccions.json";
 
 export default class Restaurant extends Component {
     constructor(props) {
@@ -111,7 +112,7 @@ export default class Restaurant extends Component {
             config)
             .then((response) => {
                 console.log(response);
-                alert("Modificació feta amb èxit!");
+                alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitUpdate);
                 window.location.assign("/restaurants_back");
                 this.descarrega();
             })
@@ -126,7 +127,7 @@ export default class Restaurant extends Component {
             || this.state.descripcio_es === "" || this.state.descripcio_en === "" || this.state.descripcio_de === "" || this.state.horari_ca === ""
             || this.state.horari_es === "" || this.state.horari_en === "" || this.state.horari_de === "" || this.state.id_tipus === ""
             || this.state.rang_preus === "") {
-            return alert("Error. S'han d'omplir tots els camps.");
+            return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorCamps);
         }
         let formData = new URLSearchParams();
         formData.append("nom", this.state.nom);
@@ -152,7 +153,7 @@ export default class Restaurant extends Component {
         axios.post("https://picamenja.com/PicaMenja/public/api/restaurants", formData, config
         ).then((response) => {
             console.log(response);
-            alert("Insertat amb èxit!");
+            alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
             window.location.assign("/restaurants_back");
             this.descarrega();
         }
@@ -172,7 +173,7 @@ export default class Restaurant extends Component {
             config
         ).then((response) => {
             console.log(response);
-            alert("Imatge pujada amb èxit!");
+            alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
         }
         ).catch((error) => {
             console.log(error);
@@ -196,7 +197,6 @@ export default class Restaurant extends Component {
     };
 
     enviaFormulari = () => {
-
         if (this.state.id_restaurant === "") {
             this.inserta();
         } else {
@@ -208,23 +208,25 @@ export default class Restaurant extends Component {
         return (
             <Container>
                 <div className="row mt-3">
-                    <h1 className="row justify-content-center">{this.state.id_restaurant === "" ? "Insertar" : "Modificar"} un
-                        restaurant</h1>
+                    <h1 className="row justify-content-center">
+                        {this.state.id_restaurant === "" ? traduccions[sessionStorage.getItem("id_idioma")][0].insertRest
+                            : traduccions[sessionStorage.getItem("id_idioma")][0].updateRest}
+                    </h1>
                 </div>
                 <div className="row mb-3">
                     <div className="col-md-1">
                         <div className="form-group"></div>
-                        <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
+                        <input type="button" className="btn btn-secondary btn-lg" value={traduccions[sessionStorage.getItem("id_idioma")][0].botoTornar}
                             onClick={() => { window.location.assign("/restaurants_back"); }} />
                     </div>
                 </div>
                 <hr />
-                <h2 className="row justify-content-center">Dades bàsiques</h2>
+                <h2 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].dadesbasiques}</h2>
                 <br />
                 <div className="row">
                     <div className="col-md-1">
                         <div className="form-group">
-                            <label>ID:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].ID}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -235,7 +237,7 @@ export default class Restaurant extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Nom restaurant:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].nom_res}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -247,7 +249,7 @@ export default class Restaurant extends Component {
                     </div>
                     <div className="col-md-4">
                         <div className="form-group">
-                            <label>Direcció:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].direccio}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -259,7 +261,7 @@ export default class Restaurant extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Telèfon:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].telefon}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -279,7 +281,7 @@ export default class Restaurant extends Component {
                 <div className="row">
                     <div className="col-md-3">
                         <div className="form-group">
-                            <label>Pàgina web:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].web}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -291,7 +293,7 @@ export default class Restaurant extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Rang preus:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].rang_preus}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -304,20 +306,49 @@ export default class Restaurant extends Component {
                     <div className="col-md-2">
                         <div className="form-group">
                             <div>
-                                <label>Tipus: </label>
+                                <label>{traduccions[sessionStorage.getItem("id_idioma")][0].tipus}: </label>
                             </div>
-                            <Select
-                                canviar={this.onChangeTipus}
-                                valorInicial={this.state.id_tipus}
-                                clau="id_tipus"
-                                display="tipus_ca"
-                                url="https://picamenja.com/PicaMenja/public/api/tipus"
-                            />
+                            {sessionStorage.getItem("id_idioma") === "1" ?
+                                <Select
+                                    canviar={this.onChangeTipus}
+                                    valorInicial={this.state.id_tipus}
+                                    clau="id_tipus"
+                                    display="tipus_ca"
+                                    url="https://picamenja.com/PicaMenja/public/api/tipus"
+                                />
+                                : console.log()}
+                            {sessionStorage.getItem("id_idioma") === "2" ?
+                                <Select
+                                    canviar={this.onChangeTipus}
+                                    valorInicial={this.state.id_tipus}
+                                    clau="id_tipus"
+                                    display="tipus_es"
+                                    url="https://picamenja.com/PicaMenja/public/api/tipus"
+                                />
+                                : console.log()}
+                            {sessionStorage.getItem("id_idioma") === "3" ?
+                                <Select
+                                    canviar={this.onChangeTipus}
+                                    valorInicial={this.state.id_tipus}
+                                    clau="id_tipus"
+                                    display="tipus_en"
+                                    url="https://picamenja.com/PicaMenja/public/api/tipus"
+                                />
+                                : console.log()}
+                            {sessionStorage.getItem("id_idioma") === "4" ?
+                                <Select
+                                    canviar={this.onChangeTipus}
+                                    valorInicial={this.state.id_tipus}
+                                    clau="id_tipus"
+                                    display="tipus_de"
+                                    url="https://picamenja.com/PicaMenja/public/api/tipus"
+                                />
+                                : console.log()}
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="form-group">
-                            <label>Foto:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].foto}:</label>
                             <input
                                 type="file"
                                 accept="image/png, image/jpeg"
@@ -329,7 +360,7 @@ export default class Restaurant extends Component {
                                 <input
                                     type="submit"
                                     className="btn btn-primary"
-                                    value={"Actualitza foto"}
+                                    value={traduccions[sessionStorage.getItem("id_idioma")][0].botofoto}
                                     onClick={this.updateFoto}
                                 />
                             </div>
@@ -340,10 +371,10 @@ export default class Restaurant extends Component {
                     <div className="col-md-4">&nbsp;</div>
                 </div>
                 <div className="row">
-                    <h3 className="row justify-content-center">Multi-idioma</h3>
+                    <h3 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].multiidioma}</h3>
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Horari català:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].horari_ca}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -355,7 +386,7 @@ export default class Restaurant extends Component {
                     </div>
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Horari castellà:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].horari_es}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -372,7 +403,7 @@ export default class Restaurant extends Component {
                 <div className="row">
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Horari anglès:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].horari_en}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -384,7 +415,7 @@ export default class Restaurant extends Component {
                     </div>
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Horari alemany:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].horari_de}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -401,7 +432,7 @@ export default class Restaurant extends Component {
                 <div className="row">
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Descripció català:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].desc_ca}:</label>
                             <textarea
                                 value={this.state.descripcio_ca}
                                 className="form-control"
@@ -412,7 +443,7 @@ export default class Restaurant extends Component {
                     </div>
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Descripció castellà:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].desc_es}:</label>
                             <textarea
                                 value={this.state.descripcio_es}
                                 className="form-control"
@@ -428,7 +459,7 @@ export default class Restaurant extends Component {
                 <div className="row">
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Descripció anglès:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].desc_en}:</label>
                             <textarea
                                 value={this.state.descripcio_en}
                                 className="form-control"
@@ -439,7 +470,7 @@ export default class Restaurant extends Component {
                     </div>
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label>Descripció alemany:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].desc_de}:</label>
                             <textarea
                                 value={this.state.descripcio_de}
                                 className="form-control"
@@ -460,7 +491,8 @@ export default class Restaurant extends Component {
                                 type="submit"
                                 className="btn btn-success btn-lg"
                                 value={
-                                    this.state.id_restaurant === "" ? "Insertar" : "Modificar"
+                                    this.state.id_restaurant === "" ? traduccions[sessionStorage.getItem("id_idioma")][0].botoInsert
+                                        : traduccions[sessionStorage.getItem("id_idioma")][0].botoUpdate
                                 }
                                 onClick={this.enviaFormulari}
                             />

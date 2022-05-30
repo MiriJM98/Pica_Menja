@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { AgGridReact } from 'ag-grid-react';
-
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import traduccions from "./traduccions.json";
+
 export default class Idiomes extends Component {
     constructor(props) {
         super(props);
@@ -12,8 +13,8 @@ export default class Idiomes extends Component {
         this.state = {
             idiomes: [],
             columnes: [
-                { field: "id_idioma", headerName: "ID IDIOMA", sortable: true, filter: true },
-                { field: "idioma", headerName: "IDIOMA", sortable: true, filter: true, floatingFilter: true },
+                { field: "id_idioma", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_IDIOMA, sortable: true, filter: true },
+                { field: "idioma", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].IDIOMA, sortable: true, filter: true, floatingFilter: true },
             ],
         }
     }
@@ -42,7 +43,7 @@ export default class Idiomes extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 400, width: "100%" }}>
                 <div className="row">
-                    <h1 className='row justify-content-center mt-3'>Llistat d'idiomes</h1>
+                    <h1 className='row justify-content-center mt-3'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaIdiomes}</h1>
                 </div>
                 <div className="row mb-3 ms-1">
                     <div className="col-md-1">
@@ -50,7 +51,7 @@ export default class Idiomes extends Component {
                         <input
                             type="button"
                             className="btn btn-primary btn-lg"
-                            value={"Afegir nou idioma"}
+                            value={traduccions[sessionStorage.getItem("id_idioma")][0].insertIdioma}
                             onClick={() => {
                                 window.location.assign(
                                     "/idioma/" + this.state.id_idioma
@@ -61,8 +62,6 @@ export default class Idiomes extends Component {
                 <AgGridReact
                     rowData={this.state.idiomes}
                     columnDefs={this.state.columnes}
-                // pagination={true}
-                // paginationPageSize={10}
                 >
                 </AgGridReact>
             </div>

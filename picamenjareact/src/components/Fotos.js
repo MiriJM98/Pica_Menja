@@ -43,7 +43,7 @@ export default class Fotos extends Component {
                         variant="danger"
                         size="sm"
                         onClick={() => {
-                            if (window.confirm("Segur vols borrar la foto?")) {
+                            if (window.confirm(traduccions[sessionStorage.getItem("id_idioma")][0].borraFoto)) {
                                 this.borrar(params.data.id_foto);
                             }
                         }}>

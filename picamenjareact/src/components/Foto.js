@@ -75,7 +75,7 @@ export default class Foto extends Component {
     inserta = () => {
         // Modificar les dades a la api
         if (this.state.id_foto === "" || this.state.id_restaurant === "") {
-            return alert("Error. S'han d'omplir tots els camps.");
+            return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorCamps);
         }
         let formData = new URLSearchParams();
         formData.append("id_foto", this.state.id_foto);
@@ -89,7 +89,7 @@ export default class Foto extends Component {
         axios.post('https://picamenja.com/PicaMenja/public/api/fotos', formData, config)
             .then(response => {
                 console.log(response);
-                alert("Insertat amb èxit!");
+                alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
                 window.location.assign("/fotos");
                 this.descarrega();
             }
@@ -108,7 +108,7 @@ export default class Foto extends Component {
         axios.post("https://picamenja.com/PicaMenja/public/api/fotos/imatge/" + this.state.id_foto, formData, config
         ).then((response) => {
             console.log(response);
-            alert("Imatge pujada amb èxit!");
+            alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
         }
         ).catch((error) => {
             console.log(error);
