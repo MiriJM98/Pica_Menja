@@ -41,9 +41,6 @@ ALTER TABLE restaurants ADD FOREIGN KEY (id_tipus) REFERENCES tipus (id_tipus);
 ALTER TABLE valoracions ADD FOREIGN KEY (id_usuari) REFERENCES usuaris (id_usuari);
 ALTER TABLE valoracions ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant);
 
-ALTER TABLE comentaris ADD FOREIGN KEY (id_usuari) REFERENCES usuaris (id_usuari);
-ALTER TABLE comentaris ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant);
-
 ALTER TABLE restaurants_serveis ADD FOREIGN KEY (id_restaurant) REFERENCES restaurants (id_restaurant);
 ALTER TABLE restaurants_serveis ADD FOREIGN KEY (id_servei) REFERENCES serveis (id_servei);
 

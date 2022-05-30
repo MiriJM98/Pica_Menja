@@ -69,7 +69,7 @@ export default class RestaurantFront extends Component {
     descarregaRestaurant = (id_restaurant) => {
         const mostrador = document.getElementById("contingut");
         const divIframe = document.getElementById("iframeDiv");
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + id_restaurant)
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants/" + id_restaurant)
             .then((response) => {
                 this.setState({
                     id_restaurant: response.data.id_restaurant,
@@ -247,7 +247,7 @@ export default class RestaurantFront extends Component {
     }
 
     fotosRestaurant = (id_restaurant) => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos/restaurant/" + id_restaurant)
+        axios.get("https://picamenja.com/PicaMenja/public/api/fotos/restaurant/" + id_restaurant)
             .then((response) => {
                 console.log(response);
                 console.log(this.state.id_restaurant);
@@ -273,7 +273,7 @@ export default class RestaurantFront extends Component {
     }
 
     mostraServeisCa = (id_restaurant) => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis/serveisCa/" + id_restaurant)
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants_serveis/serveisCa/" + id_restaurant)
             .then((response) => {
                 // console.log(response);
                 this.setState({
@@ -295,7 +295,7 @@ export default class RestaurantFront extends Component {
     }
 
     mostraServeisEs = (id_restaurant) => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis/serveisEs/" + id_restaurant)
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants_serveis/serveisEs/" + id_restaurant)
             .then((response) => {
                 // console.log(response);
                 this.setState({
@@ -317,7 +317,7 @@ export default class RestaurantFront extends Component {
     }
 
     mostraServeisEn = (id_restaurant) => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis/serveisEn/" + id_restaurant)
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants_serveis/serveisEn/" + id_restaurant)
             .then((response) => {
                 // console.log(response);
                 this.setState({
@@ -339,7 +339,7 @@ export default class RestaurantFront extends Component {
     }
 
     mostraServeisDe = (id_restaurant) => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis/serveisDe/" + id_restaurant)
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants_serveis/serveisDe/" + id_restaurant)
             .then((response) => {
                 // console.log(response);
                 this.setState({
@@ -362,7 +362,7 @@ export default class RestaurantFront extends Component {
 
 
     mostraValoracioGlobal = (id_restaurant) => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/valoracions/mitjana/restaurant/" + id_restaurant)
+        axios.get("https://picamenja.com/PicaMenja/public/api/valoracions/mitjana/restaurant/" + id_restaurant)
             .then((response) => {
                 // console.log(response);
                 this.setState({
@@ -390,7 +390,7 @@ export default class RestaurantFront extends Component {
     }
 
     mostraValoracions = (id_restaurant) => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/valoracions/restaurant/" + id_restaurant)
+        axios.get("https://picamenja.com/PicaMenja/public/api/valoracions/restaurant/" + id_restaurant)
             .then((response) => {
                 console.log(response);
                 this.setState({

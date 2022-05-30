@@ -16,7 +16,7 @@ export default class Login extends Component {
         let formData = new URLSearchParams();
         formData.append("email", this.state.email);
         formData.append("password", this.state.password);
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/login", formData,
+        axios.post("https://picamenja.com/PicaMenja/public/api/login", formData,
         ).then(resposta => {
             console.log(resposta);
             sessionStorage.setItem("token", resposta.data.result);
@@ -40,7 +40,7 @@ export default class Login extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
         const usuari = sessionStorage.getItem("id_usuari");
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + usuari, config)
+        axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
             .then(response => {
                 sessionStorage.setItem("admin", response.data.administrador);
                 window.location.assign("/");

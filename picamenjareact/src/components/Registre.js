@@ -91,7 +91,7 @@ export default class Registre extends Component {
         formData.append("data_naixement", this.state.data_naixement);
         formData.append("email", this.state.email);
         formData.append("password", this.state.password);
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris", formData,
+        axios.post("https://picamenja.com/PicaMenja/public/api/usuaris", formData,
         ).then(resposta => {
             console.log(resposta);
             alert("Usuari creat amb èxit!");

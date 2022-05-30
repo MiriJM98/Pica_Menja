@@ -23,7 +23,7 @@ export default class RestaurantServei extends Component {
         const config = {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis", config)
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants_serveis", config)
             .then((response) => {
                 //console.log(response);
                 this.setState({ serveis: response.data });

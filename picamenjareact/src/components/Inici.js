@@ -18,7 +18,7 @@ export default class Inici extends Component {
     //     const config = {
     //         headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
     //     };
-    //     axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants", config)
+    //     axios.get("https://picamenja.com/PicaMenja/public/api/restaurants", config)
     //         .then(response => {
     //             console.log(response.data);
     //             response.data.forEach(restaurant => {

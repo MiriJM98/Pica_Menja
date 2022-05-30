@@ -59,7 +59,7 @@ export default class Menu extends Component {
       headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
     };
     const usuari = sessionStorage.getItem("id_usuari");
-    axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + usuari, config)
+    axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
       .then(response => {
         //console.log(response);
         this.setState({
@@ -84,7 +84,7 @@ export default class Menu extends Component {
   carregaIdioma = () => {
     this.handleRefresh();
     // Català idioma per defecte
-    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes/" + sessionStorage.getItem("id_idioma"))
+    axios.get("https://picamenja.com/PicaMenja/public/api/idiomes/" + sessionStorage.getItem("id_idioma"))
       .then(response => {
         console.log(response);
         sessionStorage.setItem("id_idioma", response.data.id_idioma);

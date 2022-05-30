@@ -32,7 +32,7 @@ export default class RestaurantsFront extends Component {
 
     restaurants = () => {
         console.log("POR DIOS MIRA AQUÍ ---> " + sessionStorage.getItem("id_idioma"));
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/front")
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants/front")
             .then((response) => {
                 // console.log(response);
                 if (response.status === 200) {
@@ -78,7 +78,7 @@ export default class RestaurantsFront extends Component {
     }
 
     filtrarTipus = () => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/tipusCa/" + this.state.id_tipus)
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants/tipusCa/" + this.state.id_tipus)
             .then((response) => {
                 // console.log(response);
                 if (response.status === 200) {
@@ -142,7 +142,7 @@ export default class RestaurantsFront extends Component {
     }
 
     filtrarPreu = () => {
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/rang/" + this.state.rang_preus)
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants/rang/" + this.state.rang_preus)
             .then((response) => {
                 // console.log(response);
                 if (response.status === 200) {
@@ -207,7 +207,7 @@ export default class RestaurantsFront extends Component {
 
     filtraServei = () => {
         console.log(this.state.id_servei);
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis/restaurants/" + this.state.id_servei)
+        axios.get("https://picamenja.com/PicaMenja/public/api/restaurants_serveis/restaurants/" + this.state.id_servei)
             .then((response) => {
                 console.log(response);
                 this.setState({
@@ -276,7 +276,7 @@ export default class RestaurantsFront extends Component {
                                 valorInicial={this.state.id_tipus}
                                 clau="id_tipus"
                                 display="tipus_ca"
-                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                                url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
                                 <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                             </button></>
@@ -288,7 +288,7 @@ export default class RestaurantsFront extends Component {
                                 valorInicial={this.state.id_tipus}
                                 clau="id_tipus"
                                 display="tipus_es"
-                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                                url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
                                 <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                             </button></>
@@ -300,7 +300,7 @@ export default class RestaurantsFront extends Component {
                                 valorInicial={this.state.id_tipus}
                                 clau="id_tipus"
                                 display="tipus_en"
-                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                                url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
                                 <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                             </button></>
@@ -327,7 +327,7 @@ export default class RestaurantsFront extends Component {
                         valorInicial={this.state.rang_preus}
                         clau="rang_preus"
                         display="rang_preus"
-                        url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurantsPreus" />
+                        url="https://picamenja.com/PicaMenja/public/api/restaurantsPreus" />
                     <button type="button" className="btn btn-link" onClick={this.filtrarPreu} aria-label="Botó filtrar">
                         <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                     </button>
@@ -341,7 +341,7 @@ export default class RestaurantsFront extends Component {
                         valorInicial={this.state.id_servei}
                         clau="id_servei"
                         display="servei_ca"
-                        url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis" />
+                        url="https://picamenja.com/PicaMenja/public/api/serveis" />
                     <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
                         <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                     </button>

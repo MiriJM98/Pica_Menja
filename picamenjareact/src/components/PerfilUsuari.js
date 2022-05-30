@@ -35,7 +35,7 @@ export default class PerfilUsuari extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
         const usuari = sessionStorage.getItem("id_usuari");
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + usuari, config)
+        axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
             .then(response => {
                 //console.log(response);
                 this.setState({
@@ -77,7 +77,7 @@ export default class PerfilUsuari extends Component {
                 'content-type': 'application/x-www-form-urlencoded'
             }
         };
-        axios.put('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData, config
+        axios.put('https://picamenja.com/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData, config
         ).then(response => {
             console.log(response);
             alert("Modificat amb èxit!");
@@ -109,7 +109,7 @@ export default class PerfilUsuari extends Component {
                 'content-type': 'application/x-www-form-urlencoded'
             }
         };
-        axios.put('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris', formData, config
+        axios.put('https://picamenja.com/PicaMenja/public/api/usuaris', formData, config
         ).then(response => {
             console.log(response);
             alert("Contrasenya modificada amb èxit!");
@@ -130,7 +130,7 @@ export default class PerfilUsuari extends Component {
             const config = {
                 headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
             };
-            axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, formData,
+            axios.post("https://picamenja.com/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, formData,
                 config
             ).then((response) => {
                 console.log(response);

@@ -71,7 +71,7 @@ export default class Fotos extends Component {
         const config = {
             headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         };
-        axios.delete("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos/" + id, config)
+        axios.delete("https://picamenja.com/PicaMenja/public/api/fotos/" + id, config)
             .then((response) => {
                 console.log(response);
                 this.descarrega();
@@ -87,7 +87,7 @@ export default class Fotos extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
             //headers: { Authorization: 'Bearer ' + "token"}
         };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos', config)
+        axios.get('https://picamenja.com/PicaMenja/public/api/fotos', config)
             .then(response => {
                 console.log(response);
                 this.setState({ fotos: response.data });

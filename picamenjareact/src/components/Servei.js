@@ -26,7 +26,7 @@ export default class Servei extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
         axios
-            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis/" + id_servei, config)
+            .get("https://picamenja.com/PicaMenja/public/api/serveis/" + id_servei, config)
             .then((response) => {
                 //console.log(response);
                 this.setState({
@@ -47,7 +47,7 @@ export default class Servei extends Component {
         const config = {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis", config)
+        axios.get("https://picamenja.com/PicaMenja/public/api/serveis", config)
             .then((response) => {
                 console.log(response);
                 this.setState({ serveis: response.data });
@@ -74,7 +74,7 @@ export default class Servei extends Component {
         const config = {
             headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/serveis", formData, config
+        axios.post("https://picamenja.com/PicaMenja/public/api/serveis", formData, config
         ).then((response) => {
             console.log(response);
             alert("Insertat amb èxit!");

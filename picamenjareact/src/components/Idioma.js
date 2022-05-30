@@ -23,7 +23,7 @@ export default class Idioma extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
             //headers: { Authorization: 'Bearer ' + "token"}
         };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes' + id_idioma, config)
+        axios.get('https://picamenja.com/PicaMenja/public/api/idiomes' + id_idioma, config)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -42,7 +42,7 @@ export default class Idioma extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
             //headers: { Authorization: 'Bearer ' + "token"}
         };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes', config)
+        axios.get('https://picamenja.com/PicaMenja/public/api/idiomes', config)
             .then(response => {
                 console.log(response);
                 this.setState({ idiomes: response.data });
@@ -68,7 +68,7 @@ export default class Idioma extends Component {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token")
             }
         };
-        axios.post('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes', formData, config)
+        axios.post('https://picamenja.com/PicaMenja/public/api/idiomes', formData, config)
             .then(response => {
                 console.log(response);
                 alert("Insertat amb èxit!");

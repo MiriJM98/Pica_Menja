@@ -196,7 +196,7 @@ export default class Espais extends Component {
     const config = {
       headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
     };
-    axios.delete("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants/" + id, config)
+    axios.delete("https://picamenja.com/PicaMenja/public/api/restaurants/" + id, config)
       .then((response) => {
         console.log(response);
         this.descarrega();
@@ -215,7 +215,7 @@ export default class Espais extends Component {
     const config = {
       headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
     };
-    axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants", config)
+    axios.get("https://picamenja.com/PicaMenja/public/api/restaurants", config)
       .then((response) => {
         console.log(response);
         this.setState({ restaurants: response.data });

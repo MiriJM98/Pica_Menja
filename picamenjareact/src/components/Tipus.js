@@ -81,7 +81,7 @@ export default class Espais extends Component {
         };
         axios
             .delete(
-                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus/" +
+                "https://picamenja.com/PicaMenja/public/api/tipus/" +
                 id, config
             )
             .then((response) => {
@@ -104,7 +104,7 @@ export default class Espais extends Component {
         };
         axios
             .get(
-                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus", config
+                "https://picamenja.com/PicaMenja/public/api/tipus", config
             )
             .then((response) => {
                 console.log(response);

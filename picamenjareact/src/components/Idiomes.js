@@ -26,7 +26,7 @@ export default class Idiomes extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
             //headers: { Authorization: 'Bearer ' + "token"}
         };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes', config)
+        axios.get('https://picamenja.com/PicaMenja/public/api/idiomes', config)
             .then(response => {
                 console.log(response);
                 this.setState({ idiomes: response.data });

@@ -89,7 +89,7 @@ export default class Valoracions extends Component {
         };
         axios
             .delete(
-                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/valoracions/" +
+                "https://picamenja.com/PicaMenja/public/api/valoracions/" +
                 id, config
             )
             .then((response) => {
@@ -112,7 +112,7 @@ export default class Valoracions extends Component {
         };
         axios
             .get(
-                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/valoracions", config
+                "https://picamenja.com/PicaMenja/public/api/valoracions", config
             )
             .then((response) => {
                 console.log(response);

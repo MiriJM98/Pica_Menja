@@ -26,7 +26,7 @@ export default class Tipu extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
         axios
-            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus/" + id_tipus, config)
+            .get("https://picamenja.com/PicaMenja/public/api/tipus/" + id_tipus, config)
             .then((response) => {
                 //console.log(response);
                 this.setState({
@@ -47,7 +47,7 @@ export default class Tipu extends Component {
         const config = {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
-        axios.get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus", config)
+        axios.get("https://picamenja.com/PicaMenja/public/api/tipus", config)
             .then((response) => {
                 console.log(response);
                 this.setState({ tipus: response.data });
@@ -70,7 +70,7 @@ export default class Tipu extends Component {
         const config = {
             headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus", formData, config
+        axios.post("https://picamenja.com/PicaMenja/public/api/tipus", formData, config
         ).then((response) => {
             console.log(response);
             alert("Insertat amb èxit!");

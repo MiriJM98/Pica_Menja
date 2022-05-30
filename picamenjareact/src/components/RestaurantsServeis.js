@@ -64,7 +64,7 @@ export default class RestaurantServeis extends Component {
         };
         axios
             .delete(
-                "http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis/" +
+                "https://picamenja.com/PicaMenja/public/api/restaurants_serveis/" +
                 id_restaurant + "/" + id_servei, config
             )
             .then((response) => {
@@ -86,7 +86,7 @@ export default class RestaurantServeis extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
         axios
-            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/restaurants_serveis", config)
+            .get("https://picamenja.com/PicaMenja/public/api/restaurants_serveis", config)
             .then((response) => {
                 console.log(response);
                 this.setState({ restaurants_serveis: response.data });

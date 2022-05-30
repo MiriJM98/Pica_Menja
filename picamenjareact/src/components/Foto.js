@@ -24,7 +24,7 @@ export default class Foto extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
         axios
-            .get("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos/" + id_foto, config)
+            .get("https://picamenja.com/PicaMenja/public/api/fotos/" + id_foto, config)
             .then((response) => {
                 //console.log(response);
                 this.setState({
@@ -44,7 +44,7 @@ export default class Foto extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
             //headers: { Authorization: 'Bearer ' + "token"}
         };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos' + id_foto, config)
+        axios.get('https://picamenja.com/PicaMenja/public/api/fotos' + id_foto, config)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -63,7 +63,7 @@ export default class Foto extends Component {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
             //headers: { Authorization: 'Bearer ' + "token"}
         };
-        axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/idiomes', config)
+        axios.get('https://picamenja.com/PicaMenja/public/api/idiomes', config)
             .then(response => {
                 console.log(response);
                 this.setState({ idiomes: response.data });
@@ -90,7 +90,7 @@ export default class Foto extends Component {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token")
             }
         };
-        axios.post('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos', formData, config)
+        axios.post('https://picamenja.com/PicaMenja/public/api/fotos', formData, config)
             .then(response => {
                 console.log(response);
                 alert("Insertat amb èxit!");
@@ -109,7 +109,7 @@ export default class Foto extends Component {
         const config = {
             headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
         };
-        axios.post("http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/fotos/imatge/" + this.state.id_foto, formData, config
+        axios.post("https://picamenja.com/PicaMenja/public/api/fotos/imatge/" + this.state.id_foto, formData, config
         ).then((response) => {
             console.log(response);
             alert("Imatge pujada amb èxit!");

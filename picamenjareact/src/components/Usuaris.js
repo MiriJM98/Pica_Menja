@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from "react-bootstrap";
 import axios from 'axios';
 import { AgGridReact } from 'ag-grid-react';
+import traduccions from "./traduccions.json";
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -43,15 +44,15 @@ export default class Usuaris extends Component {
         this.state = {
             usuaris: [],
             columnes: [
-                { field: "id_usuari", headerName: "ID USUARI", sortable: true, filter: true },
-                { field: "nom_usuari", headerName: "NOM USUARI", sortable: true, filter: true, floatingFilter: true, resizable: true },
-                { field: "llinatges", headerName: "LLINATGES", sortable: true, filter: true, floatingFilter: true },
-                { field: "telefon", headerName: "TELÈFON", sortable: true, filter: true, floatingFilter: true },
-                { field: "direccio", headerName: "DIRECCIÓ", sortable: true, filter: true, floatingFilter: true },
-                { field: "data_naixement", headerName: "DATA NAIXEMENT", sortable: true, filter: true, floatingFilter: true },
-                { field: "email", headerName: "EMAIL", sortable: true, filter: true, floatingFilter: true, minWidth: 300, resizable: true },
-                { field: "administrador", headerName: "ADMINISTRADOR", sortable: true, filter: true, floatingFilter: true },
-                { field: "foto_perfil", headerName: "FOTO PERFIL", cellRendererFramework: pintaFoto, maxWidth: 150, },
+                { field: "id_usuari", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_USUARI, sortable: true, filter: true },
+                { field: "nom_usuari", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].NOM_USUARI, sortable: true, filter: true, floatingFilter: true, resizable: true },
+                { field: "llinatges", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].LLINATGES, sortable: true, filter: true, floatingFilter: true },
+                { field: "telefon", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].TELEFON, sortable: true, filter: true, floatingFilter: true },
+                { field: "direccio", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].DIRECCIO, sortable: true, filter: true, floatingFilter: true },
+                { field: "data_naixement", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].DATA_NAIX, sortable: true, filter: true, floatingFilter: true },
+                { field: "email", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].EMAIL, sortable: true, filter: true, floatingFilter: true, minWidth: 300, resizable: true },
+                { field: "administrador", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ADMINISTRADOR, sortable: true, filter: true, floatingFilter: true },
+                { field: "foto_perfil", headerName: traduccions[sessionStorage.getItem("id_idioma")][0].FOTO_PERFIL, cellRendererFramework: pintaFoto, maxWidth: 150, },
                 { field: "id_usuari", headerName: "", cellRendererFramework: pintaBoto, maxWidth: 100 },
                 { field: "id_usuari", headerName: "", cellRendererFramework: pintaBotoBorrar, maxWidth: 100 }
             ],
@@ -63,7 +64,7 @@ export default class Usuaris extends Component {
         const config = {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
         };
-        axios.delete('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris/' + id, config)
+        axios.delete('https://picamenja.com/PicaMenja/public/api/usuaris/' + id, config)
             .then(response => {
                 console.log(response);
                 this.descarrega();
@@ -87,7 +88,7 @@ export default class Usuaris extends Component {
                 headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
             };
 
-            axios.get('http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/usuaris', config)
+            axios.get('https://picamenja.com/PicaMenja/public/api/usuaris', config)
                 .then(response => {
                     console.log(response);
                     this.setState({ usuaris: response.data });
