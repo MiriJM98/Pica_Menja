@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from "react-bootstrap";
 import axios from 'axios';
+import traduccions from "./traduccions.json";
 
 export default class Usuari extends Component {
     constructor(props) {
@@ -30,7 +31,6 @@ export default class Usuari extends Component {
     descarrega = (id_usuari) => {
         const config = {
             headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-            //headers: { Authorization: 'Bearer ' + "token"}
         };
         axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + id_usuari, config)
             .then(response => {
@@ -49,13 +49,13 @@ export default class Usuari extends Component {
                 });
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             })
     }
 
     update = () => {
-        //Modificar les dades a la api
+        // Modificar les dades a la api
         let formData = new URLSearchParams();
         formData.append("nom_usuari", this.state.nom_usuari);
         formData.append("llinatges", this.state.llinatges);
@@ -65,19 +65,18 @@ export default class Usuari extends Component {
         formData.append("email", this.state.email);
         formData.append("administrador", this.state.administrador);
         formData.append("foto_perfil", this.state.foto_perfil);
-        //Token
+        // Token
         console.log(formData);
         const config = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token"),
                 'content-type': 'application/x-www-form-urlencoded'
             }
-            //headers: { Authorization: 'Bearer ' + "token"}
         };
         axios.put('https://picamenja.com/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData, config
         ).then(response => {
             console.log(response);
-            alert("Modificat amb èxit!");
+            alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitUpdate);
             window.location.assign("/usuaris");
             this.descarrega();
         }
@@ -87,9 +86,9 @@ export default class Usuari extends Component {
     }
 
     inserta = () => {
-        //Modificar les dades a la api
+        // Insertar les dades a la api
         if (this.state.email === "" || this.state.nom_usuari === "" || this.state.llinatges === "" || this.state.telefon === "" || this.state.data_naixement === "" || this.state.direccio === "" || this.state.administrador === "" || this.state.password === "") {
-            return alert("Error. S'han d'omplir tots els camps.");
+            return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorCamps);
         }
         let formData = new URLSearchParams();
         formData.append("nom_usuari", this.state.nom_usuari);
@@ -112,7 +111,7 @@ export default class Usuari extends Component {
         axios.post('https://picamenja.com/PicaMenja/public/api/usuaris', formData, config)
             .then(response => {
                 console.log(response);
-                alert("Insertat amb èxit!");
+                alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
                 window.location.assign("/usuaris");
                 this.descarrega();
             }
@@ -140,47 +139,48 @@ export default class Usuari extends Component {
         return (
             <Container>
                 <div className="row mt-3">
-                    <h1 className="row justify-content-center">{this.state.id_usuari === "" ? "Insertar" : "Modificar"} un
-                        usuari</h1>
+                    <h1 className="row justify-content-center">{this.state.id_usuari === "" ? traduccions[sessionStorage.getItem("id_idioma")][0].botoInsert
+                        : traduccions[sessionStorage.getItem("id_idioma")][0].botoUpdate}
+                    </h1>
                 </div>
                 <div className="row mb-3">
                     <div className="col-md-1">
                         <div className="form-group"></div>
-                        <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
+                        <input type="button" className="btn btn-secondary btn-lg" value={traduccions[sessionStorage.getItem("id_idioma")][0].botoTornar}
                             onClick={() => { window.location.assign("/usuaris"); }} />
                     </div>
                 </div>
                 <hr />
-                <h2 className="row justify-content-center">Dades</h2>
+                <h2 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].dades}</h2>
                 <br />
                 <div className='row'>
                     <div className="col-md-1">
                         <div className="form-group">
-                            <label>ID:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].ID}:</label>
                             <input type="text" className="form-control" value={this.state.id_usuari} readOnly />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Nom:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].nomusuari}:</label>
                             <input type="text" className='form-control' name='nom_usuari' value={this.state.nom_usuari} onChange={this.onChange} />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Llinatges:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].llinatges}:</label>
                             <input type="text" className='form-control' name='llinatges' value={this.state.llinatges} onChange={this.onChange} />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Data naixement:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].datanaix}:</label>
                             <input value={this.state.data_naixement} type="date" name='data_naixement' onChange={this.onChange} className="form-control" />
                         </div>
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Administrador:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].admin}:</label>
                             <input value={this.state.administrador} type="email" name='administrador' onChange={this.onChange} className="form-control" />
                         </div>
                     </div>
@@ -189,19 +189,19 @@ export default class Usuari extends Component {
                 <div className='row'>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Telèfon:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].telefon}:</label>
                             <input value={this.state.telefon} type="text" name='telefon' onChange={this.onChange} className="form-control" />
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="form-group">
-                            <label>Direcció:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].direccio}:</label>
                             <input value={this.state.direccio} type="text" name='direccio' onChange={this.onChange} className="form-control" />
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="form-group">
-                            <label>Email:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].email}:</label>
                             <input value={this.state.email} type="email" name='email' onChange={this.onChange} className="form-control" />
                         </div>
                     </div>
@@ -209,7 +209,7 @@ export default class Usuari extends Component {
                     {this.state.id_usuari === '' ?
                         <div className="col-md-3">
                             <div className="form-group">
-                                <label>Contrassenya:</label>
+                                <label>{traduccions[sessionStorage.getItem("id_idioma")][0].password}:</label>
                                 <input value={this.state.password} type="password" name='password' onChange={this.onChange} className="form-control" />
                             </div>
                         </div> : ""}
@@ -223,7 +223,8 @@ export default class Usuari extends Component {
                                 type="submit"
                                 className="btn btn-success btn-lg"
                                 value={
-                                    this.state.id_usuari === "" ? "Insertar" : "Modificar"
+                                    this.state.id_usuari === "" ? traduccions[sessionStorage.getItem("id_idioma")][0].botoInsert
+                                        : traduccions[sessionStorage.getItem("id_idioma")][0].botoUpdate
                                 }
                                 onClick={this.enviaFormulari}
                             />

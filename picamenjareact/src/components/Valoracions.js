@@ -5,6 +5,7 @@ import axios from "axios";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import traduccions from "./traduccions.json";
 
 export default class Valoracions extends Component {
     constructor(props) {
@@ -17,11 +18,11 @@ export default class Valoracions extends Component {
                         variant="danger"
                         size="sm"
                         onClick={() => {
-                            if (window.confirm("Segur vols borrar la valoració?")) {
+                            if (window.confirm(traduccions[sessionStorage.getItem("id_idioma")][0].borrarValoracio)) {
                                 this.borrar(params.data.id_valoracio);
                             }
                         }}>
-                        Borrar
+                        {traduccions[sessionStorage.getItem("id_idioma")][0].borrar}
                     </Button>
                 </div>
             );
@@ -32,20 +33,20 @@ export default class Valoracions extends Component {
             columnes: [
                 {
                     field: "id_valoracio",
-                    headerName: "ID VALORACIÓ",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_VALORACIO,
                     sortable: true,
                     filter: true,
                 },
                 {
                     field: "valoracio",
-                    headerName: "VALORACIÓ",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].VALORACIO,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
                 },
                 {
                     field: "comentari",
-                    headerName: "COMENTARI",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].COMENTARI,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
@@ -53,21 +54,21 @@ export default class Valoracions extends Component {
                 },
                 {
                     field: "usuaris.email",
-                    headerName: "USUARI",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].USUARI,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
                 },
                 {
                     field: "data",
-                    headerName: "DATA",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].DATA,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
                 },
                 {
                     field: "restaurants.nom",
-                    headerName: "RESTAURANT",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].RESTAURANT,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
@@ -97,7 +98,7 @@ export default class Valoracions extends Component {
                 this.descarrega();
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             });
     };
@@ -130,7 +131,7 @@ export default class Valoracions extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 600, width: "100%" }}>
                 <div className="row">
-                    <h1 className='row justify-content-center mt-3 mb-5'>Llistat de valoracions</h1>
+                    <h1 className='row justify-content-center mt-3 mb-5'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaValoracions}</h1>
                 </div>
                 <AgGridReact
                     rowData={this.state.valoracions}

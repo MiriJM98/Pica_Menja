@@ -107,7 +107,7 @@ class Restaurant_ServeiController extends Controller
         $tupla = Servei::findOrFail($id);
         $resultat = Restaurant_Servei::join("restaurants", "restaurants.id_restaurant", "=", "restaurants_serveis.id_restaurant")
             ->join("serveis", "serveis.id_servei", "=", "restaurants_serveis.id_servei")
-            ->select("serveis.id_servei","restaurants.id_restaurant", "restaurants.nom as restaurant", "restaurants.imatge")
+            ->select("serveis.id_servei","restaurants.id_restaurant", "restaurants.nom as restaurant", "restaurants.imatge", "serveis.servei_ca", "serveis.servei_es", "serveis.servei_en", "serveis.servei_de")
             ->where("restaurants_serveis.id_servei", "=", $id)
             ->get();
         return response()->json($resultat);

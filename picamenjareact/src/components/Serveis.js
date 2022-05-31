@@ -5,6 +5,7 @@ import axios from "axios";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import traduccions from "./traduccions.json";
 
 export default class Serveis extends Component {
     constructor(props) {
@@ -17,11 +18,11 @@ export default class Serveis extends Component {
                         variant="danger"
                         size="sm"
                         onClick={() => {
-                            if (window.confirm("Segur vols borrar el servei?")) {
+                            if (window.confirm(traduccions[sessionStorage.getItem("id_idioma")][0].borrarServei)) {
                                 this.borrar(params.data.id_servei);
                             }
                         }}>
-                        Borrar
+                        {traduccions[sessionStorage.getItem("id_idioma")][0].borrar}
                     </Button>
                 </div>
             );
@@ -32,13 +33,13 @@ export default class Serveis extends Component {
             columnes: [
                 {
                     field: "id_servei",
-                    headerName: "ID SERVEI",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_SERVEI,
                     sortable: true,
                     filter: true,
                 },
                 {
                     field: "servei_ca",
-                    headerName: "SERVEI CATALÀ",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].SERVEI_CA,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
@@ -46,7 +47,7 @@ export default class Serveis extends Component {
                 },
                 {
                     field: "servei_es",
-                    headerName: "SERVEI CASTELLÀ",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].SERVEI_ES,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
@@ -54,7 +55,7 @@ export default class Serveis extends Component {
                 },
                 {
                     field: "servei_en",
-                    headerName: "SERVEI ANGLÈS",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].SERVEI_EN,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
@@ -62,7 +63,7 @@ export default class Serveis extends Component {
                 },
                 {
                     field: "servei_de",
-                    headerName: "SERVEI ALEMANY",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].SERVEI_DE,
                     sortable: true,
                     filter: true,
                     floatingFilter: true,
@@ -93,7 +94,7 @@ export default class Serveis extends Component {
                 this.descarrega();
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             });
     };
@@ -126,7 +127,7 @@ export default class Serveis extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 600 }}>
                 <div className="row">
-                    <h1 className='row justify-content-center mt-3'>Llistat de serveis</h1>
+                    <h1 className='row justify-content-center mt-3'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaServeis}</h1>
                 </div>
                 <div className="row mb-3 ms-1">
                     <div className="col-md-1">
@@ -134,7 +135,7 @@ export default class Serveis extends Component {
                         <input
                             type="button"
                             className="btn btn-primary btn-lg"
-                            value={"Afegir nou servei"}
+                            value={traduccions[sessionStorage.getItem("id_idioma")][0].insertServei}
                             onClick={() => {
                                 window.location.assign(
                                     "/servei/" + this.state.id_servei

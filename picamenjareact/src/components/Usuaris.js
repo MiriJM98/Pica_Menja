@@ -4,9 +4,9 @@ import { Button } from "react-bootstrap";
 import axios from 'axios';
 import { AgGridReact } from 'ag-grid-react';
 import traduccions from "./traduccions.json";
-
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+
 export default class Usuaris extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +15,7 @@ export default class Usuaris extends Component {
             return <div>
                 <Button color="primary" size="sm"
                     onClick={() => { window.location.assign("/usuari/" + params.data.id_usuari) }}>
-                    Edita
+                    {traduccions[sessionStorage.getItem("id_idioma")][0].editar}
                 </Button>
             </div>
         }
@@ -24,11 +24,11 @@ export default class Usuaris extends Component {
             return <div>
                 <Button variant="danger" size="sm"
                     onClick={() => {
-                        if (window.confirm("Segur vols borrar l'usuari?")) {
+                        if (window.confirm(traduccions[sessionStorage.getItem("id_idioma")][0].borrarUsuari)) {
                             this.borrar(params.data.id_usuari);
                         }
                     }}>
-                    Borrar
+                   {traduccions[sessionStorage.getItem("id_idioma")][0].borrar}
                 </Button>
             </div>
         }
@@ -70,7 +70,7 @@ export default class Usuaris extends Component {
                 this.descarrega();
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
                 if (error.response.status === 401) {
                     window.location.assign("/");
@@ -102,7 +102,7 @@ export default class Usuaris extends Component {
                 })
         } else {
             window.location.assign("/");
-            console.log("USUARI SENSE PERMÍS!");
+            alert(traduccions[sessionStorage.getItem("id_idioma")][0].noPermis);
         }
     }
 
@@ -110,7 +110,7 @@ export default class Usuaris extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 600, width: '100%' }}>
                 <div className="row">
-                    <h1 className='row justify-content-center mt-3'>Llistat d'usuaris</h1>
+                    <h1 className='row justify-content-center mt-3'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaUsuaris}</h1>
                 </div>
                 <div className="row mb-3 ms-1">
                     <div className="col-md-1">
@@ -118,7 +118,7 @@ export default class Usuaris extends Component {
                         <input
                             type="button"
                             className="btn btn-primary btn-lg"
-                            value={"Afegir nou usuari"}
+                            value={traduccions[sessionStorage.getItem("id_idioma")][0].insertUsuari}
                             onClick={() => {
                                 window.location.assign(
                                     "/usuari/" + this.state.id_usuari

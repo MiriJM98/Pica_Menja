@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import axios from "axios";
+import traduccions from "./traduccions.json";
 
 export default class Tipu extends Component {
     constructor(props) {
@@ -38,7 +39,7 @@ export default class Tipu extends Component {
                 });
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             })
     }
@@ -61,6 +62,9 @@ export default class Tipu extends Component {
     };
 
     inserta = () => {
+        if (this.state.tipus_ca === "" || this.state.tipus_es === "" || this.state.tipus_en === "" || this.state.tipus_de === "") {
+            return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorCamps);
+        }
         let formData = new URLSearchParams();
         formData.append("tipus_ca", this.state.tipus_ca);
         formData.append("tipus_es", this.state.tipus_es);
@@ -73,7 +77,7 @@ export default class Tipu extends Component {
         axios.post("https://picamenja.com/PicaMenja/public/api/tipus", formData, config
         ).then((response) => {
             console.log(response);
-            alert("Insertat amb èxit!");
+            alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
             window.location.assign("/tipus");
             this.descarrega();
         }
@@ -89,10 +93,6 @@ export default class Tipu extends Component {
     };
 
     enviaFormulari = () => {
-        if (this.state.tipus_ca === "" || this.state.tipus_es === "" || this.state.tipus_en === "" || this.state.tipus_de === "") {
-            return alert("Error. S'han d'omplir tots els camps.");
-        }
-
         if (this.state.id_tipus === "") {
             this.inserta();
         }
@@ -102,22 +102,22 @@ export default class Tipu extends Component {
         return (
             <Container>
                 <div className="row mt-3">
-                    <h1 className="row justify-content-center">Insertar un tipus</h1>
+                    <h1 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].insertipus2}</h1>
                 </div>
                 <div className="row mb-3">
                     <div className="col-md-1">
                         <div className="form-group"></div>
-                        <input type="button" className="btn btn-secondary btn-lg" value="Tornar"
+                        <input type="button" className="btn btn-secondary btn-lg" value={traduccions[sessionStorage.getItem("id_idioma")][0].botoTornar}
                             onClick={() => { window.location.assign("/tipus"); }} />
                     </div>
                 </div>
                 <hr />
-                <h2 className="row justify-content-center">Dades</h2>
+                <h2 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].dades}</h2>
                 <br />
                 <div className="row">
                     <div className="col-md-1">
                         <div className="form-group">
-                            <label>ID:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].ID}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -128,7 +128,7 @@ export default class Tipu extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Tipus català:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].tipus_ca}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -140,7 +140,7 @@ export default class Tipu extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Tipus castellà:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].tipus_es}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -152,7 +152,7 @@ export default class Tipu extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Tipus anglès:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].tipus_en}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -164,7 +164,7 @@ export default class Tipu extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="form-group">
-                            <label>Tipus alemany:</label>
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].tipus_de}:</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -184,9 +184,7 @@ export default class Tipu extends Component {
                             <input
                                 type="submit"
                                 className="btn btn-success btn-lg"
-                                value={
-                                    this.state.id_tipus === "" ? "Insertar" : "Modificar"
-                                }
+                                value={traduccions[sessionStorage.getItem("id_idioma")][0].botoInsert}
                                 onClick={this.enviaFormulari} />
                             <p></p>
                         </div>

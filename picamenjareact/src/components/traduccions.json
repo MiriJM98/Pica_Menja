@@ -155,6 +155,9 @@
             "carta" : "Carta",
             "llistaServeis" : "Llistat de serveis",
             "insertServei" : "Afegir nou servei",
+            "insertServei2" : "Insertar nou servei",
+            "insertipus2" : "Insertar un nou tipus",
+            "insertUsuari2" : "Insertar un nou usuari",
             "SERVEI_CA" : "SERVEI CATALÀ",
             "SERVEI_ES" : "SERVEI CASTELLÀ",
             "SERVEI_EN" : "SERVEI ANGLÈS",
@@ -205,7 +208,9 @@
             "borrarTipus" : "Segur vols borrar el tipus?",
             "borrarUsuari" : "Segur vols borrar l'usuari?",
             "borrarValoracio" : "Segur vols borrar la valoració?",
-            "multiidioma" : "Multi-idioma"
+            "multiidioma" : "Multi-idioma",
+            "registreMissatge" : "Usuari creat amb èxit!",
+            "noPermis" : "Usuari sense permís"
         } 
     ],
 
@@ -365,6 +370,9 @@
             "carta" : "Carta",
             "llistaServeis" : "Listado de servicios",
             "insertServei" : "Añadir nuevo servicio",
+            "insertServei2" : "Insertar nuevo servicio",
+            "insertipus2" : "Insertar nuevo tipo",
+            "insertUsuari2" : "Insertar nuevo usuario",
             "SERVEI_CA" : "SERVICIO CATALÁN",
             "SERVEI_ES" : "SERVICIO CASTELLANO",
             "SERVEI_EN" : "SERVICIO INGLÉS",
@@ -415,7 +423,9 @@
             "borrarTipus" : "¿Seguro que quieres borrar el tipo?",
             "borrarUsuari" : "¿Seguro que quieres borrar el usuario?",
             "borrarValoracio" : "¿Seguro que quieres borrar la valoración?",
-            "multiidioma" : "Multi-idioma"
+            "multiidioma" : "Multi-idioma",
+            "registreMissatge" : "¡Usuario creado con éxito!",
+            "noPermis" : "Usuario sin permiso"
         }
     ], 
 
@@ -575,6 +585,9 @@
             "carta" : "Menu",
             "llistaServeis" : "List of services",
             "insertServei" : "Add new service",
+            "insertServei2" : "Insert new service",
+            "insertipus2" : "Insert new type",
+            "insertUsuari2" : "Insert new user",
             "SERVEI_CA" : "CATALAN SERVICE",
             "SERVEI_ES" : "SPANISH SERVICE",
             "SERVEI_EN" : "ENGLISH SERVICE",
@@ -625,7 +638,9 @@
             "borrarTipus" : "Are you sure you want to delete the type?",
             "borrarUsuari" : "Are you sure you want to delete the user?",
             "borrarValoracio" : "Are you sure you want to delete the rating?",
-            "multiidioma" : "Multi-language"
+            "multiidioma" : "Multi-language",
+            "registreMissatge" : "User successfully created!",
+            "noPermis" : "Unauthorised user"
         } 
     ],
 
@@ -785,6 +800,9 @@
             "carta" : "Speisekarte",
             "llistaServeis" : "Liste der Dienstleistungen",
             "insertServei" : "Neuen Dienst hinzufügen",
+            "insertServei2" : "Neuen Dienst einfügen",
+            "insertipus2" : "Neuen Typ einfügen",
+            "insertUsuari2" : "Einfügen eines neuen Benutzers",
             "SERVEI_CA" : "KATALANISCHE DIENSTLEISTUNG",
             "SERVEI_ES" : "SPANISCHE DIENSTLEISTUNG",
             "SERVEI_EN" : "ENGLISCHER SERVICE",
@@ -835,7 +853,9 @@
             "borrarTipus" : "Sind Sie sicher, dass Sie den Typ löschen wollen?",
             "borrarUsuari" : "Sind Sie sicher, dass Sie den Benutzer löschen wollen?",
             "borrarValoracio" : "Sind Sie sicher, dass Sie die Bewertung löschen wollen?",
-            "multiidioma" : "Multi-Sprache"
+            "multiidioma" : "Multi-Sprache",
+            "registreMissatge" : "Benutzer erfolgreich angelegt!",
+            "noPermis" : "Benutzer ohne Erlaubnis"
         }
     ]
 }

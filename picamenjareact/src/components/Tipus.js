@@ -5,6 +5,7 @@ import axios from "axios";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import traduccions from "./traduccions.json";
 
 export default class Espais extends Component {
     constructor(props) {
@@ -17,11 +18,11 @@ export default class Espais extends Component {
                         variant="danger"
                         size="sm"
                         onClick={() => {
-                            if (window.confirm("Segur vols borrar el tipus?")) {
+                            if (window.confirm(traduccions[sessionStorage.getItem("id_idioma")][0].borrarTipus)) {
                                 this.borrar(params.data.id_tipus);
                             }
                         }}>
-                        Borrar
+                        {traduccions[sessionStorage.getItem("id_idioma")][0].borrar}
                     </Button>
                 </div>
             );
@@ -32,34 +33,34 @@ export default class Espais extends Component {
             columnes: [
                 {
                     field: "id_tipus",
-                    headerName: "ID TIPUS",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].ID_TIPUS,
                     sortable: true,
                     filter: true,
                 },
                 {
                     field: "tipus_ca",
-                    headerName: "DESCRIPCIÓ CATALÀ",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].TIPUS_CA,
                     sortable: true,
                     filter: true,
                     resizable: true,
                 },
                 {
                     field: "tipus_es",
-                    headerName: "DESCRIPCIÓ CASTELLÀ",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].TIPUS_ES,
                     sortable: true,
                     filter: true,
                     resizable: true,
                 },
                 {
                     field: "tipus_en",
-                    headerName: "DESCRIPCIÓ ANGLÈS",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].TIPUS_EN,
                     sortable: true,
                     filter: true,
                     resizable: true,
                 },
                 {
                     field: "tipus_de",
-                    headerName: "DESCRIPCIÓ ALEMANY",
+                    headerName: traduccions[sessionStorage.getItem("id_idioma")][0].TIPUS_DE,
                     sortable: true,
                     filter: true,
                     resizable: true,
@@ -89,7 +90,7 @@ export default class Espais extends Component {
                 this.descarrega();
             })
             .catch(function (error) {
-                //Mostrar error
+                // Mostrar error
                 console.log(error);
             });
     };
@@ -122,7 +123,7 @@ export default class Espais extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 600, width: "100%" }}>
                 <div className="row">
-                    <h1 className='row justify-content-center mt-3'>Llistat de tipus</h1>
+                    <h1 className='row justify-content-center mt-3'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaTipus}</h1>
                 </div>
                 <div className="row mb-3 ms-1">
                     <div className="col-md-1">
@@ -130,7 +131,7 @@ export default class Espais extends Component {
                         <input
                             type="button"
                             className="btn btn-primary btn-lg"
-                            value={"Afegir nou tipus"}
+                            value={traduccions[sessionStorage.getItem("id_idioma")][0].insertTipus}
                             onClick={() => {
                                 window.location.assign(
                                     "/tipus/" + this.state.id_tipus

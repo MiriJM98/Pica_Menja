@@ -37,11 +37,11 @@ export default class Registre extends Component {
         }
 
         // Telèfon
-        if (this.state.telefon === "" || this.state.telefon.length !== 9 || this.state.telefon.length !== 11) {
+        if (this.state.telefon === "" || this.state.telefon.length === 9 || this.state.telefon.length === 11) {
+            document.getElementById("telefon").style.borderColor = "green";
+        } else {
             document.getElementById("telefon").style.borderColor = "red";
             missatge += traduccions[sessionStorage.getItem("id_idioma")][0].errorRegisTel + "\n";
-        } else {
-            document.getElementById("telefon").style.borderColor = "green";
         }
 
         // Data naixement

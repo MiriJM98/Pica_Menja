@@ -45,28 +45,29 @@ export default class RestaurantsFront extends Component {
                     this.state.restaurants.forEach(restaurant => {
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
-                        let header = document.createElement("h4");
+                        let header = document.createElement("h3");
+                        header.style.cursor = "pointer";
                         let imatge = document.createElement("img");
-                        let buttonID = document.createElement("button");
-                        buttonID.onclick = function () {
+                        imatge.style.cursor = "pointer";
+                        header.onclick = function () {
+                            window.location.assign(
+                                "/restaurantFront/" + restaurant.id_restaurant
+                            );
+                        }
+                        imatge.onclick = function () {
                             window.location.assign(
                                 "/restaurantFront/" + restaurant.id_restaurant
                             );
                         }
                         header.setAttribute("id", "cartaHeader");
                         imatge.setAttribute("id", "imatgeCarta");
-                        buttonID.setAttribute("id", "buttonID");
                         imatge.setAttribute("src", restaurant.imatge);
                         imatge.setAttribute("width", 300);
                         imatge.setAttribute("alt", "Foto restaurant");
                         let nom = document.createTextNode(restaurant.nom);
-                        let info = traduccions[sessionStorage.getItem("id_idioma")][0].info;
-                        let id_rest = document.createTextNode(info);
                         header.appendChild(nom);
-                        buttonID.appendChild(id_rest);
                         carta.appendChild(header);
                         carta.appendChild(imatge);
-                        carta.appendChild(buttonID);
                         document.getElementById("contenedorTaula").appendChild(carta);
                     }
                     );
@@ -110,27 +111,28 @@ export default class RestaurantsFront extends Component {
                         divTipus.innerHTML = texte;
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
-                        let header = document.createElement("h2");
+                        let header = document.createElement("h3");
+                        header.style.cursor = "pointer";
                         let imatge = document.createElement("img");
-                        let buttonID = document.createElement("button");
-                        buttonID.onclick = function () {
+                        imatge.style.cursor = "pointer";
+                        header.onclick = function () {
+                            window.location.assign(
+                                "/restaurantFront/" + restaurant.id_restaurant
+                            );
+                        }
+                        imatge.onclick = function () {
                             window.location.assign(
                                 "/restaurantFront/" + restaurant.id_restaurant
                             );
                         }
                         header.setAttribute("id", "cartaHeader");
                         imatge.setAttribute("id", "imatgeCarta");
-                        buttonID.setAttribute("id", "buttonID");
                         imatge.setAttribute("src", restaurant.image);
                         imatge.setAttribute("width", 300);
                         let nom = document.createTextNode(restaurant.restaurant);
-                        let info = traduccions[sessionStorage.getItem("id_idioma")][0].info;
-                        let id_rest = document.createTextNode(info);
                         header.appendChild(nom);
-                        buttonID.appendChild(id_rest);
                         carta.appendChild(header);
                         carta.appendChild(imatge);
-                        carta.appendChild(buttonID);
                         document.getElementById("contenedorTipus").appendChild(carta);
                     }
                     );
@@ -174,27 +176,28 @@ export default class RestaurantsFront extends Component {
                         divPreus.innerHTML = texte;
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
-                        let header = document.createElement("h2");
+                        let header = document.createElement("h3");
+                        header.style.cursor = "pointer";
                         let imatge = document.createElement("img");
-                        let buttonID = document.createElement("button");
-                        buttonID.onclick = function () {
+                        imatge.style.cursor = "pointer";
+                        header.onclick = function () {
+                            window.location.assign(
+                                "/restaurantFront/" + restaurant.id_restaurant
+                            );
+                        }
+                        imatge.onclick = function () {
                             window.location.assign(
                                 "/restaurantFront/" + restaurant.id_restaurant
                             );
                         }
                         header.setAttribute("id", "cartaHeader");
                         imatge.setAttribute("id", "imatgeCarta");
-                        buttonID.setAttribute("id", "buttonID");
                         imatge.setAttribute("src", restaurant.image);
                         imatge.setAttribute("width", 300);
                         let nom = document.createTextNode(restaurant.nom);
-                        let info = traduccions[sessionStorage.getItem("id_idioma")][0].info;
-                        let id_rest = document.createTextNode(info);
                         header.appendChild(nom);
-                        buttonID.appendChild(id_rest);
                         carta.appendChild(header);
                         carta.appendChild(imatge);
-                        carta.appendChild(buttonID);
                         document.getElementById("contenedorPreus").appendChild(carta);
                     }
                     );
@@ -215,32 +218,50 @@ export default class RestaurantsFront extends Component {
                 });
                 const mostrador = document.getElementById("contenedorTaula");
                 mostrador.innerHTML = "";
-                const tipus = document.getElementById("contenedorTipus");
-                tipus.innerHTML = "";
+                const servei = document.getElementById("contenedorServei");
+                servei.innerHTML = "";
+                const divServei = document.getElementById("titolServei");
+                divServei.innerHTML = "";
+                let serveiFiltre = "";
                 this.state.restaurants_serveis.forEach(restaurant => {
+                    if (sessionStorage.getItem("id_idioma") === "1") {
+                        serveiFiltre = restaurant.servei_ca;
+                    }
+                    if (sessionStorage.getItem("id_idioma") === "2") {
+                        serveiFiltre = restaurant.servei_es;
+                    }
+                    if (sessionStorage.getItem("id_idioma") === "3") {
+                        serveiFiltre = restaurant.servei_en;
+                    }
+                    if (sessionStorage.getItem("id_idioma") === "4") {
+                        serveiFiltre = restaurant.servei_de;
+                    }
+                    let texte = traduccions[sessionStorage.getItem("id_idioma")][0].titolFiltreTipus + serveiFiltre;
+                    divServei.innerHTML = texte;
                     let carta = document.createElement("div");
                     carta.setAttribute("id", "cartes");
-                    let header = document.createElement("h2");
+                    let header = document.createElement("h3");
+                    header.style.cursor = "pointer";
                     let imatge = document.createElement("img");
-                    let buttonID = document.createElement("button");
-                    buttonID.onclick = function () {
+                    imatge.style.cursor = "pointer";
+                    header.onclick = function () {
+                        window.location.assign(
+                            "/restaurantFront/" + restaurant.id_restaurant
+                        );
+                    }
+                    imatge.onclick = function () {
                         window.location.assign(
                             "/restaurantFront/" + restaurant.id_restaurant
                         );
                     }
                     header.setAttribute("id", "cartaHeader");
                     imatge.setAttribute("id", "imatgeCarta");
-                    buttonID.setAttribute("id", "buttonID");
                     imatge.setAttribute("src", restaurant.imatge);
                     imatge.setAttribute("width", 300);
                     let nom = document.createTextNode(restaurant.restaurant);
-                    let info = traduccions[sessionStorage.getItem("id_idioma")][0].info;
-                    let id_rest = document.createTextNode(info);
                     header.appendChild(nom);
-                    buttonID.appendChild(id_rest);
                     carta.appendChild(header);
                     carta.appendChild(imatge);
-                    carta.appendChild(buttonID);
                     document.getElementById("contenedorServei").appendChild(carta);
                 }
                 );
@@ -264,7 +285,7 @@ export default class RestaurantsFront extends Component {
 
     render() {
         return (
-            <div>
+            <div id="restaurantsFront">
                 <h1 className="row justify-content-center mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].restaurants}</h1>
                 {/* FILTRAR PER TIPUS DE RESTAURANT */}
                 <div id="divFiltre">
@@ -336,15 +357,54 @@ export default class RestaurantsFront extends Component {
                 {/* FILTRAR PER SERVEI */}
                 <div id="divFiltre">
                     <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraServei}</h2>
-                    <Select
-                        canviar={this.onChangeServei}
-                        valorInicial={this.state.id_servei}
-                        clau="id_servei"
-                        display="servei_ca"
-                        url="https://picamenja.com/PicaMenja/public/api/serveis" />
-                    <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
-                        <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
-                    </button>
+                    {sessionStorage.getItem("id_idioma") === "1" ?
+                        <>
+                            <Select
+                                canviar={this.onChangeServei}
+                                valorInicial={this.state.id_servei}
+                                clau="id_servei"
+                                display="servei_ca"
+                                url="https://picamenja.com/PicaMenja/public/api/serveis" />
+                            <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                            </button></>
+                        : console.log()}
+                    {sessionStorage.getItem("id_idioma") === "2" ?
+                        <>
+                            <Select
+                                canviar={this.onChangeServei}
+                                valorInicial={this.state.id_servei}
+                                clau="id_servei"
+                                display="servei_es"
+                                url="https://picamenja.com/PicaMenja/public/api/serveis" />
+                            <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                            </button></>
+                        : console.log()}
+                    {sessionStorage.getItem("id_idioma") === "3" ?
+                        <>
+                            <Select
+                                canviar={this.onChangeServei}
+                                valorInicial={this.state.id_servei}
+                                clau="id_servei"
+                                display="servei_en"
+                                url="https://picamenja.com/PicaMenja/public/api/serveis" />
+                            <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                            </button></>
+                        : console.log()}
+                    {sessionStorage.getItem("id_idioma") === "4" ?
+                        <>
+                            <Select
+                                canviar={this.onChangeServei}
+                                valorInicial={this.state.id_servei}
+                                clau="id_servei"
+                                display="servei_de"
+                                url="https://picamenja.com/PicaMenja/public/api/serveis" />
+                            <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                            </button></>
+                        : console.log()}
                 </div>
                 {/* TOTS RESTAURANTS */}
                 <div id="contenedorTaula"></div>
@@ -362,7 +422,7 @@ export default class RestaurantsFront extends Component {
                 <div id="contenedorPreus"></div>
 
                 {/* FILTRE PER SERVEIS */}
-                <div>
+                <div id="divTitolServeis">
                     <h3 id="titolServei"></h3>
                 </div>
                 <div id="contenedorServei"></div>

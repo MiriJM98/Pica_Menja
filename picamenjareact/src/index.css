@@ -236,12 +236,12 @@ label {
   font-weight: bold;
 }
 
-#contenedorTaula, #contenedorTipus, #contenedorPreus, #contenedorServei, #divTitolTipus, #divTitolPreus {
+#contenedorTaula, #contenedorTipus, #contenedorPreus, #contenedorServei, #divTitolTipus, #divTitolPreus, #divTitolServeis {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 #divFiltre {
@@ -254,7 +254,7 @@ label {
   position: relative;
   max-width: fit-content;
   max-height: fit-content;
-  box-shadow: 0 40px 60px -6px black;
+  box-shadow: 0 40px 60px -6px rgb(22, 22, 22);
   border-radius: 6px;
 }
 
@@ -262,7 +262,7 @@ label {
   display: block;
   text-align: center;
   color: #fff;
-  background-color: #2d5984;
+  background-color: rgb(0, 0, 0);
   padding: 2%;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
@@ -273,6 +273,13 @@ label {
   display: block;
   position: relative;
 }
+
+/* #restaurantsFront {
+  background-image: url("../public/fondo_rest_1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: auto;
+} */
 
 #buttonID {
   display: flex;
