@@ -152,9 +152,9 @@ export default class RestaurantsFront extends Component {
                     });
                     const mostrador = document.getElementById("contenedorTaula");
                     mostrador.innerHTML = "";
-                    const tipus = document.getElementById("contenedorTipus");
+                    const tipus = document.getElementById("contenedorPreus");
                     tipus.innerHTML = "";
-                    let preusFiltre= "";
+                    let preusFiltre = "";
                     const divPreus = document.getElementById("titolPreus");
                     divPreus.innerHTML = "";
                     this.state.restaurants_preus.forEach(restaurant => {
@@ -346,15 +346,25 @@ export default class RestaurantsFront extends Component {
                         <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
                     </button>
                 </div>
+                {/* TOTS RESTAURANTS */}
                 <div id="contenedorTaula"></div>
+
+                {/* FILTRE PER TIPUS */}
                 <div id="divTitolTipus">
                     <h3 id="titolTipus"></h3>
                 </div>
                 <div id="contenedorTipus"></div>
+
+                {/* FILTRE PER PREUS */}
                 <div id="divTitolPreus">
                     <h3 id="titolPreus"></h3>
                 </div>
                 <div id="contenedorPreus"></div>
+
+                {/* FILTRE PER SERVEIS */}
+                <div>
+                    <h3 id="titolServei"></h3>
+                </div>
                 <div id="contenedorServei"></div>
             </div>
         )
