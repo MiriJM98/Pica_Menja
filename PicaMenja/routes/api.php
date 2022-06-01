@@ -25,6 +25,7 @@ Route::get('idiomes/{id}', 'App\Http\Controllers\IdiomaController@show');
 
 // CARREGAR INFORMACIÓ DELS RESTAURANTS
 Route::get('restaurants', 'App\Http\Controllers\RestaurantController@index');
+Route::get('restaurants/fotos', 'App\Http\Controllers\RestaurantController@fotos');
 Route::get('restaurants/front', 'App\Http\Controllers\RestaurantController@indexFront');
 Route::get('restaurants/{id}', 'App\Http\Controllers\RestaurantController@show');
 Route::get('restaurants/tipusCa/{id}', 'App\Http\Controllers\RestaurantController@tipusCa');

@@ -212,4 +212,15 @@ class RestaurantController extends Controller
             ->get();
         return response()->json($resultat);
     }
+
+    public function fotos()
+    {
+        $resultat = DB::table('restaurants')->distinct()
+            ->select(
+                "nom",
+                "imatge"
+            )
+            ->get();
+        return response()->json($resultat);
+    }
 }

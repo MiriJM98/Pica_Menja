@@ -524,7 +524,8 @@ export default class RestaurantFront extends Component {
                 {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
                     <div id="crearValoracio">
                         <h4 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].creaValoracio}</h4>
-                        <p><strong>Què puntuació li dones a aquest restaurant?</strong>
+                        <div>
+                            <h5>{traduccions[sessionStorage.getItem("id_idioma")][0].puntuacioRestaurant}</h5>
                             <select className="ms-2" name="valoracioRestaurant" onChange={this.onChange}>
                                 {/* <option defaultValue="Tria">Tria</option> */}
                                 <option value={1}>1</option>
@@ -533,14 +534,12 @@ export default class RestaurantFront extends Component {
                                 <option value={4}>4</option>
                                 <option value={5}>5</option>
                             </select>
-                            {console.log(this.state.valoracioRestaurant)}
-                        </p>
-                        <p>Deixa un comentari</p>
+                        </div>
+                        <p>{traduccions[sessionStorage.getItem("id_idioma")][0].deixaComentari}</p>
                         <p>
-                            <textarea rows="4" cols="60" placeholder="Escriu un comentari..." name="comentariRestaurant" onChange={this.onChange}></textarea>
+                            <textarea rows="4" cols="60" placeholder={traduccions[sessionStorage.getItem("id_idioma")][0].placeholderComent} name="comentariRestaurant" onChange={this.onChange}></textarea>
                         </p>
-                        {console.log(this.state.comentariRestaurant)}
-                        <p><button className="btn btn-primary btn-lg" onClick={this.crearValoracio}>Valorar</button></p>
+                        <p><button className="btn btn-primary btn-lg" onClick={this.crearValoracio}>{traduccions[sessionStorage.getItem("id_idioma")][0].valorar}</button></p>
                     </div>
                     : console.log()}
                 <div id="iframeDiv"></div>

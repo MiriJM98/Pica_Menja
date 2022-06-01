@@ -211,7 +211,11 @@
             "multiidioma" : "Multi-idioma",
             "registreMissatge" : "Usuari creat amb èxit!",
             "noPermis" : "Usuari sense permís",
-            "creaValoracio" : "Valora un restaurant"
+            "creaValoracio" : "Valora un restaurant",
+            "puntuacioRestaurant" : "Quina puntuació dónes a aquest restaurant?",
+            "deixaComentari" : "Deixa un comentari",
+            "placeholderComent" : "Escriu un comentari de la teva experiència...",
+            "valorar" : "Valora"
         } 
     ],
 
@@ -427,7 +431,11 @@
             "multiidioma" : "Multi-idioma",
             "registreMissatge" : "¡Usuario creado con éxito!",
             "noPermis" : "Usuario sin permiso",
-            "creaValoracio" : "Valora un restaurante"
+            "creaValoracio" : "Valora un restaurante",
+            "puntuacioRestaurant" : "¿Qué puntuación le das a este restaurante?",
+            "deixaComentari" : "Deja un comentario",
+            "placeholderComent" : "Escribe un comentario de tu experiencia...",
+            "valorar" : "Valorar"
         }
     ], 
 
@@ -643,7 +651,11 @@
             "multiidioma" : "Multi-language",
             "registreMissatge" : "User successfully created!",
             "noPermis" : "Unauthorised user",
-            "creaValoracio" : "Rate a restaurant"
+            "creaValoracio" : "Rate a restaurant",
+            "puntuacioRestaurant" : "How would you rate this restaurant?",
+            "deixaComentari" : "Leave a comment",
+            "placeholderComent" : "Write a comment about your experience...",
+            "valorar" : "Rate"
         } 
     ],
 
@@ -859,7 +871,11 @@
             "multiidioma" : "Multi-Sprache",
             "registreMissatge" : "Benutzer erfolgreich angelegt!",
             "noPermis" : "Benutzer ohne Erlaubnis",
-            "creaValoracio" : "Ein Restaurant bewerten"
+            "creaValoracio" : "Ein Restaurant bewerten",
+            "puntuacioRestaurant" : "Wie würden Sie dieses Restaurant bewerten?",
+            "deixaComentari" : "Hinterlassen Sie einen Kommentar",
+            "placeholderComent" : "Schreiben Sie einen Kommentar zu Ihrer Erfahrung...",
+            "valorar" : "Bewerten Sie"             
         }
     ]
 }
