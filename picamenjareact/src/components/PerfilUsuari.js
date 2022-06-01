@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Image } from "react-bootstrap";
 import axios from 'axios';
-import FormData from 'form-data';
+// import FormData from 'form-data';
 import traduccions from "./traduccions.json";
 
 export default class PerfilUsuari extends Component {
@@ -98,6 +98,9 @@ export default class PerfilUsuari extends Component {
             console.log(passwordNova);
             return alert("Error. Les contrasenyes no coincideixen!!");
         }
+        if(passwordNova.length < 8) {
+            return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorRegisPass);
+        }
         let formData = new URLSearchParams();
         formData.append("email", this.state.email);
         formData.append("password", this.state.password_nova);
@@ -112,7 +115,7 @@ export default class PerfilUsuari extends Component {
         axios.put('https://picamenja.com/PicaMenja/public/api/usuaris', formData, config
         ).then(response => {
             console.log(response);
-            alert("Contrasenya modificada amb èxit!");
+            alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitPassword);
             window.location.assign("/perfilUsuari");
             this.descarrega();
         }
@@ -128,13 +131,13 @@ export default class PerfilUsuari extends Component {
             formData.append("foto_perfil", this.state.foto_perfil);
             // Token
             const config = {
-                headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+                headers: { Authorization: "Bearer " + sessionStorage.getItem("token"), 'content-type': 'multipart/form-data' }
             };
             axios.post("https://picamenja.com/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, formData,
                 config
             ).then((response) => {
                 console.log(response);
-                alert("Imatge pujada amb èxit!");
+                alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
             }
             ).catch((error) => {
                 console.log(error);
@@ -200,6 +203,7 @@ export default class PerfilUsuari extends Component {
                                                     className="form-control"
                                                 />
                                             </div>
+                                            {console.log(this.state.foto_perfil)}
                                         </div>
                                     </div>
                                     {/* BOTÓ PER ACTUALITZAR FOTO DEL PERFIL */}

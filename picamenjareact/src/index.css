@@ -244,9 +244,19 @@ label {
     margin-bottom: 20px;
 }
 
-#divFiltre {
-  width: 100%;
-  margin: 30px;
+#divFiltreTipus, #divFiltrePreus, #divFiltreServeis {
+  display: inline-block;  
+  width: auto;
+  margin-top: 35px;
+  margin-left: 100px;
+  /* margin-right: 100px; */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@700&display=swap');
+
+#h1Restaurants {
+  font-size: 60pt;
+  font-family: 'Encode Sans', sans-serif;
 }
 
 #cartes {
@@ -274,12 +284,12 @@ label {
   position: relative;
 }
 
-/* #restaurantsFront {
-  background-image: url("../public/fondo_rest_1.jpg");
+#restaurantsFront {
+  background-image: url("../public/2.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: auto;
-} */
+}
 
 #buttonID {
   display: flex;
@@ -343,4 +353,23 @@ tr, td {
 
 #noValorat {
   font-size: 14pt;
+}
+
+#fotoIdioma {
+  border-radius: 5px;
+}
+
+#selectIdioma {
+  background-color: #0563af;
+  color: white;
+  padding-left: 12px;
+  padding-right: 5px;
+  width: max-content;
+  height: 48px;
+  border-radius: 5px;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
 }

@@ -45,7 +45,7 @@ export default class RestaurantsFront extends Component {
                     this.state.restaurants.forEach(restaurant => {
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
-                        let header = document.createElement("h3");
+                        let header = document.createElement("h2");
                         header.style.cursor = "pointer";
                         let imatge = document.createElement("img");
                         imatge.style.cursor = "pointer";
@@ -63,6 +63,7 @@ export default class RestaurantsFront extends Component {
                         imatge.setAttribute("id", "imatgeCarta");
                         imatge.setAttribute("src", restaurant.imatge);
                         imatge.setAttribute("width", 300);
+                        imatge.setAttribute("height", 164);
                         imatge.setAttribute("alt", "Foto restaurant");
                         let nom = document.createTextNode(restaurant.nom);
                         header.appendChild(nom);
@@ -111,7 +112,7 @@ export default class RestaurantsFront extends Component {
                         divTipus.innerHTML = texte;
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
-                        let header = document.createElement("h3");
+                        let header = document.createElement("h2");
                         header.style.cursor = "pointer";
                         let imatge = document.createElement("img");
                         imatge.style.cursor = "pointer";
@@ -129,6 +130,7 @@ export default class RestaurantsFront extends Component {
                         imatge.setAttribute("id", "imatgeCarta");
                         imatge.setAttribute("src", restaurant.image);
                         imatge.setAttribute("width", 300);
+                        imatge.setAttribute("height", 164);
                         let nom = document.createTextNode(restaurant.restaurant);
                         header.appendChild(nom);
                         carta.appendChild(header);
@@ -176,7 +178,7 @@ export default class RestaurantsFront extends Component {
                         divPreus.innerHTML = texte;
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
-                        let header = document.createElement("h3");
+                        let header = document.createElement("h2");
                         header.style.cursor = "pointer";
                         let imatge = document.createElement("img");
                         imatge.style.cursor = "pointer";
@@ -194,6 +196,7 @@ export default class RestaurantsFront extends Component {
                         imatge.setAttribute("id", "imatgeCarta");
                         imatge.setAttribute("src", restaurant.image);
                         imatge.setAttribute("width", 300);
+                        imatge.setAttribute("height", 164);
                         let nom = document.createTextNode(restaurant.nom);
                         header.appendChild(nom);
                         carta.appendChild(header);
@@ -240,7 +243,7 @@ export default class RestaurantsFront extends Component {
                     divServei.innerHTML = texte;
                     let carta = document.createElement("div");
                     carta.setAttribute("id", "cartes");
-                    let header = document.createElement("h3");
+                    let header = document.createElement("h2");
                     header.style.cursor = "pointer";
                     let imatge = document.createElement("img");
                     imatge.style.cursor = "pointer";
@@ -258,6 +261,7 @@ export default class RestaurantsFront extends Component {
                     imatge.setAttribute("id", "imatgeCarta");
                     imatge.setAttribute("src", restaurant.imatge);
                     imatge.setAttribute("width", 300);
+                    imatge.setAttribute("height", 164);
                     let nom = document.createTextNode(restaurant.restaurant);
                     header.appendChild(nom);
                     carta.appendChild(header);
@@ -286,10 +290,9 @@ export default class RestaurantsFront extends Component {
     render() {
         return (
             <div id="restaurantsFront">
-                <h1 className="row justify-content-center mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].restaurants}</h1>
                 {/* FILTRAR PER TIPUS DE RESTAURANT */}
-                <div id="divFiltre">
-                    <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraTipus}</h2>
+                <div id="divFiltreTipus">
+                    <h1>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraTipus}</h1>
                     {sessionStorage.getItem("id_idioma") === "1" ?
                         <>
                             <Select
@@ -299,7 +302,7 @@ export default class RestaurantsFront extends Component {
                                 display="tipus_ca"
                                 url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "2" ?
@@ -311,7 +314,7 @@ export default class RestaurantsFront extends Component {
                                 display="tipus_es"
                                 url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "3" ?
@@ -323,7 +326,7 @@ export default class RestaurantsFront extends Component {
                                 display="tipus_en"
                                 url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "4" ?
@@ -335,13 +338,13 @@ export default class RestaurantsFront extends Component {
                                 display="tipus_de"
                                 url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                 </div>
                 {/* FILTRAR PER RANG DE PREUS */}
-                <div id="divFiltre">
-                    <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraPreu}</h2>
+                <div id="divFiltrePreus">
+                    <h1>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraPreu}</h1>
 
                     <Select
                         canviar={this.onChangeRang}
@@ -350,13 +353,13 @@ export default class RestaurantsFront extends Component {
                         display="rang_preus"
                         url="https://picamenja.com/PicaMenja/public/api/restaurantsPreus" />
                     <button type="button" className="btn btn-link" onClick={this.filtrarPreu} aria-label="Botó filtrar">
-                        <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                        <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
                     </button>
                 </div>
 
                 {/* FILTRAR PER SERVEI */}
-                <div id="divFiltre">
-                    <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraServei}</h2>
+                <div id="divFiltreServeis">
+                    <h1>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraServei}</h1>
                     {sessionStorage.getItem("id_idioma") === "1" ?
                         <>
                             <Select
@@ -366,7 +369,7 @@ export default class RestaurantsFront extends Component {
                                 display="servei_ca"
                                 url="https://picamenja.com/PicaMenja/public/api/serveis" />
                             <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "2" ?
@@ -378,7 +381,7 @@ export default class RestaurantsFront extends Component {
                                 display="servei_es"
                                 url="https://picamenja.com/PicaMenja/public/api/serveis" />
                             <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "3" ?
@@ -390,7 +393,7 @@ export default class RestaurantsFront extends Component {
                                 display="servei_en"
                                 url="https://picamenja.com/PicaMenja/public/api/serveis" />
                             <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "4" ?
@@ -402,10 +405,12 @@ export default class RestaurantsFront extends Component {
                                 display="servei_de"
                                 url="https://picamenja.com/PicaMenja/public/api/serveis" />
                             <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                 </div>
+                <p id="h1Restaurants" className="row justify-content-center pt-5">{traduccions[sessionStorage.getItem("id_idioma")][0].restaurants}</p>
+
                 {/* TOTS RESTAURANTS */}
                 <div id="contenedorTaula"></div>
 

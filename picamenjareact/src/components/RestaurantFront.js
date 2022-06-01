@@ -35,7 +35,9 @@ export default class RestaurantFront extends Component {
             nom_usuari: [],
             valoracions: [],
             valoracio_usuari: [],
-            serveis: []
+            serveis: [],
+            valoracioRestaurant: -1,
+            comentariRestaurant: ""
         };
     }
 
@@ -427,7 +429,12 @@ export default class RestaurantFront extends Component {
                     tdUsuari.appendChild(usuari);
                     tdEstrella.appendChild(estrelles);
                     tdData.appendChild(data);
-                    let comentari = document.createTextNode(valoracio.comentari);
+                    let comentari = "";
+                    if (valoracio.comentari !== null) {
+                        comentari = document.createTextNode(valoracio.comentari);
+                    } else {
+                        comentari = document.createTextNode("");
+                    }
                     tdComentari.appendChild(comentari);
                     trValoracions.appendChild(tdFotoPerfil);
                     trValoracions.appendChild(tdUsuari);
@@ -445,17 +452,48 @@ export default class RestaurantFront extends Component {
             });
     }
 
+    crearValoracio = () => {
+        let formData = new URLSearchParams();
+        formData.append("id_usuari", sessionStorage.getItem("id_usuari"));
+        formData.append("id_restaurant", this.state.id_restaurant);
+        formData.append("valoracio", this.state.valoracioRestaurant);
+        formData.append("comentari", this.state.comentariRestaurant);
+        const config = {
+            headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+        };
+        axios.post("https://picamenja.com/PicaMenja/public/api/valoracions", formData, config)
+            .then((response) => {
+                console.log(response);
+                this.descarregaRestaurant(this.props.id_restaurant);
+                alert("Valoració correcta!");
+            })
+            .catch(function (error) {
+                // Mostrar error
+                console.log(error);
+            });
+    }
+
+    onChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    onChangeValoracio = (v) => {
+        this.setState({ valoracioRestaurant: v });
+    };
+
     render() {
         return (
             <div id="frontRestaurant" className="row justify-content-center">
-                <h1 className="row justify-content-center mt-4">{this.state.nom}</h1>
+                <h1 className="row justify-content-center mt-3">{this.state.nom}</h1>
                 <div id="carouselRestaurant"></div>
                 <div id="contingut"></div>
                 <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].serveis}</h2>
                 <div id="serveisRes"></div>
                 <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].valocomen}</h2>
                 <div id="valoracionsUsuaris"></div>
-                <h3 className="row justify-content-center mt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].valoracio}</h3>
+                <h3 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].valoracio}</h3>
                 <div id="divValoracions"></div>
                 <div id="estrelles">
                     {this.state.puntuacio !== -1 ?
@@ -483,6 +521,28 @@ export default class RestaurantFront extends Component {
                         : console.log()}
 
                 </div>
+                {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
+                    <div id="crearValoracio">
+                        <h4 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].creaValoracio}</h4>
+                        <p><strong>Què puntuació li dones a aquest restaurant?</strong>
+                            <select className="ms-2" name="valoracioRestaurant" onChange={this.onChange}>
+                                {/* <option defaultValue="Tria">Tria</option> */}
+                                <option value={1}>1</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                                <option value={4}>4</option>
+                                <option value={5}>5</option>
+                            </select>
+                            {console.log(this.state.valoracioRestaurant)}
+                        </p>
+                        <p>Deixa un comentari</p>
+                        <p>
+                            <textarea rows="4" cols="60" placeholder="Escriu un comentari..." name="comentariRestaurant" onChange={this.onChange}></textarea>
+                        </p>
+                        {console.log(this.state.comentariRestaurant)}
+                        <p><button className="btn btn-primary btn-lg" onClick={this.crearValoracio}>Valorar</button></p>
+                    </div>
+                    : console.log()}
                 <div id="iframeDiv"></div>
             </div>
         )

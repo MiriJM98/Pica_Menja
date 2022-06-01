@@ -210,7 +210,8 @@
             "borrarValoracio" : "Segur vols borrar la valoració?",
             "multiidioma" : "Multi-idioma",
             "registreMissatge" : "Usuari creat amb èxit!",
-            "noPermis" : "Usuari sense permís"
+            "noPermis" : "Usuari sense permís",
+            "creaValoracio" : "Valora un restaurant"
         } 
     ],
 
@@ -291,7 +292,7 @@
             "errorRegisData" : "La fecha de nacimiento es obligatoria.",
             "errorRegisEmail" : "El email debe tener mínimo 6 caracteres.",
             "errorRegisPass" : "La contraseña debe tener como mínimo 8 caracteres.",
-            "expirat" : "¡Ha expirado la sessión!",
+            "expirat" : "¡Ha expirado la sesión!",
             "valocomen" : "Valoraciones y comentarios",
             "novalorat" : "No valorado",
             "fotos" : "Fotos",
@@ -425,7 +426,8 @@
             "borrarValoracio" : "¿Seguro que quieres borrar la valoración?",
             "multiidioma" : "Multi-idioma",
             "registreMissatge" : "¡Usuario creado con éxito!",
-            "noPermis" : "Usuario sin permiso"
+            "noPermis" : "Usuario sin permiso",
+            "creaValoracio" : "Valora un restaurante"
         }
     ], 
 
@@ -640,7 +642,8 @@
             "borrarValoracio" : "Are you sure you want to delete the rating?",
             "multiidioma" : "Multi-language",
             "registreMissatge" : "User successfully created!",
-            "noPermis" : "Unauthorised user"
+            "noPermis" : "Unauthorised user",
+            "creaValoracio" : "Rate a restaurant"
         } 
     ],
 
@@ -855,7 +858,8 @@
             "borrarValoracio" : "Sind Sie sicher, dass Sie die Bewertung löschen wollen?",
             "multiidioma" : "Multi-Sprache",
             "registreMissatge" : "Benutzer erfolgreich angelegt!",
-            "noPermis" : "Benutzer ohne Erlaubnis"
+            "noPermis" : "Benutzer ohne Erlaubnis",
+            "creaValoracio" : "Ein Restaurant bewerten"
         }
     ]
 }
