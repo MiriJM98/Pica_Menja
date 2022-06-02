@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Usuari;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class LoginController extends Controller
@@ -13,6 +14,13 @@ class LoginController extends Controller
     // MÈTODE POST
     public function login(Request $request)
     {
+        $validacio = Validator::make(
+            $request->all(),
+            [
+                "password" => "required",
+                "email" => "required"
+            ]
+        );
         $usuari = Usuari::where("email", $request->input("email"))->first();
         if ($usuari && Hash::check($request->input("password"), $usuari->password)) {
             $apikey = base64_encode(Str::random(40));
@@ -20,9 +28,9 @@ class LoginController extends Controller
             $token_valid_fins = date('Y-m-d H:i:s', strtotime('+30 minutes'));
             $usuari->token_valid_fins = $token_valid_fins;
             $usuari->save();
-            return response()->json(["Status" => "Èxit! Login correcte!", "result" => $apikey, "id_usuari" => $usuari["id_usuari"], "token_valid" =>$token_valid_fins]);
+            return response()->json(["Status" => "Èxit! Login correcte!", "result" => $apikey, "id_usuari" => $usuari["id_usuari"], "token_valid" => $token_valid_fins]);
         } else {
-            return response()->json(["Status" => "Error. Login incorrecte."], 401);
+            return response()->json(["Status" => "Error. Email o contrasenya incorrectes o en blanc"], 401);
         }
     }
 

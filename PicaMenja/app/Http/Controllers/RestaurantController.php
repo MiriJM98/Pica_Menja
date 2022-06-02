@@ -44,6 +44,26 @@ class RestaurantController extends Controller
     // MÈTODE POST
     public function store(Request $request)
     {
+        $validacio = Validator::make(
+            $request->all(),
+            [
+                "nom" => "required",
+                "pagina_web" => "required",
+                "telefon" => "required",
+                "ubicacio" => "required",
+                "horari_ca" => "required",
+                "horari_es" => "required",
+                "horari_en" => "required",
+                "horari_de" => "required",
+                "descripcio_ca" => "required",
+                "descripcio_es" => "required",
+                "descripcio_en" => "required",
+                "descripcio_de" => "required",
+                "id_tipus" => "required",
+                "rang_preus" => "required",
+                "iframe" => "required"
+            ]
+        );
         $restaurant = new Restaurant();
         $restaurant->nom = $request->nom;
         $restaurant->telefon = $request->telefon;
@@ -60,11 +80,12 @@ class RestaurantController extends Controller
         $restaurant->imatge = $request->imatge;
         $restaurant->carta = $request->carta;
         $restaurant->rang_preus = $request->rang_preus;
+        $restaurant->iframe = $request->iframe;
         $restaurant->id_tipus = $request->id_tipus;
         if ($restaurant->save()) {
             return response()->json(["Status" => "Restaurant creat amb èxit!", "Result" => $restaurant], 201);
         } else {
-            return response()->json(["Status" => "Error creant el restaurant."], 400);
+            return response()->json([$validacio->getMessageBag()], 400);
         }
     }
 

@@ -86,9 +86,8 @@ export default class Menu extends Component {
     // Català idioma per defecte
     axios.get("https://picamenja.com/PicaMenja/public/api/idiomes/" + sessionStorage.getItem("id_idioma"))
       .then(response => {
-        console.log(response);
+        // console.log(response);
         sessionStorage.setItem("id_idioma", response.data.id_idioma);
-        console.log("id_idioma --> " + sessionStorage.getItem("id_idioma"));
       })
       .catch(function (error) {
         // Mostrar error

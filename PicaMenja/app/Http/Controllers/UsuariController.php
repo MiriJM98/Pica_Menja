@@ -42,6 +42,10 @@ class UsuariController extends Controller
             $request->all(),
             [
                 "nom_usuari" => "required",
+                "llinatges" => "required",
+                "telefon" => "required",
+                "direccio" => "required",
+                "data_naixement" => "required",
                 "password" => "required",
                 "email" => "required|email|unique:usuaris,email"
             ]
@@ -65,7 +69,7 @@ class UsuariController extends Controller
                 return response()->json(["Status" => "Error creant l'usuari."], 400);
             }
         } else {
-            return response()->json($validacio->getMessageBag());
+            return response()->json([$validacio->getMessageBag()]);
         }
     }
 

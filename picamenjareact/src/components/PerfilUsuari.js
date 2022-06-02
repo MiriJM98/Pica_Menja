@@ -70,7 +70,7 @@ export default class PerfilUsuari extends Component {
         formData.append("administrador", this.state.administrador);
         formData.append("foto_perfil", this.state.foto_perfil);
         // Token
-        console.log(formData);
+        // console.log(formData);
         const config = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token"),
@@ -79,8 +79,8 @@ export default class PerfilUsuari extends Component {
         };
         axios.put('https://picamenja.com/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData, config
         ).then(response => {
-            console.log(response);
-            alert("Modificat amb èxit!");
+            // console.log(response);
+            alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitUpdate);
             window.location.assign("/perfilUsuari");
             this.descarrega();
         }
@@ -95,17 +95,16 @@ export default class PerfilUsuari extends Component {
         let passwordNova = document.getElementById("password_nova").value;
         let passwordNovaRe = document.getElementById("password_nova_re").value;
         if (passwordNova !== passwordNovaRe) {
-            console.log(passwordNova);
-            return alert("Error. Les contrasenyes no coincideixen!!");
+            // console.log(passwordNova);
+            return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorPassword);
         }
-        if(passwordNova.length < 8) {
+        if (passwordNova.length < 8) {
             return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorRegisPass);
         }
         let formData = new URLSearchParams();
         formData.append("email", this.state.email);
         formData.append("password", this.state.password_nova);
         // Token
-        console.log(formData);
         const config = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token"),
@@ -114,7 +113,7 @@ export default class PerfilUsuari extends Component {
         };
         axios.put('https://picamenja.com/PicaMenja/public/api/usuaris', formData, config
         ).then(response => {
-            console.log(response);
+            // console.log(response);
             alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitPassword);
             window.location.assign("/perfilUsuari");
             this.descarrega();
@@ -136,7 +135,7 @@ export default class PerfilUsuari extends Component {
             axios.post("https://picamenja.com/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, formData,
                 config
             ).then((response) => {
-                console.log(response);
+                // console.log(response);
                 alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
             }
             ).catch((error) => {
@@ -203,7 +202,6 @@ export default class PerfilUsuari extends Component {
                                                     className="form-control"
                                                 />
                                             </div>
-                                            {console.log(this.state.foto_perfil)}
                                         </div>
                                     </div>
                                     {/* BOTÓ PER ACTUALITZAR FOTO DEL PERFIL */}

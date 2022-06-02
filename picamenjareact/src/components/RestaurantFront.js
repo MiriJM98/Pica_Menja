@@ -493,9 +493,10 @@ export default class RestaurantFront extends Component {
                 <div id="serveisRes"></div>
                 <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].valocomen}</h2>
                 <div id="valoracionsUsuaris"></div>
-                <h3 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].valoracio}</h3>
-                <div id="divValoracions"></div>
-                <div id="estrelles">
+                <div id="divValoracions">
+                    <h3 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].valoracio}</h3>
+                    <div id="estrelles">
+                    </div>
                     {this.state.puntuacio !== -1 ?
                         <Rating
                             onClick={this.mostraValoracio}
