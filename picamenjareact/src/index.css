@@ -39,7 +39,7 @@ code {
   justify-content: right;
   padding-bottom: 5px;
   padding-top: 15px;
-  margin-right: 15px;
+  /* margin-right: 15px; */
 }
 
 #menu {
@@ -372,4 +372,15 @@ tr, td {
   -webkit-appearance: button;
   appearance: button;
   outline: none;
+}
+
+#carouselFotos, #fotos {
+  text-align: center;
+  margin: 0;
+  /* width: auto; */
+  align-items: center;
+}
+
+.carousel .carousel-status {
+  color: black;
 }
