@@ -389,8 +389,8 @@ function CridaFotos() {
   return <Foto id_foto={params.id_foto} />
 }
 
-console.log("AQUÍ SALE EL TOKEN ---> " + sessionStorage.getItem("token"));
-console.log("AQUÍ SALE EL ADMIN ---> " + sessionStorage.getItem("admin"));
-console.log("AQUÍ SALE EL ID_USUARI --> " + sessionStorage.getItem("id_usuari"));
-console.log("AQUÍ SALE TOKEN VÁLIDO --> " + sessionStorage.getItem("token_valid"));
-console.log("id_idioma --> " + sessionStorage.getItem("id_idioma"));
+// console.log("AQUÍ SALE EL TOKEN ---> " + sessionStorage.getItem("token"));
+// console.log("AQUÍ SALE EL ADMIN ---> " + sessionStorage.getItem("admin"));
+// console.log("AQUÍ SALE EL ID_USUARI --> " + sessionStorage.getItem("id_usuari"));
+// console.log("AQUÍ SALE TOKEN VÁLIDO --> " + sessionStorage.getItem("token_valid"));
+// console.log("id_idioma --> " + sessionStorage.getItem("id_idioma"));

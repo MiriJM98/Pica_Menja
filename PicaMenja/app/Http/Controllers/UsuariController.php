@@ -89,6 +89,7 @@ class UsuariController extends Controller
     // MÈTODE POST
     public function fotoPerfil(Request $request, $id)
     {
+        // print_r($request->all());
         $validacio = Validator::make($request->all(), [
             'foto_perfil' => 'required|mimes:jpeg,jpg,bmp,png|max:102400',
         ]);
