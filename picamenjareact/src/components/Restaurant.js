@@ -166,18 +166,18 @@ export default class Restaurant extends Component {
         let formData = new FormData();
         formData.append("imatge", this.state.imatge);
         // Token
-        const config = {
-            headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
-        };
-        axios.post("https://picamenja.com/PicaMenja/public/api/restaurants/imatge/" + this.state.id_restaurant, formData,
-            config
-        ).then((response) => {
-            console.log(response);
-            alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
-        }
-        ).catch((error) => {
-            console.log(error);
-        });
+        // const config = {
+        //     headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+        // };
+        fetch("https://picamenja.com/PicaMenja/public/api/restaurants/imatge/" + this.state.id_restaurant, { method: 'POST', headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") }, body: formData })
+            .then((response => response.json()))
+            .then(data => {
+                console.log(data);
+                alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     onChange = (e) => {
@@ -351,7 +351,7 @@ export default class Restaurant extends Component {
                             <label>{traduccions[sessionStorage.getItem("id_idioma")][0].foto}:</label>
                             <input
                                 type="file"
-                                accept="image/png, image/jpeg"
+                                accept="image/png, image/jpeg, image/webP"
                                 name="imatge"
                                 onChange={this.onChangeFoto}
                                 className="form-control"

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Rating } from "react-simple-star-rating";
+import ScrollToTop from "./ScrollToTop";
 import traduccions from "./traduccions.json";
 
 export default class RestaurantFront extends Component {
@@ -544,6 +545,7 @@ export default class RestaurantFront extends Component {
                     </div>
                     : console.log()}
                 <div id="iframeDiv"></div>
+                <ScrollToTop />
             </div>
         )
     }

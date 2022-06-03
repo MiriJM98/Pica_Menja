@@ -63,7 +63,7 @@ class FotoController extends Controller
     public function pujarFotos(Request $request, $id)
     {
         $validacio = Validator::make($request->all(), [
-            'foto' => 'required|mimes:jpeg,jpg,bmp,png|max:10240',
+            'foto' => 'required|mimes:jpeg,jpg,bmp,png,webp|max:10240',
         ]);
         $tupla = Foto::findOrFail($id);
         if (!$validacio->fails()) {

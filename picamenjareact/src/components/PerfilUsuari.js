@@ -130,15 +130,15 @@ export default class PerfilUsuari extends Component {
             formData.append("foto_perfil", this.state.foto_perfil, this.state.foto_perfil.name);
             formData.append("prova", "Hola");
             // Token
-            const config = {
-                headers: { Authorization: "Bearer " + sessionStorage.getItem("token") }
-            };
+            // const config = {
+            //     headers: { Authorization: "Bearer " + sessionStorage.getItem("token") }
+            // };
             fetch("https://picamenja.com/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, { method: 'POST', headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") }, body: formData })
                 .then((response => response.json()))
-                    .then(data => { console.log(data) })
-                    //     console.log(response);
-                    // alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
-                    // }
+                .then(data => {
+                    console.log(data)
+                    alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
+                })
                 .catch((error) => {
                     console.log(error);
                 });

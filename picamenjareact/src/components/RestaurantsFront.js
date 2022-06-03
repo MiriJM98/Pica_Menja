@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Image } from "react-bootstrap";
+import ScrollToTop from "./ScrollToTop";
 import Select from "./Select";
 import traduccions from "./traduccions.json";
 
@@ -431,6 +432,7 @@ export default class RestaurantsFront extends Component {
                     <h3 id="titolServei"></h3>
                 </div>
                 <div id="contenedorServei"></div>
+                <ScrollToTop />
             </div>
         )
     }

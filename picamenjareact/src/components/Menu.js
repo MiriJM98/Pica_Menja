@@ -49,6 +49,7 @@ export default class Menu extends Component {
   // SI UN USUARI HA INICIAT SESSIÓ DESCARREGAM LES SEVES DADES PER MOSTRAR LA SEVA FOTO DE PERFIL
   componentDidMount() {
     if (sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null) {
+      this.handleRefresh();
       this.descarrega();
     }
     this.carregaIdioma();
@@ -237,6 +238,7 @@ export default class Menu extends Component {
                 {window.location.pathname === "/" ?
                   <>
                     <Image src={process.env.PUBLIC_URL + '/logoweb.png'}
+                      rel="preload"
                       alt="PICA & MENJA"
                       title="PICA & MENJA"
                       id="imatges"
