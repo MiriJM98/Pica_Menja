@@ -110,6 +110,8 @@ export default class Foto extends Component {
             .then(data => {
                 console.log(data);
                 alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
+                window.location.assign("/fotos");
+                this.descarrega();
             })
             .catch((error) => {
                 console.log(error);
@@ -204,11 +206,13 @@ export default class Foto extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-1">
                         <div className="form-group">
-                            <input
-                                type="submit"
-                                className="btn btn-success btn-lg"
-                                value={traduccions[sessionStorage.getItem("id_idioma")][0].botoInsert}
-                                onClick={this.inserta} />
+                            {this.state.id_foto === "" ?
+                                <input
+                                    type="submit"
+                                    className="btn btn-success btn-lg"
+                                    value={traduccions[sessionStorage.getItem("id_idioma")][0].botoInsert}
+                                    onClick={this.inserta} />
+                                : console.log()}
                             <p></p>
                         </div>
                     </div>

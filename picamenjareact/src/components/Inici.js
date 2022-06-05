@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import traduccions from "./traduccions.json";
 
 class Inici extends Component {
     render() {
         return (
             <div id='carouselFotos'>
-                <h1 id="h1Restaurants" className='mt-3 mb-5'>{traduccions[sessionStorage.getItem("id_idioma")][0].restaurants}</h1>
                 <Carousel style={{ textAlign: "center" }} autoPlay={true} width={"100%"} height={"100%"} interval={2000}
                     infiniteLoop={true} showThumbs={false} autoFocus={true} showStatus={false}>
                     <div id='fotos'>

@@ -293,7 +293,7 @@ export default class RestaurantsFront extends Component {
             <div id="restaurantsFront">
                 {/* FILTRAR PER TIPUS DE RESTAURANT */}
                 <div id="divFiltreTipus">
-                    <h1>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraTipus}</h1>
+                    <h1 id="h1Filtre">{traduccions[sessionStorage.getItem("id_idioma")][0].filtraTipus}</h1>
                     {sessionStorage.getItem("id_idioma") === "1" ?
                         <>
                             <Select
@@ -303,7 +303,7 @@ export default class RestaurantsFront extends Component {
                                 display="tipus_ca"
                                 url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "2" ?
@@ -315,7 +315,7 @@ export default class RestaurantsFront extends Component {
                                 display="tipus_es"
                                 url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "3" ?
@@ -327,7 +327,7 @@ export default class RestaurantsFront extends Component {
                                 display="tipus_en"
                                 url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "4" ?
@@ -339,13 +339,13 @@ export default class RestaurantsFront extends Component {
                                 display="tipus_de"
                                 url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                 </div>
                 {/* FILTRAR PER RANG DE PREUS */}
                 <div id="divFiltrePreus">
-                    <h1>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraPreu}</h1>
+                    <h1 id="h1Filtre">{traduccions[sessionStorage.getItem("id_idioma")][0].filtraPreu}</h1>
 
                     <Select
                         canviar={this.onChangeRang}
@@ -354,13 +354,13 @@ export default class RestaurantsFront extends Component {
                         display="rang_preus"
                         url="https://picamenja.com/PicaMenja/public/api/restaurantsPreus" />
                     <button type="button" className="btn btn-link" onClick={this.filtrarPreu} aria-label="Botó filtrar">
-                        <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
+                        <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                     </button>
                 </div>
 
                 {/* FILTRAR PER SERVEI */}
                 <div id="divFiltreServeis">
-                    <h1>{traduccions[sessionStorage.getItem("id_idioma")][0].filtraServei}</h1>
+                    <h1 id="h1Filtre">{traduccions[sessionStorage.getItem("id_idioma")][0].filtraServei}</h1>
                     {sessionStorage.getItem("id_idioma") === "1" ?
                         <>
                             <Select
@@ -370,7 +370,7 @@ export default class RestaurantsFront extends Component {
                                 display="servei_ca"
                                 url="https://picamenja.com/PicaMenja/public/api/serveis" />
                             <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "2" ?
@@ -382,7 +382,7 @@ export default class RestaurantsFront extends Component {
                                 display="servei_es"
                                 url="https://picamenja.com/PicaMenja/public/api/serveis" />
                             <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "3" ?
@@ -394,7 +394,7 @@ export default class RestaurantsFront extends Component {
                                 display="servei_en"
                                 url="https://picamenja.com/PicaMenja/public/api/serveis" />
                             <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                     {sessionStorage.getItem("id_idioma") === "4" ?
@@ -406,7 +406,7 @@ export default class RestaurantsFront extends Component {
                                 display="servei_de"
                                 url="https://picamenja.com/PicaMenja/public/api/serveis" />
                             <button type="button" className="btn btn-link" onClick={this.filtraServei} aria-label="Botó filtrar">
-                                <Image src={process.env.PUBLIC_URL + '/lupa.png'} width="30px" height="30" alt="Filtrar"></Image>
+                                <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>
                         : console.log()}
                 </div>

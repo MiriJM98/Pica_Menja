@@ -64,9 +64,9 @@ export default class RestaurantFront extends Component {
         if (this.props.id_restaurant !== -1) {
             this.mostraValoracions(this.props.id_restaurant);
         }
-        // if (this.props.id_restaurant !== -1) {
-        //     this.fotosRestaurant(this.props.id_restaurant);
-        // }
+        if (this.props.id_restaurant !== -1) {
+            this.fotosRestaurant(this.props.id_restaurant);
+        }
     }
 
     descarregaRestaurant = (id_restaurant) => {
@@ -395,11 +395,11 @@ export default class RestaurantFront extends Component {
     mostraValoracions = (id_restaurant) => {
         axios.get("https://picamenja.com/PicaMenja/public/api/valoracions/restaurant/" + id_restaurant)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({
                     valoracions: response.data
                 });
-                console.log(this.state.valoracions);
+                // console.log(this.state.valoracions);
                 const div = document.getElementById("valoracionsUsuaris");
                 div.innerHTML = "";
                 let taula = document.createElement("table");
@@ -488,7 +488,9 @@ export default class RestaurantFront extends Component {
         return (
             <div id="frontRestaurant" className="row justify-content-center">
                 <h1 className="row justify-content-center mt-3">{this.state.nom}</h1>
-                <div id="carouselRestaurant"></div>
+                <div id="carouselRestaurant">
+                    {/* {console.log(this.state.fotos)} */}
+                </div>
                 <div id="contingut"></div>
                 <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].serveis}</h2>
                 <div id="serveisRes"></div>

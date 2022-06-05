@@ -225,6 +225,7 @@ export default class Menu extends Component {
                 {window.location.pathname !== "/" ?
                   <>
                     <Image src={process.env.PUBLIC_URL + '/picamenja.png'}
+                      rel="preload"
                       alt="PICA & MENJA"
                       title="PICA & MENJA"
                       id="imatges"

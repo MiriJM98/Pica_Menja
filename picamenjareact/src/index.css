@@ -244,12 +244,18 @@ label {
     /* margin-bottom: 20px; */
 }
 
-#divFiltreTipus, #divFiltrePreus, #divFiltreServeis {
+#divFiltreTipus, #divFiltrePreus {
   display: inline-block;  
   width: auto;
   margin-top: 35px;
   margin-left: 100px;
-  /* margin-right: 100px; */
+  margin-right: 230px;
+}
+
+#divFiltreServeis {
+  margin-top: 35px;
+  margin-right: 100px;
+  float: right;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@700&display=swap');
@@ -257,6 +263,7 @@ label {
 #h1Restaurants {
   font-size: 60pt;
   font-family: 'Encode Sans', sans-serif;
+  color: #373736;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@1,600&display=swap');
@@ -264,7 +271,8 @@ label {
 #h2Rest {
   font-size: 40pt;
   font-family: 'Source Serif Pro', serif;
-  background-color: #e2f5e4;
+  background-color: #ffffff;
+  padding-top: 20px;
 }
 
 #cartes {
@@ -293,7 +301,7 @@ label {
 }
 
 #restaurantsFront {
-  background-image: url("../public/2.webp");
+  background-image: url("../public/3.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: auto;
@@ -419,20 +427,7 @@ tr, td {
   color: #551B54;
   border: 2px solid #551B54;
 }
-/* @keyframes movebtn {
-  0%{
-    transform: translateY(0px);
-  }
-  25%{
-    transform: translateY(20px);
-  }
-  50%{
-    transform: translateY(0px);
-  }
-  75%{
-    transform: translateY(-20px);
-  }
-  100%{
-    transform: translateY(0px);
-  }
-} */
+
+#h1Filtre {
+  font-size: 21pt;
+}
