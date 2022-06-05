@@ -260,6 +260,10 @@ label {
 
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@700&display=swap');
 
+h1, h2, h3, h4 {
+  font-family: 'Encode Sans', sans-serif;
+}
+
 #h1Restaurants {
   font-size: 60pt;
   font-family: 'Encode Sans', sans-serif;
@@ -324,6 +328,9 @@ label {
 #frontRestaurant {
   margin: auto;
   text-align: center;
+  background-image: url("../public/restaurant1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   /* display: flex;
   justify-content: center; */
   width: auto;
@@ -430,4 +437,36 @@ tr, td {
 
 #h1Filtre {
   font-size: 21pt;
+}
+
+#taulaGaleria {
+  margin: auto;
+  text-align: center;
+}
+
+#imatgeGaleria {
+  padding: 15px;
+}
+
+#estilValoracio {
+  text-align: center;
+  background-color: #A9CFD8;
+  width: 42%;
+  margin: auto;
+  /* margin-left : 460px;
+  margin-right: 460px; */
+  margin-bottom: 30px; 
+  margin-top: 30px; 
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* #serveisRes {
+  text-align: left;
+} */
+
+#textarea {
+  width: 95%;
+  outline: none;
+  resize: none;
 }

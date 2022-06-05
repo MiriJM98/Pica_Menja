@@ -252,20 +252,48 @@ export default class RestaurantFront extends Component {
     fotosRestaurant = (id_restaurant) => {
         axios.get("https://picamenja.com/PicaMenja/public/api/fotos/restaurant/" + id_restaurant)
             .then((response) => {
-                console.log(response);
-                console.log(this.state.id_restaurant);
+                // console.log(response.data.length);
+                // console.log(this.state.id_restaurant);
+                let contador = response.data.length - 3;
+                console.log(contador);
                 this.setState({
                     fotos: response.data,
                 });
+                let taula = document.createElement("table");
+                taula.setAttribute("id", "taulaGaleria");
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
+                td.setAttribute("id", "tdGaleria");
                 this.state.fotos.forEach(foto => {
-                    let carta = document.createElement("div");
-                    let h3 = document.createElement("h3");
-                    let imatge = document.createElement("img");
-                    imatge.setAttribute("src", foto.foto);
-                    imatge.setAttribute("width", 300);
-                    carta.appendChild(h3);
-                    carta.appendChild(imatge);
-                    document.getElementById("carouselRestaurant").appendChild(carta);
+                    if (contador < 6) {
+                        let imatge = document.createElement("img");
+                        imatge.setAttribute("src", foto.foto);
+                        imatge.setAttribute("height", 300);
+                        imatge.setAttribute("id", "imatgeGaleria");
+                        td.appendChild(imatge);
+                        tr.appendChild(td);
+                        taula.appendChild(tr);
+                        document.getElementById("carouselRestaurant").appendChild(taula);
+                    }
+                    contador++;
+                }
+                );
+                let contador2 = response.data.length - 3;
+                let tr2 = document.createElement("tr");
+                let td2 = document.createElement("td");
+                td2.setAttribute("id", "tdGaleria");
+                this.state.fotos.forEach(foto => {
+                    if (contador2 > 5) {
+                        let imatge = document.createElement("img");
+                        imatge.setAttribute("src", foto.foto);
+                        imatge.setAttribute("height", 300);
+                        imatge.setAttribute("id", "imatgeGaleria");
+                        td2.appendChild(imatge);
+                        tr2.appendChild(td2);
+                        taula.appendChild(tr2);
+                        document.getElementById("carouselRestaurant").appendChild(taula);
+                    }
+                    contador2++;
                 }
                 );
             })
@@ -494,7 +522,7 @@ export default class RestaurantFront extends Component {
                 <div id="contingut"></div>
                 <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].serveis}</h2>
                 <div id="serveisRes"></div>
-                <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].valocomen}</h2>
+                <h2 className="mt-5">{traduccions[sessionStorage.getItem("id_idioma")][0].valocomen}</h2>
                 <div id="valoracionsUsuaris"></div>
                 <div id="divValoracions">
                     <h3 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].valoracio}</h3>
@@ -527,23 +555,25 @@ export default class RestaurantFront extends Component {
                 </div>
                 {sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null ?
                     <div id="crearValoracio">
-                        <h4 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].creaValoracio}</h4>
-                        <div>
-                            <h5>{traduccions[sessionStorage.getItem("id_idioma")][0].puntuacioRestaurant}</h5>
-                            <select className="ms-2" name="valoracioRestaurant" onChange={this.onChange}>
-                                {/* <option defaultValue="Tria">Tria</option> */}
-                                <option value={1}>1</option>
-                                <option value={2}>2</option>
-                                <option value={3}>3</option>
-                                <option value={4}>4</option>
-                                <option value={5}>5</option>
-                            </select>
+                        <div id="estilValoracio">
+                            <h4 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].creaValoracio}</h4>
+                            <div>
+                                <h5>{traduccions[sessionStorage.getItem("id_idioma")][0].puntuacioRestaurant}
+                                    <select className="ms-2" name="valoracioRestaurant" onChange={this.onChange}>
+                                        <option value={1}>1</option>
+                                        <option value={2}>2</option>
+                                        <option value={3}>3</option>
+                                        <option value={4}>4</option>
+                                        <option value={5}>5</option>
+                                    </select>
+                                </h5>
+                            </div>
+                            <p>{traduccions[sessionStorage.getItem("id_idioma")][0].deixaComentari}</p>
+                            <p>
+                                <textarea id="textarea" rows="4" cols="60" placeholder={traduccions[sessionStorage.getItem("id_idioma")][0].placeholderComent} name="comentariRestaurant" onChange={this.onChange}></textarea>
+                            </p>
+                            <p><button className="btn btn-primary btn-lg" onClick={this.crearValoracio}>{traduccions[sessionStorage.getItem("id_idioma")][0].valorar}</button></p>
                         </div>
-                        <p>{traduccions[sessionStorage.getItem("id_idioma")][0].deixaComentari}</p>
-                        <p>
-                            <textarea rows="4" cols="60" placeholder={traduccions[sessionStorage.getItem("id_idioma")][0].placeholderComent} name="comentariRestaurant" onChange={this.onChange}></textarea>
-                        </p>
-                        <p><button className="btn btn-primary btn-lg" onClick={this.crearValoracio}>{traduccions[sessionStorage.getItem("id_idioma")][0].valorar}</button></p>
                     </div>
                     : console.log()}
                 <div id="iframeDiv"></div>
