@@ -4,7 +4,9 @@ import traduccions from "./traduccions.json";
 export default class Suggeriments extends Component {
 
     canviParam = (e) => {
-        this.setState({ [e.target.name]: e.target.value })
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
 
     render() {
@@ -35,36 +37,36 @@ export default class Suggeriments extends Component {
                         <label htmlFor="radio" className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].form1}</label>
                     </p>
                     <p>
-                        <input type="radio" id="radioS" name="radio" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
-                        <input type="radio" id="radioN" name="radio" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
+                        <input type="radio" id="radioS" name="radioP" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
+                        <input type="radio" id="radioN" name="radioP" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
                     </p>
                     <p>
                         <label htmlFor="radio" className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].form2}</label>
                     </p>
                     <p>
-                        <input type="radio" id="radioS" name="radio" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
-                        <input type="radio" id="radioN" name="radio" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
+                        <input type="radio" id="radioS" name="radioI" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
+                        <input type="radio" id="radioN" name="radioI" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
                     </p>
                     <p>
                         <label htmlFor="radio" className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].form3}</label>
                     </p>
                     <p>
-                        <input type="radio" id="radioS" name="radio" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
-                        <input type="radio" id="radioN" name="radio" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
+                        <input type="radio" id="radioS" name="radioR" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
+                        <input type="radio" id="radioN" name="radioR" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
                     </p>
                     <p>
                         <label htmlFor="radio" className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].form4}</label>
                     </p>
                     <p>
-                        <input type="radio" id="radioS" name="radio" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
-                        <input type="radio" id="radioN" name="radio" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
+                        <input type="radio" id="radioS" name="radioC" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
+                        <input type="radio" id="radioN" name="radioC" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
                     </p>
                     <p>
                         <label htmlFor="radio" className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].form5}</label>
                     </p>
                     <p>
-                        <input type="radio" id="radioS" name="radio" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
-                        <input type="radio" id="radioN" name="radio" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
+                        <input type="radio" id="radioS" name="radioM" onChange={this.canviParam} />{traduccions[sessionStorage.getItem("id_idioma")][0].si}
+                        <input type="radio" id="radioN" name="radioM" onChange={this.canviParam} className="ms-2" />{traduccions[sessionStorage.getItem("id_idioma")][0].no}
                     </p>
                     <p>
                         <label htmlFor="radio" className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].form6}</label>

@@ -337,7 +337,7 @@ export default class RestaurantsFront extends Component {
                                 valorInicial={this.state.id_tipus}
                                 clau="id_tipus"
                                 display="tipus_de"
-                                url="http://localhost/PROJECTE_PICA_MENJA/Pica_Menja/PicaMenja/public/api/tipus" />
+                                url="https://picamenja.com/PicaMenja/public/api/tipus" />
                             <button type="button" className="btn btn-link" onClick={this.filtrarTipus} aria-label="Botó filtrar">
                                 <Image src={process.env.PUBLIC_URL + '/lupa.webp'} width="30px" height="30" alt="Filtrar"></Image>
                             </button></>

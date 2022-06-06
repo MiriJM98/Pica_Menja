@@ -18,7 +18,7 @@ export default class Registre extends Component {
     }
 
     registre = (e) => {
-        let missatge = traduccions[sessionStorage.getItem("id_idioma")][0].error + "\n";
+        let missatge = "";
         // VALIDACIONS DELS CAMPS DEL FORMULARI
         // Nom usuari
         if (this.state.nom_usuari === "" || this.state.nom_usuari.length < 2) {
@@ -77,7 +77,7 @@ export default class Registre extends Component {
         }
 
         // Mostrar alerta
-        if (this.state.email === "" || this.state.nom_usuari === "" || this.state.llinatges === "" || this.state.telefon === "" || this.state.data_naixement === "" || this.state.direccio === "" || this.state.administrador === "" || this.state.password === "") {
+        if (missatge !== "") {
             document.getElementById("errors").style.display = "block";
             alert(missatge);
             return e.preventDefault();
