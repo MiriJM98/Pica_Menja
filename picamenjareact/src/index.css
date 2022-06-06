@@ -244,19 +244,19 @@ label {
     /* margin-bottom: 20px; */
 }
 
-#divFiltreTipus, #divFiltrePreus {
+#divFiltreTipus, #divFiltrePreus, #divFiltreServeis {
   display: inline-block;  
   width: auto;
   margin-top: 35px;
   margin-left: 100px;
-  margin-right: 230px;
+  margin-right: 100px;
 }
 
-#divFiltreServeis {
+/* #divFiltreServeis {
   margin-top: 35px;
   margin-right: 100px;
   float: right;
-}
+} */
 
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@700&display=swap');
 

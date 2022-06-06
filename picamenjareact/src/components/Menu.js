@@ -12,7 +12,6 @@ import {
 } from "react-router-dom";
 import Foto from "./Foto";
 import Fotos from "./Fotos";
-import Idioma from "./Idioma";
 import Idiomes from "./Idiomes";
 import Inici from "./Inici";
 import Restaurant from "./Restaurant";
@@ -305,7 +304,6 @@ export default class Menu extends Component {
                 <Route path="/fotos" element={<Fotos />} />
                 <Route path="/foto/:id_foto" element={<CridaFotos />} />
                 <Route path="/idiomes" element={<Idiomes />} />
-                <Route path="/idioma/:id_idioma" element={<CridaIdioma />} />
                 <Route path="/restaurants_serveis" element={<RestaurantServeis />} />
                 <Route path="/restaurants_serveis/:id_obra" element={<CridaRestaurantServei />} />
                 <Route path="/restaurants_back" element={<Restaurants />} />
@@ -360,11 +358,6 @@ function CridaRestaurant() {
 function CridaRestaurantFront() {
   let params = useParams();
   return <RestaurantFront id_restaurant={params.id_restaurant} />
-}
-
-function CridaIdioma() {
-  let params = useParams();
-  return <Idioma id_idioma={params.id_idioma} />
 }
 
 function CridaServei() {

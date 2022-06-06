@@ -43,21 +43,7 @@ export default class Idiomes extends Component {
         return (
             <div className="ag-theme-alpine" style={{ height: 400, width: "100%" }}>
                 <div className="row">
-                    <h1 className='row justify-content-center mt-3'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaIdiomes}</h1>
-                </div>
-                <div className="row mb-3 ms-1">
-                    <div className="col-md-1">
-                        <div className="form-group"></div>
-                        <input
-                            type="button"
-                            className="btn btn-primary btn-lg"
-                            value={traduccions[sessionStorage.getItem("id_idioma")][0].insertIdioma}
-                            onClick={() => {
-                                window.location.assign(
-                                    "/idioma/" + this.state.id_idioma
-                                );
-                            }} />
-                    </div>
+                    <h1 className='row justify-content-center mt-3 mb-5'>{traduccions[sessionStorage.getItem("id_idioma")][0].llistaIdiomes}</h1>
                 </div>
                 <AgGridReact
                     rowData={this.state.idiomes}

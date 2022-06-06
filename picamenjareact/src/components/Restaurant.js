@@ -26,6 +26,7 @@ export default class Restaurant extends Component {
             horari_en: "",
             horari_de: "",
             rang_preus: "",
+            iframe: ""
         };
     }
 
@@ -61,6 +62,7 @@ export default class Restaurant extends Component {
                     horari_en: response.data.horari_en,
                     horari_de: response.data.horari_de,
                     rang_preus: response.data.rang_preus,
+                    iframe: response.data.iframe
                 });
             })
             .catch(function (error) {
@@ -104,6 +106,7 @@ export default class Restaurant extends Component {
         formData.append("rang_preus", this.state.rang_preus);
         formData.append("id_tipus", this.state.id_tipus);
         formData.append("imatge", this.state.imatge);
+        formData.append("iframe", this.state.iframe);
         // Token
         const config = {
             headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
@@ -126,7 +129,7 @@ export default class Restaurant extends Component {
         if (this.state.nom === "" || this.state.ubicacio === "" || this.state.pagina_web === "" || this.state.telefon === "" || this.state.descripcio_ca === ""
             || this.state.descripcio_es === "" || this.state.descripcio_en === "" || this.state.descripcio_de === "" || this.state.horari_ca === ""
             || this.state.horari_es === "" || this.state.horari_en === "" || this.state.horari_de === "" || this.state.id_tipus === ""
-            || this.state.rang_preus === "") {
+            || this.state.rang_preus === "" || this.state.iframe === "") {
             return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorCamps);
         }
         let formData = new URLSearchParams();
@@ -146,6 +149,7 @@ export default class Restaurant extends Component {
         formData.append("imatge", this.state.imatge);
         formData.append("rang_preus", this.state.rang_preus);
         formData.append("carta", this.state.carta);
+        formData.append("iframe", this.state.iframe);
         // Token
         const config = {
             headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
@@ -180,6 +184,21 @@ export default class Restaurant extends Component {
             });
     };
 
+    updateCarta = () => {
+        let formData = new FormData();
+        formData.append("carta", this.state.carta);
+        // Token
+        fetch("https://picamenja.com/PicaMenja/public/api/restaurants/carta/" + this.state.id_restaurant, { method: 'POST', headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") }, body: formData })
+            .then((response => response.json()))
+            .then(data => {
+                console.log(data);
+                alert(traduccions[sessionStorage.getItem("id_idioma")][0].cartaInsert);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     onChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
@@ -189,6 +208,12 @@ export default class Restaurant extends Component {
     onChangeFoto = (e) => {
         this.setState({
             imatge: e.target.files[0]
+        })
+    }
+
+    onChangeCarta = (e) => {
+        this.setState({
+            carta: e.target.files[0]
         })
     }
 
@@ -481,6 +506,57 @@ export default class Restaurant extends Component {
                     </div>
                 </div>
                 <div className="row"></div>
+                <div className="row">
+                    <div className="col-md-4">&nbsp;</div>
+                </div>
+                <div className="row">
+                    <h3 className="row justify-content-center">{traduccions[sessionStorage.getItem("id_idioma")][0].altresDades}</h3>
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].iframe}:</label>
+                            <textarea
+                                value={this.state.iframe}
+                                className="form-control"
+                                name="iframe"
+                                onChange={this.onChange}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4">&nbsp;</div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].carta}:</label>
+                            <textarea
+                                value={this.state.carta}
+                                className="form-control"
+                                name="carta"
+                                onChange={this.onChange}
+                            />
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="form-group">
+                            <label>{traduccions[sessionStorage.getItem("id_idioma")][0].carta}:</label>
+                            <input
+                                type="file"
+                                accept="application/pdf"
+                                name="carta"
+                                onChange={this.onChangeCarta}
+                                className="form-control"
+                            />
+                            <input
+                                type="submit"
+                                className="btn btn-primary"
+                                value={traduccions[sessionStorage.getItem("id_idioma")][0].pujaCarta}
+                                onClick={this.updateCarta}
+                            />
+                        </div>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col-md-4">&nbsp;</div>
                 </div>

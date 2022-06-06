@@ -153,6 +153,7 @@
             "desc_en" : "Descripció anglès",
             "desc_de" : "Descripció alemany",
             "carta" : "Carta",
+            "iframe" : "Iframe",
             "llistaServeis" : "Llistat de serveis",
             "insertServei" : "Afegir nou servei",
             "insertServei2" : "Insertar nou servei",
@@ -215,7 +216,10 @@
             "puntuacioRestaurant" : "Quina puntuació dónes a aquest restaurant?",
             "deixaComentari" : "Deixa un comentari",
             "placeholderComent" : "Escriu un comentari de la teva experiència...",
-            "valorar" : "Valora"
+            "valorar" : "Valora",
+            "altresDades" : "Altres dades",
+            "cartaInsert" : "Carta insertada correctament!",
+            "pujaCarta" : "Puja carta"
         } 
     ],
 
@@ -373,6 +377,7 @@
             "desc_en" : "Descripción inglés",
             "desc_de" : "Descripción alemán",
             "carta" : "Carta",
+            "iframe" : "Iframe",
             "llistaServeis" : "Listado de servicios",
             "insertServei" : "Añadir nuevo servicio",
             "insertServei2" : "Insertar nuevo servicio",
@@ -435,7 +440,10 @@
             "puntuacioRestaurant" : "¿Qué puntuación le das a este restaurante?",
             "deixaComentari" : "Deja un comentario",
             "placeholderComent" : "Escribe un comentario de tu experiencia...",
-            "valorar" : "Valorar"
+            "valorar" : "Valorar",
+            "altresDades" : "Otros datos",
+            "cartaInsert" : "¡Carta insertada correctamente!",
+            "pujaCarta" : "Sube la carta"
         }
     ], 
 
@@ -593,6 +601,7 @@
             "desc_en" : "Description english",
             "desc_de" : "Description german",
             "carta" : "Menu",
+            "iframe" : "Iframe",
             "llistaServeis" : "List of services",
             "insertServei" : "Add new service",
             "insertServei2" : "Insert new service",
@@ -655,7 +664,10 @@
             "puntuacioRestaurant" : "How would you rate this restaurant?",
             "deixaComentari" : "Leave a comment",
             "placeholderComent" : "Write a comment about your experience...",
-            "valorar" : "Rate"
+            "valorar" : "Rate",
+            "altresDades" : "Other data",
+            "cartaInsert" : "Menu inserted successfully!",
+            "pujaCarta" : "Upload the menu"
         } 
     ],
 
@@ -813,6 +825,7 @@
             "desc_en" : "Beschreibung Englisch",
             "desc_de" : "Deutsche Beschreibung",
             "carta" : "Speisekarte",
+            "iframe" : "Iframe",
             "llistaServeis" : "Liste der Dienstleistungen",
             "insertServei" : "Neuen Dienst hinzufügen",
             "insertServei2" : "Neuen Dienst einfügen",
@@ -875,7 +888,10 @@
             "puntuacioRestaurant" : "Wie würden Sie dieses Restaurant bewerten?",
             "deixaComentari" : "Hinterlassen Sie einen Kommentar",
             "placeholderComent" : "Schreiben Sie einen Kommentar zu Ihrer Erfahrung...",
-            "valorar" : "Bewerten Sie"             
+            "valorar" : "Bewerten Sie",
+            "altresDades" : "Weitere Informationen",
+            "cartaInsert" : "Menü korrekt eingefügt!",
+            "pujaCarta" : "Hochladen des Menüs"
         }
     ]
 }
