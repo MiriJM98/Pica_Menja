@@ -68,7 +68,7 @@ export default class PerfilUsuari extends Component {
         formData.append("data_naixement", this.state.data_naixement);
         formData.append("email", this.state.email);
         formData.append("administrador", this.state.administrador);
-        formData.append("foto_perfil", this.state.foto_perfil);
+        // formData.append("foto_perfil", this.state.foto_perfil);
         // Token
         // console.log(formData);
         const config = {
@@ -128,11 +128,7 @@ export default class PerfilUsuari extends Component {
         if (this.state.foto_perfil !== null || this.state.foto_perfil !== "") {
             let formData = new FormData();
             formData.append("foto_perfil", this.state.foto_perfil, this.state.foto_perfil.name);
-            formData.append("prova", "Hola");
             // Token
-            // const config = {
-            //     headers: { Authorization: "Bearer " + sessionStorage.getItem("token") }
-            // };
             fetch("https://picamenja.com/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, { method: 'POST', headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") }, body: formData })
                 .then((response => response.json()))
                 .then(data => {
@@ -142,27 +138,6 @@ export default class PerfilUsuari extends Component {
                 .catch((error) => {
                     console.log(error);
                 });
-        }
-    };
-
-    updateFoto2 = () => {
-        if (this.state.foto_perfil !== null || this.state.foto_perfil !== "") {
-            let formData = new FormData();
-            formData.append("foto_perfil", this.state.foto_perfil, this.state.foto_perfil.name);
-            formData.append("prova", "Hola");
-            // Token
-            const config = {
-                headers: { Authorization: "Bearer " + sessionStorage.getItem("token") }
-            };
-            axios.post("https://picamenja.com/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, formData,
-                config
-            ).then((response) => {
-                console.log(response);
-                alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
-            }
-            ).catch((error) => {
-                console.log(error);
-            });
         }
     };
 
@@ -207,7 +182,7 @@ export default class PerfilUsuari extends Component {
                                 <div className="card-header">{traduccions[sessionStorage.getItem("id_idioma")][0].fotoperfil}</div>
                                 <div className="card-body text-center">
                                     {/* FOTO DE PERFIL */}
-                                    <Image src={this.state.foto_perfil} style={{ width: 240, height: 240, borderRadius: 400 / 2 }} />
+                                    <Image src={this.state.foto_perfil} style={{ width: "80%", height: "80%", borderRadius: "80%" }} />
                                     {/* NOM D'USUARI COMPLET */}
                                     <div className="row justify-content-center mt-3 mb-3 ms-4">
                                         <div className="col-md-8">
