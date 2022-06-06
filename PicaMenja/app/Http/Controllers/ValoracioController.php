@@ -80,7 +80,7 @@ class ValoracioController extends Controller
     {
         $resultat = Valoracio::join("restaurants", "restaurants.id_restaurant", "=", "valoracions.id_restaurant")
             ->join("usuaris", "usuaris.id_usuari", "=", "valoracions.id_usuari")
-            ->select("restaurants.nom as restaurant", "valoracions.valoracio", "valoracions.comentari", "valoracions.data", DB::raw("CONCAT(usuaris.nom_usuari,' ', usuaris.llinatges) AS usuari"), "usuaris.email", "usuaris.foto_perfil")
+            ->select("valoracions.id_valoracio", "restaurants.nom as restaurant", "valoracions.valoracio", "valoracions.comentari", "valoracions.data", DB::raw("CONCAT(usuaris.nom_usuari,' ', usuaris.llinatges) AS usuari"), "usuaris.email", "usuaris.foto_perfil")
             ->where("restaurants.id_restaurant", "=", $id)
             ->get();
         return response()->json($resultat);

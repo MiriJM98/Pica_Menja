@@ -68,7 +68,9 @@ code {
   width: max-content;
   background-color: white;
   margin: auto;
-  background-color: rgb(193, 232, 247);
+  margin-top: 40px;
+  background-color: #212529;
+  color: white;
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 30px;
@@ -328,21 +330,41 @@ h1, h2, h3, h4 {
 #frontRestaurant {
   margin: auto;
   text-align: center;
-  background-image: url("../public/restaurant1.jpg");
+  background-image: url("../public/opacidad.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   /* display: flex;
   justify-content: center; */
   width: auto;
+  background-position-x: center;
+  background-position-y: center;
 }
 
-#contingut, #valoracionsUsuaris {
+#contingut {
   margin: 10px;
   text-align: left;
   /* display: flex;
   justify-content: center; */
-  width: auto;
+  width: 50%;
   font-size: 14pt;
+  padding: 10px;
+  background-color: white;
+}
+
+#valoracionsUsuaris {
+  margin: 10px;
+  text-align: left;
+  /* display: flex;
+  justify-content: center; */
+  width: 50%;
+  font-size: 14pt;
+  background-color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+#comentariNoBold {
+  font-weight: normal !important;
 }
 
 #cartaRestaurant {
@@ -461,12 +483,55 @@ tr, td {
   padding-bottom: 5px;
 }
 
-/* #serveisRes {
-  text-align: left;
-} */
-
 #textarea {
   width: 95%;
   outline: none;
   resize: none;
+}
+
+#h2Serveis {
+  background-color: #C7D5DD;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+#serveiUpperCase {
+  text-transform: uppercase
+}
+
+#serveisRes {
+  background-color: white;
+  width: 27%;
+}
+
+#pRadio {
+  text-align: center;
+  align-items: center;
+  padding-right: 50px;
+}
+
+#millores {
+  width: 100%;
+}
+
+#opinio {
+  color: #94C11F;
+}
+
+#fonsOpinio {
+  background-image: url("../public/3.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-bottom: 40px;
+}
+
+#llistaFooter {
+  margin-bottom: 0;
+}
+
+#fonsUsuari {
+  background-image: url("../public/mar.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-y: bottom;
 }

@@ -219,7 +219,9 @@
             "valorar" : "Valora",
             "altresDades" : "Altres dades",
             "cartaInsert" : "Carta insertada correctament!",
-            "pujaCarta" : "Puja carta"
+            "pujaCarta" : "Puja carta",
+            "formSend" : "Enviat correctament!",
+            "insertValoracio" : "Valoració creada!"
         } 
     ],
 
@@ -443,7 +445,9 @@
             "valorar" : "Valorar",
             "altresDades" : "Otros datos",
             "cartaInsert" : "¡Carta insertada correctamente!",
-            "pujaCarta" : "Sube la carta"
+            "pujaCarta" : "Sube la carta",
+            "formSend" : "¡Enviado correctamente!",
+            "insertValoracio" : "¡Valoración creada!"
         }
     ], 
 
@@ -667,7 +671,9 @@
             "valorar" : "Rate",
             "altresDades" : "Other data",
             "cartaInsert" : "Menu inserted successfully!",
-            "pujaCarta" : "Upload the menu"
+            "pujaCarta" : "Upload the menu",
+            "formSend" : "Successfully sent!",
+            "insertValoracio" : "Rating created!"
         } 
     ],
 
@@ -891,7 +897,9 @@
             "valorar" : "Bewerten Sie",
             "altresDades" : "Weitere Informationen",
             "cartaInsert" : "Menü korrekt eingefügt!",
-            "pujaCarta" : "Hochladen des Menüs"
+            "pujaCarta" : "Hochladen des Menüs",
+            "formSend" : "Erfolgreich eingereicht!",
+            "insertValoracio" : "Bewertung erstellt!"
         }
     ]
 }

@@ -331,7 +331,7 @@ export default class Menu extends Component {
           {new Date().getFullYear()}
           {'.'}
           <div>
-            <ul>
+            <ul id="llistaFooter">
               <li><a href="https://www.facebook.com/Pica-Menja-104063332311646" tabIndex={"0"}>
                 <Image src={process.env.PUBLIC_URL + '/fotof.png'} alt="Logo de Facebook"
                   title="Facebook" width="30" height="30" /></a></li>

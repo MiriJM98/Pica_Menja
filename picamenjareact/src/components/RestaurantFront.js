@@ -314,6 +314,7 @@ export default class RestaurantFront extends Component {
                 div.innerHTML = "";
                 this.state.serveis.forEach(servei => {
                     let paragraf = document.createElement("p");
+                    paragraf.setAttribute("id", "serveiUpperCase");
                     let serv = document.createTextNode(servei.servei);
                     paragraf.appendChild(serv);
                     div.appendChild(paragraf);
@@ -336,6 +337,7 @@ export default class RestaurantFront extends Component {
                 div.innerHTML = "";
                 this.state.serveis.forEach(servei => {
                     let paragraf = document.createElement("p");
+                    paragraf.setAttribute("id", "serveiUpperCase");
                     let serv = document.createTextNode(servei.servei);
                     paragraf.appendChild(serv);
                     div.appendChild(paragraf);
@@ -358,6 +360,7 @@ export default class RestaurantFront extends Component {
                 div.innerHTML = "";
                 this.state.serveis.forEach(servei => {
                     let paragraf = document.createElement("p");
+                    paragraf.setAttribute("id", "serveiUpperCase");
                     let serv = document.createTextNode(servei.servei);
                     paragraf.appendChild(serv);
                     div.appendChild(paragraf);
@@ -380,6 +383,7 @@ export default class RestaurantFront extends Component {
                 div.innerHTML = "";
                 this.state.serveis.forEach(servei => {
                     let paragraf = document.createElement("p");
+                    paragraf.setAttribute("id", "serveiUpperCase");
                     let serv = document.createTextNode(servei.servei);
                     paragraf.appendChild(serv);
                     div.appendChild(paragraf);
@@ -399,8 +403,6 @@ export default class RestaurantFront extends Component {
                 this.setState({
                     valoracio_global: response.data
                 });
-                // const div = document.getElementById("divValoracions");
-                // div.innerHTML = "";
                 this.state.valoracio_global.forEach(nota => {
                     // Fem parseFloat de la valoració
                     let parseat = parseFloat(nota.valoracio);
@@ -464,6 +466,7 @@ export default class RestaurantFront extends Component {
                     } else {
                         comentari = document.createTextNode("");
                     }
+                    tdComentari.setAttribute("id", "comentariNoBold");
                     tdComentari.appendChild(comentari);
                     trValoracions.appendChild(tdFotoPerfil);
                     trValoracions.appendChild(tdUsuari);
@@ -494,7 +497,8 @@ export default class RestaurantFront extends Component {
             .then((response) => {
                 console.log(response);
                 this.descarregaRestaurant(this.props.id_restaurant);
-                alert("Valoració correcta!");
+                alert(traduccions[sessionStorage.getItem("id_idioma")][0].insertValoracio);
+                window.location.reload();
             })
             .catch(function (error) {
                 // Mostrar error
@@ -520,9 +524,9 @@ export default class RestaurantFront extends Component {
                     {/* {console.log(this.state.fotos)} */}
                 </div>
                 <div id="contingut"></div>
-                <h2>{traduccions[sessionStorage.getItem("id_idioma")][0].serveis}</h2>
+                <h2 id="h2Serveis" className="mt-5">{traduccions[sessionStorage.getItem("id_idioma")][0].serveis}</h2>
                 <div id="serveisRes"></div>
-                <h2 className="mt-5">{traduccions[sessionStorage.getItem("id_idioma")][0].valocomen}</h2>
+                <h2 id="h2Serveis" className="mt-5">{traduccions[sessionStorage.getItem("id_idioma")][0].valocomen}</h2>
                 <div id="valoracionsUsuaris"></div>
                 <div id="divValoracions">
                     <h3 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].valoracio}</h3>
@@ -576,7 +580,7 @@ export default class RestaurantFront extends Component {
                         </div>
                     </div>
                     : console.log()}
-                <div id="iframeDiv"></div>
+                <div id="iframeDiv" className="mt-5"></div>
                 <ScrollToTop />
             </div>
         )

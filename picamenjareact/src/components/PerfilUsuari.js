@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Container, Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 import axios from 'axios';
 // import FormData from 'form-data';
 import traduccions from "./traduccions.json";
@@ -166,8 +166,8 @@ export default class PerfilUsuari extends Component {
 
     render() {
         return (
-            <Container>
-                <div className="container-xl px-4 mt-4">
+            <div id='fonsUsuari'>
+                <div className="container-xl px-4 pt-4">
                     <h1 className='row justify-content-center'>{traduccions[sessionStorage.getItem("id_idioma")][0].teuperfil}</h1>
                     {/* NAVEGACIÓ */}
                     <nav className="nav nav-borders">
@@ -178,7 +178,7 @@ export default class PerfilUsuari extends Component {
                     <div className="row">
                         <div className="col-xl-4">
                             {/* SECCIÓ DEL PERFIL */}
-                            <div className="card mb-4 mb-xl-0">
+                            <div className="card mb-4 mb-5">
                                 <div className="card-header">{traduccions[sessionStorage.getItem("id_idioma")][0].fotoperfil}</div>
                                 <div className="card-body text-center">
                                     {/* FOTO DE PERFIL */}
@@ -295,7 +295,7 @@ export default class PerfilUsuari extends Component {
                         </div>
                     </div>
                 </div>
-            </Container>
+            </div>
         )
     }
 }
