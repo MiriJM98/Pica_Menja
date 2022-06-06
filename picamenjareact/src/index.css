@@ -86,7 +86,7 @@ code {
   padding-bottom: 18px;
   background-image: url("../public/fons.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; 
   width: auto;
 }
 
@@ -475,8 +475,6 @@ tr, td {
   background-color: #A9CFD8;
   width: 42%;
   margin: auto;
-  /* margin-left : 460px;
-  margin-right: 460px; */
   margin-bottom: 30px; 
   margin-top: 30px; 
   padding-top: 5px;
@@ -532,6 +530,5 @@ tr, td {
 #fonsUsuari {
   background-image: url("../public/mar.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-position-y: bottom;
 }
