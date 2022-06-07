@@ -439,6 +439,7 @@ export default class RestaurantFront extends Component {
                 response.data.forEach(valoracio => {
                     // TR'S I TD'S
                     let trValoracions = document.createElement("tr");
+                    trValoracions.setAttribute("id", "trValoracions");
                     let trComentaris = document.createElement("tr");
                     let tdFotoPerfil = document.createElement("td");
                     let tdUsuari = document.createElement("td");

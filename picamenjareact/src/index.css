@@ -348,7 +348,7 @@ h1, h2, h3, h4 {
   text-align: left;
   /* display: flex;
   justify-content: center; */
-  width: 50%;
+  width: auto;
   font-size: 14pt;
   padding: 10px;
   background-color: white;
@@ -359,7 +359,7 @@ h1, h2, h3, h4 {
   text-align: left;
   /* display: flex;
   justify-content: center; */
-  width: 50%;
+  width: auto;
   font-size: 14pt;
   background-color: white;
   padding: 10px;

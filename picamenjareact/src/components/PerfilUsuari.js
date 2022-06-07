@@ -134,6 +134,7 @@ export default class PerfilUsuari extends Component {
                 .then(data => {
                     console.log(data)
                     alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
+                    this.descarrega();
                 })
                 .catch((error) => {
                     console.log(error);

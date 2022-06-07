@@ -32,7 +32,7 @@ export default class RestaurantsFront extends Component {
     restaurants = () => {
         axios.get("https://picamenja.com/PicaMenja/public/api/restaurants/front")
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 if (response.status === 200) {
                     this.setState({
                         restaurants: response.data,
@@ -60,9 +60,7 @@ export default class RestaurantsFront extends Component {
                         }
                         header.setAttribute("id", "cartaHeader");
                         imatge.setAttribute("id", "imatgeCarta");
-                        console.log(restaurant.imatge);
                         imatge.setAttribute("src", process.env.PUBLIC_URL + restaurant.imatge);
-                        console.log(process.env.PUBLIC_URL + restaurant.imatge);
                         imatge.setAttribute("width", 300);
                         imatge.setAttribute("height", 164);
                         imatge.setAttribute("alt", "Foto restaurant");
