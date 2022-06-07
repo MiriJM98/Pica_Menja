@@ -87,6 +87,7 @@ code {
   background-image: url("../public/fons.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed; 
+  background-size: cover;
   width: auto;
 }
 
@@ -334,6 +335,7 @@ h1, h2, h3, h4 {
   background-image: url("../public/opacidad.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   /* display: flex;
   justify-content: center; */
   width: auto;
@@ -533,4 +535,5 @@ tr, td {
   background-image: url("../public/mar.jpg");
   background-repeat: no-repeat;
   background-position-y: bottom;
+  background-size: cover;
 }

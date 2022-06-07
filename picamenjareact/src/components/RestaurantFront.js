@@ -38,7 +38,7 @@ export default class RestaurantFront extends Component {
             valoracio_usuari: [],
             serveis: [],
             valoracioRestaurant: -1,
-            comentariRestaurant: ""
+            comentariRestaurant: "",
         };
     }
 
@@ -194,7 +194,7 @@ export default class RestaurantFront extends Component {
                 carta.src = '/menu.png';
                 carta.setAttribute("alt", "Rang");
                 link.appendChild(carta);
-                iframe.setAttribute("src", this.state.iframe);
+                iframe.setAttribute("src", response.data.iframe);
                 iframe.setAttribute("width", "50%");
                 iframe.setAttribute("title", "Map");
                 iframe.setAttribute("height", "300px");
@@ -255,7 +255,6 @@ export default class RestaurantFront extends Component {
                 // console.log(response.data.length);
                 // console.log(this.state.id_restaurant);
                 let contador = response.data.length - 3;
-                console.log(contador);
                 this.setState({
                     fotos: response.data,
                 });
@@ -264,9 +263,12 @@ export default class RestaurantFront extends Component {
                 let tr = document.createElement("tr");
                 let td = document.createElement("td");
                 td.setAttribute("id", "tdGaleria");
-                this.state.fotos.forEach(foto => {
+                let divCarousel = document.getElementById("carouselRestaurant");
+                divCarousel.innerHTML = "";
+                response.data.forEach(foto => {
                     if (contador < 6) {
                         let imatge = document.createElement("img");
+                        imatge.setAttribute("alt", "Foto");
                         imatge.setAttribute("src", foto.foto);
                         imatge.setAttribute("height", 300);
                         imatge.setAttribute("id", "imatgeGaleria");
@@ -282,9 +284,10 @@ export default class RestaurantFront extends Component {
                 let tr2 = document.createElement("tr");
                 let td2 = document.createElement("td");
                 td2.setAttribute("id", "tdGaleria");
-                this.state.fotos.forEach(foto => {
+                response.data.forEach(foto => {
                     if (contador2 > 5) {
                         let imatge = document.createElement("img");
+                        imatge.setAttribute("alt", "Foto");
                         imatge.setAttribute("src", foto.foto);
                         imatge.setAttribute("height", 300);
                         imatge.setAttribute("id", "imatgeGaleria");
@@ -312,7 +315,7 @@ export default class RestaurantFront extends Component {
                 });
                 const div = document.getElementById("serveisRes");
                 div.innerHTML = "";
-                this.state.serveis.forEach(servei => {
+                response.data.forEach(servei => {
                     let paragraf = document.createElement("p");
                     paragraf.setAttribute("id", "serveiUpperCase");
                     let serv = document.createTextNode(servei.servei);
@@ -335,7 +338,7 @@ export default class RestaurantFront extends Component {
                 });
                 const div = document.getElementById("serveisRes");
                 div.innerHTML = "";
-                this.state.serveis.forEach(servei => {
+                response.data.forEach(servei => {
                     let paragraf = document.createElement("p");
                     paragraf.setAttribute("id", "serveiUpperCase");
                     let serv = document.createTextNode(servei.servei);
@@ -358,7 +361,7 @@ export default class RestaurantFront extends Component {
                 });
                 const div = document.getElementById("serveisRes");
                 div.innerHTML = "";
-                this.state.serveis.forEach(servei => {
+                response.data.forEach(servei => {
                     let paragraf = document.createElement("p");
                     paragraf.setAttribute("id", "serveiUpperCase");
                     let serv = document.createTextNode(servei.servei);
@@ -381,7 +384,7 @@ export default class RestaurantFront extends Component {
                 });
                 const div = document.getElementById("serveisRes");
                 div.innerHTML = "";
-                this.state.serveis.forEach(servei => {
+                response.data.forEach(servei => {
                     let paragraf = document.createElement("p");
                     paragraf.setAttribute("id", "serveiUpperCase");
                     let serv = document.createTextNode(servei.servei);
@@ -403,7 +406,7 @@ export default class RestaurantFront extends Component {
                 this.setState({
                     valoracio_global: response.data
                 });
-                this.state.valoracio_global.forEach(nota => {
+                response.data.forEach(nota => {
                     // Fem parseFloat de la valoració
                     let parseat = parseFloat(nota.valoracio);
                     this.setState({
@@ -433,7 +436,7 @@ export default class RestaurantFront extends Component {
                 const div = document.getElementById("valoracionsUsuaris");
                 div.innerHTML = "";
                 let taula = document.createElement("table");
-                this.state.valoracions.forEach(valoracio => {
+                response.data.forEach(valoracio => {
                     // TR'S I TD'S
                     let trValoracions = document.createElement("tr");
                     let trComentaris = document.createElement("tr");
@@ -452,6 +455,7 @@ export default class RestaurantFront extends Component {
                     });
                     let estrelles = document.createTextNode(parseat + "/5");
                     // PROPIETATS DE LA IMATGE
+                    fotoPerfil.setAttribute("alt", "Foto Usuari");
                     fotoPerfil.setAttribute("src", valoracio.foto_perfil);
                     fotoPerfil.setAttribute("id", "fotoValUsuaris");
                     tdComentari.setAttribute("colspan", "10");
@@ -564,6 +568,7 @@ export default class RestaurantFront extends Component {
                             <div>
                                 <h5>{traduccions[sessionStorage.getItem("id_idioma")][0].puntuacioRestaurant}
                                     <select className="ms-2" name="valoracioRestaurant" onChange={this.onChange}>
+                                        <option>{traduccions[sessionStorage.getItem("id_idioma")][0].select}</option>
                                         <option value={1}>1</option>
                                         <option value={2}>2</option>
                                         <option value={3}>3</option>
@@ -576,7 +581,9 @@ export default class RestaurantFront extends Component {
                             <p>
                                 <textarea id="textarea" rows="4" cols="60" placeholder={traduccions[sessionStorage.getItem("id_idioma")][0].placeholderComent} name="comentariRestaurant" onChange={this.onChange}></textarea>
                             </p>
-                            <p><button className="btn btn-primary btn-lg" onClick={this.crearValoracio}>{traduccions[sessionStorage.getItem("id_idioma")][0].valorar}</button></p>
+                            {this.state.valoracioRestaurant !== -1 ?
+                                <p><button className="btn btn-primary btn-lg" onClick={this.crearValoracio}>{traduccions[sessionStorage.getItem("id_idioma")][0].valorar}</button></p>
+                                : console.log()}
                         </div>
                     </div>
                     : console.log()}

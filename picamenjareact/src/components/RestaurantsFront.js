@@ -39,8 +39,9 @@ export default class RestaurantsFront extends Component {
                         current_page: response.data.current_page,
                         id_tipus: response.data.id_tipus,
                     });
-
-                    this.state.restaurants.forEach(restaurant => {
+                    let div = document.getElementById("contenedorTaula");
+                    div.innerHTML = "";
+                    response.data.forEach(restaurant => {
                         let carta = document.createElement("div");
                         carta.setAttribute("id", "cartes");
                         let header = document.createElement("h2");
@@ -88,8 +89,8 @@ export default class RestaurantsFront extends Component {
                         restaurants_tipus: response.data,
                         id_tipus: response.data.id_tipus,
                     });
-                    // const mostrador = document.getElementById("contenedorTaula");
-                    // mostrador.innerHTML = "";
+                    const mostrador = document.getElementById("contenedorTaula");
+                    mostrador.innerHTML = "";
                     const tipus = document.getElementById("contenedorTipus");
                     tipus.innerHTML = "";
                     let tipusFiltre = "";
@@ -154,8 +155,8 @@ export default class RestaurantsFront extends Component {
                         restaurants_preus: response.data,
                         rang_preus: response.data.rang_preus,
                     });
-                    // const mostrador = document.getElementById("contenedorTaula");
-                    // mostrador.innerHTML = "";
+                    const mostrador = document.getElementById("contenedorTaula");
+                    mostrador.innerHTML = "";
                     const tipus = document.getElementById("contenedorPreus");
                     tipus.innerHTML = "";
                     let preusFiltre = "";
@@ -219,8 +220,8 @@ export default class RestaurantsFront extends Component {
                 this.setState({
                     restaurants_serveis: response.data,
                 });
-                // const mostrador = document.getElementById("contenedorTaula");
-                // mostrador.innerHTML = "";
+                const mostrador = document.getElementById("contenedorTaula");
+                mostrador.innerHTML = "";
                 const servei = document.getElementById("contenedorServei");
                 servei.innerHTML = "";
                 const divServei = document.getElementById("titolServei");

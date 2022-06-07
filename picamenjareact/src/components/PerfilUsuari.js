@@ -193,7 +193,7 @@ export default class PerfilUsuari extends Component {
                                             <div>
                                                 <input
                                                     type="file"
-                                                    accept="image/png, image/jpeg"
+                                                    accept="image/png, image/jpeg, image/webp"
                                                     name="foto_perfil"
                                                     onChange={this.onChangeFoto}
                                                     className="form-control"
