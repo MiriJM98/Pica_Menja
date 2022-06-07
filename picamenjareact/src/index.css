@@ -84,7 +84,7 @@ code {
 #divLogin, #divRegistre {
   padding-top: 20px;
   padding-bottom: 18px;
-  background-image: url("../public/fons.jpg");
+  background-image: url("../public/fons.webp");
   background-repeat: no-repeat;
   background-attachment: fixed; 
   background-size: cover;
@@ -109,7 +109,7 @@ label {
 
 #botoLogin, #botoRegistre {
   display: flex;
-  background-color: #176d2b;
+  background-color: #035B34;
   padding: 10px 45px 10px 45px;
   border: 0;
   font-size: 14pt;
@@ -200,8 +200,11 @@ label {
 #quisom {
   justify-content: center;
   text-align: center;
-  margin-left: 15px;
-  margin-right: 15px;
+  background-image: url("../public/3.webp");
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-size: cover;
+  padding-bottom: 50px;
 }
 
 #frase {
@@ -219,6 +222,17 @@ label {
 
 #contenedor {
   width: 100%;
+  background-color: #212529;
+  width: 85%;
+  margin: auto;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
+#h2SobreMi {
+  color: #94C11F;
 }
 
 .sobreMi {
@@ -332,7 +346,7 @@ h1, h2, h3, h4 {
 #frontRestaurant {
   margin: auto;
   text-align: center;
-  background-image: url("../public/opacidad.jpg");
+  background-image: url("../public/opacidad.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -348,7 +362,7 @@ h1, h2, h3, h4 {
   text-align: left;
   /* display: flex;
   justify-content: center; */
-  width: auto;
+  width: 50%;
   font-size: 14pt;
   padding: 10px;
   background-color: white;
@@ -359,7 +373,7 @@ h1, h2, h3, h4 {
   text-align: left;
   /* display: flex;
   justify-content: center; */
-  width: auto;
+  width: 42%;
   font-size: 14pt;
   background-color: white;
   padding: 10px;
@@ -532,8 +546,89 @@ tr, td {
 }
 
 #fonsUsuari {
-  background-image: url("../public/mar.jpg");
+  background-image: url("../public/mar.webp");
   background-repeat: no-repeat;
   background-position-y: bottom;
   background-size: cover;
+}
+
+@media screen and (max-width: 550px) { 
+  .idiomes { 
+    display: table-cell;
+    align-items: center;
+  } 
+}
+
+@media screen and (max-width: 550px) { 
+  #h1Restaurants { 
+    font-size: 35pt;
+  } 
+}
+
+@media screen and (max-width: 550px) { 
+  #h1Filtre { 
+    font-size: 18pt;
+  } 
+}
+
+@media screen and (max-width: 750px) { 
+  #valoracionsUsuaris { 
+    width: auto;
+  } 
+}
+
+@media screen and (max-width: 750px) { 
+  #contingut { 
+    width: auto;
+    margin-right: 42px;
+  } 
+}
+
+@media screen and (max-width: 500px) { 
+  #contingut { 
+    font-size: 12pt;
+  } 
+}
+
+#sobrePica {
+  margin: auto;
+  text-align: center;
+  background-color: #c7ccdd;
+  width: 50%;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #212529;
+  color: white;
+}
+
+@media screen and (max-width: 600px) { 
+  #sobrePica { 
+    width: auto;
+    margin: 20px;
+  } 
+}
+
+#h1QuiSom, #h3QuiSom {
+  color: #94C11F;
+}
+
+@media screen and (max-width: 600px) { 
+  #imatgeGaleria { 
+    height: 200px;
+  } 
+}
+
+@media screen and (max-width: 370px) { 
+  #imatgeGaleria { 
+    height: 150px;
+  } 
+}
+
+@media screen and (max-width: 370px) { 
+  #fotosResponsive { 
+    width: 25px;
+  } 
 }

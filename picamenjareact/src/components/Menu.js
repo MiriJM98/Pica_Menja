@@ -153,26 +153,26 @@ export default class Menu extends Component {
                 <option value="4">Deutsch</option>
               </select>
               {sessionStorage.getItem("id_idioma") === "1" ?
-                <Image src={process.env.PUBLIC_URL + '/catalana.jpg'}
-                  width="60" height="47" id="fotoIdioma" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
+                <Image src={process.env.PUBLIC_URL + '/catalana.webp'}
+                  width="60" height="48" id="fotoIdioma" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
                   alt={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes} className="ms-2 mt-3"
                 />
                 : console.log()}
               {sessionStorage.getItem("id_idioma") === "2" ?
-                <Image src={process.env.PUBLIC_URL + '/spain.png'}
-                  width="60" height="47" id="fotoIdioma" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
+                <Image src={process.env.PUBLIC_URL + '/spain.webp'}
+                  width="60" height="48" id="fotoIdioma" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
                   alt={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes} className="ms-2 mt-3"
                 />
                 : console.log()}
               {sessionStorage.getItem("id_idioma") === "3" ?
-                <Image src={process.env.PUBLIC_URL + '/inglesa.jpg'}
-                  width="60" height="47" id="fotoIdioma" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
+                <Image src={process.env.PUBLIC_URL + '/inglesa.webp'}
+                  width="60" height="48" id="fotoIdioma" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
                   alt={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes} className="ms-2 mt-3"
                 />
                 : console.log()}
               {sessionStorage.getItem("id_idioma") === "4" ?
-                <Image src={process.env.PUBLIC_URL + '/alemana.jpg'}
-                  width="60" height="47" id="fotoIdioma" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
+                <Image src={process.env.PUBLIC_URL + '/alemana.webp'}
+                  width="60" height="48" id="fotoIdioma" title={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes}
                   alt={traduccions[sessionStorage.getItem("id_idioma")][0].idiomes} className="ms-2 mt-3"
                 />
                 : console.log()}
@@ -201,7 +201,7 @@ export default class Menu extends Component {
                       {/* L'USUARI NO TÉ FOTO DE PERFIL */}
                       {this.state.foto_perfil === "null" || this.state.foto_perfil === null ?
                         <>
-                          <Image src={process.env.PUBLIC_URL + "/userpink.png"} alt="Foto Defecte" style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
+                          <Image src={process.env.PUBLIC_URL + "/userpink.webp"} alt="Foto Defecte" style={{ width: 50, height: 50, borderRadius: 400 / 2 }} />
                         </>
                         : console.log()}
                     </button>
@@ -223,7 +223,7 @@ export default class Menu extends Component {
                 {/* SI NO ENS TROBAM A LA PÀGINA D'INICI (/) LA FOTO NOMÉS MOSTRARÀ EL NOM DE L'APLICACIÓ */}
                 {window.location.pathname !== "/" ?
                   <>
-                    <Image src={process.env.PUBLIC_URL + '/picamenja.png'}
+                    <Image src={process.env.PUBLIC_URL + '/picamenja.webp'}
                       rel="preload"
                       alt="PICA & MENJA"
                       title="PICA & MENJA"
@@ -237,11 +237,12 @@ export default class Menu extends Component {
                 {/* SI ENS TROBAM A LA PÀGINA D'INICI (/) LA FOTO, A MÉS DEL NOM DE L'APLICACIÓ, TAMBÉ MOSTRA EL LOGOTIP */}
                 {window.location.pathname === "/" ?
                   <>
-                    <Image src={process.env.PUBLIC_URL + '/logoweb.png'}
+                    <Image src={process.env.PUBLIC_URL + '/logoweb.webp'}
                       rel="preload"
                       alt="PICA & MENJA"
                       title="PICA & MENJA"
                       id="imatges"
+                      width={300}
                     />
                   </>
                   : console.log()}
@@ -333,13 +334,13 @@ export default class Menu extends Component {
           <div>
             <ul id="llistaFooter">
               <li><a href="https://www.facebook.com/Pica-Menja-104063332311646" tabIndex={"0"}>
-                <Image src={process.env.PUBLIC_URL + '/fotof.png'} alt="Logo de Facebook"
+                <Image src={process.env.PUBLIC_URL + '/fotof.webp'} alt="Logo de Facebook"
                   title="Facebook" width="30" height="30" /></a></li>
               <li><a href="https://www.instagram.com/pica_menja/" tabIndex={"0"}>
-                <Image src={process.env.PUBLIC_URL + '/fotoi.png'}
+                <Image src={process.env.PUBLIC_URL + '/fotoi.webp'}
                   alt="Logo d'Instagram" title="Instagram" width="30" height="30" /></a></li>
               <li><a href="https://twitter.com/MenjaPica" tabIndex={"0"}>
-                <Image src={process.env.PUBLIC_URL + '/fotot.png'}
+                <Image src={process.env.PUBLIC_URL + '/fotot.webp'}
                   alt="Logo de Twitter" title="Twitter" width="30" height="30" /></a></li>
             </ul>
           </div>
