@@ -17,12 +17,6 @@ class RestaurantController extends Controller
         return response()->json($restaurants);
     }
 
-    public function indexFront()
-    {
-        $restaurants = Restaurant::all();
-        return response()->json($restaurants);
-    }
-
     // MOSTRAR UN RESTAURANT PER EL SEU ID
     // MÈTODE GET
     public function show($id)
@@ -238,6 +232,18 @@ class RestaurantController extends Controller
     {
         $resultat = DB::table('restaurants')->distinct()
             ->select(
+                "nom",
+                "imatge"
+            )
+            ->get();
+        return response()->json($resultat);
+    }
+
+    public function indexFront()
+    {
+        $resultat = DB::table('restaurants')->distinct()
+            ->select(
+                "id_restaurant",
                 "nom",
                 "imatge"
             )

@@ -26,16 +26,13 @@ export default class RestaurantsFront extends Component {
     }
 
     componentDidMount = () => {
-        if (document.getElementById("contenedorTaula").style.display !== "none") {
-            this.restaurants();
-        }
+        this.restaurants();
     };
 
     restaurants = () => {
-        console.log("POR DIOS MIRA AQUÍ ---> " + sessionStorage.getItem("id_idioma"));
         axios.get("https://picamenja.com/PicaMenja/public/api/restaurants/front")
             .then((response) => {
-                // console.log(response);
+                console.log(response);
                 if (response.status === 200) {
                     this.setState({
                         restaurants: response.data,
@@ -62,7 +59,9 @@ export default class RestaurantsFront extends Component {
                         }
                         header.setAttribute("id", "cartaHeader");
                         imatge.setAttribute("id", "imatgeCarta");
-                        imatge.setAttribute("src", restaurant.imatge);
+                        console.log(restaurant.imatge);
+                        imatge.setAttribute("src", process.env.PUBLIC_URL + restaurant.imatge);
+                        console.log(process.env.PUBLIC_URL + restaurant.imatge);
                         imatge.setAttribute("width", 300);
                         imatge.setAttribute("height", 164);
                         imatge.setAttribute("alt", "Foto restaurant");
@@ -89,8 +88,8 @@ export default class RestaurantsFront extends Component {
                         restaurants_tipus: response.data,
                         id_tipus: response.data.id_tipus,
                     });
-                    const mostrador = document.getElementById("contenedorTaula");
-                    mostrador.innerHTML = "";
+                    // const mostrador = document.getElementById("contenedorTaula");
+                    // mostrador.innerHTML = "";
                     const tipus = document.getElementById("contenedorTipus");
                     tipus.innerHTML = "";
                     let tipusFiltre = "";
@@ -155,8 +154,8 @@ export default class RestaurantsFront extends Component {
                         restaurants_preus: response.data,
                         rang_preus: response.data.rang_preus,
                     });
-                    const mostrador = document.getElementById("contenedorTaula");
-                    mostrador.innerHTML = "";
+                    // const mostrador = document.getElementById("contenedorTaula");
+                    // mostrador.innerHTML = "";
                     const tipus = document.getElementById("contenedorPreus");
                     tipus.innerHTML = "";
                     let preusFiltre = "";
@@ -220,8 +219,8 @@ export default class RestaurantsFront extends Component {
                 this.setState({
                     restaurants_serveis: response.data,
                 });
-                const mostrador = document.getElementById("contenedorTaula");
-                mostrador.innerHTML = "";
+                // const mostrador = document.getElementById("contenedorTaula");
+                // mostrador.innerHTML = "";
                 const servei = document.getElementById("contenedorServei");
                 servei.innerHTML = "";
                 const divServei = document.getElementById("titolServei");

@@ -310,6 +310,7 @@ h1, h2, h3, h4 {
   background-image: url("../public/3.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   width: auto;
 }
 
@@ -520,6 +521,7 @@ tr, td {
   background-image: url("../public/3.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   padding-bottom: 40px;
 }
 

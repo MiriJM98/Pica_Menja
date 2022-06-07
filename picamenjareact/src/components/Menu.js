@@ -250,7 +250,7 @@ export default class Menu extends Component {
           </Container>
         </header>
 
-        <BrowserRouter>
+        <BrowserRouter basename="/">
           {/* SECCIÓ COMPOSTA PER EL MENÚ I RUTES DE L'APLICACIÓ */}
           <Navbar
             bg="dark"
