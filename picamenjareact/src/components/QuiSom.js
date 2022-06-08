@@ -15,31 +15,33 @@ export default class QuiSom extends Component {
     };
 
     descarrega = () => {
-        const config = {
-            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        };
-        const usuari = sessionStorage.getItem("id_usuari");
-        axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
-            .then(response => {
-                //console.log(response);
-                this.setState({
-                    id_usuari: response.data.id_usuari,
-                    nom_usuari: response.data.nom_usuari,
-                    foto_perfil: response.data.foto_perfil,
-                });
-            })
-            .catch(function (error) {
-                // Mostrar error
-                console.log(error);
-                if (error.response.status === 401 || error.response.status === 403) {
-                    sessionStorage.setItem("token", "");
-                    sessionStorage.setItem("admin", "");
-                    sessionStorage.setItem("id_usuari", "");
-                    alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
-                    window.location.assign("/");
-                    this.handleRefresh();
-                }
-            })
+        if (sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null) {
+            const config = {
+                headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+            };
+            const usuari = sessionStorage.getItem("id_usuari");
+            axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
+                .then(response => {
+                    //console.log(response);
+                    this.setState({
+                        id_usuari: response.data.id_usuari,
+                        nom_usuari: response.data.nom_usuari,
+                        foto_perfil: response.data.foto_perfil,
+                    });
+                })
+                .catch(function (error) {
+                    // Mostrar error
+                    console.log(error);
+                    if (error.response.status === 401 || error.response.status === 403) {
+                        sessionStorage.setItem("token", "");
+                        sessionStorage.setItem("admin", "");
+                        sessionStorage.setItem("id_usuari", "");
+                        alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
+                        window.location.assign("/");
+                        this.handleRefresh();
+                    }
+                })
+        }
     }
 
     render() {

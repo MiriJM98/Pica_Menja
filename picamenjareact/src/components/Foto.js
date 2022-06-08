@@ -46,7 +46,7 @@ export default class Foto extends Component {
         };
         axios.get('https://picamenja.com/PicaMenja/public/api/fotos' + id_foto, config)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 this.setState({
                     id_foto: response.data.id_foto,
                     foto: response.data.foto
@@ -64,7 +64,7 @@ export default class Foto extends Component {
         };
         axios.get('https://picamenja.com/PicaMenja/public/api/idiomes', config)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ idiomes: response.data });
             })
             .catch(function (error) {
@@ -88,7 +88,7 @@ export default class Foto extends Component {
         };
         axios.post('https://picamenja.com/PicaMenja/public/api/fotos', formData, config)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
                 window.location.assign("/fotos");
                 this.descarrega();
@@ -108,7 +108,7 @@ export default class Foto extends Component {
         fetch("https://picamenja.com/PicaMenja/public/api/fotos/imatge/" + this.state.id_foto, { method: 'POST', headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") }, body: formData })
             .then((response => response.json()))
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
                 window.location.assign("/fotos");
                 this.descarrega();

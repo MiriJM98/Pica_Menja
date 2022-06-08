@@ -66,7 +66,7 @@ export default class Usuaris extends Component {
         };
         axios.delete('https://picamenja.com/PicaMenja/public/api/usuaris/' + id, config)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 this.descarrega();
             })
             .catch(function (error) {
@@ -90,7 +90,7 @@ export default class Usuaris extends Component {
 
             axios.get('https://picamenja.com/PicaMenja/public/api/usuaris', config)
                 .then(response => {
-                    console.log(response);
+                    // console.log(response);
                     this.setState({ usuaris: response.data });
                 })
                 .catch(function (error) {

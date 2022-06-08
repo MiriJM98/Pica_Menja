@@ -69,7 +69,7 @@ export default class RestaurantServeis extends Component {
                 id_restaurant + "/" + id_servei, config
             )
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.descarrega();
             })
             .catch(function (error) {
@@ -89,7 +89,7 @@ export default class RestaurantServeis extends Component {
         axios
             .get("https://picamenja.com/PicaMenja/public/api/restaurants_serveis", config)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ restaurants_serveis: response.data });
             })
             .catch(function (error) {

@@ -94,7 +94,7 @@ export default class Valoracions extends Component {
                 id, config
             )
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.descarrega();
             })
             .catch(function (error) {
@@ -116,7 +116,7 @@ export default class Valoracions extends Component {
                 "https://picamenja.com/PicaMenja/public/api/valoracions", config
             )
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ valoracions: response.data });
             })
             .catch(function (error) {

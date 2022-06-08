@@ -22,7 +22,7 @@ export default class Usuari extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.id_usuari);
+        // console.log(this.props.id_usuari);
         if (this.props.id_usuari !== -1) {
             this.descarrega(this.props.id_usuari);
         }
@@ -34,7 +34,7 @@ export default class Usuari extends Component {
         };
         axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + id_usuari, config)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 this.setState({
                     id_usuari: response.data.id_usuari,
                     nom_usuari: response.data.nom_usuari,
@@ -66,7 +66,6 @@ export default class Usuari extends Component {
         formData.append("administrador", this.state.administrador);
         formData.append("foto_perfil", this.state.foto_perfil);
         // Token
-        console.log(formData);
         const config = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token"),
@@ -75,7 +74,7 @@ export default class Usuari extends Component {
         };
         axios.put('https://picamenja.com/PicaMenja/public/api/usuaris/' + this.state.id_usuari, formData, config
         ).then(response => {
-            console.log(response);
+            // console.log(response);
             alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitUpdate);
             window.location.assign("/usuaris");
             this.descarrega();
@@ -101,7 +100,6 @@ export default class Usuari extends Component {
         formData.append("foto_perfil", this.state.foto_perfil);
         formData.append("password", this.state.password);
         // Token
-        console.log(formData);
         const config = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token"),
@@ -110,7 +108,7 @@ export default class Usuari extends Component {
         };
         axios.post('https://picamenja.com/PicaMenja/public/api/usuaris', formData, config)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
                 window.location.assign("/usuaris");
                 this.descarrega();

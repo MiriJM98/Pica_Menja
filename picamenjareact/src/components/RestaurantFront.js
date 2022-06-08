@@ -76,31 +76,33 @@ export default class RestaurantFront extends Component {
     };
 
     descarregaUsuari = () => {
-        const config = {
-            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        };
-        const usuari = sessionStorage.getItem("id_usuari");
-        axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
-            .then(response => {
-                //console.log(response);
-                this.setState({
-                    id_usuari: response.data.id_usuari,
-                    nom_usuari: response.data.nom_usuari,
-                    foto_perfil: response.data.foto_perfil,
-                });
-            })
-            .catch(function (error) {
-                // Mostrar error
-                console.log(error);
-                if (error.response.status === 401 || error.response.status === 403) {
-                    sessionStorage.setItem("token", "");
-                    sessionStorage.setItem("admin", "");
-                    sessionStorage.setItem("id_usuari", "");
-                    alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
-                    window.location.assign("/");
-                    this.handleRefresh();
-                }
-            })
+        if (sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null) {
+            const config = {
+                headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+            };
+            const usuari = sessionStorage.getItem("id_usuari");
+            axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
+                .then(response => {
+                    //console.log(response);
+                    this.setState({
+                        id_usuari: response.data.id_usuari,
+                        nom_usuari: response.data.nom_usuari,
+                        foto_perfil: response.data.foto_perfil,
+                    });
+                })
+                .catch(function (error) {
+                    // Mostrar error
+                    console.log(error);
+                    if (error.response.status === 401 || error.response.status === 403) {
+                        sessionStorage.setItem("token", "");
+                        sessionStorage.setItem("admin", "");
+                        sessionStorage.setItem("id_usuari", "");
+                        alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
+                        window.location.assign("/");
+                        this.handleRefresh();
+                    }
+                })
+        }
     }
 
     descarregaRestaurant = (id_restaurant) => {
@@ -458,7 +460,6 @@ export default class RestaurantFront extends Component {
                     let valoracio = document.createTextNode(parseat);
                     puntuacio.setAttribute("font-size", "20pt");
                     puntuacio.appendChild(valoracio);
-                    // console.log("TIPO " + typeof parseat);
                 });
             })
             .catch(function (error) {
@@ -474,7 +475,6 @@ export default class RestaurantFront extends Component {
                 this.setState({
                     valoracions: response.data
                 });
-                // console.log(this.state.valoracions);
                 const div = document.getElementById("valoracionsUsuaris");
                 div.innerHTML = "";
                 let taula = document.createElement("table");
@@ -542,7 +542,7 @@ export default class RestaurantFront extends Component {
         };
         axios.post("https://picamenja.com/PicaMenja/public/api/valoracions", formData, config)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.descarregaRestaurant(this.props.id_restaurant);
                 alert(traduccions[sessionStorage.getItem("id_idioma")][0].insertValoracio);
                 window.location.reload();
@@ -567,9 +567,7 @@ export default class RestaurantFront extends Component {
         return (
             <div id="frontRestaurant" className="row justify-content-center">
                 <h1 className="row justify-content-center mt-3">{this.state.nom}</h1>
-                <div id="carouselRestaurant">
-                    {/* {console.log(this.state.fotos)} */}
-                </div>
+                <div id="carouselRestaurant"></div>
                 <div id="contingut"></div>
                 <h2 id="h2Serveis" className="mt-5">{traduccions[sessionStorage.getItem("id_idioma")][0].serveis}</h2>
                 <div id="serveisRes"></div>

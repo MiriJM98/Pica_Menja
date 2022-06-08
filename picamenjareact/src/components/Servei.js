@@ -50,7 +50,7 @@ export default class Servei extends Component {
         };
         axios.get("https://picamenja.com/PicaMenja/public/api/serveis", config)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ serveis: response.data });
             })
             .catch(function (error) {
@@ -77,7 +77,7 @@ export default class Servei extends Component {
         };
         axios.post("https://picamenja.com/PicaMenja/public/api/serveis", formData, config
         ).then((response) => {
-            console.log(response);
+            // console.log(response);
             alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
             window.location.assign("/serveis");
             this.descarrega();

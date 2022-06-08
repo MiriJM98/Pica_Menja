@@ -77,7 +77,7 @@ export default class Restaurant extends Component {
         };
         axios.get("https://picamenja.com/PicaMenja/public/api/restaurants", config)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ restaurants: response.data });
             })
             .catch(function (error) {
@@ -114,7 +114,7 @@ export default class Restaurant extends Component {
         axios.put("https://picamenja.com/PicaMenja/public/api/restaurants/" + this.state.id_restaurant, formData,
             config)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitUpdate);
                 window.location.assign("/restaurants_back");
                 this.descarrega();
@@ -156,7 +156,7 @@ export default class Restaurant extends Component {
         };
         axios.post("https://picamenja.com/PicaMenja/public/api/restaurants", formData, config
         ).then((response) => {
-            console.log(response);
+            // console.log(response);
             alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
             window.location.assign("/restaurants_back");
             this.descarrega();
@@ -176,7 +176,7 @@ export default class Restaurant extends Component {
         fetch("https://picamenja.com/PicaMenja/public/api/restaurants/imatge/" + this.state.id_restaurant, { method: 'POST', headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") }, body: formData })
             .then((response => response.json()))
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
             })
             .catch((error) => {
@@ -191,7 +191,7 @@ export default class Restaurant extends Component {
         fetch("https://picamenja.com/PicaMenja/public/api/restaurants/carta/" + this.state.id_restaurant, { method: 'POST', headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") }, body: formData })
             .then((response => response.json()))
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 alert(traduccions[sessionStorage.getItem("id_idioma")][0].cartaInsert);
             })
             .catch((error) => {

@@ -51,7 +51,7 @@ export default class RestaurantServei extends Component {
         };
         axios.post("https://picamenja.com/PicaMenja/public/api/restaurants_serveis", formData, config
         ).then((response) => {
-            console.log(response);
+            // console.log(response);
             alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
             window.location.assign("/restaurants_serveis");
             this.descarrega();

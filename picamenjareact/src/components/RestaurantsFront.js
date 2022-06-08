@@ -31,31 +31,33 @@ export default class RestaurantsFront extends Component {
     };
 
     descarregaUsuari = () => {
-        const config = {
-            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
-        };
-        const usuari = sessionStorage.getItem("id_usuari");
-        axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
-            .then(response => {
-                //console.log(response);
-                this.setState({
-                    id_usuari: response.data.id_usuari,
-                    nom_usuari: response.data.nom_usuari,
-                    foto_perfil: response.data.foto_perfil,
-                });
-            })
-            .catch(function (error) {
-                // Mostrar error
-                console.log(error);
-                if (error.response.status === 401 || error.response.status === 403) {
-                    sessionStorage.setItem("token", "");
-                    sessionStorage.setItem("admin", "");
-                    sessionStorage.setItem("id_usuari", "");
-                    alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
-                    window.location.assign("/");
-                    this.handleRefresh();
-                }
-            })
+        if (sessionStorage.getItem("token") !== "" && sessionStorage.getItem("token") !== null) {
+            const config = {
+                headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+            };
+            const usuari = sessionStorage.getItem("id_usuari");
+            axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
+                .then(response => {
+                    //console.log(response);
+                    this.setState({
+                        id_usuari: response.data.id_usuari,
+                        nom_usuari: response.data.nom_usuari,
+                        foto_perfil: response.data.foto_perfil,
+                    });
+                })
+                .catch(function (error) {
+                    // Mostrar error
+                    console.log(error);
+                    if (error.response.status === 401 || error.response.status === 403) {
+                        sessionStorage.setItem("token", "");
+                        sessionStorage.setItem("admin", "");
+                        sessionStorage.setItem("id_usuari", "");
+                        alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
+                        window.location.assign("/");
+                        this.handleRefresh();
+                    }
+                })
+        }
     }
 
     // FUNCIÓ PER RECARREGAR EL COMPONENT
@@ -248,7 +250,7 @@ export default class RestaurantsFront extends Component {
         console.log(this.state.id_servei);
         axios.get("https://picamenja.com/PicaMenja/public/api/restaurants_serveis/restaurants/" + this.state.id_servei)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({
                     restaurants_serveis: response.data,
                 });
@@ -323,6 +325,9 @@ export default class RestaurantsFront extends Component {
     render() {
         return (
             <div id="restaurantsFront">
+                <div id="missatgeFiltre">
+                    <p>{traduccions[sessionStorage.getItem("id_idioma")][0].lupa}</p>
+                </div>
                 {/* FILTRAR PER TIPUS DE RESTAURANT */}
                 <div id="divFiltreTipus">
                     <h1 id="h1Filtre">{traduccions[sessionStorage.getItem("id_idioma")][0].filtraTipus}</h1>

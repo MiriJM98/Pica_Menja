@@ -199,7 +199,7 @@ export default class Espais extends Component {
     };
     axios.delete("https://picamenja.com/PicaMenja/public/api/restaurants/" + id, config)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.descarrega();
       })
       .catch(function (error) {
@@ -218,7 +218,7 @@ export default class Espais extends Component {
     };
     axios.get("https://picamenja.com/PicaMenja/public/api/restaurants", config)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({ restaurants: response.data });
       })
       .catch(function (error) {

@@ -90,7 +90,7 @@ export default class Serveis extends Component {
                 id, config
             )
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.descarrega();
             })
             .catch(function (error) {
@@ -112,7 +112,7 @@ export default class Serveis extends Component {
                 "https://picamenja.com/PicaMenja/public/api/serveis", config
             )
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ serveis: response.data });
             })
             .catch(function (error) {

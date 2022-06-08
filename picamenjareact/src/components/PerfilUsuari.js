@@ -108,7 +108,6 @@ export default class PerfilUsuari extends Component {
         let passwordNova = document.getElementById("password_nova").value;
         let passwordNovaRe = document.getElementById("password_nova_re").value;
         if (passwordNova !== passwordNovaRe) {
-            // console.log(passwordNova);
             return alert(traduccions[sessionStorage.getItem("id_idioma")][0].errorPassword);
         }
         if (passwordNova.length < 8) {
@@ -145,7 +144,6 @@ export default class PerfilUsuari extends Component {
             fetch("https://picamenja.com/PicaMenja/public/api/usuaris/foto/" + this.state.id_usuari, { method: 'POST', headers: { "Authorization": "Bearer " + sessionStorage.getItem("token") }, body: formData })
                 .then((response => response.json()))
                 .then(data => {
-                    console.log(data)
                     alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitFoto);
                     this.descarrega();
                 })
@@ -196,7 +194,7 @@ export default class PerfilUsuari extends Component {
                                 <div className="card-header">{traduccions[sessionStorage.getItem("id_idioma")][0].fotoperfil}</div>
                                 <div className="card-body text-center">
                                     {/* FOTO DE PERFIL */}
-                                    <Image src={this.state.foto_perfil} style={{ width: "80%", height: "80%", borderRadius: "80%" }} />
+                                    <Image src={this.state.foto_perfil} style={{ width: "50%", height: "50%", borderRadius: "50%" }} />
                                     {/* NOM D'USUARI COMPLET */}
                                     <div className="row justify-content-center mt-3 mb-3 ms-4">
                                         <div className="col-md-8">

@@ -86,7 +86,7 @@ export default class Espais extends Component {
                 id, config
             )
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.descarrega();
             })
             .catch(function (error) {
@@ -108,7 +108,7 @@ export default class Espais extends Component {
                 "https://picamenja.com/PicaMenja/public/api/tipus", config
             )
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ tipus: response.data });
             })
             .catch(function (error) {

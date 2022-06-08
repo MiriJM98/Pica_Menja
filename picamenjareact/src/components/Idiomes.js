@@ -28,7 +28,7 @@ export default class Idiomes extends Component {
         };
         axios.get('https://picamenja.com/PicaMenja/public/api/idiomes', config)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ idiomes: response.data });
             })
             .catch(function (error) {

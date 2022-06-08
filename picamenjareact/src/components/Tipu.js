@@ -50,7 +50,7 @@ export default class Tipu extends Component {
         };
         axios.get("https://picamenja.com/PicaMenja/public/api/tipus", config)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.setState({ tipus: response.data });
             })
             .catch(function (error) {
@@ -76,7 +76,7 @@ export default class Tipu extends Component {
         };
         axios.post("https://picamenja.com/PicaMenja/public/api/tipus", formData, config
         ).then((response) => {
-            console.log(response);
+            // console.log(response);
             alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitInsert);
             window.location.assign("/tipus");
             this.descarrega();

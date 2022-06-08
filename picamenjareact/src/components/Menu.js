@@ -96,7 +96,7 @@ export default class Menu extends Component {
   onChangeIdioma = (e) => {
     sessionStorage.setItem("id_idioma", e.target.value);
     this.handleRefresh();
-    console.log(sessionStorage.getItem("id_idioma"));
+    // console.log(sessionStorage.getItem("id_idioma"));
   }
 
   // FUNCIÓ PER ANAR A INICIAR SESSIÓ

@@ -93,7 +93,7 @@ export default class Registre extends Component {
         formData.append("password", this.state.password);
         axios.post("https://picamenja.com/PicaMenja/public/api/usuaris", formData,
         ).then(resposta => {
-            console.log(resposta);
+            // console.log(resposta);
             alert(traduccions[sessionStorage.getItem("id_idioma")][0].exitUsuari);
             window.location.assign("/login");
         }

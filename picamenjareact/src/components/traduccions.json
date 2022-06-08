@@ -221,7 +221,8 @@
             "cartaInsert" : "Carta insertada correctament!",
             "pujaCarta" : "Puja carta",
             "formSend" : "Enviat correctament!",
-            "insertValoracio" : "Valoració creada!"
+            "insertValoracio" : "Valoració creada!",
+            "lupa" : "Per filtrar pulsa la lupa dues vegades."
         } 
     ],
 
@@ -447,7 +448,8 @@
             "cartaInsert" : "¡Carta insertada correctamente!",
             "pujaCarta" : "Sube la carta",
             "formSend" : "¡Enviado correctamente!",
-            "insertValoracio" : "¡Valoración creada!"
+            "insertValoracio" : "¡Valoración creada!",
+            "lupa" : "Para filtrar pulsa la lupa dos veces."
         }
     ], 
 
@@ -673,7 +675,8 @@
             "cartaInsert" : "Menu inserted successfully!",
             "pujaCarta" : "Upload the menu",
             "formSend" : "Successfully sent!",
-            "insertValoracio" : "Rating created!"
+            "insertValoracio" : "Rating created!",
+            "lupa" : "To filter, click the lens twice."
         } 
     ],
 
@@ -899,7 +902,8 @@
             "cartaInsert" : "Menü korrekt eingefügt!",
             "pujaCarta" : "Hochladen des Menüs",
             "formSend" : "Erfolgreich eingereicht!",
-            "insertValoracio" : "Bewertung erstellt!"
+            "insertValoracio" : "Bewertung erstellt!",
+            "lupa" : "Um zu filtern, klicken Sie zweimal auf die Lupe."
         }
     ]
 }
