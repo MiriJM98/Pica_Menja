@@ -1,14 +1,52 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { Image } from "react-bootstrap";
 import traduccions from "./traduccions.json";
 
 export default class QuiSom extends Component {
 
+    componentDidMount() {
+        this.descarrega();
+    }
+
+    // FUNCIÓ PER RECARREGAR EL COMPONENT
+    handleRefresh = () => {
+        this.setState({});
+    };
+
+    descarrega = () => {
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
+        const usuari = sessionStorage.getItem("id_usuari");
+        axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
+            .then(response => {
+                //console.log(response);
+                this.setState({
+                    id_usuari: response.data.id_usuari,
+                    nom_usuari: response.data.nom_usuari,
+                    foto_perfil: response.data.foto_perfil,
+                });
+            })
+            .catch(function (error) {
+                // Mostrar error
+                console.log(error);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    sessionStorage.setItem("token", "");
+                    sessionStorage.setItem("admin", "");
+                    sessionStorage.setItem("id_usuari", "");
+                    alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
+                    window.location.assign("/");
+                    this.handleRefresh();
+                }
+            })
+    }
+
     render() {
         return (
             <div id="quisom">
                 <div>
-                    <h1  className="row justify-content-center pt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].quisom}</h1>
+                    <h1 className="row justify-content-center pt-4">{traduccions[sessionStorage.getItem("id_idioma")][0].quisom}</h1>
                 </div>
                 <div id="sobrePica">
                     <div id="frase">

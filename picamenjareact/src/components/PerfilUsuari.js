@@ -54,8 +54,21 @@ export default class PerfilUsuari extends Component {
             .catch(function (error) {
                 // Mostrar error
                 console.log(error);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    sessionStorage.setItem("token", "");
+                    sessionStorage.setItem("admin", "");
+                    sessionStorage.setItem("id_usuari", "");
+                    alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
+                    window.location.assign("/");
+                    this.handleRefresh();
+                }
             })
     }
+
+    // FUNCIÓ PER RECARREGAR EL COMPONENT
+    handleRefresh = () => {
+        this.setState({});
+    };
 
     // MODIFICAM LES DADES DE L'USUARI
     update = () => {

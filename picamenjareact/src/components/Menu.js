@@ -71,12 +71,10 @@ export default class Menu extends Component {
       .catch(function (error) {
         // Mostrar error
         console.log(error);
-        if (error.response.status === 401) {
-          sessionStorage.setItem("token", "");
-          sessionStorage.setItem("admin", "");
-          sessionStorage.setItem("id_usuari", "");
-          window.location.assign("/");
+        if (error.response.status === 401 || error.response.status === 403) {
+          this.logout();
           alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
+          this.handleRefresh();
         }
       })
   }

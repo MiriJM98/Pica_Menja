@@ -43,6 +43,7 @@ export default class RestaurantFront extends Component {
     }
 
     componentDidMount() {
+        this.descarregaUsuari();
         if (this.props.id_restaurant !== -1) {
             this.descarregaRestaurant(this.props.id_restaurant);
         }
@@ -67,6 +68,39 @@ export default class RestaurantFront extends Component {
         if (this.props.id_restaurant !== -1) {
             this.fotosRestaurant(this.props.id_restaurant);
         }
+    }
+
+    // FUNCIÓ PER RECARREGAR EL COMPONENT
+    handleRefresh = () => {
+        this.setState({});
+    };
+
+    descarregaUsuari = () => {
+        const config = {
+            headers: { Authorization: 'Bearer ' + sessionStorage.getItem("token") }
+        };
+        const usuari = sessionStorage.getItem("id_usuari");
+        axios.get('https://picamenja.com/PicaMenja/public/api/usuaris/' + usuari, config)
+            .then(response => {
+                //console.log(response);
+                this.setState({
+                    id_usuari: response.data.id_usuari,
+                    nom_usuari: response.data.nom_usuari,
+                    foto_perfil: response.data.foto_perfil,
+                });
+            })
+            .catch(function (error) {
+                // Mostrar error
+                console.log(error);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    sessionStorage.setItem("token", "");
+                    sessionStorage.setItem("admin", "");
+                    sessionStorage.setItem("id_usuari", "");
+                    alert(traduccions[sessionStorage.getItem("id_idioma")][0].expirat);
+                    window.location.assign("/");
+                    this.handleRefresh();
+                }
+            })
     }
 
     descarregaRestaurant = (id_restaurant) => {
