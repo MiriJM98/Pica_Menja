@@ -36,7 +36,7 @@
             "textobjectiu" : "El principal objectiu de Pica & Menja és donar facilitats als nostres usuaris a l'hora d'escollir un restaurant adaptat als seus gustos, que puguin compartir la seva experiència valorant i comentant a través del web. Una manera d'enriquir la nostra informació gràcies a la vostra col·laboració.",
             "sobremi" : "Sobre mi",
             "textsobremi": "Sóc na Míriam Jiménez Molina, creadora de la pàgina web. Vaix nèixer a Manacor (Mallorca, Illes Balears) al 1998 i visc a Ca'n Picafort.",
-            "textsobremi2" : "Actualment estic estudiant el Grau Superior d'Aplicacions Web al CIFP Pau Casesnoves, trobat a Inca. Aquesta pàgina web és el meu projecte final de grau.",
+            "textsobremi2" : "Actualment estic estudiant el Grau Superior d'Aplicacions Web al CIFP Pau Casesnoves, situat a Inca. Aquesta pàgina web és el meu projecte final de grau.",
             "teuperfil" : "El teu perfil",
             "compte" : "Compte",
             "fotoperfil" : "Foto de perfil",
@@ -222,7 +222,9 @@
             "pujaCarta" : "Puja carta",
             "formSend" : "Enviat correctament!",
             "insertValoracio" : "Valoració creada!",
-            "lupa" : "Per filtrar pulsa la lupa dues vegades."
+            "lupa" : "Per filtrar pulsa la lupa dues vegades.",
+            "registreValora" : "Regístra't i inicia sessió per valorar el restaurant.",
+            "llevarFiltre" : "Lleva filtre"
         } 
     ],
 
@@ -263,7 +265,7 @@
             "textobjectiu" : "El principal objetivo de Pica & Menja es dar facilidades a nuestros usuarios a la hora de escoger un restaurante adaptado a sus gustos, que puedan compartir su experiencia valorando y comentando a través de la web. Una manera de enriquecer nuestra información gracias a vuestra colaboración.",
             "sobremi" : "Sobre mí",
             "textsobremi" : "Soy Míriam Jiménez Molina, creadora de la pàgina web. Nací en Manacor (Mallorca, Islas Baleares) en 1998 y vivo en Ca'n Picafort.",
-            "textsobremi2" : "Actualmente estoy estudiando el Grado Superior de Aplicaciones Web al CIFP Pau Casesnoves, En Inca. Esta página es mi proyecto de fin de grado.",
+            "textsobremi2" : "Actualmente estoy estudiando el Grado Superior de Aplicaciones Web al CIFP Pau Casesnoves, situado en Inca. Esta página es mi proyecto de fin de grado.",
             "teuperfil" : "Tu perfil",
             "compte" : "Cuenta",
             "fotoperfil" : "Foto de perfil",
@@ -449,7 +451,9 @@
             "pujaCarta" : "Sube la carta",
             "formSend" : "¡Enviado correctamente!",
             "insertValoracio" : "¡Valoración creada!",
-            "lupa" : "Para filtrar pulsa la lupa dos veces."
+            "lupa" : "Para filtrar pulsa la lupa dos veces.",
+            "registreValora" : "Regístrate e inicia sesión para valorar el restaurante.",
+            "llevarFiltre" : "Quitar filtro"
         }
     ], 
 
@@ -676,7 +680,9 @@
             "pujaCarta" : "Upload the menu",
             "formSend" : "Successfully sent!",
             "insertValoracio" : "Rating created!",
-            "lupa" : "To filter, click the lens twice."
+            "lupa" : "To filter, click the lens twice.",
+            "registreValora" : "Register and login to rate the restaurant.",
+            "llevarFiltre" : "Remove filter"
         } 
     ],
 
@@ -903,7 +909,9 @@
             "pujaCarta" : "Hochladen des Menüs",
             "formSend" : "Erfolgreich eingereicht!",
             "insertValoracio" : "Bewertung erstellt!",
-            "lupa" : "Um zu filtern, klicken Sie zweimal auf die Lupe."
+            "lupa" : "Um zu filtern, klicken Sie zweimal auf die Lupe.",
+            "registreValora" : "Registrieren Sie sich und melden Sie sich an, um das Restaurant zu bewerten.",
+            "llevarFiltre" : "Filter entfernen"
         }
     ]
 }

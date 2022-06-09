@@ -95,7 +95,7 @@ export default class Menu extends Component {
 
   onChangeIdioma = (e) => {
     sessionStorage.setItem("id_idioma", e.target.value);
-    this.handleRefresh();
+    window.location.reload();
     // console.log(sessionStorage.getItem("id_idioma"));
   }
 

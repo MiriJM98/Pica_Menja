@@ -130,6 +130,8 @@ export default class RestaurantsFront extends Component {
                     let tipusFiltre = "";
                     const divTipus = document.getElementById("titolTipus");
                     divTipus.innerHTML = "";
+                    const llevarFiltre = document.getElementById("botoLlevarTipus");
+                    llevarFiltre.style.display = "block";
                     this.state.restaurants_tipus.forEach(restaurant => {
                         if (sessionStorage.getItem("id_idioma") === "1") {
                             tipusFiltre = restaurant.tipus_ca;
@@ -196,6 +198,8 @@ export default class RestaurantsFront extends Component {
                     let preusFiltre = "";
                     const divPreus = document.getElementById("titolPreus");
                     divPreus.innerHTML = "";
+                    const llevarFiltre = document.getElementById("botoLlevarPreus");
+                    llevarFiltre.style.display = "block";
                     this.state.restaurants_preus.forEach(restaurant => {
                         if (sessionStorage.getItem("id_idioma") === "1") {
                             preusFiltre = restaurant.rang_preus;
@@ -261,6 +265,8 @@ export default class RestaurantsFront extends Component {
                 const divServei = document.getElementById("titolServei");
                 divServei.innerHTML = "";
                 let serveiFiltre = "";
+                const llevarFiltre = document.getElementById("botoLlevarServeis");
+                llevarFiltre.style.display = "block";
                 this.state.restaurants_serveis.forEach(restaurant => {
                     if (sessionStorage.getItem("id_idioma") === "1") {
                         serveiFiltre = restaurant.servei_ca;
@@ -321,6 +327,39 @@ export default class RestaurantsFront extends Component {
     onChangeServei = (v) => {
         this.setState({ id_servei: v });
     };
+
+    llevarFiltreTipus = () => {
+        let div = document.getElementById("contenedorTipus");
+        let titol = document.getElementById("divTitolTipus");
+        let boto = document.getElementById("botoLlevarTipus");
+        div.innerHTML = "";
+        titol.innerHTML = "";
+        boto.style.display = "none";
+        this.restaurants();
+        window.location.reload();
+    }
+
+    llevarFiltrePreus = () => {
+        let div = document.getElementById("contenedorPreus");
+        let titol = document.getElementById("divTitolPreus");
+        let boto = document.getElementById("botoLlevarPreus");
+        div.innerHTML = "";
+        titol.innerHTML = "";
+        boto.style.display = "none";
+        this.restaurants();
+        window.location.reload();
+    }
+
+    llevarFiltreServeis = () => {
+        let div = document.getElementById("contenedorServei");
+        let titol = document.getElementById("divTitolServeis");
+        let boto = document.getElementById("botoLlevarServeis");
+        div.innerHTML = "";
+        titol.innerHTML = "";
+        boto.style.display = "none";
+        this.restaurants();
+        window.location.reload();
+    }
 
     render() {
         return (
@@ -456,17 +495,26 @@ export default class RestaurantsFront extends Component {
                 <div id="divTitolTipus">
                     <h3 id="titolTipus"></h3>
                 </div>
+                <div id="botoLlevarTipus" style={{ display: "none" }}>
+                    <button id="botoTipus" onClick={this.llevarFiltreTipus}>{traduccions[sessionStorage.getItem("id_idioma")][0].llevarFiltre}</button>
+                </div>
                 <div id="contenedorTipus"></div>
 
                 {/* FILTRE PER PREUS */}
                 <div id="divTitolPreus">
                     <h3 id="titolPreus"></h3>
                 </div>
+                <div id="botoLlevarPreus" style={{ display: "none" }}>
+                    <button id="botoTipus" onClick={this.llevarFiltrePreus}>{traduccions[sessionStorage.getItem("id_idioma")][0].llevarFiltre}</button>
+                </div>
                 <div id="contenedorPreus"></div>
 
                 {/* FILTRE PER SERVEIS */}
                 <div id="divTitolServeis">
                     <h3 id="titolServei"></h3>
+                </div>
+                <div id="botoLlevarServeis" style={{ display: "none" }}>
+                    <button id="botoTipus" onClick={this.llevarFiltreServeis}>{traduccions[sessionStorage.getItem("id_idioma")][0].llevarFiltre}</button>
                 </div>
                 <div id="contenedorServei"></div>
                 <ScrollToTop />

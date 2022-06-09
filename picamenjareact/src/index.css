@@ -640,3 +640,28 @@ tr, td {
   padding-top: 28px;
   font-size: 16pt;
 }
+
+#missatgePerValorar {
+  font-size: 15pt;
+  font-weight: bolder;
+}
+
+#headerRestaurant {
+  margin-top: 15px;
+}
+
+#botoLlevarTipus, #botoLlevarPreus, #botoLlevarServeis {
+  margin: auto;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#botoTipus {
+  background-color: #551B54;
+  padding: 10px 15px 10px 15px;
+  font-size: 14pt;
+  color: white;
+  cursor: pointer;
+  margin: auto;
+  border-radius: 10px;
+}

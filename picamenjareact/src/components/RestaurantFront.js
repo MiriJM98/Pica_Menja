@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { Image } from "react-bootstrap";
 import { Rating } from "react-simple-star-rating";
 import ScrollToTop from "./ScrollToTop";
 import traduccions from "./traduccions.json";
@@ -498,8 +499,12 @@ export default class RestaurantFront extends Component {
                     });
                     let estrelles = document.createTextNode(parseat + "/5");
                     // PROPIETATS DE LA IMATGE
+                    if (valoracio.foto_perfil !== "" && valoracio.foto_perfil !== "null" && valoracio.foto_perfil !== null) {
+                        fotoPerfil.setAttribute("src", valoracio.foto_perfil);
+                    } else {
+                        fotoPerfil.setAttribute("src", "/userpink.webp");
+                    }
                     fotoPerfil.setAttribute("alt", "Foto Usuari");
-                    fotoPerfil.setAttribute("src", valoracio.foto_perfil);
                     fotoPerfil.setAttribute("id", "fotoValUsuaris");
                     tdComentari.setAttribute("colspan", "10");
                     // FICAM ON TOCA
@@ -563,10 +568,22 @@ export default class RestaurantFront extends Component {
         this.setState({ valoracioRestaurant: v });
     };
 
+    tornarEnrere = () => {
+        window.location.assign("/restaurants");
+        this.handleRefresh();
+    }
+
     render() {
         return (
             <div id="frontRestaurant" className="row justify-content-center">
-                <h1 className="row justify-content-center mt-3">{this.state.nom}</h1>
+                <div id="headerRestaurant">
+                    <button type="button" className="btn btn-link" onClick={this.tornarEnrere} aria-label="Tornar">
+                        <Image src={process.env.PUBLIC_URL + '/tornar.png'} width="35px" height="35" alt="Tornar"></Image>
+                    </button>
+                </div>
+                <div id="headerRestaurant2">
+                    <h1 className="row justify-content-center mt-3">{this.state.nom}</h1>
+                </div>
                 <div id="carouselRestaurant"></div>
                 <div id="contingut"></div>
                 <h2 id="h2Serveis" className="mt-5">{traduccions[sessionStorage.getItem("id_idioma")][0].serveis}</h2>
@@ -575,6 +592,11 @@ export default class RestaurantFront extends Component {
                 <div id="valoracionsUsuaris"></div>
                 <div id="divValoracions">
                     <h3 className="row justify-content-center mt-3">{traduccions[sessionStorage.getItem("id_idioma")][0].valoracio}</h3>
+                    {sessionStorage.getItem("token") === "" || sessionStorage.getItem("token") === null ?
+                        <div id="missatgePerValorar">
+                            <p>{traduccions[sessionStorage.getItem("id_idioma")][0].registreValora}</p>
+                        </div>
+                        : console.log()}
                     <div id="estrelles">
                     </div>
                     {this.state.puntuacio !== -1 ?

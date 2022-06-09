@@ -194,7 +194,18 @@ export default class PerfilUsuari extends Component {
                                 <div className="card-header">{traduccions[sessionStorage.getItem("id_idioma")][0].fotoperfil}</div>
                                 <div className="card-body text-center">
                                     {/* FOTO DE PERFIL */}
-                                    <Image src={this.state.foto_perfil} style={{ width: "50%", height: "50%", borderRadius: "50%" }} />
+                                    {/* <Image src={this.state.foto_perfil} style={{ width: "50%", height: "50%", borderRadius: "50%" }} /> */}
+                                    {this.state.foto_perfil !== "" && this.state.foto_perfil !== "null" && this.state.foto_perfil !== null ?
+                                        <>
+                                            <Image src={this.state.foto_perfil} style={{ width: "50%", height: "50%", borderRadius: "50%" }} alt="Foto Perfil" />
+                                        </>
+                                        : console.log()}
+                                    {/* L'USUARI NO TÉ FOTO DE PERFIL */}
+                                    {this.state.foto_perfil === "null" || this.state.foto_perfil === null ?
+                                        <>
+                                            <Image src={process.env.PUBLIC_URL + "/user.png"} alt="Foto Defecte" style={{ width: "50%", height: "50%", borderRadius: "50%" }} />
+                                        </>
+                                        : console.log()}
                                     {/* NOM D'USUARI COMPLET */}
                                     <div className="row justify-content-center mt-3 mb-3 ms-4">
                                         <div className="col-md-8">
