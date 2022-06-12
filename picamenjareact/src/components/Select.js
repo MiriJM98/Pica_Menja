@@ -35,9 +35,9 @@ export default class Select extends Component {
 
   render() {
     return (
-      <select onChange={this.onChange} value={this.props.valorInicial}>
+      <select id={this.props.idFiltre} onChange={this.onChange} value={this.props.valorInicial}>
         <option value="" key="-1">
-        {traduccions[sessionStorage.getItem("id_idioma")][0].select}
+          {traduccions[sessionStorage.getItem("id_idioma")][0].select}
         </option>
         {this.state.items.map((item, key) => {
           return (

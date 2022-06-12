@@ -136,6 +136,10 @@ export default class Menu extends Component {
     window.location.assign("/");
   }
 
+  anarInici() {
+    window.location.assign("/");
+  }
+
   render() {
     return (
       <>
@@ -228,6 +232,8 @@ export default class Menu extends Component {
                       id="imatges"
                       width="494px"
                       height="112px"
+                      onClick={this.anarInici}
+                      style={{ cursor: "pointer" }}
                     />
                   </>
                   : console.log()}
